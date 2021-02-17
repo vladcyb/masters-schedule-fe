@@ -4,17 +4,27 @@ import {
   Redirect,
   Route,
 } from 'react-router-dom';
-import Me from './pages/Me/Me';
+import { useSelector } from 'react-redux';
+import { Me } from './pages/Me';
+import { getToken } from './store/userSlice/selectors';
+import { PrivateRoute } from './HOCs/PrivateRoute';
+import { Login } from './pages/Login';
 
-const App = () => (
-  <Router>
-    <Route path="/" exact>
-      <Redirect to="/me" />
-    </Route>
-    <Route path="/me">
-      <Me />
-    </Route>
-  </Router>
-);
+const App = () => {
+  const token = useSelector(getToken);
+  return (
+    <Router>
+      <Route path="/" exact>
+        <Redirect to="/me" />
+      </Route>
+      <PrivateRoute path="/me" exact condition={!!token} redirectPath="/login">
+        <Me />
+      </PrivateRoute>
+      <PrivateRoute path="/login" exact condition={!token} redirectPath="/login">
+        <Login />
+      </PrivateRoute>
+    </Router>
+  );
+};
 
 export default App;
