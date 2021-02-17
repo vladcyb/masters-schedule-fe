@@ -1,0 +1,15 @@
+.login__form {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 100px auto 0 auto;
+    width: 200px;
+}
+
+.login__form input,
+.login__form button {
+    width: 100%;
+}
+
+.login button[type="submit"] {
+    margin-top: 20px;
+}

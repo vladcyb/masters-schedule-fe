@@ -20,7 +20,7 @@ const App = () => {
       <PrivateRoute path="/me" exact condition={!!token} redirectPath="/login">
         <Me />
       </PrivateRoute>
-      <PrivateRoute path="/login" exact condition={!token} redirectPath="/login">
+      <PrivateRoute path="/login" exact condition={!token} redirectPath="/me">
         <Login />
       </PrivateRoute>
     </Router>
