@@ -9,7 +9,6 @@ export const useField = (
 ) => {
   /* vars */
   const { isSubmitted, errors } = getters;
-  const { clearError } = setters;
 
   /* state */
   const [value, setValue] = useState(initialValue);
@@ -17,7 +16,6 @@ export const useField = (
 
   /* methods */
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    clearError(name);
     setValue(e.target.value);
   };
 

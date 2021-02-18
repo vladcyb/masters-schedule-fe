@@ -7,6 +7,7 @@ export const validateLogin = (form: ILoginForm, setters: Setters): boolean => {
     setErrors({ login: 'Enter login!' });
     return false;
   }
+  setErrors({ login: '' });
   if (!form.password) {
     setErrors({ password: 'Enter password!' });
     return false;

@@ -22,6 +22,12 @@ export interface ILoginForm {
   password: string
 }
 
+export interface IRegisterForm {
+  login: string
+  password: string
+  passwordRepeat: string
+}
+
 export interface ILoginProps extends ILoginForm {
   setters: Setters
 }
