@@ -15,6 +15,13 @@ export const Field = ({
 }: PropsType) => (
   <div className="field">
     <label className="field__label" htmlFor={name}>{label}</label>
-    <input type={type} value={value} onChange={onChange} name={name} {...inputProps} />
+    <input
+      className="field__input"
+      type={type}
+      value={value}
+      onChange={onChange}
+      name={name}
+      {...inputProps}
+    />
   </div>
 );

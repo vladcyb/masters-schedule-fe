@@ -1,4 +1,19 @@
+.field {
+    padding-bottom: 16px;
+}
+
 .field__label {
-    font-size: 12px;
+    font-family: Roboto, serif;
+    font-size: 16px;
     line-height: 100%;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.field__input {
+    font-family: Roboto, serif;
+    font-size: 16px;
+    line-height: 100%;
+    padding: 4px;
+    display: block;
 }
