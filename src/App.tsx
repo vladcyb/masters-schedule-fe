@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -12,6 +12,8 @@ import { Login } from './pages/Login';
 
 const App = () => {
   const token = useSelector(getToken);
+  useEffect(() => {
+  });
   return (
     <Router>
       <Route path="/" exact>

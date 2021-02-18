@@ -1,11 +1,20 @@
 import React from 'react';
+import './style.css';
+
+type PropsType = {
+  label: string
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Field = ({
   value,
   onChange,
   type = 'text',
-}: React.InputHTMLAttributes<HTMLInputElement>) => (
+  name,
+  label,
+  ...inputProps
+}: PropsType) => (
   <div className="field">
-    <input type={type} value={value} onChange={onChange} />
+    <label className="field__label" htmlFor={name}>{label}</label>
+    <input type={type} value={value} onChange={onChange} name={name} {...inputProps} />
   </div>
 );
