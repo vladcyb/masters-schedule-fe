@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Button, Field } from '../../components';
 import { useField, useSetters } from '../../shared/hooks';
-import { getLoading } from '../../store/userSlice/selectors';
+import { getLoading } from '../../store/authSlice/selectors';
 import { IRegisterForm } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import './style.css';

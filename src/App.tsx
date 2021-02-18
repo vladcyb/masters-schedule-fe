@@ -5,11 +5,9 @@ import {
   Route,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Me } from './pages/Me';
-import { getAuth } from './store/userSlice/selectors';
+import { getAuth } from './store/authSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
-import { Login } from './pages/Login';
-import { Register } from './pages/Register';
+import { Login, Me, Register } from './pages';
 
 const App = () => {
   const auth = useSelector(getAuth);

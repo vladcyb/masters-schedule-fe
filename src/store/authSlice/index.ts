@@ -7,8 +7,8 @@ const initialState: StateType = {
   loading: false,
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {
     login: (state) => {

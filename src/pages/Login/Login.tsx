@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import UserThunk from '../../store/userSlice/thunk';
+import UserThunk from '../../store/authSlice/thunk';
 import { useField, useSetters } from '../../shared/hooks';
 import { Button, Field, Spinner } from '../../components';
 import { useAppDispatch } from '../../store';
-import { getLoading } from '../../store/userSlice/selectors';
+import { getLoading } from '../../store/authSlice/selectors';
 import { validateLogin } from './validate';
 import { ILoginForm } from '../../API/interfaces';
 import './style.css';
