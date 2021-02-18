@@ -1,5 +1,6 @@
 import Responses from './responses';
 import {
+  ILocationCreate,
   ILogin,
   IOrderCreate,
   IOrderSetStatus,
@@ -22,6 +23,11 @@ const API = {
     ),
     setStatus: (props: IOrderSetStatus) => (
       Responses(instance.post('/order/updateStatus', props))
+    ),
+  },
+  Location: {
+    create: (props: ILocationCreate) => (
+      Responses(instance.post('/location/create', props))
     ),
   },
 };

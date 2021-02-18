@@ -40,3 +40,10 @@ export interface IOrderSetStatus {
   id: number
   status: OrderStatus
 }
+
+export interface ILocationCreate {
+  title: string
+  coordinates: string
+  typeId: number
+  parentId: number
+}
