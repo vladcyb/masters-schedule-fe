@@ -38,7 +38,7 @@ export const Login = () => {
   /* methods */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isError || isLoading) {
+    if (isError || isLoading) {
       return;
     }
     dispatch(UserThunk.login(form));
