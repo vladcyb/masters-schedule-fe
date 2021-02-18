@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
 import { useField } from '../../shared/hooks/useField';
-import { Button, Field } from '../../components';
+import { Button, Field, Spinner } from '../../components';
 import { useAppDispatch } from '../../store';
 import { getLoading } from '../../store/userSlice/selectors';
 import { useSetters } from '../../shared/hooks/useSetters';
@@ -51,6 +51,7 @@ export const Login = () => {
         <Field {...password.props} label="Password:" />
         <Button className="login__submit" type="submit">Login</Button>
         <Link className="navlink login__register" to="/register">Register</Link>
+        <Spinner className="login__spinner" visible={isLoading} />
       </form>
     </div>
   );

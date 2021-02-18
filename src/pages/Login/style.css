@@ -20,3 +20,7 @@
     margin: 10px auto 0 auto;
     width: min-content;
 }
+
+.login__spinner {
+    margin: 10px auto 0 auto;
+}
