@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Field } from '../../components';
-import { useField } from '../../shared/hooks/useField';
+import { useField, useSetters } from '../../shared/hooks';
 import './style.css';
-import { useSetters } from '../../shared/hooks/useSetters';
 
 export const Register = () => {
   /* hooks */
