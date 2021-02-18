@@ -1,7 +1,7 @@
 import Responses from './responses';
 import {
-  ILocationCreate,
-  ILoginProps, IMasterSetSchedule,
+  ILocationCreate, ILoginForm,
+  IMasterSetSchedule,
   IOrderCreate,
   IOrderSetStatus,
   IRegister, IServiceCreate,
@@ -11,7 +11,7 @@ import instance from './axios';
 
 const API = {
   User: {
-    login: (props: ILoginProps) => (
+    login: (props: ILoginForm) => (
       Responses(instance.post('/login', props))
     ),
     register: (props: IRegister) => (
