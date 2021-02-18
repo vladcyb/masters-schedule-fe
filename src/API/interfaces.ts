@@ -47,3 +47,20 @@ export interface ILocationCreate {
   typeId: number
   parentId: number
 }
+
+export interface ISpecializationCreate {
+  title: string
+  icon: string
+}
+
+export interface IServiceCreate {
+  title: string
+  price: string
+  duration: number
+  specializationId: number
+}
+
+export interface IMasterSetSchedule {
+  hours: string
+
+}

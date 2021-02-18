@@ -1,10 +1,11 @@
 import Responses from './responses';
 import {
   ILocationCreate,
-  ILogin,
+  ILogin, IMasterSetSchedule,
   IOrderCreate,
   IOrderSetStatus,
-  IRegister,
+  IRegister, IServiceCreate,
+  ISpecializationCreate,
 } from './interfaces';
 import instance from './axios';
 
@@ -28,6 +29,30 @@ const API = {
   Location: {
     create: (props: ILocationCreate) => (
       Responses(instance.post('/location/create', props))
+    ),
+  },
+  Specialization: {
+    create: (props: ISpecializationCreate) => (
+      Responses(instance.post('/specialization/create', props))
+    ),
+  },
+  Service: {
+    create: (props: IServiceCreate) => (
+      Responses(instance.post('/service/create', props))
+    ),
+  },
+  Master: {
+    setSchedule: (props: IMasterSetSchedule) => (
+      Responses(instance.post('/master/schedule', props))
+    ),
+  },
+  Client: {
+    getOrders: (props: { token: string }) => (
+      Responses(instance.get('/client/order', {
+        headers: {
+          Authorization: props.token,
+        },
+      }))
     ),
   },
 };
