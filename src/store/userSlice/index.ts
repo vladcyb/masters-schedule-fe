@@ -3,7 +3,7 @@ import { StateType } from './types';
 import UserThunk from './thunk';
 
 const initialState: StateType = {
-  token: undefined,
+  auth: false,
   loading: false,
 };
 
@@ -11,8 +11,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setToken: (state, { payload }: PayloadAction<string | undefined>) => {
-      state.token = payload;
+    setAuth: (state, { payload }: PayloadAction<boolean>) => {
+      state.auth = payload;
     },
   },
   extraReducers: (builder) => {

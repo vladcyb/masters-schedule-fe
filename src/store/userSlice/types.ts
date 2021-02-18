@@ -1,5 +1,5 @@
 export type StateType = {
-  token: undefined | string
+  auth: boolean
   loading: boolean
 };
 
