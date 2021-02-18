@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { StateType } from './types';
 import UserThunk from './thunk';
 
@@ -11,8 +11,11 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setAuth: (state, { payload }: PayloadAction<boolean>) => {
-      state.auth = payload;
+    login: (state) => {
+      state.auth = true;
+    },
+    logout: (state) => {
+      state.auth = false;
     },
   },
   extraReducers: (builder) => {

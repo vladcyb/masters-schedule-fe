@@ -1,9 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
-import { SetTokenPT } from './types';
 
 const actions = {
-  setToken: createAction<SetTokenPT>('user/setToken'),
-  clearToken: createAction('user/clearToken'),
+  login: createAction('user/login'),
+  logout: createAction('user/logout'),
 };
 
 export default actions;

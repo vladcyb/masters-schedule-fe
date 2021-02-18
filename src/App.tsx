@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -12,8 +12,6 @@ import { Login } from './pages/Login';
 
 const App = () => {
   const auth = useSelector(getAuth);
-  useEffect(() => {
-  });
   return (
     <Router>
       <Route path="/" exact>
