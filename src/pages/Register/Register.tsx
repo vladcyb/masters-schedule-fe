@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Button, Field } from '../../components';
+import { Button, Field, Select } from '../../components';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLoading } from '../../store/authSlice/selectors';
-import { IRegisterForm } from '../../API/interfaces';
+import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
+import { SelectOptions } from '../../components/Select/types';
 import './style.css';
+
+const roles: SelectOptions<UserRole> = [
+  { value: UserRole.CLIENT, title: 'Клиент' },
+  { value: UserRole.MASTER, title: 'Мастер' },
+  { value: UserRole.ADMIN, title: 'Администратор' },
+  { value: UserRole.OPERATOR, title: 'Оператор' },
+  { value: UserRole.RESPONSIBLE, title: 'Ответственный по мастерам' },
+];
 
 export const Register = () => {
   /* state */
   const [isValid, setIsValid] = useState(true);
+  const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.CLIENT);
 
   /* hooks */
   const [getters, setters] = useSetters();
@@ -49,11 +59,21 @@ export const Register = () => {
     console.log(formData);
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedRole(e.target.value as UserRole);
+  };
+
   return (
     <form className="register" onSubmit={handleSubmit} autoComplete="off">
       <Field label="Login:" {...login.props} />
       <Field label="Password:" {...password.props} />
       <Field label="Repeat password:" {...passwordRepeat.props} />
+      <Select
+        className="register__role"
+        options={roles}
+        value={selectedRole}
+        onChange={handleSelectChange}
+      />
       <Button className="register__submit" type="submit">Register</Button>
       <Link className="navlink register__login" to="/login">Login</Link>
     </form>
