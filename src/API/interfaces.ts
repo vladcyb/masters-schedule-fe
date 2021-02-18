@@ -17,9 +17,12 @@ export enum OrderStatus {
   PENDING_FOR_ACCEPTING,
 }
 
-export interface ILogin {
+export interface ILoginForm {
   login: string
   password: string
+}
+
+export interface ILoginProps extends ILoginForm {
   setters: Setters
 }
 

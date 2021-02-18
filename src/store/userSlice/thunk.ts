@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../API';
 import actions from './actions';
-import { ILogin } from '../../API/interfaces';
+import { ILoginProps } from '../../API/interfaces';
 
 const UserThunk = {
   login: createAsyncThunk(
     'user/login',
-    async (props: ILogin, { dispatch }) => {
+    async (props: ILoginProps, { dispatch }) => {
       const result = await API.User.login(props);
       const { ok, error } = result.data;
       if (ok) {

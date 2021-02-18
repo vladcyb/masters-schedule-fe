@@ -5,10 +5,10 @@ import UserThunk from '../../store/userSlice/thunk';
 import { useField } from '../../shared/hooks/useField';
 import { Button, Field } from '../../components';
 import { useAppDispatch } from '../../store';
-import { ILogin } from '../../API/interfaces';
 import { getLoading } from '../../store/userSlice/selectors';
 import { useSetters } from '../../shared/hooks/useSetters';
 import { validateLogin } from './validate';
+import { ILoginForm } from '../../API/interfaces';
 import './style.css';
 
 export const Login = () => {
@@ -23,15 +23,14 @@ export const Login = () => {
   const isLoading = useSelector(getLoading);
 
   /* vars */
-  const form: ILogin = {
+  const form: ILoginForm = {
     login: login.props.value,
     password: password.props.value,
-    setters,
   };
 
   /* effects */
   useEffect(() => {
-    setIsError(!validateLogin(form));
+    setIsError(!validateLogin(form, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.login, form.password]);
 
@@ -41,7 +40,7 @@ export const Login = () => {
     if (isError || isLoading) {
       return;
     }
-    dispatch(UserThunk.login(form));
+    dispatch(UserThunk.login({ ...form, setters }));
   };
 
   return (
