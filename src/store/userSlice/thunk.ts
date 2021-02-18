@@ -8,9 +8,12 @@ const UserThunk = {
     'user/login',
     async (props: ILogin, { dispatch }) => {
       const result = await API.User.login(props);
-      const { ok } = result.data;
+      const { ok, error } = result.data;
       if (ok) {
         dispatch(actions.login());
+      } else {
+        console.log(error);
+        props.setters.setErrors(error);
       }
     },
   ),

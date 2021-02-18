@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Field } from '../../components';
-import './style.css';
 import { useField } from '../../shared/hooks/useField';
+import './style.css';
+import { useSetters } from '../../shared/hooks/useSetters';
 
 export const Register = () => {
   /* hooks */
-  const login = useField();
-  const password = useField();
-  const passwordRepeat = useField();
+  const [getters, setters] = useSetters();
+  const login = useField('login', getters, setters);
+  const password = useField('password', getters, setters);
+  const passwordRepeat = useField('passwordRepeat', getters, setters);
 
   /* vars */
   const formData = {
@@ -25,9 +27,9 @@ export const Register = () => {
 
   return (
     <form className="register" onSubmit={handleSubmit} autoComplete="off">
-      <Field label="Login:" name="login" {...login.props} />
-      <Field label="Password:" name="password" {...password.props} />
-      <Field label="Repeat password:" name="repeatedPassword" {...passwordRepeat.props} />
+      <Field label="Login:" {...login.props} />
+      <Field label="Password:" {...password.props} />
+      <Field label="Repeat password:" {...passwordRepeat.props} />
       <Button className="register__submit" type="submit">Register</Button>
       <Link className="navlink register__login" to="/login">Login</Link>
     </form>

@@ -1,3 +1,5 @@
+import { Setters } from '../shared/hooks/useSetters/types';
+
 export enum UserRole {
   MASTER = 'MASTER',
   CLIENT = 'CLIENT',
@@ -18,6 +20,7 @@ export enum OrderStatus {
 export interface ILogin {
   login: string
   password: string
+  setters: Setters
 }
 
 export interface IRegister {
