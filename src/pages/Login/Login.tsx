@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
@@ -12,6 +12,9 @@ import { validateLogin } from './validate';
 import './style.css';
 
 export const Login = () => {
+  /* state */
+  const [isError, setIsError] = useState(false);
+
   /* hooks */
   const [getters, setters] = useSetters();
   const login = useField('login', getters, setters);
@@ -26,10 +29,16 @@ export const Login = () => {
     setters,
   };
 
+  /* effects */
+  useEffect(() => {
+    setIsError(!validateLogin(form));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form.login, form.password]);
+
   /* methods */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateLogin(form) || isLoading) {
+    if (!isError || isLoading) {
       return;
     }
     dispatch(UserThunk.login(form));

@@ -9,6 +9,7 @@ export const useField = (
 ) => {
   /* state */
   const [value, setValue] = useState(initialValue);
+  const [isTouched, setIsTouched] = useState(false);
 
   /* methods */
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,13 +19,17 @@ export const useField = (
   const clear = () => {
     setValue('');
   };
+  const onBlur = () => {
+    setIsTouched(true);
+  };
 
   return {
     props: {
       value,
       onChange,
-      error: getters.errors[name],
+      error: isTouched ? getters.errors[name] : '',
       name,
+      onBlur,
     },
     clear,
   };
