@@ -13,7 +13,6 @@ const UserThunk = {
       if (ok) {
         dispatch(actions.login());
       } else {
-        console.log(error);
         setters.setErrors(error);
       }
     },
