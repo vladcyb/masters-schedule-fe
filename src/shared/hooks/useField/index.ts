@@ -7,18 +7,24 @@ export const useField = (
   setters: Setters,
   initialValue = '',
 ) => {
+  /* vars */
+  const { isSubmitted, errors } = getters;
+  const { clearError } = setters;
+
   /* state */
   const [value, setValue] = useState(initialValue);
   const [isTouched, setIsTouched] = useState(false);
 
   /* methods */
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setters.clearError(name);
+    clearError(name);
     setValue(e.target.value);
   };
+
   const clear = () => {
     setValue('');
   };
+
   const onBlur = () => {
     setIsTouched(true);
   };
@@ -27,7 +33,7 @@ export const useField = (
     props: {
       value,
       onChange,
-      error: isTouched || getters.isSubmitted ? getters.errors[name] : '',
+      error: isTouched || isSubmitted ? errors[name] : '',
       name,
       onBlur,
     },
