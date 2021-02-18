@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useField } from '../../shared/hooks/useField';
 import { Field } from '../../components/Field';
 import UserThunk from '../../store/userSlice/thunk';
 import { useAppDispatch } from '../../store';
 import { ILogin } from '../../API/interfaces';
 import { Button } from '../../components/Button';
+import { getLoading } from '../../store/userSlice/selectors';
 import './style.css';
 
 export const Login = () => {
@@ -12,6 +14,7 @@ export const Login = () => {
   const login = useField();
   const password = useField();
   const dispatch = useAppDispatch();
+  const isLoading = useSelector(getLoading);
 
   /* vars */
   const formData: ILogin = {
@@ -22,7 +25,7 @@ export const Login = () => {
   /* methods */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.login || !formData.password) {
+    if (!formData.login || !formData.password || isLoading) {
       return;
     }
     dispatch(UserThunk.login(formData));
