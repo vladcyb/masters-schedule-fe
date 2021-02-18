@@ -37,6 +37,7 @@ export const Login = () => {
   /* methods */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setters.setIsSubmitted(true);
     if (isError || isLoading) {
       return;
     }

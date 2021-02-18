@@ -27,7 +27,7 @@ export const useField = (
     props: {
       value,
       onChange,
-      error: isTouched ? getters.errors[name] : '',
+      error: isTouched || getters.isSubmitted ? getters.errors[name] : '',
       name,
       onBlur,
     },
