@@ -1,5 +1,6 @@
 .field {
-    padding-bottom: 16px;
+    /*padding-bottom: 16px;*/
+    height: 88px;
 }
 
 .field__label {
@@ -16,4 +17,11 @@
     line-height: 100%;
     padding: 4px;
     display: block;
+}
+
+.field__error {
+    font-family: Roboto, serif;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }

@@ -3,6 +3,7 @@ import './style.css';
 
 type PropsType = {
   label: string
+  error?: string
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Field = ({
@@ -10,6 +11,7 @@ export const Field = ({
   onChange,
   type = 'text',
   name,
+  error = '',
   label,
   ...inputProps
 }: PropsType) => (
@@ -23,5 +25,6 @@ export const Field = ({
       name={name}
       {...inputProps}
     />
+    <div className="field__error">{error}</div>
   </div>
 );
