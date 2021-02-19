@@ -24,3 +24,7 @@
 .register__masterSpinner {
     margin: 10px auto 0 auto;
 }
+
+.register__error {
+    color: red;
+}

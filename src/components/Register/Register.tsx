@@ -13,6 +13,8 @@ import { getLoading } from '../../store/authSlice/selectors';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';
+import { getLocations } from '../../store/locationSlice/selectors';
+import { getSpecializations } from '../../store/specializationSlice/selectors';
 import './style.css';
 
 const roles: SelectOptions<UserRole> = [
@@ -39,6 +41,9 @@ export const Register = ({ className }: PropsType) => {
   const [getters, setters] = useSetters();
   const isLoading = useSelector(getLoading);
   const dispatch = useAppDispatch();
+  const locations = useSelector(getLocations);
+  const specializations = useSelector(getSpecializations);
+  const masterOptionsError = locations.error || specializations.error;
 
   /* fields state */
   const login = useField('login', getters, setters);
@@ -113,6 +118,9 @@ export const Register = ({ className }: PropsType) => {
         onChange={handleSelectChange}
       />
       <Spinner className={cn('masterSpinner')} visible={isMasterOptionsLoading} />
+      {masterOptionsError && (
+        <div className={cn('error')}>Something went wrong</div>
+      )}
       <Button className={cn('submit')} type="submit">Register</Button>
       <Link className={cn('login navlink')} to="/login">Login</Link>
       <Spinner className={cn('spinner')} visible={isLoading} />
