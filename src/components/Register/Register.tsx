@@ -53,6 +53,8 @@ export const Register = ({ className }: PropsType) => {
   const name = useField('name', getters, setters);
   const patronymic = useField('patronymic', getters, setters);
   const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.CLIENT);
+  const [specializationId, setSpecializationId] = useState<number | undefined>(undefined);
+  const [locationId, setLocationId] = useState<number | undefined>(undefined);
 
   /* vars */
   const form: IRegisterForm = {
@@ -113,7 +115,32 @@ export const Register = ({ className }: PropsType) => {
         selected={selectedRole}
         setSelected={setSelectedRole}
       />
-      <Spinner className={cn('masterSpinner')} visible={isMasterOptionsLoading} />
+      {isMasterOptionsLoading && (
+        <Spinner className={cn('masterSpinner')} visible />
+      )}
+      {selectedRole === UserRole.MASTER && !isMasterOptionsLoading && !masterOptionsError && (
+        <>
+          <Select
+            className={cn('specializations')}
+            options={specializations.data.map((item) => ({
+              title: item.title,
+              value: item.id,
+              icon: item.icon,
+            }))}
+            selected={specializationId}
+            setSelected={setSpecializationId}
+          />
+          <Select
+            className={cn('locations')}
+            options={locations.data.map((item) => ({
+              title: item.title,
+              value: item.id,
+            }))}
+            selected={locationId}
+            setSelected={setLocationId}
+          />
+        </>
+      )}
       {masterOptionsError && (
         <div className={cn('error')}>Something went wrong</div>
       )}

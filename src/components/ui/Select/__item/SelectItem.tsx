@@ -13,6 +13,7 @@ export const SelectItem = ({
   selected,
   setSelected,
   value,
+  icon,
 }: PropsType) => {
   /* classes */
   const cn = createCn('select__item');
@@ -28,7 +29,12 @@ export const SelectItem = ({
       className={cn({ selected: selected === value })}
       onClick={handleClick}
     >
-      {title}
+      <div>
+        {title}
+      </div>
+      <div>
+        {icon && <img className="select__img" src={icon} alt="" />}
+      </div>
     </div>
   );
 };

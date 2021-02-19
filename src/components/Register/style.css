@@ -28,3 +28,8 @@
 .register__error {
     color: red;
 }
+
+.register__specializations,
+.register__locations {
+    margin-top: 50px;
+}
