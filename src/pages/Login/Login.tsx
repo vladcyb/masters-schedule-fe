@@ -12,7 +12,7 @@ import './style.css';
 
 export const Login = () => {
   /* state */
-  const [isError, setIsError] = useState(false);
+  const [isValid, setIsValid] = useState(false);
 
   /* hooks */
   const [getters, setters] = useSetters();
@@ -29,7 +29,7 @@ export const Login = () => {
 
   /* effects */
   useEffect(() => {
-    setIsError(!validateLogin(form, setters));
+    setIsValid(validateLogin(form, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.login, form.password]);
 
@@ -37,7 +37,7 @@ export const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setters.setIsSubmitted(true);
-    if (isError || isLoading) {
+    if (!isValid || isLoading) {
       return;
     }
     dispatch(UserThunk.login({ ...form, setters }));
