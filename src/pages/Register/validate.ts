@@ -3,33 +3,23 @@ import { Setters } from '../../shared/hooks/useSetters/types';
 
 export const validateRegistration = (form: IRegisterForm, setters: Setters): boolean => {
   const { setErrors } = setters;
+  const errors: Partial<IRegisterForm> = {};
   const { login, password, passwordRepeat } = form;
   if (!login) {
-    setErrors({ login: 'Enter login!' });
-    return false;
-  }
-  if (!login[0].match(/[a-zA-Z]/) || !login.match(/^[A-Za-z0-9]*$/)) {
-    setErrors({
-      login: 'Login must begin with a letter and contain only Latin letters and numbers!',
-    });
-    return false;
+    errors.login = 'Enter login!';
+  } else if (!login[0].match(/[a-zA-Z]/) || !login.match(/^[A-Za-z0-9]*$/)) {
+    errors.login = 'Login must begin with a letter and contain only Latin letters and numbers!';
   }
   if (!password) {
-    setErrors({ password: 'Enter password!' });
-    return false;
-  }
-  if (password.length < 8) {
-    setErrors({ password: 'Password must contain at least 8 characters!' });
-    return false;
+    errors.password = 'Enter password!';
+  } else if (password.length < 8) {
+    errors.password = 'Password must contain at least 8 characters!';
   }
   if (!passwordRepeat) {
-    setErrors({ passwordRepeat: 'Repeat password!' });
-    return false;
+    errors.passwordRepeat = 'Repeat password!';
+  } else if (password !== passwordRepeat) {
+    errors.passwordRepeat = 'Passwords mismatch!';
   }
-  if (password !== passwordRepeat) {
-    setErrors({ passwordRepeat: 'Passwords mismatch!' });
-    return false;
-  }
-  setErrors({});
-  return true;
+  setErrors(errors);
+  return !Object.keys(errors).length;
 };
