@@ -1,9 +1,21 @@
 import { IRegisterForm } from '../../API/interfaces';
 import { Setters } from '../../shared/hooks/useSetters/types';
 
+type Errors = {
+  login?: string
+  password?: string
+  passwordRepeat?: string
+  role?: string
+  surname?: string
+  name?: string
+  patronymic?: string
+  specializationId?: string
+  locationId?: string
+};
+
 export const validateRegistration = (form: IRegisterForm, setters: Setters): boolean => {
   const { setErrors } = setters;
-  const errors: any = {}; // TODO: затипизировать
+  const errors: Errors = {};
   const {
     login, password, passwordRepeat, name, surname, patronymic, locationId, specializationId,
   } = form;
