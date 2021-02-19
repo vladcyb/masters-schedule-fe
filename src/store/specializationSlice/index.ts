@@ -4,7 +4,6 @@ import { StateType } from './types';
 import { SpecializationType } from '../../shared/types';
 
 const initialState: StateType = {
-  loading: false,
   data: [],
   error: false,
 };
@@ -20,13 +19,12 @@ export const specializationsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(SpecializationsThunk.update.pending, (state) => {
-        state.loading = true;
+        state.error = false;
       })
       .addCase(SpecializationsThunk.update.fulfilled, (state) => {
-        state.loading = false;
+        state.error = false;
       })
       .addCase(SpecializationsThunk.update.rejected, (state) => {
-        state.loading = false;
         state.error = true;
       });
   },
