@@ -1,4 +1,5 @@
-export type SelectOptions = Array<{
+export type SelectOptionType = {
   value: any
   title: string
-}>;
+  icon?: string
+};

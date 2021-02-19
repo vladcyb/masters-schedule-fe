@@ -1,0 +1,8 @@
+.select__item {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.select__item:hover {
+    background-color: #bdbdbd;
+}

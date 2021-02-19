@@ -6,7 +6,7 @@ import AuthThunk from '../../store/authSlice/thunk';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
 import LocationThunk from '../../store/locationSlice/thunk';
 import {
-  Button, Field, Select, SelectOptions, Spinner,
+  Button, Field, Select, SelectOptionType, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLoading } from '../../store/authSlice/selectors';
@@ -17,7 +17,7 @@ import { getLocations } from '../../store/locationSlice/selectors';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
 import './style.css';
 
-const roles: SelectOptions = [
+const roles: SelectOptionType[] = [
   { value: UserRole.CLIENT, title: 'Client' },
   { value: UserRole.MASTER, title: 'Master' },
   { value: UserRole.ADMIN, title: 'Administrator' },
@@ -99,10 +99,6 @@ export const Register = ({ className }: PropsType) => {
     }));
   };
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedRole(e.target.value as UserRole);
-  };
-
   return (
     <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
       <Field label="Login:" {...login.props} />
@@ -114,8 +110,8 @@ export const Register = ({ className }: PropsType) => {
       <Select
         className={cn('role')}
         options={roles}
-        value={selectedRole}
-        onChange={handleSelectChange}
+        selected={selectedRole}
+        setSelected={setSelectedRole}
       />
       <Spinner className={cn('masterSpinner')} visible={isMasterOptionsLoading} />
       {masterOptionsError && (
