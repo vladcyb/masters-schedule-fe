@@ -21,7 +21,7 @@ const API = {
   },
   Order: {
     create: (props: IOrderCreate) => (
-      Responses(instance.post('/order/create', props, { withCredentials: true }))
+      Responses(instance.post('/order', props, { withCredentials: true }))
     ),
     setStatus: (props: IOrderSetStatus) => (
       Responses(instance.post('/order/updateStatus', props, { withCredentials: true }))
@@ -29,12 +29,12 @@ const API = {
   },
   Location: {
     create: (props: ILocationCreate) => (
-      Responses(instance.post('/location/create', props, { withCredentials: true }))
+      Responses(instance.post('/location', props, { withCredentials: true }))
     ),
   },
   Specialization: {
     create: (props: ISpecializationCreate) => (
-      Responses(instance.post('/specialization/create', props, { withCredentials: true }))
+      Responses(instance.post('/specialization', props, { withCredentials: true }))
     ),
     get: () => (
       Responses(instance.get('/specialization'))
@@ -42,7 +42,7 @@ const API = {
   },
   Service: {
     create: (props: IServiceCreate) => (
-      Responses(instance.post('/service/create', props, { withCredentials: true }))
+      Responses(instance.post('/service', props, { withCredentials: true }))
     ),
   },
   Master: {
