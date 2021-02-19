@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { actions } from './actions';
+import actions from './actions';
 import API from '../../API';
 
-export const LocationThunk = {
+const LocationThunk = {
   update: createAsyncThunk(
     'location/update',
     async (arg, { dispatch }) => {
@@ -14,3 +14,5 @@ export const LocationThunk = {
     },
   ),
 };
+
+export default LocationThunk;

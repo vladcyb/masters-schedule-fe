@@ -1,5 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const actions = {
+const actions = {
   set: createAction<Location[]>('locations/set'),
 };
+
+export default actions;

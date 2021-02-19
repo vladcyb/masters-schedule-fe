@@ -11,8 +11,8 @@ import { getLoading } from '../../store/authSlice/selectors';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';
-import './style.css';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
+import './style.css';
 
 const roles: SelectOptions<UserRole> = [
   { value: UserRole.CLIENT, title: 'Client' },

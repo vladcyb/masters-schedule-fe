@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import LocationThunk from './thunk';
 import { StateType } from './types';
 import { LocationType } from '../../shared/types';
-import { LocationThunk } from './thunk';
 
 const initialState: StateType = {
   loading: false,
