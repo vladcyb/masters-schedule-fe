@@ -14,11 +14,11 @@ import { useAppDispatch } from '../../store';
 import './style.css';
 
 const roles: SelectOptions<UserRole> = [
-  { value: UserRole.CLIENT, title: 'Клиент' },
-  { value: UserRole.MASTER, title: 'Мастер' },
-  { value: UserRole.ADMIN, title: 'Администратор' },
-  { value: UserRole.OPERATOR, title: 'Оператор' },
-  { value: UserRole.RESPONSIBLE, title: 'Ответственный по мастерам' },
+  { value: UserRole.CLIENT, title: 'Client' },
+  { value: UserRole.MASTER, title: 'Master' },
+  { value: UserRole.ADMIN, title: 'Administrator' },
+  { value: UserRole.OPERATOR, title: 'Operator' },
+  { value: UserRole.RESPONSIBLE, title: 'Responsible' },
 ];
 
 type PropsType = {
