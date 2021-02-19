@@ -12,6 +12,7 @@ import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
+import LocationThunk from '../../store/locationSlice/thunk';
 import './style.css';
 
 const roles: SelectOptions<UserRole> = [
@@ -65,9 +66,9 @@ export const Register = ({ className }: PropsType) => {
   }, Object.values(form));
 
   useEffect(() => {
-    console.log(selectedRole);
     if (selectedRole === UserRole.MASTER) {
       dispatch(SpecializationsThunk.update());
+      dispatch(LocationThunk.update());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRole]);

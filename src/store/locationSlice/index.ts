@@ -6,6 +6,7 @@ import { LocationType } from '../../shared/types';
 const initialState: StateType = {
   loading: false,
   data: [],
+  error: false,
 };
 
 export const locationSlice = createSlice({
@@ -19,12 +20,15 @@ export const locationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(LocationThunk.update.pending, (state) => {
+        state.error = false;
         state.loading = true;
       })
       .addCase(LocationThunk.update.fulfilled, (state) => {
+        state.error = false;
         state.loading = false;
       })
       .addCase(LocationThunk.update.rejected, (state) => {
+        state.error = true;
         state.loading = false;
       });
   },
