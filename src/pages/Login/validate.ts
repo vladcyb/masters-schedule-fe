@@ -2,15 +2,13 @@ import { ILoginForm } from '../../API/interfaces';
 import { Setters } from '../../shared/hooks/useSetters/types';
 
 export const validateLogin = (form: ILoginForm, setters: Setters): boolean => {
-  const { setErrors } = setters;
+  const errors: Partial<ILoginForm> = {};
   if (!form.login) {
-    setErrors({ login: 'Enter login!' });
-    return false;
+    errors.login = 'Enter login!';
   }
-  setErrors({ login: '' });
   if (!form.password) {
-    setErrors({ password: 'Enter password!' });
-    return false;
+    errors.password = 'Enter password!';
   }
-  return true;
+  setters.setErrors(errors);
+  return !Object.keys(errors).length;
 };
