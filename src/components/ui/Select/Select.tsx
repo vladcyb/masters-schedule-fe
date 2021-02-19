@@ -1,11 +1,10 @@
 import React from 'react';
 import { createCn } from 'bem-react-classname';
 import { SelectOptions } from './types';
-import { UserRole } from '../../../API/interfaces';
 import './style.css';
 
 type PropsType = {
-  options: SelectOptions<UserRole>
+  options: SelectOptions
   className?: string
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 

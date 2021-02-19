@@ -17,7 +17,7 @@ import { getLocations } from '../../store/locationSlice/selectors';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
 import './style.css';
 
-const roles: SelectOptions<UserRole> = [
+const roles: SelectOptions = [
   { value: UserRole.CLIENT, title: 'Client' },
   { value: UserRole.MASTER, title: 'Master' },
   { value: UserRole.ADMIN, title: 'Administrator' },

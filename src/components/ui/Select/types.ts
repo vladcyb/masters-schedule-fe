@@ -1,4 +1,4 @@
-export type SelectOptions<T> = Array<{
-  value: T
+export type SelectOptions = Array<{
+  value: any
   title: string
 }>;
