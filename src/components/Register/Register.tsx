@@ -65,6 +65,8 @@ export const Register = ({ className }: PropsType) => {
     name: name.props.value,
     patronymic: patronymic.props.value,
     role: selectedRole,
+    locationId,
+    specializationId,
   };
 
   /* effects */
@@ -101,6 +103,8 @@ export const Register = ({ className }: PropsType) => {
     }));
   };
 
+  console.log(form);
+
   return (
     <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
       <Field label="Login:" {...login.props} />
@@ -132,6 +136,11 @@ export const Register = ({ className }: PropsType) => {
             selected={specializationId}
             setSelected={setSpecializationId}
           />
+          <div
+            className={cn('selectError')}
+          >
+            {getters.isSubmitted && getters.errors.specializationId}
+          </div>
           <div className={cn('locationsLabel')}>Location</div>
           <Select
             className={cn('locations')}
@@ -142,6 +151,11 @@ export const Register = ({ className }: PropsType) => {
             selected={locationId}
             setSelected={setLocationId}
           />
+          <div
+            className={cn('selectError')}
+          >
+            {getters.isSubmitted && getters.errors.locationId}
+          </div>
         </>
       )}
       {masterOptionsError && (

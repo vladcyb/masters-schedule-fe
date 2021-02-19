@@ -33,3 +33,10 @@
 .register__locationsLabel {
     margin-top: 50px;
 }
+
+.register__selectError {
+    color: red;
+    font-size: 12px;
+    font-family: Roboto, serif;
+    margin-top: 5px;
+}

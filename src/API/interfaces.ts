@@ -30,6 +30,8 @@ export interface IRegisterForm {
   surname: string
   name: string
   patronymic: string
+  specializationId?: number
+  locationId?: number
 }
 
 export interface ILoginAPI extends ILoginForm {

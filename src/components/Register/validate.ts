@@ -3,9 +3,9 @@ import { Setters } from '../../shared/hooks/useSetters/types';
 
 export const validateRegistration = (form: IRegisterForm, setters: Setters): boolean => {
   const { setErrors } = setters;
-  const errors: Partial<IRegisterForm> = {};
+  const errors: any = {}; // TODO: затипизировать
   const {
-    login, password, passwordRepeat, name, surname, patronymic,
+    login, password, passwordRepeat, name, surname, patronymic, locationId, specializationId,
   } = form;
   if (!login) {
     errors.login = 'Enter login!';
@@ -30,6 +30,12 @@ export const validateRegistration = (form: IRegisterForm, setters: Setters): boo
   }
   if (!patronymic.trim()) {
     errors.patronymic = 'Enter patronymic!';
+  }
+  if (!specializationId) {
+    errors.specializationId = 'Select specialization!';
+  }
+  if (!locationId) {
+    errors.locationId = 'Select location!';
   }
   setErrors(errors);
   return !Object.keys(errors).length;
