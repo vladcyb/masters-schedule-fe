@@ -36,6 +36,9 @@ const API = {
     create: (props: ISpecializationCreate) => (
       Responses(instance.post('/specialization/create', props, { withCredentials: true }))
     ),
+    get: () => (
+      Responses(instance.get('/specialization'))
+    ),
   },
   Service: {
     create: (props: IServiceCreate) => (
