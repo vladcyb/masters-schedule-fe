@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
 import UserThunk from '../../store/authSlice/thunk';
 import { useField, useSetters } from '../../shared/hooks';
-import { Button, Field, Spinner } from '../../components';
+import { Spinner, Button, Field } from '../ui';
 import { useAppDispatch } from '../../store';
 import { getLoading } from '../../store/authSlice/selectors';
 import { validateLogin } from './validate';
 import { ILoginForm } from '../../API/interfaces';
 import './style.css';
 
-export const Login = () => {
+type PropsType = {
+  className?: string
+};
+
+export const Login = ({ className }: PropsType) => {
+  /* classes */
+  const cn = createCn('loginForm', className);
+
   /* state */
   const [isValid, setIsValid] = useState(false);
 
@@ -44,14 +52,12 @@ export const Login = () => {
   };
 
   return (
-    <div className="login">
-      <form className="login__form" onSubmit={handleSubmit} autoComplete="off">
-        <Field {...login.props} label="Login:" />
-        <Field {...password.props} label="Password:" />
-        <Button className="login__submit" type="submit">Login</Button>
-        <Link className="navlink login__register" to="/register">Register</Link>
-        <Spinner className="login__spinner" visible={isLoading} />
-      </form>
-    </div>
+    <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
+      <Field {...login.props} label="Login:" />
+      <Field {...password.props} label="Password:" />
+      <Button className={cn('submit')} type="submit">Login</Button>
+      <Link className={cn('register navlink')} to="/register">Register</Link>
+      <Spinner className={cn('spinner')} visible={isLoading} />
+    </form>
   );
 };

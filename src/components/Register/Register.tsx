@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { createCn } from 'bem-react-classname';
 import UserThunk from '../../store/authSlice/thunk';
 import {
-  Button, Field, Select, Spinner,
-} from '../../components';
+  Button, Field, Select, Spinner, SelectOptions,
+} from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLoading } from '../../store/authSlice/selectors';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
-import { SelectOptions } from '../../components/Select/types';
 import { useAppDispatch } from '../../store';
 import './style.css';
 
@@ -21,7 +21,14 @@ const roles: SelectOptions<UserRole> = [
   { value: UserRole.RESPONSIBLE, title: 'Ответственный по мастерам' },
 ];
 
-export const Register = () => {
+type PropsType = {
+  className?: string
+};
+
+export const Register = ({ className }: PropsType) => {
+  /* classes */
+  const cn = createCn('register', className);
+
   /* state */
   const [isValid, setIsValid] = useState(true);
 
@@ -74,7 +81,7 @@ export const Register = () => {
   };
 
   return (
-    <form className="register" onSubmit={handleSubmit} autoComplete="off">
+    <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
       <Field label="Login:" {...login.props} />
       <Field label="Password:" {...password.props} />
       <Field label="Repeat password:" {...passwordRepeat.props} />
@@ -82,14 +89,14 @@ export const Register = () => {
       <Field label="Name:" {...name.props} />
       <Field label="Patronymic:" {...patronymic.props} />
       <Select
-        className="register__role"
+        className={cn('role')}
         options={roles}
         value={selectedRole}
         onChange={handleSelectChange}
       />
-      <Button className="register__submit" type="submit">Register</Button>
-      <Link className="navlink register__login" to="/login">Login</Link>
-      <Spinner className="register__spinner" visible={isLoading} />
+      <Button className={cn('submit')} type="submit">Register</Button>
+      <Link className={cn('login navlink')} to="/login">Login</Link>
+      <Spinner className={cn('spinner')} visible={isLoading} />
     </form>
   );
 };

@@ -1,3 +1,3 @@
-export * from './Register';
 export * from './Me';
-export * from './Login';
+export * from './RegisterPage';
+export * from './LoginPage';

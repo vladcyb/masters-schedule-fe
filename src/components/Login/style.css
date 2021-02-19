@@ -1,27 +1,25 @@
-.register {
+.loginForm {
     border: 1px solid black;
     padding: 20px;
-    margin: 100px auto 0 auto;
     width: 300px;
     border-radius: 5px;
 }
 
-
-.register input,
-.register button {
+.loginForm input,
+.loginForm button {
     width: 100%;
 }
 
-.register__submit {
-    margin-top: 28px;
+.loginForm__submit {
+    margin-top: 8px;
 }
 
-.register__login {
+.loginForm__register {
     display: block;
     margin: 10px auto 0 auto;
     width: min-content;
 }
 
-.register__spinner {
+.loginForm__spinner {
     margin: 10px auto 0 auto;
 }

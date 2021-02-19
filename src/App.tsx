@@ -7,7 +7,7 @@ import {
 import { useSelector } from 'react-redux';
 import { getAuth } from './store/authSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
-import { Login, Me, Register } from './pages';
+import { LoginPage, Me, RegisterPage } from './pages';
 
 const App = () => {
   const auth = useSelector(getAuth);
@@ -20,10 +20,10 @@ const App = () => {
         <Me />
       </PrivateRoute>
       <PrivateRoute path="/login" exact condition={!auth} redirectPath="/me">
-        <Login />
+        <LoginPage />
       </PrivateRoute>
       <PrivateRoute path="/register" exact condition={!auth} redirectPath="/me">
-        <Register />
+        <RegisterPage />
       </PrivateRoute>
     </Router>
   );
