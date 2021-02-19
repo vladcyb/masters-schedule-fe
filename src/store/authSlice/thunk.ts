@@ -20,13 +20,13 @@ const UserThunk = {
   ),
   register: createAsyncThunk(
     'auth/register',
-    async ({ setters, ...props }: IRegisterAPI) => {
+    async ({ setters, ...props }: IRegisterAPI, { dispatch }) => {
       const { setErrors } = setters;
       setErrors({});
       const result = await API.User.register(props);
       const { ok, error } = result.data;
       if (ok) {
-        console.log('ok'); // TODO
+        dispatch(actions.login());
       } else {
         setErrors(error);
       }
