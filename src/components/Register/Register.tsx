@@ -109,6 +109,7 @@ export const Register = ({ className }: PropsType) => {
       <Field label="Surname:" {...surname.props} />
       <Field label="Name:" {...name.props} />
       <Field label="Patronymic:" {...patronymic.props} />
+      <div>Role</div>
       <Select
         className={cn('role')}
         options={roles}
@@ -120,6 +121,7 @@ export const Register = ({ className }: PropsType) => {
       )}
       {selectedRole === UserRole.MASTER && !isMasterOptionsLoading && !masterOptionsError && (
         <>
+          <div className={cn('specializationsLabel')}>Specialization</div>
           <Select
             className={cn('specializations')}
             options={specializations.data.map((item) => ({
@@ -130,6 +132,7 @@ export const Register = ({ className }: PropsType) => {
             selected={specializationId}
             setSelected={setSpecializationId}
           />
+          <div className={cn('locationsLabel')}>Location</div>
           <Select
             className={cn('locations')}
             options={locations.data.map((item) => ({

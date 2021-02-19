@@ -29,7 +29,7 @@
     color: red;
 }
 
-.register__specializations,
-.register__locations {
+.register__specializationsLabel,
+.register__locationsLabel {
     margin-top: 50px;
 }
