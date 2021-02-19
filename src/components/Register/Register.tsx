@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { createCn } from 'bem-react-classname';
 import AuthThunk from '../../store/authSlice/thunk';
 import {
-  Button, Field, Select, Spinner, SelectOptions,
+  Button, Field, Select, SelectOptions, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLoading } from '../../store/authSlice/selectors';
@@ -12,6 +12,7 @@ import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';
 import './style.css';
+import SpecializationsThunk from '../../store/specializationSlice/thunk';
 
 const roles: SelectOptions<UserRole> = [
   { value: UserRole.CLIENT, title: 'Client' },
@@ -62,6 +63,14 @@ export const Register = ({ className }: PropsType) => {
     setIsValid(validateRegistration(form, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, Object.values(form));
+
+  useEffect(() => {
+    console.log(selectedRole);
+    if (selectedRole === UserRole.MASTER) {
+      dispatch(SpecializationsThunk.update());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedRole]);
 
   /* methods */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

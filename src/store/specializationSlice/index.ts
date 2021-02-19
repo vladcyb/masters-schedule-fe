@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateType } from './types';
 import SpecializationsThunk from './thunk';
+import { StateType } from './types';
+import { SpecializationType } from '../../shared/types';
 
 const initialState: StateType = {
   loading: false,
@@ -11,8 +12,8 @@ export const specializationsSlice = createSlice({
   name: 'specializations',
   initialState,
   reducers: {
-    set: (state, { payload }: PayloadAction<StateType>) => {
-      state = payload;
+    set: (state, { payload }: PayloadAction<SpecializationType[]>) => {
+      state.data = payload;
     },
   },
   extraReducers: (builder) => {

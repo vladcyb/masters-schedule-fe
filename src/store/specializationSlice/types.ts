@@ -1,7 +1,6 @@
+import { SpecializationType } from '../../shared/types';
+
 export type StateType = {
   loading: boolean
-  data: Array<{
-    id: number
-    title: string
-  }>
+  data: SpecializationType[]
 };

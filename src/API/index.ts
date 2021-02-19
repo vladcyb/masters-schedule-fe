@@ -31,6 +31,9 @@ const API = {
     create: (props: ILocationCreate) => (
       Responses(instance.post('/location', props, { withCredentials: true }))
     ),
+    get: () => (
+      Responses(instance.get('/location'))
+    ),
   },
   Specialization: {
     create: (props: ISpecializationCreate) => (
