@@ -4,7 +4,8 @@ import {
   IMasterSetSchedule,
   IOrderCreate,
   IOrderSetStatus,
-  IRegister, IServiceCreate,
+  IRegisterForm,
+  IServiceCreate,
   ISpecializationCreate,
 } from './interfaces';
 import instance from './axios';
@@ -14,7 +15,7 @@ const API = {
     login: (props: ILoginForm) => (
       Responses(instance.post('/login', props))
     ),
-    register: (props: IRegister) => (
+    register: (props: IRegisterForm) => (
       Responses(instance.post('/register', props))
     ),
   },

@@ -26,19 +26,18 @@ export interface IRegisterForm {
   login: string
   password: string
   passwordRepeat: string
-}
-
-export interface ILoginProps extends ILoginForm {
-  setters: Setters
-}
-
-export interface IRegister {
-  login: string
-  password: string
   role: UserRole
   surname: string
   name: string
   patronymic: string
+}
+
+export interface ILoginAPI extends ILoginForm {
+  setters: Setters
+}
+
+export interface IRegisterAPI extends IRegisterForm {
+  setters: Setters
 }
 
 export interface IOrderCreate {
