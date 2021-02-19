@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserThunk from '../../store/authSlice/thunk';
-import { Button, Field, Select } from '../../components';
+import {
+  Button, Field, Select, Spinner,
+} from '../../components';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLoading } from '../../store/authSlice/selectors';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
@@ -87,6 +89,7 @@ export const Register = () => {
       />
       <Button className="register__submit" type="submit">Register</Button>
       <Link className="navlink register__login" to="/login">Login</Link>
+      <Spinner className="register__spinner" visible={isLoading} />
     </form>
   );
 };

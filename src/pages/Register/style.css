@@ -21,3 +21,7 @@
     margin: 10px auto 0 auto;
     width: min-content;
 }
+
+.register__spinner {
+    margin: 10px auto 0 auto;
+}

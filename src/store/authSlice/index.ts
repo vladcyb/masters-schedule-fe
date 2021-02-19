@@ -28,6 +28,15 @@ export const authSlice = createSlice({
       })
       .addCase(UserThunk.login.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(UserThunk.register.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(UserThunk.register.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(UserThunk.register.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
