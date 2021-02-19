@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { StateType } from './types';
-import UserThunk from './thunk';
+import AuthThunk from './thunk';
 
 const initialState: StateType = {
   auth: false,
@@ -20,22 +20,22 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(UserThunk.login.pending, (state) => {
+      .addCase(AuthThunk.login.pending, (state) => {
         state.loading = true;
       })
-      .addCase(UserThunk.login.fulfilled, (state) => {
+      .addCase(AuthThunk.login.fulfilled, (state) => {
         state.loading = false;
       })
-      .addCase(UserThunk.login.rejected, (state) => {
+      .addCase(AuthThunk.login.rejected, (state) => {
         state.loading = false;
       })
-      .addCase(UserThunk.register.pending, (state) => {
+      .addCase(AuthThunk.register.pending, (state) => {
         state.loading = true;
       })
-      .addCase(UserThunk.register.fulfilled, (state) => {
+      .addCase(AuthThunk.register.fulfilled, (state) => {
         state.loading = false;
       })
-      .addCase(UserThunk.register.rejected, (state) => {
+      .addCase(AuthThunk.register.rejected, (state) => {
         state.loading = false;
       });
   },

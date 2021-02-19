@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { createCn } from 'bem-react-classname';
-import UserThunk from '../../store/authSlice/thunk';
+import AuthThunk from '../../store/authSlice/thunk';
 import {
   Button, Field, Select, Spinner, SelectOptions,
 } from '../ui';
@@ -70,7 +70,7 @@ export const Register = ({ className }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    dispatch(UserThunk.register({
+    dispatch(AuthThunk.register({
       ...form,
       setters,
     }));

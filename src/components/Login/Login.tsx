@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
-import UserThunk from '../../store/authSlice/thunk';
+import AuthThunk from '../../store/authSlice/thunk';
 import { useField, useSetters } from '../../shared/hooks';
 import { Spinner, Button, Field } from '../ui';
 import { useAppDispatch } from '../../store';
@@ -48,7 +48,7 @@ export const Login = ({ className }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    dispatch(UserThunk.login({ ...form, setters }));
+    dispatch(AuthThunk.login({ ...form, setters }));
   };
 
   return (

@@ -3,7 +3,7 @@ import API from '../../API';
 import actions from './actions';
 import { ILoginAPI, IRegisterAPI } from '../../API/interfaces';
 
-const UserThunk = {
+const AuthThunk = {
   login: createAsyncThunk(
     'auth/login',
     async ({ setters, ...props }: ILoginAPI, { dispatch }) => {
@@ -34,4 +34,4 @@ const UserThunk = {
   ),
 };
 
-export default UserThunk;
+export default AuthThunk;
