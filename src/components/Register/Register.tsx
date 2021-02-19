@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { createCn } from 'bem-react-classname';
 import AuthThunk from '../../store/authSlice/thunk';
+import SpecializationsThunk from '../../store/specializationSlice/thunk';
+import LocationThunk from '../../store/locationSlice/thunk';
 import {
   Button, Field, Select, SelectOptions, Spinner,
 } from '../ui';
@@ -11,8 +13,6 @@ import { getLoading } from '../../store/authSlice/selectors';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';
-import SpecializationsThunk from '../../store/specializationSlice/thunk';
-import LocationThunk from '../../store/locationSlice/thunk';
 import './style.css';
 
 const roles: SelectOptions<UserRole> = [
@@ -33,6 +33,7 @@ export const Register = ({ className }: PropsType) => {
 
   /* state */
   const [isValid, setIsValid] = useState(true);
+  const [isMasterOptionsLoading, setIsMasterOptionsLoading] = useState(false);
 
   /* hooks */
   const [getters, setters] = useSetters();
@@ -66,9 +67,16 @@ export const Register = ({ className }: PropsType) => {
   }, Object.values(form));
 
   useEffect(() => {
+    const loadData = async () => {
+      setIsMasterOptionsLoading(true);
+      await Promise.all([
+        dispatch(SpecializationsThunk.update()),
+        dispatch(LocationThunk.update()),
+      ]);
+      setIsMasterOptionsLoading(false);
+    };
     if (selectedRole === UserRole.MASTER) {
-      dispatch(SpecializationsThunk.update());
-      dispatch(LocationThunk.update());
+      loadData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRole]);
@@ -104,6 +112,7 @@ export const Register = ({ className }: PropsType) => {
         value={selectedRole}
         onChange={handleSelectChange}
       />
+      <Spinner className={cn('masterSpinner')} visible={isMasterOptionsLoading} />
       <Button className={cn('submit')} type="submit">Register</Button>
       <Link className={cn('login navlink')} to="/login">Login</Link>
       <Spinner className={cn('spinner')} visible={isLoading} />

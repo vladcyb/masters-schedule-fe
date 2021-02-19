@@ -20,6 +20,7 @@
     width: min-content;
 }
 
-.register__spinner {
+.register__spinner,
+.register__masterSpinner {
     margin: 10px auto 0 auto;
 }
