@@ -1,4 +1,4 @@
-import { IRegisterForm } from '../../API/interfaces';
+import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { Setters } from '../../shared/hooks/useSetters/types';
 
 type Errors = {
@@ -17,7 +17,7 @@ export const validateRegistration = (form: IRegisterForm, setters: Setters): boo
   const { setErrors } = setters;
   const errors: Errors = {};
   const {
-    login, password, passwordRepeat, name, surname, patronymic, locationId, specializationId,
+    login, password, passwordRepeat, name, surname, patronymic, locationId, specializationId, role,
   } = form;
   if (!login) {
     errors.login = 'Enter login!';
@@ -43,11 +43,13 @@ export const validateRegistration = (form: IRegisterForm, setters: Setters): boo
   if (!patronymic.trim()) {
     errors.patronymic = 'Enter patronymic!';
   }
-  if (!specializationId) {
-    errors.specializationId = 'Select specialization!';
-  }
-  if (!locationId) {
-    errors.locationId = 'Select location!';
+  if (role === UserRole.MASTER) {
+    if (!specializationId) {
+      errors.specializationId = 'Select specialization!';
+    }
+    if (!locationId) {
+      errors.locationId = 'Select location!';
+    }
   }
   setErrors(errors);
   return !Object.keys(errors).length;
