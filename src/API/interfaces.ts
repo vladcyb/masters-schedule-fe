@@ -75,5 +75,4 @@ export interface IServiceCreate {
 
 export interface IMasterSetSchedule {
   hours: string
-
 }

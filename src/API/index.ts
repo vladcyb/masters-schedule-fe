@@ -54,13 +54,13 @@ const API = {
     ),
   },
   Client: {
-    getOrders: (props: { token: string }) => (
-      Responses(instance.get('/client/order', {
-        headers: {
-          Authorization: props.token,
-        },
-        withCredentials: true,
-      }))
+    getOrders: () => (
+      Responses(instance.get('/client/order', { withCredentials: true }))
+    ),
+  },
+  Me: {
+    get: () => (
+      Responses(instance.get('/me', { withCredentials: true }))
     ),
   },
 };
