@@ -1,6 +1,7 @@
 import Responses from './responses';
 import {
-  ILocationCreate, ILoginForm,
+  ILocationCreate,
+  ILoginForm,
   IMasterSetSchedule,
   IOrderCreate,
   IOrderSetStatus,
@@ -13,10 +14,10 @@ import instance from './axios';
 const API = {
   User: {
     login: (props: ILoginForm) => (
-      Responses(instance.post('/login', props))
+      Responses(instance.post('/login', props, { withCredentials: true }))
     ),
     register: (props: IRegisterForm) => (
-      Responses(instance.post('/register', props))
+      Responses(instance.post('/register', props, { withCredentials: true }))
     ),
   },
   Order: {

@@ -32,6 +32,13 @@ const UserThunk = {
       }
     },
   ),
+  getMe: createAsyncThunk(
+    'user/getMe',
+    async () => {
+      const result = await API.Me.get();
+      console.log(result);
+    },
+  ),
 };
 
 export default UserThunk;
