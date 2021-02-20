@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { createCn } from 'bem-react-classname';
-import AuthThunk from '../../store/authSlice/thunk';
+import UserThunk from '../../store/userSlice/thunk';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
 import LocationThunk from '../../store/locationSlice/thunk';
 import {
@@ -97,13 +97,8 @@ export const Register = ({ className }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    dispatch(AuthThunk.register({
-      ...form,
-      setters,
-    }));
+    dispatch(UserThunk.register({ ...form, setters }));
   };
-
-  console.log(form);
 
   return (
     <form className={cn()} onSubmit={handleSubmit} autoComplete="off">

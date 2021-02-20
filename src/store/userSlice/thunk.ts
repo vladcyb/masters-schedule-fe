@@ -9,10 +9,10 @@ const UserThunk = {
     async ({ setters, ...props }: ILoginAPI, { dispatch }) => {
       const { setErrors } = setters;
       setErrors({});
-      const result = await API.User.login(props);
-      const { ok, error } = result.data;
+      const response = await API.User.login(props);
+      const { ok, error, result } = response.data;
       if (ok) {
-        dispatch(actions.login());
+        dispatch(actions.login(result));
       } else {
         setErrors(error);
       }
@@ -23,10 +23,10 @@ const UserThunk = {
     async ({ setters, ...props }: IRegisterAPI, { dispatch }) => {
       const { setErrors } = setters;
       setErrors({});
-      const result = await API.User.register(props);
-      const { ok, error } = result.data;
+      const response = await API.User.register(props);
+      const { ok, error, result } = response.data;
       if (ok) {
-        dispatch(actions.login());
+        dispatch(actions.login(result));
       } else {
         setErrors(error);
       }

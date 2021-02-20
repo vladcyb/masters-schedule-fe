@@ -1,7 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
+import { UserDataStateType } from './types';
 
 const actions = {
-  login: createAction('user/login'),
+  login: createAction<UserDataStateType>('user/login'),
   logout: createAction('user/logout'),
 };
 

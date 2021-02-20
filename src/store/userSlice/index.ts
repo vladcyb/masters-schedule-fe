@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateType } from './types';
+import { StateType, UserDataStateType } from './types';
 import UserThunk from './thunk';
+import { initialUserData } from './constants';
 
 const initialState: StateType = {
   loading: false,
@@ -18,7 +19,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setData: (state, { payload }: PayloadAction<StateType>) => payload,
+    login: (state, { payload }: PayloadAction<UserDataStateType>) => {
+      state.data = payload;
+    },
+    logout: (state) => {
+      state.data = initialUserData;
+    },
   },
   extraReducers: (builder) => {
     builder
