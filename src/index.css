@@ -24,11 +24,6 @@ code {
     monospace;
 }
 
-.navlink {
-  font-size: 14px;
-  color: blue;
-}
-
 /* colors */
 :root {
   --main: #112233;
@@ -36,4 +31,10 @@ code {
   --secondary-2: #325c92;
   --secondary-3: #436da2;
   --light: #97c1e8;
+}
+
+/* links */
+.navlink {
+  font-size: 14px;
+  color: var(--secondary-1);
 }
