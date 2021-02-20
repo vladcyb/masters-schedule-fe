@@ -6,7 +6,7 @@ import UserThunk from '../../store/userSlice/thunk';
 import { useField, useSetters } from '../../shared/hooks';
 import { Spinner, Button, Field } from '../ui';
 import { useAppDispatch } from '../../store';
-import { getLoading } from '../../store/authSlice/selectors';
+import { getLoading } from '../../store/userSlice/selectors';
 import { validateLogin } from './validate';
 import { ILoginForm } from '../../API/interfaces';
 import './style.css';

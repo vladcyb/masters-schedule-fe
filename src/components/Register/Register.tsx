@@ -9,7 +9,7 @@ import {
   Button, Field, Select, SelectOptionType, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
-import { getLoading } from '../../store/authSlice/selectors';
+import { getLoading } from '../../store/userSlice/selectors';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';

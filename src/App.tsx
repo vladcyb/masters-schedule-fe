@@ -5,24 +5,26 @@ import {
   Route,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getAuth } from './store/authSlice/selectors';
+import { getUserData } from './store/userSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
 import { LoginPage, Me, RegisterPage } from './pages';
 
 const App = () => {
-  const auth = useSelector(getAuth);
+  /* loading user data from Redux */
+  const user = useSelector(getUserData);
+
   return (
     <Router>
       <Route path="/" exact>
         <Redirect to="/me" />
       </Route>
-      <PrivateRoute path="/me" exact condition={auth} redirectPath="/login">
+      <PrivateRoute path="/me" exact condition={!!user.login} redirectPath="/login">
         <Me />
       </PrivateRoute>
-      <PrivateRoute path="/login" exact condition={!auth} redirectPath="/me">
+      <PrivateRoute path="/login" exact condition={!user.login} redirectPath="/me">
         <LoginPage />
       </PrivateRoute>
-      <PrivateRoute path="/register" exact condition={!auth} redirectPath="/me">
+      <PrivateRoute path="/register" exact condition={!user.login} redirectPath="/me">
         <RegisterPage />
       </PrivateRoute>
     </Router>
