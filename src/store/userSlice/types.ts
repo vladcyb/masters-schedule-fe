@@ -11,5 +11,6 @@ export type UserDataStateType = {
 
 export type StateType = {
   loading: boolean,
+  fetched: boolean,
   data: UserDataStateType
 };

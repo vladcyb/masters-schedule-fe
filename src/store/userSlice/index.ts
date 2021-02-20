@@ -5,6 +5,7 @@ import { initialUserData } from './constants';
 
 const initialState: StateType = {
   loading: false,
+  fetched: false,
   data: {
     login: undefined,
     id: undefined,
@@ -33,6 +34,7 @@ export const userSlice = createSlice({
       })
       .addCase(UserThunk.login.fulfilled, (state) => {
         state.loading = false;
+        state.fetched = true;
       })
       .addCase(UserThunk.login.rejected, (state) => {
         state.loading = false;
@@ -42,9 +44,13 @@ export const userSlice = createSlice({
       })
       .addCase(UserThunk.register.fulfilled, (state) => {
         state.loading = false;
+        state.fetched = true;
       })
       .addCase(UserThunk.register.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(UserThunk.getMe.fulfilled, (state) => {
+        state.fetched = true;
       });
   },
 });
