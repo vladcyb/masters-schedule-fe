@@ -34,9 +34,17 @@ const UserThunk = {
   ),
   getMe: createAsyncThunk(
     'user/getMe',
-    async () => {
-      const result = await API.Me.get();
-      console.log(result);
+    async (arg, { dispatch }) => {
+      const { status, data: { result } } = await API.Me.get();
+      switch (status) {
+        case 200:
+          dispatch(actions.login(result));
+          break;
+        case 401:
+          dispatch(actions.logout());
+          break;
+        default:
+      }
     },
   ),
 };
