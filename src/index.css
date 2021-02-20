@@ -32,4 +32,7 @@ code {
 /* colors */
 :root {
   --main: #112233;
+  --secondary-1: #144b81;
+  --secondary-2: #325c92;
+  --secondary-3: #436da2;
 }
