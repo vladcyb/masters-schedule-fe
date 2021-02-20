@@ -29,8 +29,8 @@
     color: red;
 }
 
-.register__specializationsLabel,
-.register__locationsLabel {
+.register__specializations,
+.register__locations {
     margin-top: 50px;
 }
 

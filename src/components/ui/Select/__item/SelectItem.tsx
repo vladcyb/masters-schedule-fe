@@ -6,6 +6,7 @@ import './style.css';
 type PropsType = {
   selected: any
   setSelected: Dispatch<SetStateAction<any>>
+  close: () => void
 } & SelectOptionType;
 
 export const SelectItem = ({
@@ -14,6 +15,7 @@ export const SelectItem = ({
   setSelected,
   value,
   icon,
+  close,
 }: PropsType) => {
   /* classes */
   const cn = createCn('select__item');
@@ -21,6 +23,7 @@ export const SelectItem = ({
   /* methods */
   const handleClick = () => {
     setSelected(value);
+    close();
   };
 
   return (

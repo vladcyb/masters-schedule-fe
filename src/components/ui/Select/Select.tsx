@@ -9,6 +9,7 @@ type PropsType = {
   className?: string
   selected: any
   setSelected: Dispatch<SetStateAction<any>>
+  label: string
 };
 
 export const Select = ({
@@ -16,6 +17,7 @@ export const Select = ({
   className,
   selected,
   setSelected,
+  label,
 }: PropsType) => {
   /* classes */
   const cn = createCn('select', className);
@@ -28,15 +30,24 @@ export const Select = ({
     setIsOpened((oldValue) => !oldValue);
   };
 
+  const close = () => {
+    setIsOpened(false);
+  };
+
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={cn({ opened: isOpened })}
-      onClick={handleClick}
-      role="button"
-      tabIndex={0}
     >
-      <div className={cn('main')}>
+      <div className={cn('label')}>
+        {label}
+      </div>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+      <div
+        className={cn('main')}
+        onClick={handleClick}
+        role="button"
+        tabIndex={0}
+      >
         {options.find((option) => option.value === selected)?.title || '(not chosen)'}
       </div>
       <div className={cn('options')}>
@@ -48,6 +59,7 @@ export const Select = ({
             icon={option.icon}
             selected={selected}
             setSelected={setSelected}
+            close={close}
           />
         ))}
       </div>
