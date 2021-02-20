@@ -47,6 +47,19 @@ const UserThunk = {
       }
     },
   ),
+  logout: createAsyncThunk(
+    'user/logout',
+    async (arg, { dispatch, rejectWithValue }) => {
+      const response = await API.User.logout();
+      const { ok } = response.data;
+      if (ok) {
+        dispatch(actions.logout());
+      } else {
+        return rejectWithValue('');
+      }
+      return 0;
+    },
+  ),
 };
 
 export default UserThunk;

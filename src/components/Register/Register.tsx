@@ -6,7 +6,7 @@ import UserThunk from '../../store/userSlice/thunk';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
 import LocationThunk from '../../store/locationSlice/thunk';
 import {
-  Button, Field, Select, SelectOptionType, Spinner,
+  Button, Field, Select, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLoading } from '../../store/userSlice/selectors';
@@ -15,15 +15,8 @@ import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';
 import { getLocations } from '../../store/locationSlice/selectors';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
+import { ROLES } from '../../shared/constants';
 import './style.css';
-
-const roles: SelectOptionType[] = [
-  { value: UserRole.CLIENT, title: 'Client' },
-  { value: UserRole.MASTER, title: 'Master' },
-  { value: UserRole.ADMIN, title: 'Administrator' },
-  { value: UserRole.OPERATOR, title: 'Operator' },
-  { value: UserRole.RESPONSIBLE, title: 'Responsible' },
-];
 
 type PropsType = {
   className?: string
@@ -111,7 +104,7 @@ export const Register = ({ className }: PropsType) => {
       <div>Role</div>
       <Select
         className={cn('role')}
-        options={roles}
+        options={ROLES}
         selected={selectedRole}
         setSelected={setSelectedRole}
       />

@@ -28,3 +28,8 @@ code {
   font-size: 14px;
   color: blue;
 }
+
+/* colors */
+:root {
+  --main: #112233;
+}

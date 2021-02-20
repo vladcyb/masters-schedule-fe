@@ -19,6 +19,9 @@ const API = {
     register: (props: IRegisterForm) => (
       Responses(instance.post('/register', props, { withCredentials: true }))
     ),
+    logout: () => (
+      Responses(instance.post('/logout', {}, { withCredentials: true }))
+    ),
   },
   Order: {
     create: (props: IOrderCreate) => (
