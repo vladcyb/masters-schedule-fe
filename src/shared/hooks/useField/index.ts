@@ -31,7 +31,7 @@ export const useField = (
     props: {
       value,
       onChange,
-      error: isTouched || isSubmitted ? errors[name] : '',
+      error: isTouched || isSubmitted ? errors && errors[name] : '',
       name,
       onBlur,
     },
