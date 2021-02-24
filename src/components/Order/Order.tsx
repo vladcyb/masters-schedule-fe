@@ -1,11 +1,12 @@
 import React from 'react';
+import { OrderStatus } from '../../shared/types';
 import './style.css';
 
 type PropsType = {
   description: string
   startDate: string | null
   finishDate: string | null
-  status: number
+  status: OrderStatus
   comment: string | null
   photo: string
   address: string

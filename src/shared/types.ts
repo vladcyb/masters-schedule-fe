@@ -13,3 +13,22 @@ export type LocationType = {
     title: string
   }
 };
+
+export enum OrderStatus {
+  PENDING,
+  IN_PROGRESS,
+  DONE,
+  ABORTED,
+  ON_REWORK,
+  PENDING_FOR_ACCEPTING,
+}
+
+export type OrderType = {
+  description: string
+  startDate: string | null
+  finishDate: string | null
+  status: OrderStatus
+  comment: string | null
+  photo: string
+  address: string
+};

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from '../../components/Navbar';
 import { Order } from '../../components/Order';
+import { OrderStatus } from '../../shared/types';
 import './style.css';
 
 const fakeOrders = [{
@@ -8,7 +9,7 @@ const fakeOrders = [{
   description: 'string',
   startDate: 'string | null',
   finishDate: 'string | null',
-  status: 1,
+  status: OrderStatus.PENDING,
   comment: 'string | null',
   photo: 'string',
   address: 'string',
@@ -17,7 +18,7 @@ const fakeOrders = [{
   description: 'string',
   startDate: 'string | null',
   finishDate: 'string | null',
-  status: 2,
+  status: OrderStatus.DONE,
   comment: 'string | null',
   photo: 'string',
   address: 'string',
