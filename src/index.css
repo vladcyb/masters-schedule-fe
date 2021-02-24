@@ -42,3 +42,8 @@ code {
   font-size: 14px;
   color: var(--secondary-1);
 }
+
+button {
+  border: none;
+  background-color: transparent;
+}

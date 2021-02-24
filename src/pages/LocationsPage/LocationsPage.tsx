@@ -30,6 +30,10 @@ export const LocationsPage = () => {
     setIsAdding(false);
   };
 
+  const handleDeleteLocation = (id: number) => {
+    dispatch(LocationThunk.delete(id));
+  };
+
   return (
     <div className="locationsPage">
       {isAdding ? (
@@ -45,7 +49,7 @@ export const LocationsPage = () => {
           ) : (
             locations.data.map((item) => (
               <div className="locationsPage__location" key={item.id}>
-                <Location data={item} />
+                <Location data={item} onDelete={handleDeleteLocation} />
               </div>
             ))
           )}

@@ -5,7 +5,7 @@ import { ILocationCreate } from '../../API/interfaces';
 
 const LocationThunk = {
   update: createAsyncThunk(
-    'location/update',
+    'locations/update',
     async (arg, { dispatch, rejectWithValue }): Promise<any> => {
       const requestResult = await API.Location.get();
       const { ok, result } = requestResult.data;
@@ -18,7 +18,7 @@ const LocationThunk = {
     },
   ),
   getTypes: createAsyncThunk(
-    'location/getTypes',
+    'locations/getTypes',
     async (arg, { dispatch }) => {
       const { data: { ok, result } } = await API.Location.getTypes();
       if (ok) {
@@ -27,7 +27,7 @@ const LocationThunk = {
     },
   ),
   create: createAsyncThunk(
-    'location/create',
+    'locations/create',
     async (props: ILocationCreate, { dispatch, rejectWithValue }) => {
       const { data: { ok, result } } = await API.Location.create(props);
       if (ok) {
@@ -35,6 +35,17 @@ const LocationThunk = {
         return '';
       }
       return rejectWithValue('');
+    },
+  ),
+  delete: createAsyncThunk(
+    'locations/delete',
+    async (id: number, { dispatch, rejectWithValue }) => {
+      const result = await API.Location.delete(id);
+      if (!result.data.ok) {
+        return rejectWithValue('');
+      }
+      dispatch(actions.delete(id));
+      return '';
     },
   ),
 };

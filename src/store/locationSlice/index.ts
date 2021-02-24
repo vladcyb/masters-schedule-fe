@@ -23,6 +23,10 @@ export const locationSlice = createSlice({
     setTypes: (state, { payload }: PayloadAction<LocationTypeType[]>) => {
       state.types = payload;
     },
+    delete: (state, { payload }: PayloadAction<number>) => {
+      const index = state.data.findIndex((item) => item.id === payload);
+      state.data.splice(index, 1);
+    },
   },
   extraReducers: (builder) => {
     builder

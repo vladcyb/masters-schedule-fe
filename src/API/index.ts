@@ -44,6 +44,9 @@ const API = {
     getTypes: () => (
       Responses(instance.get('locationType'))
     ),
+    delete: (id: number) => (
+      Responses(instance.delete(`/location/${id}`, { withCredentials: true }))
+    ),
   },
   Specialization: {
     create: (props: ISpecializationCreate) => (
