@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Navbar } from '../../components/ui';
 
 export const LocationsPage = () => {
   /* effects */
@@ -9,7 +8,6 @@ export const LocationsPage = () => {
 
   return (
     <div className="locationsPage">
-      <Navbar />
       LocationsPage
     </div>
   );

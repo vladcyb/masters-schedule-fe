@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
 import { useAppDispatch } from '../../store';
 import { getOrders } from '../../store/userSlice/selectors';
-import { Navbar, Button } from '../../components/ui';
+import { Button } from '../../components/ui';
 import { Orders, AddOrderForm } from '../../components';
 import './style.css';
 
@@ -31,7 +31,6 @@ export const OrdersPage = () => {
 
   return (
     <div className="ordersPage">
-      <Navbar />
       {isAdding ? (
         <AddOrderForm className="ordersPage__add" onCancel={cancelAdding} />
       ) : (

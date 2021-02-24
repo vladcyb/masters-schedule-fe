@@ -11,6 +11,7 @@ import { routes } from './shared/routes';
 import './app.css';
 import { UserRole } from './API/interfaces';
 import { LocationsPage } from './pages/LocationsPage/LocationsPage';
+import { Navbar } from './components/ui';
 
 const App = () => {
   /* loading user data from Redux */
@@ -29,6 +30,7 @@ const App = () => {
     <div className="app">
       {isUserFetched ? (
         <Router>
+          <Navbar user={user} />
           <Route path="/" exact>
             <Redirect to={routes.me.root} />
           </Route>
