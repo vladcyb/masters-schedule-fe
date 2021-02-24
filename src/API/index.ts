@@ -41,6 +41,9 @@ const API = {
     get: () => (
       Responses(instance.get('/location'))
     ),
+    getTypes: () => (
+      Responses(instance.get('locationType'))
+    ),
   },
   Specialization: {
     create: (props: ISpecializationCreate) => (

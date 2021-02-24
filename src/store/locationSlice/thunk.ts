@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import actions from './actions';
 import API from '../../API';
+import { ILocationCreate } from '../../API/interfaces';
 
 const LocationThunk = {
   update: createAsyncThunk(
@@ -14,6 +15,24 @@ const LocationThunk = {
         return rejectWithValue('');
       }
       return 0;
+    },
+  ),
+  getTypes: createAsyncThunk(
+    'location/getTypes',
+    async (arg, { dispatch }) => {
+      const { data: { ok, result } } = await API.Location.getTypes();
+      if (ok) {
+        dispatch(actions.setTypes(result));
+      }
+    },
+  ),
+  create: createAsyncThunk(
+    'location/create',
+    async (props: ILocationCreate, { dispatch }) => {
+      const { data: { ok, result } } = await API.Location.create(props);
+      if (ok) {
+        dispatch(actions.add(result));
+      }
     },
   ),
 };

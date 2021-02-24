@@ -13,3 +13,11 @@
 .addLocationForm__cancel {
     margin-top: 5px;
 }
+
+.addLocationForm__parent {
+    margin-top: 25px;
+}
+
+.addLocationForm__add {
+    margin-top: 30px;
+}

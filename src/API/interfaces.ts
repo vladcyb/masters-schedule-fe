@@ -58,7 +58,7 @@ export interface ILocationCreate {
   title: string
   coordinates: string
   typeId: number
-  parentId: number
+  parentId?: number
 }
 
 export interface ISpecializationCreate {

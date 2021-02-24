@@ -33,7 +33,11 @@ export const LocationsPage = () => {
   return (
     <div className="locationsPage">
       {isAdding ? (
-        <AddLocationForm className="locationsPage__addForm" cancelAdding={cancelAdding} />
+        <AddLocationForm
+          className="locationsPage__addForm"
+          cancelAdding={cancelAdding}
+          locations={locations}
+        />
       ) : (
         <>
           {locations.loading ? (
@@ -46,7 +50,9 @@ export const LocationsPage = () => {
             ))
           )}
           {!locations.data.length && !locations.loading && (
-            <i>(empty)</i>
+            <div>
+              <i>(empty)</i>
+            </div>
           )}
           <Button className="locationsPage__addButton" onClick={handleAddClick}>
             Add
