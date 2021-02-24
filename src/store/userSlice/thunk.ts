@@ -60,6 +60,15 @@ const UserThunk = {
       return 0;
     },
   ),
+  getOrders: createAsyncThunk(
+    'user/getOrders',
+    async (arg, { dispatch }) => {
+      const { data: { ok, result } } = await API.Order.getAll();
+      if (ok) {
+        dispatch(actions.setOrders(result));
+      }
+    },
+  ),
 };
 
 export default UserThunk;

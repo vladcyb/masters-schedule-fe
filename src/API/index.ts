@@ -30,6 +30,9 @@ const API = {
     setStatus: (props: IOrderSetStatus) => (
       Responses(instance.post('/order/updateStatus', props, { withCredentials: true }))
     ),
+    getAll: () => (
+      Responses(instance.get('/order', { withCredentials: true }))
+    ),
   },
   Location: {
     create: (props: ILocationCreate) => (

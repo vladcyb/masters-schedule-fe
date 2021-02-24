@@ -24,6 +24,7 @@ export enum OrderStatus {
 }
 
 export type OrderType = {
+  id: number
   description: string
   startDate: string | null
   finishDate: string | null
