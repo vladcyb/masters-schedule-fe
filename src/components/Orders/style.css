@@ -1,0 +1,7 @@
+.orders__item:not(:first-of-type) {
+    margin-top: 10px;
+}
+
+.orders {
+    padding-top: 10px;
+}

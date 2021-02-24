@@ -10,12 +10,14 @@ export type UserDataStateType = {
   role: UserRole | undefined
 };
 
+export type OrdersStateType = {
+  loading: boolean
+  data: OrderType[]
+};
+
 export type StateType = {
   loading: boolean
   fetched: boolean
   data: UserDataStateType
-  orders: {
-    loading: boolean
-    data: OrderType[]
-  },
+  orders: OrdersStateType
 };

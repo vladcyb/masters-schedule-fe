@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
 import { Navbar } from '../../components/Navbar';
-import { Order } from '../../components/Order';
 import { useAppDispatch } from '../../store';
 import { getOrders } from '../../store/userSlice/selectors';
+import { Button } from '../../components/ui';
+import { Orders } from '../../components/Orders';
 import './style.css';
-import { Spinner } from '../../components/ui';
 
 export const OrdersPage = () => {
   /* hooks */
   const dispatch = useAppDispatch();
   const orders = useSelector(getOrders);
+
+  /* state */
+  const [isAdding, setIsAdding] = useState(false);
+
+  /* methods */
+  const handleAddClick = () => {
+    setIsAdding(true);
+  };
 
   /* effects */
   useEffect(() => {
@@ -21,25 +29,18 @@ export const OrdersPage = () => {
   return (
     <div className="ordersPage">
       <Navbar />
-      <div className="ordersPage__orders">
-        {orders.loading ? (
-          <Spinner visible />
-        ) : (
-          orders.data.map((order) => (
-            <div className="ordersPage__order" key={order.id}>
-              <Order
-                description={order.description}
-                startDate={order.startDate}
-                finishDate={order.finishDate}
-                status={order.status}
-                comment={order.comment}
-                photo={order.photo}
-                address={order.address}
-              />
-            </div>
-          ))
-        )}
-      </div>
+      {isAdding ? (
+        <>TODO</>
+      ) : (
+        <>
+          <div className="ordersPage__orders">
+            <Orders orders={orders} />
+          </div>
+          <Button className="ordersPage__addButton" onClick={handleAddClick}>
+            Add
+          </Button>
+        </>
+      )}
     </div>
   );
 };
