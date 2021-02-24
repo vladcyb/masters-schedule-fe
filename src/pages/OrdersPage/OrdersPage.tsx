@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../store';
 import { getOrders } from '../../store/userSlice/selectors';
 import { Button } from '../../components/ui';
 import { Orders } from '../../components/Orders';
+import { AddOrderForm } from '../../components/AddOrderForm';
 import './style.css';
 
 export const OrdersPage = () => {
@@ -30,13 +31,17 @@ export const OrdersPage = () => {
     <div className="ordersPage">
       <Navbar />
       {isAdding ? (
-        <>TODO</>
+        <AddOrderForm className="ordersPage__add" />
       ) : (
         <>
           <div className="ordersPage__orders">
             <Orders orders={orders} />
           </div>
-          <Button className="ordersPage__addButton" onClick={handleAddClick}>
+          <Button
+            className="ordersPage__addButton"
+            onClick={handleAddClick}
+            type="submit"
+          >
             Add
           </Button>
         </>

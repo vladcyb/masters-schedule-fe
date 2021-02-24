@@ -13,9 +13,10 @@ export const Field = ({
   name,
   error = '',
   label,
+  className,
   ...inputProps
 }: PropsType) => (
-  <div className="field">
+  <div className={`field ${className || ''}`}>
     <label className="field__label" htmlFor={name}>{label}</label>
     <input
       className="field__input"

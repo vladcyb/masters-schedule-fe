@@ -1,0 +1,14 @@
+.addOrderForm {
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 300px;
+    padding: 20px;
+}
+
+.addOrderForm__photo {
+    margin-top: 30px;
+}
+
+.addOrderForm__submit {
+    width: 100%;
+}

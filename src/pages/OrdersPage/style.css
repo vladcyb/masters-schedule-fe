@@ -5,3 +5,7 @@
 .ordersPage__addButton {
     margin-top: 20px;
 }
+
+.ordersPage__add {
+    margin: 0 auto;
+}

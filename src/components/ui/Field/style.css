@@ -16,7 +16,7 @@
     font-size: 16px;
     line-height: 100%;
     padding: 4px;
-    display: block;
+    width: 100%;
 }
 
 .field__error {
