@@ -11,6 +11,7 @@ import { PrivateRoute } from './HOCs/PrivateRoute';
 import { LoginPage, Me, RegisterPage } from './pages';
 import { useAppDispatch } from './store';
 import { OrdersPage } from './pages/OrdersPage';
+import { routes } from './shared/routes';
 import './app.css';
 
 const App = () => {
@@ -32,18 +33,38 @@ const App = () => {
       {isUserFetched ? (
         <Router>
           <Route path="/" exact>
-            <Redirect to="/me" />
+            <Redirect to={routes.me.root} />
           </Route>
-          <PrivateRoute path="/me" exact condition={!!user.login} redirectPath="/login">
+          <PrivateRoute
+            path={routes.me.root}
+            exact
+            condition={!!user.login}
+            redirectPath={routes.login.root}
+          >
             <Me />
           </PrivateRoute>
-          <PrivateRoute path="/login" exact condition={!user.login} redirectPath="/me">
+          <PrivateRoute
+            path={routes.login.root}
+            exact
+            condition={!user.login}
+            redirectPath={routes.me.root}
+          >
             <LoginPage />
           </PrivateRoute>
-          <PrivateRoute path="/orders" exact condition={!!user.login} redirectPath="/login">
+          <PrivateRoute
+            path={routes.orders.root}
+            exact
+            condition={!!user.login}
+            redirectPath={routes.login.root}
+          >
             <OrdersPage />
           </PrivateRoute>
-          <PrivateRoute path="/register" exact condition={!user.login} redirectPath="/me">
+          <PrivateRoute
+            path={routes.register.root}
+            exact
+            condition={!user.login}
+            redirectPath={routes.me.root}
+          >
             <RegisterPage />
           </PrivateRoute>
         </Router>
