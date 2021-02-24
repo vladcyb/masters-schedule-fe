@@ -25,8 +25,7 @@ const App = () => {
   /* effects */
   useEffect(() => {
     dispatch(UserThunk.getMe());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">

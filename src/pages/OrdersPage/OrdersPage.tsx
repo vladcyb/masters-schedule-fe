@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
-import { Navbar } from '../../components/Navbar';
 import { useAppDispatch } from '../../store';
 import { getOrders } from '../../store/userSlice/selectors';
-import { Button } from '../../components/ui';
-import { Orders } from '../../components/Orders';
-import { AddOrderForm } from '../../components/AddOrderForm';
+import { Navbar, Button } from '../../components/ui';
+import { Orders, AddOrderForm } from '../../components';
 import './style.css';
 
 export const OrdersPage = () => {

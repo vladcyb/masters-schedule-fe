@@ -4,8 +4,7 @@ import UserThunk from '../../store/userSlice/thunk';
 import { getUserData } from '../../store/userSlice/selectors';
 import { ROLES } from '../../shared/constants';
 import { useAppDispatch } from '../../store';
-import { Button, Spinner } from '../../components/ui';
-import { Navbar } from '../../components/Navbar';
+import { Button, Spinner, Navbar } from '../../components/ui';
 import './style.css';
 
 export const Me = () => {
