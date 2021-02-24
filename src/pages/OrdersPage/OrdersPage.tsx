@@ -22,6 +22,10 @@ export const OrdersPage = () => {
     setIsAdding(true);
   };
 
+  const cancelAdding = () => {
+    setIsAdding(false);
+  };
+
   /* effects */
   useEffect(() => {
     dispatch(UserThunk.getOrders());
@@ -31,7 +35,7 @@ export const OrdersPage = () => {
     <div className="ordersPage">
       <Navbar />
       {isAdding ? (
-        <AddOrderForm className="ordersPage__add" />
+        <AddOrderForm className="ordersPage__add" onCancel={cancelAdding} />
       ) : (
         <>
           <div className="ordersPage__orders">

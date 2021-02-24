@@ -2,16 +2,21 @@ import React from 'react';
 import { createCn } from 'bem-react-classname';
 import './style.css';
 
+type PropsType = {
+  variant?: 'primary' | 'outline'
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 export const Button = ({
   children,
   type = 'button',
   className,
+  variant = 'primary',
   ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
+}: PropsType) => {
   const cn = createCn('button', className);
 
   return (
     // eslint-disable-next-line react/button-has-type
-    <button className={cn()} type={type} {...props}>{children}</button>
+    <button className={cn({ [variant]: true })} type={type} {...props}>{children}</button>
   );
 };

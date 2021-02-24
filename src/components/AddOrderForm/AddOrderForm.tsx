@@ -8,9 +8,13 @@ import './style.css';
 
 type PropsType = {
   className?: string
+  onCancel: () => void
 };
 
-export const AddOrderForm = ({ className }: PropsType) => {
+export const AddOrderForm = ({
+  className,
+  onCancel,
+}: PropsType) => {
   /* hooks */
   const [getters, setters] = useSetters();
   const locations = useSelector(getLocations);
@@ -53,7 +57,14 @@ export const AddOrderForm = ({ className }: PropsType) => {
         {...photo.props}
       />
       TODO: добавить список услуг
-      <Button className={cn('submit')}>Add</Button>
+      <Button className={cn('submit')} type="submit">Add</Button>
+      <Button
+        className={cn('cancel')}
+        onClick={onCancel}
+        variant="outline"
+      >
+        Cancel
+      </Button>
     </form>
   );
 };

@@ -12,3 +12,8 @@
 .addOrderForm__submit {
     width: 100%;
 }
+
+.addOrderForm__cancel {
+    margin-top: 10px;
+    width: 100%;
+}
