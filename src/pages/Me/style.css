@@ -6,13 +6,13 @@
     font-size: 30px;
     line-height: 100%;
     font-weight: bold;
-    color: var(--main);
+    color: var(--dark-1);
 }
 
 .me__name {
     font-size: 24px;
     line-height: 100%;
-    color: var(--main);
+    color: var(--dark-1);
     margin-top: 8px;
 }
 
@@ -20,7 +20,7 @@
     margin-top: 20px;
     font-size: 16px;
     line-height: 100%;
-    color: var(--main);
+    color: var(--dark-1);
 }
 
 .me__logoutFlex {
