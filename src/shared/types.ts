@@ -12,6 +12,10 @@ export type LocationType = {
     id: number
     title: string
   }
+  parent: {
+    id: number
+    title: string
+  }
 };
 
 export enum OrderStatus {

@@ -34,9 +34,10 @@ code {
   --light: #97c1e8;
   --light-2: #dfedff;
   --white: #efefef;
+  --hint: #727272;
 }
 
-/* links */
+/* classes */
 .navlink {
   font-size: 14px;
   color: var(--secondary-1);

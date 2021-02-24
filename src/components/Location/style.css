@@ -4,3 +4,7 @@
     background-color: var(--light-2);
     border-radius: 5px;
 }
+
+.location__hint {
+    color: var(--hint);
+}
