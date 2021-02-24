@@ -1,0 +1,7 @@
+.locationsPage {
+    padding: 20px;
+}
+
+.locationsPage__location:not(:first-of-type) {
+    margin-top: 10px;
+}
