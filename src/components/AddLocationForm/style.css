@@ -21,3 +21,10 @@
 .addLocationForm__add {
     margin-top: 30px;
 }
+
+.addLocationForm__selectError {
+    color: red;
+    font-size: 12px;
+    font-family: Roboto, serif;
+    margin-top: 5px;
+}

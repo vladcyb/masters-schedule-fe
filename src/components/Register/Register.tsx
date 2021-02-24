@@ -61,12 +61,22 @@ export const Register = ({ className }: PropsType) => {
     locationId,
     specializationId,
   };
-
+  console.log('render');
   /* effects */
   useEffect(() => {
     setIsValid(validateRegistration(form, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, Object.values(form));
+  }, [
+    form.login,
+    form.password,
+    form.passwordRepeat,
+    form.surname,
+    form.name,
+    form.patronymic,
+    form.role,
+    form.locationId,
+    form.specializationId,
+  ]);
 
   useEffect(() => {
     const loadData = async () => {

@@ -1,45 +1,35 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createCn } from 'bem-react-classname';
-import {
-  Button, Field, Select, SelectOptionType,
-} from '../ui';
+import LocationThunk from '../../store/locationSlice/thunk';
+import { Button, Field, Select } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { ILocationCreate } from '../../API/interfaces';
 import { useAppDispatch } from '../../store';
-import LocationThunk from '../../store/locationSlice/thunk';
 import { StateType as LocationsStateType } from '../../store/locationSlice/types';
+import {
+  getLocationParentsOptions,
+  getLocationTypesOptions,
+  validateCreateLocation,
+} from './methods';
 import './style.css';
 
 type PropsType = {
-  cancelAdding: () => void
+  close: () => void
   className?: string
   locations: LocationsStateType
 };
 
-const getLocationTypesOptions = (locations: LocationsStateType): SelectOptionType[] => (
-  locations.loading ? [] : (
-    locations.types.map((item) => ({
-      title: item.title,
-      value: item.id,
-    }))
-  )
-);
-
-const getLocationParentsOptions = (locations: LocationsStateType): SelectOptionType[] => (
-  locations.data.map((item) => ({
-    value: item.id,
-    title: item.title,
-  }))
-);
-
 export const AddLocationForm = ({
-  cancelAdding,
+  close,
   className,
   locations,
 }: PropsType) => {
   /* hooks */
   const [getters, setters] = useSetters();
   const dispatch = useAppDispatch();
+
+  /* state */
+  const [isValid, setIsValid] = useState(false);
 
   /* classes */
   const cn = createCn('addLocationForm', className);
@@ -58,22 +48,27 @@ export const AddLocationForm = ({
   const [typeId, setTypeId] = useState<null | number>(null);
   const [parentId, setParentId] = useState<null | number>(null);
 
+  /* vars */
+  const form: ILocationCreate = {
+    title: title.props.value,
+    coordinates: coordinates.props.value,
+    typeId: typeId as any,
+  };
+
   /* methods */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (typeof typeId !== 'number') {
+    setters.setIsSubmitted(true);
+    if (!isValid) {
       return;
     }
-    const form: ILocationCreate = {
-      title: title.props.value,
-      coordinates: coordinates.props.value,
-      typeId,
-    };
     if (typeof parentId === 'number') {
       form.parentId = parentId;
     }
-    await dispatch(LocationThunk.create(form));
-    cancelAdding();
+    const result = await dispatch(LocationThunk.create(form));
+    if (result.meta.requestStatus !== 'rejected') {
+      close();
+    }
   };
 
   /* effects */
@@ -81,11 +76,24 @@ export const AddLocationForm = ({
     dispatch(LocationThunk.getTypes());
   }, [dispatch]);
 
+  useEffect(() => {
+    setIsValid(validateCreateLocation(form, setters));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form.typeId, form.title, form.coordinates, form.coordinates]);
+
   return (
     <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
       <Field label="Title:" {...title.props} />
       <Field label="Coordinates:" {...coordinates.props} />
-      <Select options={typeOptions} selected={typeId} setSelected={setTypeId} label="Type:" />
+      <Select
+        options={typeOptions}
+        selected={typeId}
+        setSelected={setTypeId}
+        label="Type:"
+      />
+      <div className={cn('selectError')}>
+        {getters.isSubmitted && getters.errors.locationType}
+      </div>
       <Select
         className={cn('parent')}
         options={parentOptions}
@@ -94,7 +102,7 @@ export const AddLocationForm = ({
         label="Parent:"
       />
       <Button className="addLocationForm__add" type="submit">Add</Button>
-      <Button className="addLocationForm__cancel" variant="outline" onClick={cancelAdding}>
+      <Button className="addLocationForm__cancel" variant="outline" onClick={close}>
         Cancel
       </Button>
     </form>

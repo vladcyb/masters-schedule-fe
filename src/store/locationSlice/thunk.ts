@@ -28,11 +28,13 @@ const LocationThunk = {
   ),
   create: createAsyncThunk(
     'location/create',
-    async (props: ILocationCreate, { dispatch }) => {
+    async (props: ILocationCreate, { dispatch, rejectWithValue }) => {
       const { data: { ok, result } } = await API.Location.create(props);
       if (ok) {
         dispatch(actions.add(result));
+        return '';
       }
+      return rejectWithValue('');
     },
   ),
 };

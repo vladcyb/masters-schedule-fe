@@ -35,7 +35,7 @@ export const LocationsPage = () => {
       {isAdding ? (
         <AddLocationForm
           className="locationsPage__addForm"
-          cancelAdding={cancelAdding}
+          close={cancelAdding}
           locations={locations}
         />
       ) : (
