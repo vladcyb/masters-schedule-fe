@@ -11,4 +11,7 @@ export const routes = {
   orders: {
     root: '/orders',
   },
+  locations: {
+    root: '/locations',
+  },
 };

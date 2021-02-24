@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserThunk from './store/userSlice/thunk';
 import { getIsUserFetched, getUserData } from './store/userSlice/selectors';
@@ -13,6 +9,8 @@ import { useAppDispatch } from './store';
 import { OrdersPage } from './pages/OrdersPage';
 import { routes } from './shared/routes';
 import './app.css';
+import { UserRole } from './API/interfaces';
+import { LocationsPage } from './pages/LocationsPage/LocationsPage';
 
 const App = () => {
   /* loading user data from Redux */
@@ -65,6 +63,13 @@ const App = () => {
             redirectPath={routes.me.root}
           >
             <RegisterPage />
+          </PrivateRoute>
+          <PrivateRoute
+            path={routes.locations.root}
+            redirectPath={routes.me.root}
+            condition={!!user.login && user.role === UserRole.ADMIN}
+          >
+            <LocationsPage />
           </PrivateRoute>
         </Router>
       ) : null}
