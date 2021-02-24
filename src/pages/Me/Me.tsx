@@ -5,6 +5,7 @@ import { getUserData } from '../../store/userSlice/selectors';
 import { ROLES } from '../../shared/constants';
 import { useAppDispatch } from '../../store';
 import { Button, Spinner } from '../../components/ui';
+import { Navbar } from '../../components/Navbar';
 import './style.css';
 
 export const Me = () => {
@@ -34,6 +35,7 @@ export const Me = () => {
 
   return (
     <div className="me">
+      <Navbar />
       <div className="me__surname">
         {surname}
       </div>

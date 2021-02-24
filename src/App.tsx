@@ -10,6 +10,7 @@ import { getIsUserFetched, getUserData } from './store/userSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
 import { LoginPage, Me, RegisterPage } from './pages';
 import { useAppDispatch } from './store';
+import { OrdersPage } from './pages/OrdersPage';
 
 const App = () => {
   /* loading user data from Redux */
@@ -36,6 +37,9 @@ const App = () => {
         </PrivateRoute>
         <PrivateRoute path="/login" exact condition={!user.login} redirectPath="/me">
           <LoginPage />
+        </PrivateRoute>
+        <PrivateRoute path="/orders" exact condition={!!user.login} redirectPath="/login">
+          <OrdersPage />
         </PrivateRoute>
         <PrivateRoute path="/register" exact condition={!user.login} redirectPath="/me">
           <RegisterPage />

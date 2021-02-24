@@ -1,0 +1,21 @@
+.navbar {
+    height: 50px;
+    background-color: var(--secondary-2);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 12px 0 0 50px;
+}
+
+.navbar__navlink {
+    color: var(--light-2);
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+
+.navbar__navlink:hover,
+.navbar__navlink.active {
+    color: white;
+}
