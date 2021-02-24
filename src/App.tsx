@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 import UserThunk from './store/userSlice/thunk';
 import { getIsUserFetched, getUserData } from './store/userSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
-import { LoginPage, Me, RegisterPage } from './pages';
+import {
+  LoginPage, Me, RegisterPage, OrdersPage, LocationsPage,
+} from './pages';
 import { useAppDispatch } from './store';
-import { OrdersPage } from './pages/OrdersPage';
 import { routes } from './shared/routes';
-import './app.css';
 import { UserRole } from './API/interfaces';
-import { LocationsPage } from './pages/LocationsPage/LocationsPage';
 import { Navbar } from './components/ui';
+import './app.css';
 
 const App = () => {
   /* loading user data from Redux */

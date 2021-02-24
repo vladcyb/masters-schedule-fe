@@ -1,0 +1,15 @@
+.addLocationForm {
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.addLocationForm__add,
+.addLocationForm__cancel {
+    width: 100%;
+}
+
+.addLocationForm__cancel {
+    margin-top: 5px;
+}

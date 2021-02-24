@@ -5,3 +5,11 @@
 .locationsPage__location:not(:first-of-type) {
     margin-top: 10px;
 }
+
+.locationsPage__addButton {
+    margin-top: 20px;
+}
+
+.locationsPage__addForm {
+    margin: 0 auto;
+}
