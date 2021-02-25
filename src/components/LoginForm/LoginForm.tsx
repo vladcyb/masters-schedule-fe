@@ -15,7 +15,7 @@ type PropsType = {
   className?: string
 };
 
-export const Login = ({ className }: PropsType) => {
+export const LoginForm = ({ className }: PropsType) => {
   /* classes */
   const cn = createCn('loginForm', className);
 
