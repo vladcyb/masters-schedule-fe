@@ -21,9 +21,10 @@ export const ServicesPage = () => {
     setIsAdding(false);
   };
 
+  /* effects */
   useEffect(() => {
     dispatch(ServiceThunk.update());
-  });
+  }, [dispatch]);
 
   return (
     <Container className="servicesPage">
