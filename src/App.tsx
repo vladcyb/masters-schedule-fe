@@ -5,7 +5,13 @@ import UserThunk from './store/userSlice/thunk';
 import { getIsUserFetched, getUserData } from './store/userSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
 import {
-  LoginPage, Me, RegisterPage, OrdersPage, LocationsPage,
+  LocationsPage,
+  LoginPage,
+  Me,
+  OrdersPage,
+  RegisterPage,
+  SpecializationsPage,
+  ServicesPage,
 } from './pages';
 import { useAppDispatch } from './store';
 import { routes } from './shared/routes';
@@ -72,6 +78,20 @@ const App = () => {
             condition={!!user.login && user.role === UserRole.ADMIN}
           >
             <LocationsPage />
+          </PrivateRoute>
+          <PrivateRoute
+            path={routes.services.root}
+            condition={!!user.login && user.role === UserRole.ADMIN}
+            redirectPath={routes.me.root}
+          >
+            <ServicesPage />
+          </PrivateRoute>
+          <PrivateRoute
+            path={routes.specializations.root}
+            condition={!!user.login && user.role === UserRole.ADMIN}
+            redirectPath={routes.me.root}
+          >
+            <SpecializationsPage />
           </PrivateRoute>
         </Router>
       ) : null}

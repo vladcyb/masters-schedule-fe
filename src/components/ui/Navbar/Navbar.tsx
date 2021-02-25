@@ -14,7 +14,17 @@ export const Navbar = ({ user }: PropsType) => (
     <NavLink className="navbar__navlink" to={routes.me.root}>Me</NavLink>
     <NavLink className="navbar__navlink" to={routes.orders.root}>Orders</NavLink>
     {user.role === UserRole.ADMIN && (
-      <NavLink className="navbar__navlink" to={routes.locations.root}>Locations</NavLink>
+      <>
+        <NavLink className="navbar__navlink" to={routes.locations.root}>
+          Locations
+        </NavLink>
+        <NavLink className="navbar__navlink" to={routes.services.root}>
+          Services
+        </NavLink>
+        <NavLink className="navbar__navlink" to={routes.specializations.root}>
+          Specializations
+        </NavLink>
+      </>
     )}
   </div>
 );

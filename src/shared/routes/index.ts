@@ -14,4 +14,10 @@ export const routes = {
   locations: {
     root: '/locations',
   },
+  services: {
+    root: '/services',
+  },
+  specializations: {
+    root: '/specializations',
+  },
 };
