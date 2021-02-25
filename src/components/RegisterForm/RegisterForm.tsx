@@ -22,9 +22,9 @@ type PropsType = {
   className?: string
 };
 
-export const Register = ({ className }: PropsType) => {
+export const RegisterForm = ({ className }: PropsType) => {
   /* classes */
-  const cn = createCn('register', className);
+  const cn = createCn('registerForm', className);
 
   /* state */
   const [isValid, setIsValid] = useState(true);

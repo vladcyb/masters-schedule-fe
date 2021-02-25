@@ -1,9 +1,9 @@
 import React from 'react';
-import { Register } from '../../components';
+import { RegisterForm } from '../../components';
 import './style.css';
 
 export const RegisterPage = () => (
   <div className="registerPage">
-    <Register className="registerPage__form" />
+    <RegisterForm className="registerPage__form" />
   </div>
 );

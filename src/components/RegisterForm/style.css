@@ -1,40 +1,40 @@
-.register {
+.registerForm {
     border: 1px solid black;
     padding: 20px;
     width: 300px;
     border-radius: 5px;
 }
 
-.register input,
-.register button {
+.registerForm input,
+.registerForm button {
     width: 100%;
 }
 
-.register__submit {
+.registerForm__submit {
     margin-top: 28px;
 }
 
-.register__login {
+.registerForm__login {
     display: block;
     margin: 10px auto 0 auto;
     width: min-content;
 }
 
-.register__spinner,
-.register__masterSpinner {
+.registerForm__spinner,
+.registerForm__masterSpinner {
     margin: 10px auto 0 auto;
 }
 
-.register__error {
+.registerForm__error {
     color: red;
 }
 
-.register__specializations,
-.register__locations {
+.registerForm__specializations,
+.registerForm__locations {
     margin-top: 50px;
 }
 
-.register__selectError {
+.registerForm__selectError {
     color: red;
     font-size: 12px;
     font-family: Roboto, serif;
