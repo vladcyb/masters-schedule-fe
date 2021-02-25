@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserThunk from './store/userSlice/thunk';
-import { getIsUserFetched, getLoading, getUserData } from './store/userSlice/selectors';
+import { getUser } from './store/userSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
 import {
   LocationsPage,
@@ -21,9 +21,12 @@ import './app.css';
 
 const App = () => {
   /* loading user data from Redux */
-  const user = useSelector(getUserData);
-  const isLoading = useSelector(getLoading);
-  const isUserFetched = useSelector(getIsUserFetched);
+  const {
+    data: userData,
+    fetched: isFetched,
+    loading: isLoading,
+    orders,
+  } = useSelector(getUser);
 
   /* hooks */
   const dispatch = useAppDispatch();
@@ -35,24 +38,24 @@ const App = () => {
 
   return (
     <div className="app">
-      {isUserFetched ? (
+      {isFetched ? (
         <Router>
-          {user.login && <Navbar user={user} />}
+          {userData.login && <Navbar userData={userData} />}
           <Route path="/" exact>
             <Redirect to={routes.me.root} />
           </Route>
           <PrivateRoute
             path={routes.me.root}
             exact
-            condition={!!user.login}
+            condition={!!userData.login}
             redirectPath={routes.login.root}
           >
-            <Me userData={user} />
+            <Me userData={userData} />
           </PrivateRoute>
           <PrivateRoute
             path={routes.login.root}
             exact
-            condition={!user.login}
+            condition={!userData.login}
             redirectPath={routes.me.root}
           >
             <LoginPage isLoading={isLoading} />
@@ -60,15 +63,15 @@ const App = () => {
           <PrivateRoute
             path={routes.orders.root}
             exact
-            condition={!!user.login}
+            condition={!!userData.login}
             redirectPath={routes.login.root}
           >
-            <OrdersPage />
+            <OrdersPage orders={orders} />
           </PrivateRoute>
           <PrivateRoute
             path={routes.register.root}
             exact
-            condition={!user.login}
+            condition={!userData.login}
             redirectPath={routes.me.root}
           >
             <RegisterPage isLoading={isLoading} />
@@ -76,20 +79,20 @@ const App = () => {
           <PrivateRoute
             path={routes.locations.root}
             redirectPath={routes.me.root}
-            condition={!!user.login && user.role === UserRole.ADMIN}
+            condition={!!userData.login && userData.role === UserRole.ADMIN}
           >
             <LocationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.services.root}
-            condition={!!user.login && user.role === UserRole.ADMIN}
+            condition={!!userData.login && userData.role === UserRole.ADMIN}
             redirectPath={routes.me.root}
           >
             <ServicesPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.specializations.root}
-            condition={!!user.login && user.role === UserRole.ADMIN}
+            condition={!!userData.login && userData.role === UserRole.ADMIN}
             redirectPath={routes.me.root}
           >
             <SpecializationsPage />

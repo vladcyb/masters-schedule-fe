@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
 import { useAppDispatch } from '../../store';
-import { getOrders } from '../../store/userSlice/selectors';
 import { Button, Container } from '../../components/ui';
 import { Orders, AddOrderForm } from '../../components';
+import { OrdersStateType } from '../../store/userSlice/types';
 import './style.css';
 
-export const OrdersPage = () => {
+type PropsType = {
+  orders: OrdersStateType
+};
+
+export const OrdersPage = ({ orders }: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
-  const orders = useSelector(getOrders);
 
   /* state */
   const [isAdding, setIsAdding] = useState(false);

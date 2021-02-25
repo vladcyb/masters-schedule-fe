@@ -6,14 +6,14 @@ import { UserDataStateType } from '../../../store/userSlice/types';
 import './style.css';
 
 type PropsType = {
-  user: UserDataStateType
+  userData: UserDataStateType
 };
 
-export const Navbar = ({ user }: PropsType) => (
+export const Navbar = ({ userData }: PropsType) => (
   <div className="navbar">
     <NavLink className="navbar__navlink" to={routes.me.root}>Me</NavLink>
     <NavLink className="navbar__navlink" to={routes.orders.root}>My orders</NavLink>
-    {user.role === UserRole.ADMIN && (
+    {userData.role === UserRole.ADMIN && (
       <>
         <NavLink className="navbar__navlink" to={routes.locations.root}>
           Locations
