@@ -10,23 +10,20 @@ type PropsType = {
 
 export const Orders = ({ orders }: PropsType) => (
   <div className="orders">
-    {orders.loading ? (
-      <Spinner visible />
-    ) : (
-      orders.data.map((order) => (
-        <div className="orders__item" key={order.id}>
-          <Order
-            description={order.description}
-            startDate={order.startDate}
-            finishDate={order.finishDate}
-            status={order.status}
-            comment={order.comment}
-            photo={order.photo}
-            address={order.address}
-          />
-        </div>
-      ))
-    )}
+    <Spinner visible={orders.loading} />
+    {orders.data.map((order) => (
+      <div className="orders__item" key={order.id}>
+        <Order
+          description={order.description}
+          startDate={order.startDate}
+          finishDate={order.finishDate}
+          status={order.status}
+          comment={order.comment}
+          photo={order.photo}
+          address={order.address}
+        />
+      </div>
+    ))}
     {!orders.data.length && !orders.loading && (
       <i>(empty)</i>
     )}
