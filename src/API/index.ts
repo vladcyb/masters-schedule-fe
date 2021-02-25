@@ -60,6 +60,9 @@ const API = {
     create: (props: IServiceCreate) => (
       Responses(instance.post('/service', props, { withCredentials: true }))
     ),
+    get: () => (
+      Responses(instance.get('/service'))
+    ),
   },
   Master: {
     setSchedule: (props: IMasterSetSchedule) => (

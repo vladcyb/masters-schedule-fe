@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Container } from '../../components/ui';
 import { AddServiceForm } from '../../components';
+import { ServiceThunk } from '../../store/serviceSlice/thunk';
+import { useAppDispatch } from '../../store';
 import './style.css';
 
 export const ServicesPage = () => {
   /* state */
   const [isAdding, setIsAdding] = useState(false);
+
+  /* hooks */
+  const dispatch = useAppDispatch();
 
   /* methods */
   const handleAddClick = () => {
@@ -15,6 +20,10 @@ export const ServicesPage = () => {
   const closeAddingForm = () => {
     setIsAdding(false);
   };
+
+  useEffect(() => {
+    dispatch(ServiceThunk.update());
+  });
 
   return (
     <Container className="servicesPage">

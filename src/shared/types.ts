@@ -18,6 +18,14 @@ export type LocationType = {
   }
 };
 
+export type ServiceType = {
+  id: number
+  title: string
+  duration: number
+  price: string
+  specialization: SpecializationType
+};
+
 export enum OrderStatus {
   PENDING,
   IN_PROGRESS,

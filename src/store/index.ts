@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux';
 import { specializationsSlice } from './specializationSlice';
 import { locationSlice } from './locationSlice';
 import { userSlice } from './userSlice';
+import { serviceSlice } from './serviceSlice';
 
 const store = configureStore({
   reducer: combineReducers({
     specializations: specializationsSlice.reducer,
     locations: locationSlice.reducer,
     user: userSlice.reducer,
+    services: serviceSlice.reducer,
   }),
 });
 
