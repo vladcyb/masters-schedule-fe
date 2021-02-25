@@ -1,6 +1,7 @@
 .specialization {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .specialization__icon {

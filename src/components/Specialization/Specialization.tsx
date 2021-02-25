@@ -15,16 +15,7 @@ export const Specialization = ({
   <Card className={`specialization ${className || ''}`}>
     <img className="specialization__icon" src={specialization.icon} alt="" />
     <div>
-      <div>
-        id:
-        {' '}
-        {specialization.id}
-      </div>
-      <div>
-        title:
-        {' '}
-        {specialization.title}
-      </div>
+      {specialization.title}
     </div>
   </Card>
 );
