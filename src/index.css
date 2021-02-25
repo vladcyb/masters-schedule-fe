@@ -24,8 +24,8 @@ code {
     monospace;
 }
 
-/* colors */
 :root {
+  /* colors */
   --dark-1: #112233;
   --dark-2: #1c4b79;
   --secondary-1: #144b81;
@@ -35,6 +35,9 @@ code {
   --light-2: #dfedff;
   --white: #efefef;
   --hint: #727272;
+
+  /* margins */
+  --btn-margin-top: 8px;
 }
 
 /* classes */

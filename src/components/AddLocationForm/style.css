@@ -8,7 +8,7 @@
 }
 
 .addLocationForm__cancel {
-    margin-top: 5px;
+    margin-top: var(--btn-margin-top);
 }
 
 .addLocationForm__parent {
