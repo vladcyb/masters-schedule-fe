@@ -12,7 +12,7 @@ type PropsType = {
 export const Navbar = ({ user }: PropsType) => (
   <div className="navbar">
     <NavLink className="navbar__navlink" to={routes.me.root}>Me</NavLink>
-    <NavLink className="navbar__navlink" to={routes.orders.root}>Orders</NavLink>
+    <NavLink className="navbar__navlink" to={routes.orders.root}>My orders</NavLink>
     {user.role === UserRole.ADMIN && (
       <>
         <NavLink className="navbar__navlink" to={routes.locations.root}>

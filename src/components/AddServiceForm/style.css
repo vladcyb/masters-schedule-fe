@@ -1,0 +1,12 @@
+.addServiceForm {
+
+}
+
+.addServiceForm__cancel,
+.addServiceForm__add {
+    width: 100%;
+}
+
+.addServiceForm__cancel {
+    margin-top: var(--btn-margin-top);
+}
