@@ -30,8 +30,11 @@ export const LocationsPage = () => {
     setIsAdding(false);
   };
 
-  const handleDeleteLocation = (id: number) => {
-    dispatch(LocationThunk.delete(id));
+  const handleDeleteLocation = async (id: number) => {
+    const result = await dispatch(LocationThunk.delete(id));
+    if (result.meta.requestStatus === 'rejected') {
+      alert(result.payload);
+    }
   };
 
   return (

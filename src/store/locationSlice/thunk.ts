@@ -40,9 +40,9 @@ const LocationThunk = {
   delete: createAsyncThunk(
     'locations/delete',
     async (id: number, { dispatch, rejectWithValue }) => {
-      const result = await API.Location.delete(id);
-      if (!result.data.ok) {
-        return rejectWithValue('');
+      const { data: { ok, error } } = await API.Location.delete(id);
+      if (!ok) {
+        return rejectWithValue(error);
       }
       dispatch(actions.delete(id));
       return '';
