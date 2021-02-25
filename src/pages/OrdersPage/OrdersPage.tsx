@@ -37,9 +37,7 @@ export const OrdersPage = ({ orders }: PropsType) => {
         <AddOrderForm className="ordersPage__add" onCancel={cancelAdding} />
       ) : (
         <>
-          <div className="ordersPage__orders">
-            <Orders orders={orders} />
-          </div>
+          <Orders orders={orders} />
           <Button
             className="ordersPage__addButton"
             onClick={handleAddClick}
