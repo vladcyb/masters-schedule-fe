@@ -1,0 +1,7 @@
+.specializationsPage__list {
+    padding-top: 30px;
+}
+
+.specializationsPage__item:not(:first-of-type) {
+    margin-top: 5px;
+}

@@ -35,6 +35,7 @@
     "no-multiple-empty-lines": "warn",
     "@typescript-eslint/semi": ["warn"],
     "@typescript-eslint/comma-dangle": ["warn"],
-    "object-curly-spacing": "warn"
+    "object-curly-spacing": "warn",
+    "react/prop-types": "off"
   }
 }
