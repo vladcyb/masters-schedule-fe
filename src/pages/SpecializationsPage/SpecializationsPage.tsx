@@ -4,6 +4,7 @@ import SpecializationsThunk from '../../store/specializationSlice/thunk';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { useAppDispatch } from '../../store';
 import { Specialization } from '../../components/Specialization';
+import { Container } from '../../components/ui';
 import './style.css';
 
 export const SpecializationsPage = () => {
@@ -17,7 +18,7 @@ export const SpecializationsPage = () => {
     dispatch(SpecializationsThunk.update());
   }, [dispatch]);
   return (
-    <div className="specializationsPage">
+    <Container className="specializationsPage">
       <div className="specializationsPage__list">
         {specializations.data.map((item) => (
           <Specialization
@@ -27,6 +28,6 @@ export const SpecializationsPage = () => {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };

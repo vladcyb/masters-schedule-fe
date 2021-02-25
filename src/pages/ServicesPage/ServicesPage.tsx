@@ -1,8 +1,9 @@
 import React from 'react';
+import { Container } from '../../components/ui';
 import './style.css';
 
 export const ServicesPage = () => (
-  <div className="servicesPage">
+  <Container className="servicesPage">
     TODO: get and create services
-  </div>
+  </Container>
 );

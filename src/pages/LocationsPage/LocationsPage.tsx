@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import LocationThunk from '../../store/locationSlice/thunk';
 import { getLocations } from '../../store/locationSlice/selectors';
-import { Button, Spinner } from '../../components/ui';
+import { Button, Spinner, Container } from '../../components/ui';
 import { useAppDispatch } from '../../store';
 import { Location } from '../../components/Location';
 import { AddLocationForm } from '../../components/AddLocationForm';
@@ -35,7 +35,7 @@ export const LocationsPage = () => {
   };
 
   return (
-    <div className="locationsPage">
+    <Container className="locationsPage">
       {isAdding ? (
         <AddLocationForm
           className="locationsPage__addForm"
@@ -63,6 +63,6 @@ export const LocationsPage = () => {
           </Button>
         </>
       )}
-    </div>
+    </Container>
   );
 };
