@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
-import { Button, Field, Form } from '../ui';
+import {
+  Button, Field, Form, Spinner,
+} from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { validateAddSpecialization } from './validateAddSpecialization';
 import { ISpecializationCreate } from '../../API/interfaces';
@@ -10,11 +12,13 @@ import './style.css';
 type PropsType = {
   close: () => void
   className?: string
+  isLoading: boolean
 };
 
 export const AddSpecializationForm = ({
   close,
   className,
+  isLoading,
 }: PropsType) => {
   /* hooks */
   const [getters, setters] = useSetters();
@@ -76,6 +80,7 @@ export const AddSpecializationForm = ({
       >
         Cancel
       </Button>
+      <Spinner className="addSpecializationForm__spinner" visible={isLoading} />
     </Form>
   );
 };

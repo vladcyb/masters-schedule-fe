@@ -38,6 +38,7 @@ export const SpecializationsPage = () => {
         <AddSpecializationForm
           className="specializationsPage__form"
           close={handleCancelAdd}
+          isLoading={specializations.loading}
         />
       ) : (
         <>

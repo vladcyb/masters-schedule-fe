@@ -6,3 +6,7 @@
 .addSpecializationForm__cancel {
     margin-top: var(--btn-margin-top);
 }
+
+.addSpecializationForm__spinner {
+    margin: 10px auto 0 auto;
+}

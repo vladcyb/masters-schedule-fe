@@ -33,6 +33,18 @@ export const specializationsSlice = createSlice({
       .addCase(SpecializationsThunk.update.rejected, (state) => {
         state.loading = false;
         state.error = true;
+      })
+      .addCase(SpecializationsThunk.create.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(SpecializationsThunk.create.fulfilled, (state) => {
+        state.loading = false;
+        state.error = false;
+      })
+      .addCase(SpecializationsThunk.create.rejected, (state) => {
+        state.loading = false;
+        state.error = true;
       });
   },
 });
