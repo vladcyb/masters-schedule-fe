@@ -1,5 +1,6 @@
 import React from 'react';
 import { OrderStatus } from '../../shared/types';
+import { Card } from '../ui/Card';
 import './style.css';
 
 type PropsType = {
@@ -21,7 +22,7 @@ export const Order = ({
   photo,
   address,
 }: PropsType) => (
-  <div className="order">
+  <Card className="order">
     <div className="order__field">
       <span className="order__fieldName">Description: </span>
       <span className="order__fieldContent">{description}</span>
@@ -50,5 +51,5 @@ export const Order = ({
       <span className="order__fieldName">Address: </span>
       <span className="order__fieldContent">{address}</span>
     </div>
-  </div>
+  </Card>
 );
