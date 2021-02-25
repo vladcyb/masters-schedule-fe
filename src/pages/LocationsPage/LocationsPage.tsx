@@ -47,15 +47,12 @@ export const LocationsPage = () => {
         />
       ) : (
         <>
-          {locations.loading ? (
-            <Spinner visible />
-          ) : (
-            locations.data.map((item) => (
-              <div className="locationsPage__location" key={item.id}>
-                <Location data={item} onDelete={handleDeleteLocation} />
-              </div>
-            ))
-          )}
+          <Spinner visible={locations.loading} />
+          {locations.data.map((item) => (
+            <div className="locationsPage__location" key={item.id}>
+              <Location data={item} onDelete={handleDeleteLocation} />
+            </div>
+          ))}
           {!locations.data.length && !locations.loading && (
             <div>
               <i>(empty)</i>
