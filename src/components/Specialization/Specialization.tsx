@@ -13,20 +13,18 @@ export const Specialization = ({
   specialization,
 }: PropsType) => (
   <Card className={`specialization ${className || ''}`}>
+    <img className="specialization__icon" src={specialization.icon} alt="" />
     <div>
-      id:
-      {' '}
-      {specialization.id}
-    </div>
-    <div>
-      title:
-      {' '}
-      {specialization.title}
-    </div>
-    <div>
-      icon:
-      {' '}
-      {specialization.icon}
+      <div>
+        id:
+        {' '}
+        {specialization.id}
+      </div>
+      <div>
+        title:
+        {' '}
+        {specialization.title}
+      </div>
     </div>
   </Card>
 );
