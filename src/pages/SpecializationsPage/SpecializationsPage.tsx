@@ -35,11 +35,16 @@ export const SpecializationsPage = () => {
   return (
     <Container className="specializationsPage">
       {isAdding ? (
-        <AddSpecializationForm
-          className="specializationsPage__form"
-          close={handleCancelAdd}
-          isLoading={specializations.loading}
-        />
+        <>
+          <div className="specializationsPage__title title center">
+            Add specialization
+          </div>
+          <AddSpecializationForm
+            className="specializationsPage__form"
+            close={handleCancelAdd}
+            isLoading={specializations.loading}
+          />
+        </>
       ) : (
         <>
           <div className="specializationsPage__list">

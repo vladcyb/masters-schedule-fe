@@ -15,14 +15,17 @@ export const Specialization = ({
   <Card className={`specialization ${className || ''}`}>
     <div>
       id:
+      {' '}
       {specialization.id}
     </div>
     <div>
       title:
+      {' '}
       {specialization.title}
     </div>
     <div>
       icon:
+      {' '}
       {specialization.icon}
     </div>
   </Card>

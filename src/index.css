@@ -46,6 +46,16 @@ code {
   color: var(--secondary-1);
 }
 
+.title {
+  font-size: 18px;
+  color: var(--dark-2);
+  padding-bottom: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
 button {
   border: none;
   background-color: transparent;
