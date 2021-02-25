@@ -1,8 +1,4 @@
 .location {
-    border: 1px solid var(--dark-1);
-    padding: 20px;
-    background-color: var(--light-2);
-    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;

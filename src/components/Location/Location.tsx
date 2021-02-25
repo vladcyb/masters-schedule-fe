@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { LocationType } from '../../shared/types';
 import './style.css';
+import { Card } from '../ui/Card';
 
 type PropsType = {
   data: LocationType
@@ -19,7 +20,7 @@ export const Location = ({
 }: PropsType) => {
   const handleDelete = useCallback(() => onDelete(id), [id, onDelete]);
   return (
-    <div className="location">
+    <Card className="location">
       <div>
         <div>
           <span>Id: </span>
@@ -44,6 +45,6 @@ export const Location = ({
       </div>
       {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
       <button className="location__delete" type="button" onClick={handleDelete} />
-    </div>
+    </Card>
   );
 };
