@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
-import { getUserData } from '../../store/userSlice/selectors';
 import { ROLES } from '../../shared/constants';
 import { useAppDispatch } from '../../store';
 import { Button, Spinner } from '../../components/ui';
+import { UserDataStateType } from '../../store/userSlice/types';
 import './style.css';
 
-export const Me = () => {
+type PropsType = {
+  userData: UserDataStateType
+};
+
+export const Me = ({ userData }: PropsType) => {
   /* hooks */
   const {
     name,
     surname,
     role,
     patronymic,
-  } = useSelector(getUserData);
+  } = userData;
 
   /* vars */
   const roleTitle = ROLES.find((item) => item.value === role)!.title;

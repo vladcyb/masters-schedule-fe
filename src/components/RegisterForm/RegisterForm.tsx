@@ -9,7 +9,6 @@ import {
   Button, Field, Form, Select, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
-import { getLoading } from '../../store/userSlice/selectors';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
 import { validateRegistration } from './validate';
 import { useAppDispatch } from '../../store';
@@ -20,9 +19,10 @@ import './style.css';
 
 type PropsType = {
   className?: string
+  isLoading: boolean
 };
 
-export const RegisterForm = ({ className }: PropsType) => {
+export const RegisterForm = ({ className, isLoading }: PropsType) => {
   /* classes */
   const cn = createCn('registerForm', className);
 
@@ -32,7 +32,6 @@ export const RegisterForm = ({ className }: PropsType) => {
 
   /* hooks */
   const [getters, setters] = useSetters();
-  const isLoading = useSelector(getLoading);
   const dispatch = useAppDispatch();
   const locations = useSelector(getLocations);
   const specializations = useSelector(getSpecializations);

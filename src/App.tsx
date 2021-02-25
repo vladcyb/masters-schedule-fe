@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserThunk from './store/userSlice/thunk';
-import { getIsUserFetched, getUserData } from './store/userSlice/selectors';
+import { getIsUserFetched, getLoading, getUserData } from './store/userSlice/selectors';
 import { PrivateRoute } from './HOCs/PrivateRoute';
 import {
   LocationsPage,
@@ -22,6 +22,7 @@ import './app.css';
 const App = () => {
   /* loading user data from Redux */
   const user = useSelector(getUserData);
+  const isLoading = useSelector(getLoading);
   const isUserFetched = useSelector(getIsUserFetched);
 
   /* hooks */
@@ -46,7 +47,7 @@ const App = () => {
             condition={!!user.login}
             redirectPath={routes.login.root}
           >
-            <Me />
+            <Me userData={user} />
           </PrivateRoute>
           <PrivateRoute
             path={routes.login.root}
@@ -54,7 +55,7 @@ const App = () => {
             condition={!user.login}
             redirectPath={routes.me.root}
           >
-            <LoginPage />
+            <LoginPage isLoading={isLoading} />
           </PrivateRoute>
           <PrivateRoute
             path={routes.orders.root}
@@ -70,7 +71,7 @@ const App = () => {
             condition={!user.login}
             redirectPath={routes.me.root}
           >
-            <RegisterPage />
+            <RegisterPage isLoading={isLoading} />
           </PrivateRoute>
           <PrivateRoute
             path={routes.locations.root}

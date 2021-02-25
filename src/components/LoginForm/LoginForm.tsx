@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createCn } from 'bem-react-classname';
-import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
 import { useField, useSetters } from '../../shared/hooks';
 import {
   Spinner, Button, Field, Form,
 } from '../ui';
 import { useAppDispatch } from '../../store';
-import { getLoading } from '../../store/userSlice/selectors';
 import { validateLogin } from './validate';
 import { ILoginForm } from '../../API/interfaces';
 import './style.css';
 
 type PropsType = {
   className?: string
+  isLoading: boolean
 };
 
-export const LoginForm = ({ className }: PropsType) => {
+export const LoginForm = ({ className, isLoading }: PropsType) => {
   /* classes */
   const cn = createCn('loginForm', className);
 
@@ -29,7 +28,6 @@ export const LoginForm = ({ className }: PropsType) => {
   const login = useField('login', getters, setters);
   const password = useField('password', getters, setters);
   const dispatch = useAppDispatch();
-  const isLoading = useSelector(getLoading);
 
   /* vars */
   const form: ILoginForm = {

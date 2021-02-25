@@ -2,9 +2,13 @@ import React from 'react';
 import { RegisterForm } from '../../components';
 import './style.css';
 
-export const RegisterPage = () => (
+type PropsType = {
+  isLoading: boolean
+};
+
+export const RegisterPage = ({ isLoading }: PropsType) => (
   <div className="registerPage">
     <div className="center title">Register</div>
-    <RegisterForm className="registerPage__form" />
+    <RegisterForm className="registerPage__form" isLoading={isLoading} />
   </div>
 );
