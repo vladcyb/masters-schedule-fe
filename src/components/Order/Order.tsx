@@ -13,6 +13,14 @@ type PropsType = {
   address: string
 };
 
+const OrderStatuses = {
+  [OrderStatus.PENDING.toString()]: 'pending',
+  [OrderStatus.DONE.toString()]: 'done',
+  [OrderStatus.ABORTED.toString()]: 'aborted',
+  [OrderStatus.IN_PROGRESS.toString()]: 'in progress',
+  [OrderStatus.ON_REWORK.toString()]: 'on rework',
+};
+
 export const Order = ({
   description,
   startDate,
@@ -29,15 +37,19 @@ export const Order = ({
     </div>
     <div className="order__field">
       <span className="order__fieldName">Start date: </span>
-      <span className="order__fieldContent">{startDate}</span>
+      <span className="order__fieldContent">
+        {startDate || <i className="order__hint">(not assigned)</i>}
+      </span>
     </div>
     <div className="order__field">
       <span className="order__fieldName">Finish date: </span>
-      <span className="order__fieldContent">{finishDate}</span>
+      <span className="order__fieldContent">
+        {finishDate || <i className="order__hint">(not assigned)</i>}
+      </span>
     </div>
     <div className="order__field">
       <span className="order__fieldName">Status: </span>
-      <span className="order__fieldContent">{status}</span>
+      <span className="order__fieldContent">{OrderStatuses[status]}</span>
     </div>
     <div className="order__field">
       <span className="order__fieldName">Comment: </span>

@@ -1,9 +1,3 @@
-.order {
-    /*background-color: var(--secondary-1);*/
-    /*padding: 20px;*/
-    /*color: white;*/
-    /*font-family: Roboto, serif;*/
-    /*line-height: 130%;*/
-    /*border-radius: 5px;*/
-    /*font-weight: 300;*/
+.order__hint {
+    color: var(--hint);
 }
