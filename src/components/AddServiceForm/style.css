@@ -1,5 +1,5 @@
-.addServiceForm {
-
+.addServiceForm__add {
+    margin-top: 20px;
 }
 
 .addServiceForm__cancel,
@@ -9,4 +9,15 @@
 
 .addServiceForm__cancel {
     margin-top: var(--btn-margin-top);
+}
+
+.addServiceForm__spinner {
+    margin: 10px auto 0 auto;
+}
+
+.addServiceForm__specializationsError {
+    color: red;
+    font-size: 12px;
+    font-family: Roboto, serif;
+    margin-top: 5px;
 }

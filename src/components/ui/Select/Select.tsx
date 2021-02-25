@@ -48,7 +48,7 @@ export const Select = ({
         role="button"
         tabIndex={0}
       >
-        {options.find((option) => option.value === selected)?.title || <i>(not chosen)</i>}
+        {options.find((option) => option.value === selected)?.title || <i>(not selected)</i>}
       </div>
       <div className={cn('options')}>
         {options.map((option) => (

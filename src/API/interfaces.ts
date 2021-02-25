@@ -69,7 +69,7 @@ export interface ISpecializationCreate {
 export interface IServiceCreate {
   title: string
   price: string
-  duration: number
+  duration: string
   specializationId: number
 }
 
