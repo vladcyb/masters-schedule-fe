@@ -36,7 +36,7 @@ const App = () => {
     <div className="app">
       {isUserFetched ? (
         <Router>
-          <Navbar user={user} />
+          {user.login && <Navbar user={user} />}
           <Route path="/" exact>
             <Redirect to={routes.me.root} />
           </Route>
