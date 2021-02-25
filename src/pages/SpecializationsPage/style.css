@@ -1,3 +1,7 @@
 .specializationsPage__item:not(:first-of-type) {
     margin-top: 5px;
 }
+
+.specializationsPage__add {
+    margin-top: 20px;
+}
