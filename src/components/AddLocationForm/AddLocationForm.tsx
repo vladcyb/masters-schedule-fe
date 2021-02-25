@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import LocationThunk from '../../store/locationSlice/thunk';
-import { Button, Field, Select } from '../ui';
+import {
+  Button, Field, Form, Select,
+} from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { ILocationCreate } from '../../API/interfaces';
 import { useAppDispatch } from '../../store';
@@ -82,7 +84,7 @@ export const AddLocationForm = ({
   }, [form.typeId, form.title, form.coordinates, form.coordinates]);
 
   return (
-    <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
+    <Form className={cn()} onSubmit={handleSubmit}>
       <Field label="Title:" {...title.props} />
       <Field label="Coordinates:" {...coordinates.props} />
       <Select
@@ -105,6 +107,6 @@ export const AddLocationForm = ({
       <Button className="addLocationForm__cancel" variant="outline" onClick={close}>
         Cancel
       </Button>
-    </form>
+    </Form>
   );
 };

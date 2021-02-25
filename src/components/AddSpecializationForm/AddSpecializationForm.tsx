@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../ui';
+import { Button, Form } from '../ui';
 
 type PropsType = {
   close: () => void
@@ -14,9 +14,9 @@ export const AddSpecializationForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Button type="submit">Add</Button>
       <Button variant="outline" onClick={close}>Cancel</Button>
-    </form>
+    </Form>
   );
 };

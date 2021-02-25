@@ -6,7 +6,7 @@ import UserThunk from '../../store/userSlice/thunk';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
 import LocationThunk from '../../store/locationSlice/thunk';
 import {
-  Button, Field, Select, Spinner,
+  Button, Field, Form, Select, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLoading } from '../../store/userSlice/selectors';
@@ -104,7 +104,7 @@ export const RegisterForm = ({ className }: PropsType) => {
   };
 
   return (
-    <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
+    <Form className={cn()} onSubmit={handleSubmit}>
       <Field label="Login:" {...login.props} />
       <Field label="Password:" {...password.props} />
       <Field label="Repeat password:" {...passwordRepeat.props} />
@@ -158,6 +158,6 @@ export const RegisterForm = ({ className }: PropsType) => {
       <Button className={cn('submit')} type="submit">Register</Button>
       <Link className={cn('login navlink')} to="/login">Login</Link>
       <Spinner className={cn('spinner')} visible={isLoading} />
-    </form>
+    </Form>
   );
 };

@@ -4,7 +4,9 @@ import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
 import UserThunk from '../../store/userSlice/thunk';
 import { useField, useSetters } from '../../shared/hooks';
-import { Spinner, Button, Field } from '../ui';
+import {
+  Spinner, Button, Field, Form,
+} from '../ui';
 import { useAppDispatch } from '../../store';
 import { getLoading } from '../../store/userSlice/selectors';
 import { validateLogin } from './validate';
@@ -52,12 +54,12 @@ export const LoginForm = ({ className }: PropsType) => {
   };
 
   return (
-    <form className={cn()} onSubmit={handleSubmit} autoComplete="off">
+    <Form className={cn()} onSubmit={handleSubmit}>
       <Field {...login.props} label="Login:" />
       <Field {...password.props} label="Password:" />
       <Button className={cn('submit')} type="submit">Login</Button>
       <Link className={cn('register navlink')} to="/register">Register</Link>
       <Spinner className={cn('spinner')} visible={isLoading} />
-    </form>
+    </Form>
   );
 };

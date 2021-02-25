@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
-import { Button, Field, Select } from '../ui';
+import {
+  Button, Field, Form, Select,
+} from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLocations } from '../../store/locationSlice/selectors';
 import './style.css';
@@ -35,7 +37,7 @@ export const AddOrderForm = ({
   const cn = createCn('addOrderForm', className);
 
   return (
-    <form className={cn()} onSubmit={handleSubmit}>
+    <Form className={cn()} onSubmit={handleSubmit}>
       <Field
         className={cn('description')}
         label="Description:"
@@ -65,6 +67,6 @@ export const AddOrderForm = ({
       >
         Cancel
       </Button>
-    </form>
+    </Form>
   );
 };
