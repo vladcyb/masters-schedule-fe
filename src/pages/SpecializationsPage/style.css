@@ -5,3 +5,8 @@
 .specializationsPage__add {
     margin-top: 20px;
 }
+
+.specializationsPage__form {
+    margin: 0 auto;
+    width: 400px;
+}

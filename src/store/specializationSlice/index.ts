@@ -16,6 +16,9 @@ export const specializationsSlice = createSlice({
     set: (state, { payload }: PayloadAction<SpecializationType[]>) => {
       state.data = payload;
     },
+    add: (state, { payload }: PayloadAction<SpecializationType>) => {
+      state.data.push(payload);
+    },
   },
   extraReducers: (builder) => {
     builder

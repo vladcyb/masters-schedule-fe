@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import SpecializationsThunk from '../../store/specializationSlice/thunk';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { useAppDispatch } from '../../store';
-import { Specialization } from '../../components/Specialization';
 import { Button, Container } from '../../components/ui';
 import {
   AddSpecializationForm,
-} from '../../components/AddSpecializationForm/AddSpecializationForm';
+  Specialization,
+} from '../../components';
 import './style.css';
 
 export const SpecializationsPage = () => {
@@ -35,7 +35,10 @@ export const SpecializationsPage = () => {
   return (
     <Container className="specializationsPage">
       {isAdding ? (
-        <AddSpecializationForm close={handleCancelAdd} />
+        <AddSpecializationForm
+          className="specializationsPage__form"
+          close={handleCancelAdd}
+        />
       ) : (
         <>
           <div className="specializationsPage__list">

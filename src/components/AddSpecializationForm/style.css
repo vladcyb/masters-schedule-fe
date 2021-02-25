@@ -1,0 +1,8 @@
+.addSpecializationForm__add,
+.addSpecializationForm__cancel {
+    width: 100%;
+}
+
+.addSpecializationForm__cancel {
+    margin-top: var(--btn-margin-top);
+}
