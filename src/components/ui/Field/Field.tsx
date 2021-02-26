@@ -4,6 +4,7 @@ import './style.css';
 type PropsType = {
   label: string
   error?: string
+  type?: 'text' | 'password',
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Field = ({

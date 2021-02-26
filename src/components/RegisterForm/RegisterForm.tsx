@@ -105,8 +105,8 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
       <Field label="Login:" {...login.props} />
-      <Field label="Password:" {...password.props} />
-      <Field label="Repeat password:" {...passwordRepeat.props} />
+      <Field label="Password:" {...password.props} type="password" />
+      <Field label="Repeat password:" {...passwordRepeat.props} type="password" />
       <Field label="Surname:" {...surname.props} />
       <Field label="Name:" {...name.props} />
       <Field label="Patronymic:" {...patronymic.props} />

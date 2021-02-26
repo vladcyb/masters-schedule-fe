@@ -54,7 +54,7 @@ export const LoginForm = ({ className, isLoading }: PropsType) => {
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
       <Field {...login.props} label="Login:" />
-      <Field {...password.props} label="Password:" />
+      <Field {...password.props} label="Password:" type="password" />
       <Button className={cn('submit')} type="submit">Login</Button>
       <Link className={cn('register navlink')} to="/register">Register</Link>
       <Spinner className={cn('spinner')} visible={isLoading} />
