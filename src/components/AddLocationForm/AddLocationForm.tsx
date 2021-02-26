@@ -32,6 +32,7 @@ export const AddLocationForm = ({
 
   /* state */
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   /* classes */
   const cn = createCn('addLocationForm', className);
@@ -61,13 +62,15 @@ export const AddLocationForm = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setters.setIsSubmitted(true);
-    if (!isValid) {
+    if (!isValid || isLoading) {
       return;
     }
     if (typeof parentId === 'number') {
       form.parentId = parentId;
     }
+    setIsLoading(true);
     const result = await dispatch(LocationThunk.create(form));
+    setIsLoading(false);
     if (result.meta.requestStatus !== 'rejected') {
       close();
     }
