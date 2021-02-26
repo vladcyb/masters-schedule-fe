@@ -1,6 +1,6 @@
 import React from 'react';
 import { OrderStatus } from '../../shared/types';
-import { Card } from '../ui/Card';
+import { Card } from '../ui';
 import './style.css';
 
 type PropsType = {

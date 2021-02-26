@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import UserThunk from './store/userSlice/thunk';
 import { getUser } from './store/userSlice/selectors';
-import { PrivateRoute } from './HOCs/PrivateRoute';
+import { PrivateRoute } from './HOCs';
 import {
   LocationsPage,
   LoginPage,

@@ -4,8 +4,7 @@ import LocationThunk from '../../store/locationSlice/thunk';
 import { getLocations } from '../../store/locationSlice/selectors';
 import { Button, Spinner, Container } from '../../components/ui';
 import { useAppDispatch } from '../../store';
-import { Location } from '../../components/Location';
-import { AddLocationForm } from '../../components/AddLocationForm';
+import { Location, AddLocationForm } from '../../components';
 import './style.css';
 
 export const LocationsPage = () => {

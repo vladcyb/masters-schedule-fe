@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Container, Spinner } from '../../components/ui';
-import { AddServiceForm } from '../../components';
+import { AddServiceForm, Service } from '../../components';
 import { ServiceThunk } from '../../store/serviceSlice/thunk';
 import { useAppDispatch } from '../../store';
 import { getServices } from '../../store/serviceSlice/selectors';
-import { Service } from '../../components/Service';
 import './style.css';
 
 export const ServicesPage = () => {

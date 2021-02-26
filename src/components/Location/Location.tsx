@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { LocationType } from '../../shared/types';
+import { Card } from '../ui';
 import './style.css';
-import { Card } from '../ui/Card';
 
 type PropsType = {
   data: LocationType
