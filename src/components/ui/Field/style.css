@@ -1,6 +1,9 @@
 .field {
-    /*padding-bottom: 16px;*/
     height: 88px;
+}
+
+.field_textarea {
+    height: 110px;
 }
 
 .field__label {
@@ -24,4 +27,14 @@
     color: red;
     font-size: 12px;
     margin-top: 5px;
+}
+
+.field__textarea {
+    width: 100%;
+    font-family: Roboto, serif;
+    font-size: 14px;
+    line-height: 100%;
+    resize: none;
+    height: 60px;
+    padding: 4px;
 }

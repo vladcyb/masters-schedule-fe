@@ -35,12 +35,13 @@ export const AddOrderForm = ({
 
   /* classes */
   const cn = createCn('addOrderForm', className);
-
+  console.log(description.props.value);
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
       <Field
         className={cn('description')}
         label="Description:"
+        textarea
         {...description.props}
       />
       <Select
