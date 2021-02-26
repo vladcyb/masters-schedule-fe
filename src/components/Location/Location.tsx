@@ -23,24 +23,26 @@ export const Location = ({
     <Card className="location">
       <div>
         <div>
-          <span>Id: </span>
-          <span>{id}</span>
+          <span className="location__itemTitle">Id: </span>
+          <span className="location__itemValue">{id}</span>
         </div>
         <div>
-          <span>Title: </span>
-          <span>{title}</span>
+          <span className="location__itemTitle">Title: </span>
+          <span className="location__itemValue">{title}</span>
         </div>
         <div>
-          <span>Coordinates: </span>
-          <span>{coordinates}</span>
+          <span className="location__itemTitle">Coordinates: </span>
+          <span className="location__itemValue">{coordinates}</span>
         </div>
         <div>
-          <span>Type: </span>
-          <span>{type}</span>
+          <span className="location__itemTitle">Type: </span>
+          <span className="location__itemValue">{type}</span>
         </div>
         <div>
-          <span>Parent id: </span>
-          <span>{parent ? parent.id : <i className="location__hint">(no parent)</i>}</span>
+          <span className="location__itemTitle">Parent id: </span>
+          <span className="location__itemValue">
+            {parent ? parent.id : <i className="location__hint">(no parent)</i>}
+          </span>
         </div>
       </div>
       {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}

@@ -8,3 +8,13 @@
     width: 50px;
     margin-right: 20px;
 }
+
+.service__rowTitle {
+    font-family: Roboto, serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.service__rowValue {
+    font-size: 14px;
+}
