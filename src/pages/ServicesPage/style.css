@@ -1,3 +1,11 @@
 .servicesPage__form {
     margin: 0 auto;
 }
+
+.servicesPage__item:not(:first-of-type) {
+    margin-top: 10px;
+}
+
+.servicesPage__add {
+    margin-top: 20px;
+}

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container } from '../../components/ui';
+import { useSelector } from 'react-redux';
+import { Button, Container, Spinner } from '../../components/ui';
 import { AddServiceForm } from '../../components';
 import { ServiceThunk } from '../../store/serviceSlice/thunk';
 import { useAppDispatch } from '../../store';
+import { getServices } from '../../store/serviceSlice/selectors';
+import { Service } from '../../components/Service';
 import './style.css';
 
 export const ServicesPage = () => {
@@ -11,6 +14,7 @@ export const ServicesPage = () => {
 
   /* hooks */
   const dispatch = useAppDispatch();
+  const services = useSelector(getServices);
 
   /* methods */
   const handleAddClick = () => {
@@ -34,9 +38,15 @@ export const ServicesPage = () => {
           <AddServiceForm className="servicesPage__form" close={closeAddingForm} />
         </>
       ) : (
-        <Button className="servicesPage__add" onClick={handleAddClick}>
-          Add
-        </Button>
+        <>
+          <Spinner visible={services.loading} />
+          {services.data.map((item) => (
+            <Service className="servicesPage__item" data={(item)} />
+          ))}
+          <Button className="servicesPage__add" onClick={handleAddClick}>
+            Add
+          </Button>
+        </>
       )}
     </Container>
   );
