@@ -15,6 +15,9 @@ export const serviceSlice = createSlice({
     set: (state, { payload }: PayloadAction<ServiceType[]>) => {
       state.data = payload;
     },
+    add: (state, { payload }: PayloadAction<ServiceType>) => {
+      state.data.push(payload);
+    },
   },
   extraReducers: (builder) => {
     builder

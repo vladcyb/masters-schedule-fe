@@ -10,6 +10,7 @@ import { useAppDispatch } from '../../store';
 import { validateAddService } from './validateAddService';
 import { IServiceCreate } from '../../API/interfaces';
 import './style.css';
+import { ServiceThunk } from '../../store/serviceSlice/thunk';
 
 type PropsType = {
   className?: string
@@ -31,24 +32,27 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
   /* fields */
   const title = useField('title', getters, setters);
   const price = useField('price', getters, setters);
-  const duration = useField('duration', getters, setters);
+  const duration = useField('duration', getters, setters, true);
 
   /* form */
   const form: IServiceCreate = {
     title: title.props.value,
-    duration: duration.props.value,
+    duration: parseInt(duration.props.value, 10),
     price: price.props.value,
     specializationId: specializationId as any,
   };
 
   /* methods */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setters.setIsSubmitted(true);
     if (!isValid) {
       return;
     }
-    console.log(form);
+    const result = await dispatch(ServiceThunk.create(form));
+    if (result.meta.requestStatus === 'fulfilled') {
+      close();
+    }
   };
 
   /* effects */
@@ -65,7 +69,7 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
     <Form className={`addServiceForm ${className || ''}`} onSubmit={handleSubmit}>
       <Field label="Title:" {...title.props} />
       <Field label="Price:" {...price.props} />
-      <Field label="Duration:" {...duration.props} />
+      <Field label="Duration (hours):" {...duration.props} />
       <Select
         className="addServiceForm__specializations"
         options={specializations.data.map((item) => ({

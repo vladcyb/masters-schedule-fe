@@ -5,7 +5,8 @@ export const useField = (
   name: string,
   getters: Getters,
   setters: Setters,
-  initialValue = '',
+  numberType = false,
+  initialValue = numberType ? '0' : '',
 ) => {
   /* vars */
   const { isSubmitted, errors } = getters;
@@ -16,7 +17,11 @@ export const useField = (
 
   /* methods */
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    if (numberType) {
+      setValue((parseInt(e.target.value, 10) || 0).toString());
+    } else {
+      setValue(e.target.value);
+    }
   };
 
   const clear = () => {
