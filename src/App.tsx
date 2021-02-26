@@ -36,11 +36,16 @@ const App = () => {
     dispatch(UserThunk.getMe());
   }, [dispatch]);
 
+  /* methods */
+  const handleLogout = () => {
+    dispatch(UserThunk.logout());
+  };
+
   return (
     <div className="app">
       {isFetched ? (
         <Router>
-          {userData.login && <Navbar userData={userData} />}
+          {userData.login && <Navbar userData={userData} onLogout={handleLogout} />}
           <Route path="/" exact>
             <Redirect to={routes.me.root} />
           </Route>

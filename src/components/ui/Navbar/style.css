@@ -5,7 +5,10 @@
     left: 0;
     top: 0;
     right: 0;
-    padding: 12px 0 0 50px;
+    padding: 12px 20px 0 50px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 }
 
 .navbar__navlink {
@@ -16,4 +19,12 @@
 
 .navbar__navlink.active {
     color: white;
+}
+
+.navbar__logout {
+    color: var(--light-2);
+}
+
+.navbar__logout:hover {
+    text-decoration: underline;
 }
