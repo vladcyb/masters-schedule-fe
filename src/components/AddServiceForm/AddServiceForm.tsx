@@ -46,7 +46,7 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setters.setIsSubmitted(true);
-    if (!isValid) {
+    if (!isValid || isLoading) {
       return;
     }
     const result = await dispatch(ServiceThunk.create(form));
@@ -54,6 +54,7 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
       close();
     }
   };
+  console.log(isLoading);
 
   /* effects */
   useEffect(() => {

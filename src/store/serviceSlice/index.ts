@@ -29,6 +29,15 @@ export const serviceSlice = createSlice({
       })
       .addCase(ServiceThunk.update.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(ServiceThunk.create.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(ServiceThunk.create.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(ServiceThunk.create.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
