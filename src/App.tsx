@@ -10,8 +10,8 @@ import {
   Me,
   OrdersPage,
   RegisterPage,
-  SpecializationsPage,
   ServicesPage,
+  SpecializationsPage,
 } from './pages';
 import { useAppDispatch } from './store';
 import { routes } from './shared/routes';
@@ -68,7 +68,7 @@ const App = () => {
           <PrivateRoute
             path={routes.orders.root}
             exact
-            condition={!!userData.login}
+            condition={!!userData.login && userData.role === UserRole.CLIENT}
             redirectPath={routes.login.root}
           >
             <OrdersPage orders={orders} />

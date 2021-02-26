@@ -14,7 +14,9 @@ export const Navbar = ({ userData, onLogout }: PropsType) => (
   <div className="navbar">
     <div>
       <NavLink className="navbar__navlink" to={routes.me.root}>Me</NavLink>
-      <NavLink className="navbar__navlink" to={routes.orders.root}>My orders</NavLink>
+      {userData.role === UserRole.CLIENT && (
+        <NavLink className="navbar__navlink" to={routes.orders.root}>My orders</NavLink>
+      )}
       {userData.role === UserRole.ADMIN && (
         <>
           <NavLink className="navbar__navlink" to={routes.locations.root}>
