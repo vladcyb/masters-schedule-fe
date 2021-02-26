@@ -41,7 +41,7 @@ export const ServicesPage = () => {
         <>
           <Spinner visible={services.loading} />
           {services.data.map((item) => (
-            <Service className="servicesPage__item" data={(item)} />
+            <Service className="servicesPage__item" data={(item)} key={item.id} />
           ))}
           <Button className="servicesPage__add" onClick={handleAddClick}>
             Add
