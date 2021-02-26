@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import LocationThunk from '../../store/locationSlice/thunk';
 import {
-  Button, Field, Form, Select,
+  Button, Field, Form, Select, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { ILocationCreate } from '../../API/interfaces';
@@ -109,6 +109,7 @@ export const AddLocationForm = ({
       <Button className="addLocationForm__cancel" variant="outline" onClick={close}>
         Cancel
       </Button>
+      <Spinner className="addLocationForm__spinner" visible={isLoading} />
     </Form>
   );
 };

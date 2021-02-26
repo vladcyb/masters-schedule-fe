@@ -41,6 +41,15 @@ export const locationSlice = createSlice({
       .addCase(LocationThunk.update.rejected, (state) => {
         state.loading = false;
         state.error = true;
+      })
+      .addCase(LocationThunk.create.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(LocationThunk.create.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(LocationThunk.create.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
