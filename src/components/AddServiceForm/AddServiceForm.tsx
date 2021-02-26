@@ -9,8 +9,8 @@ import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { useAppDispatch } from '../../store';
 import { validateAddService } from './validateAddService';
 import { IServiceCreate } from '../../API/interfaces';
-import './style.css';
 import { ServiceThunk } from '../../store/serviceSlice/thunk';
+import './style.css';
 
 type PropsType = {
   className?: string
@@ -23,11 +23,10 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
   const specializations = useSelector(getSpecializations);
   const dispatch = useAppDispatch();
 
-  const isLoading = specializations.loading;
-
   /* state */
   const [specializationId, setSpecializationId] = useState<number | undefined>(undefined);
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   /* fields */
   const title = useField('title', getters, setters);
@@ -49,10 +48,12 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
+    setIsLoading(true);
     const result = await dispatch(ServiceThunk.create(form));
     if (result.meta.requestStatus === 'fulfilled') {
       close();
     }
+    setIsLoading(false);
   };
   console.log(isLoading);
 
