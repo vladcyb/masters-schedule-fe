@@ -44,6 +44,7 @@ export const LocationsPage = () => {
           className="locationsPage__addForm"
           close={cancelAdding}
           locations={locations}
+          isLoading={locations.loading}
         />
       ) : (
         <>

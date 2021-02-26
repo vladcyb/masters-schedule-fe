@@ -35,7 +35,11 @@ export const ServicesPage = () => {
       {isAdding ? (
         <>
           <div className="center title">Add service</div>
-          <AddServiceForm className="servicesPage__form" close={closeAddingForm} />
+          <AddServiceForm
+            className="servicesPage__form"
+            close={closeAddingForm}
+            isLoading={services.loading}
+          />
         </>
       ) : (
         <>

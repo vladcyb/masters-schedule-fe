@@ -15,9 +15,10 @@ import './style.css';
 type PropsType = {
   className?: string
   close: () => void
+  isLoading: boolean
 };
 
-export const AddServiceForm = ({ className, close }: PropsType) => {
+export const AddServiceForm = ({ className, close, isLoading }: PropsType) => {
   /* hooks */
   const [getters, setters] = useSetters();
   const specializations = useSelector(getSpecializations);
@@ -26,7 +27,6 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
   /* state */
   const [specializationId, setSpecializationId] = useState<number | undefined>(undefined);
   const [isValid, setIsValid] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   /* fields */
   const title = useField('title', getters, setters);
@@ -48,14 +48,11 @@ export const AddServiceForm = ({ className, close }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    setIsLoading(true);
     const result = await dispatch(ServiceThunk.create(form));
     if (result.meta.requestStatus === 'fulfilled') {
       close();
     }
-    setIsLoading(false);
   };
-  console.log(isLoading);
 
   /* effects */
   useEffect(() => {
