@@ -1,7 +1,8 @@
 import * as axios from 'axios';
+import { backendURL } from '../config.json';
 
 const instance = axios.default.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: backendURL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
