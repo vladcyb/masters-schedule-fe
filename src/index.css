@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-button, select {
+button, select, input[type="file"] {
   cursor: pointer;
 }
 

@@ -4,9 +4,8 @@ import {
   Button, Field, Form, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
-import { validateAddSpecialization } from './validateAddSpecialization';
-import { ISpecializationCreate } from '../../API/interfaces';
 import { useAppDispatch } from '../../store';
+import { validateAddSpecialization } from './validateAddSpecialization';
 import './style.css';
 
 type PropsType = {
@@ -26,16 +25,14 @@ export const AddSpecializationForm = ({
 
   /* fields */
   const title = useField('title', getters, setters);
-  const icon = useField('icon', getters, setters);
+  const [icon, setIcon] = useState<any>(null);
 
   /* state */
   const [isValid, setIsValid] = useState(false);
 
-  /* vars */
-  const form: ISpecializationCreate = {
-    title: title.props.value,
-    icon: icon.props.value,
-  };
+  const formData = new FormData();
+  formData.append('title', title.props.value);
+  formData.append('icon', icon);
 
   /* methods */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,7 +41,7 @@ export const AddSpecializationForm = ({
     if (!isValid) {
       return;
     }
-    const result = await dispatch(SpecializationsThunk.create(form));
+    const result = await dispatch(SpecializationsThunk.create(formData));
     if (result.meta.requestStatus === 'rejected') {
       const error = result.payload;
       if (typeof error === 'string') {
@@ -57,16 +54,34 @@ export const AddSpecializationForm = ({
     }
   };
 
+  const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target;
+    if (files) {
+      setIcon(files[0]);
+    }
+  };
+
   /* effects */
   useEffect(() => {
-    setIsValid(validateAddSpecialization(form, setters));
+    console.log('validation...');
+    setIsValid(validateAddSpecialization({
+      title: title.props.value,
+      icon,
+    }, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form.title, form.icon]);
+  }, [title.props.value, icon]);
 
   return (
     <Form className={`addSpecializationForm ${className || ''}`} onSubmit={handleSubmit}>
       <Field label="Title:" {...title.props} />
-      <Field label="Icon:" {...icon.props} />
+      <input
+        className="addSpecializationForm__img"
+        type="file"
+        onChange={handleImgChange}
+      />
+      <div className="addSpecializationForm__error">
+        {getters.isSubmitted && getters.errors.icon}
+      </div>
       <Button
         className="addSpecializationForm__add"
         type="submit"

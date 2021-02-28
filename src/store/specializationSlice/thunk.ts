@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../API';
 import actions from './actions';
-import { ISpecializationCreate } from '../../API/interfaces';
 
 const SpecializationsThunk = {
   update: createAsyncThunk(
@@ -19,7 +18,7 @@ const SpecializationsThunk = {
   ),
   create: createAsyncThunk(
     'specializations/create',
-    async (props: ISpecializationCreate, { dispatch, rejectWithValue }) => {
+    async (props: FormData, { dispatch, rejectWithValue }) => {
       const { data: { ok, error, result } } = await API.Specialization.create(props);
       if (!ok) {
         return rejectWithValue(error);

@@ -1,10 +1,12 @@
 import { ISpecializationCreate } from '../../API/interfaces';
 import { Setters } from '../../shared/hooks/useSetters/types';
 
-export const validateAddSpecialization = (
-  form: ISpecializationCreate,
-  setters: Setters,
-): boolean => {
+type FormType = {
+  title: string
+  icon: any
+};
+
+export const validateAddSpecialization = (form: FormType, setters: Setters): boolean => {
   const errors: Partial<ISpecializationCreate> = {};
   if (!form.title) {
     errors.title = 'Enter title!';

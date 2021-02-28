@@ -7,7 +7,6 @@ import {
   IOrderSetStatus,
   IRegisterForm,
   IServiceCreate,
-  ISpecializationCreate,
 } from './interfaces';
 import instance from './axios';
 
@@ -49,8 +48,13 @@ const API = {
     ),
   },
   Specialization: {
-    create: (props: ISpecializationCreate) => (
-      Responses(instance.post('/specialization', props, { withCredentials: true }))
+    create: (props: FormData) => (
+      Responses(instance.post('/specialization', props, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }))
     ),
     get: () => (
       Responses(instance.get('/specialization'))
