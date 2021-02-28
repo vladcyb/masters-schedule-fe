@@ -63,7 +63,6 @@ export const AddSpecializationForm = ({
 
   /* effects */
   useEffect(() => {
-    console.log('validation...');
     setIsValid(validateAddSpecialization({
       title: title.props.value,
       icon,

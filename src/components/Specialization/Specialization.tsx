@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '../ui';
 import { SpecializationType } from '../../shared/types';
+import { backendURL } from '../../config.json';
 import './style.css';
 
 type PropsType = {
@@ -13,7 +14,7 @@ export const Specialization = ({
   specialization,
 }: PropsType) => (
   <Card className={`specialization ${className || ''}`}>
-    <img className="specialization__icon" src={specialization.icon} alt="" />
+    <img className="specialization__icon" src={`${backendURL}/${specialization.icon}`} alt="" />
     <div>
       {specialization.title}
     </div>
