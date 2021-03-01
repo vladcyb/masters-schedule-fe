@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
 import {
-  Button, Field, Form, Select, Spinner,
+  Button, Field, Form, Select, Spinner, MultiSelect,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLocations } from '../../store/locationSlice/selectors';
 import { useAppDispatch } from '../../store';
-import { MultiSelect } from '../ui/MultiSelect';
 import { getServices } from '../../store/serviceSlice/selectors';
 import { thunks } from '../../store/thunks';
 import { MultiSelectOptionType } from '../ui/MultiSelect/types';
