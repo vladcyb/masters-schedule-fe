@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import { SelectOptionType } from './types';
-import { SelectItem } from './__item/SelectItem';
+import { SelectItem } from './SelectItem';
 import './style.css';
 
 type PropsType = {
