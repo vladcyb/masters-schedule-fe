@@ -5,6 +5,7 @@ import {
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { useAppDispatch } from '../../store';
+import { UploadPhoto } from '../ui/UploadPhoto';
 import { validateAddSpecialization } from './validateAddSpecialization';
 import './style.css';
 
@@ -54,13 +55,6 @@ export const AddSpecializationForm = ({
     }
   };
 
-  const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
-    if (files) {
-      setIcon(files[0]);
-    }
-  };
-
   /* effects */
   useEffect(() => {
     setIsValid(validateAddSpecialization({
@@ -73,14 +67,14 @@ export const AddSpecializationForm = ({
   return (
     <Form className={`addSpecializationForm ${className || ''}`} onSubmit={handleSubmit}>
       <Field label="Title:" {...title.props} />
-      <input
-        className="addSpecializationForm__img"
-        type="file"
-        onChange={handleImgChange}
+      <UploadPhoto
+        className="addSpecializationForm__upload"
+        photo={icon}
+        setPhoto={setIcon}
+        label="Upload icon:"
+        name="icon"
+        error={getters.isSubmitted && getters.errors.icon}
       />
-      <div className="addSpecializationForm__error">
-        {getters.isSubmitted && getters.errors.icon}
-      </div>
       <Button
         className="addSpecializationForm__add"
         type="submit"

@@ -14,10 +14,3 @@
 .addSpecializationForm__spinner {
     margin: 10px auto 0 auto;
 }
-
-.addSpecializationForm__error {
-    font-family: Roboto, serif;
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-}

@@ -1,0 +1,49 @@
+.uploadPhoto {
+    height: 170px;
+}
+
+.uploadPhoto input[type="file"] {
+    opacity: 0.0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.uploadPhoto__box {
+    border: 2px solid var(--secondary-1);
+    position: relative;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.uploadPhoto_drag .uploadPhoto__box {
+    border: 4px dashed var(--secondary-1);
+}
+
+.uploadPhoto__label {
+    font-family: Roboto, serif;
+    font-size: 14px;
+    line-height: 100%;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.uploadPhoto__error {
+    font-family: Roboto, serif;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.uploadPhoto__preview {
+    position: absolute;
+    max-width: 100%;
+    height: 100%;
+    z-index: 1;
+    /*border-radius: 8px;*/
+}
