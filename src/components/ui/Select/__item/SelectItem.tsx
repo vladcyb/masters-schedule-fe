@@ -35,9 +35,7 @@ export const SelectItem = ({
       <div>
         {title}
       </div>
-      <div>
-        {icon && <img className="select__img" src={icon} alt="" />}
-      </div>
+      <img className="select__icon" src={icon} alt="" />
     </div>
   );
 };
