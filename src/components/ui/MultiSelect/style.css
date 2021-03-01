@@ -35,6 +35,7 @@
 
 .multiSelect__items {
     width: 100%;
+    background-color: white;
     position: absolute;
     border: 1px solid gray;
     margin-top: 4px;
