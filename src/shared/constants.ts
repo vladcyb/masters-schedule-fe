@@ -8,3 +8,11 @@ export const ROLES: SelectOptionType[] = [
   { value: UserRole.OPERATOR, title: 'Operator' },
   { value: UserRole.RESPONSIBLE, title: 'Responsible' },
 ];
+
+export const allowedImageFormats = [
+  'image/svg',
+  'image/gif',
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
+];

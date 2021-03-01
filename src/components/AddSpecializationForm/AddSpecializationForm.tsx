@@ -73,8 +73,9 @@ export const AddSpecializationForm = ({
         setPhoto={setIcon}
         label="Upload icon:"
         name="icon"
-        setters={setters}
-        error={getters.isSubmitted && getters.errors.icon}
+        error={getters.errors.icon}
+        accept=".png,.jpg,.jpeg,.svg,.gif"
+        isFormSubmitted={getters.isSubmitted}
       />
       <Button
         className="addSpecializationForm__add"

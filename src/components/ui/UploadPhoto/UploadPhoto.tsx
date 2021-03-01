@@ -1,7 +1,6 @@
 import React, {
   Dispatch, SetStateAction, useEffect, useState,
 } from 'react';
-import { Setters } from '../../../shared/hooks/useSetters/types';
 import './style.css';
 
 type PropsType = {
@@ -11,8 +10,8 @@ type PropsType = {
   photo: any
   setPhoto: Dispatch<SetStateAction<any>>
   error?: string
-  allowedFormats?: string[]
-  setters: Setters
+  accept: string
+  isFormSubmitted: boolean
 };
 
 export const UploadPhoto = ({
@@ -22,34 +21,22 @@ export const UploadPhoto = ({
   photo,
   setPhoto,
   error,
-  allowedFormats = [
-    'image/svg',
-    'image/gif',
-    'image/jpeg',
-    'image/jpg',
-    'image/png',
-  ],
-  setters,
+  accept,
+  isFormSubmitted,
 }: PropsType) => {
   /* state */
   const [preview, setPreview] = useState('');
   const [dragEnter, setDragEnter] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   /* methods */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
+    setShowError(true);
     if (!files) {
       return;
     }
     const image = files[0];
-    const { type } = image;
-    if (!allowedFormats?.includes(type)) {
-      setters.setErrors((errors: any) => ({
-        ...errors,
-        [name]: 'Format is not supported!',
-      }));
-      return;
-    }
     if (image) {
       setPhoto(image);
     }
@@ -78,6 +65,12 @@ export const UploadPhoto = ({
     reader.readAsDataURL(photo);
   }, [photo, setPhoto]);
 
+  useEffect(() => {
+    if (isFormSubmitted) {
+      setShowError(true);
+    }
+  }, [isFormSubmitted]);
+
   return (
     <div
       className={`uploadPhoto ${className || ''} ${dragEnter ? 'uploadPhoto_drag' : ''}`}
@@ -87,10 +80,16 @@ export const UploadPhoto = ({
     >
       <label className="uploadPhoto__label" htmlFor={name}>{label}</label>
       <div className="uploadPhoto__box">
-        <input className="uploadPhoto__input" type="file" name={name} onChange={handleChange} />
+        <input
+          className="uploadPhoto__input"
+          type="file"
+          name={name}
+          onChange={handleChange}
+          accept={accept}
+        />
         <img className="uploadPhoto__preview" src={preview} alt="" />
       </div>
-      <div className="uploadPhoto__error">{error}</div>
+      <div className="uploadPhoto__error">{showError && error}</div>
     </div>
   );
 };
