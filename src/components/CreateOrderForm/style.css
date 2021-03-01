@@ -19,3 +19,15 @@
 .createOrderForm__spinner {
     margin: 10px auto 0 auto;
 }
+
+.createOrderForm__address,
+.createOrderForm__services {
+    margin-top: 20px;
+}
+
+.createOrderForm__error {
+    font-family: Roboto, serif;
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

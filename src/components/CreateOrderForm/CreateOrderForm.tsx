@@ -11,6 +11,7 @@ import { getServices } from '../../store/serviceSlice/selectors';
 import { thunks } from '../../store/thunks';
 import { MultiSelectOptionType } from '../ui/MultiSelect/types';
 import { UploadPhoto } from '../ui/UploadPhoto';
+import { validateCreateOrder } from './validateCreateOrder';
 import './style.css';
 
 type PropsType = {
@@ -32,10 +33,15 @@ export const CreateOrderForm = ({
   const [selectedLocation, setSelectedLocation] = useState<number | undefined>(undefined);
   const [servicesOptions, setServicesOptions] = useState<MultiSelectOptionType[]>([]);
   const [photo, setPhoto] = useState<any>(null);
+  const [isValid, setIsValid] = useState(false);
 
   /* methods */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setters.setIsSubmitted(true);
+    if (!isValid) {
+      return;
+    }
     const serviceIds: number[] = [];
     servicesOptions.forEach((option) => {
       if (option.selected) {
@@ -67,6 +73,15 @@ export const CreateOrderForm = ({
     );
   }, [services.data]);
 
+  useEffect(() => {
+    setIsValid(validateCreateOrder({
+      description: description.props.value,
+      photo,
+      address: selectedLocation,
+    }, setters));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [description.props.value, photo?.type, selectedLocation]);
+
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
       <Field
@@ -85,6 +100,9 @@ export const CreateOrderForm = ({
         setSelected={setSelectedLocation}
         label="Select address:"
       />
+      <div className={cn('error')}>
+        {getters.isSubmitted && getters.errors.address}
+      </div>
       <Spinner className={cn('spinner')} visible={locations.loading} />
       <UploadPhoto
         name="photo"
@@ -93,12 +111,17 @@ export const CreateOrderForm = ({
         setPhoto={setPhoto}
         accept=".png,.jpg,.jpeg,.svg,.gif"
         isFormSubmitted={getters.isSubmitted}
+        error={getters.errors.photo}
       />
       <MultiSelect
+        className={cn('services')}
         options={servicesOptions}
         setOptions={setServicesOptions}
         label="Services:"
       />
+      <div className={cn('error')}>
+        {getters.isSubmitted && getters.errors.service}
+      </div>
       <Button
         className={cn('create')}
         type="submit"
