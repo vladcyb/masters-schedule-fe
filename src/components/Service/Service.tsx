@@ -1,6 +1,7 @@
 import React from 'react';
 import { ServiceType } from '../../shared/types';
 import { Card } from '../ui';
+import { backendURL } from '../../config.json';
 import './style.css';
 
 type PropsType = {
@@ -15,7 +16,7 @@ export const Service = ({
   className,
 }: PropsType) => (
   <Card className={`service ${className || ''}`}>
-    <img className="service__img" src={specialization.icon} alt="" />
+    <img className="service__img" src={`${backendURL}/${specialization.icon}`} alt="" />
     <div>
       <div className="service__row">
         <span className="service__rowTitle">Title: </span>

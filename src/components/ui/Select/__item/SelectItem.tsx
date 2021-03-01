@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { createCn } from 'bem-react-classname';
 import { SelectOptionType } from '../types';
+import { backendURL } from '../../../../config.json';
 import './style.css';
 
 type PropsType = {
@@ -35,7 +36,9 @@ export const SelectItem = ({
       <div>
         {title}
       </div>
-      <img className="select__icon" src={icon} alt="" />
+      <div>
+        {icon && <img className="select__icon" src={`${backendURL}/${icon}`} alt="" />}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 export type SelectOptionType = {
-  value: any
+  value: number | string
   title: string
   icon?: string
 };

@@ -10,7 +10,6 @@ import { useAppDispatch } from '../../store';
 import { validateAddService } from './validateAddService';
 import { IServiceCreate } from '../../API/interfaces';
 import { ServiceThunk } from '../../store/serviceSlice/thunk';
-import { backendURL } from '../../config.json';
 import './style.css';
 
 type PropsType = {
@@ -69,13 +68,13 @@ export const AddServiceForm = ({ className, close, isLoading }: PropsType) => {
     <Form className={`addServiceForm ${className || ''}`} onSubmit={handleSubmit}>
       <Field label="Title:" {...title.props} />
       <Field label="Price:" {...price.props} />
-      <Field label="Duration (hours):" {...duration.props} />
+      <Field label="Duration (hours):" {...duration.props} maxLength={8} />
       <Select
         className="addServiceForm__specializations"
         options={specializations.data.map((item) => ({
           title: item.title,
           value: item.id,
-          icon: `${backendURL}/${item.icon}`,
+          icon: item.icon,
         }))}
         selected={specializationId}
         setSelected={setSpecializationId}
