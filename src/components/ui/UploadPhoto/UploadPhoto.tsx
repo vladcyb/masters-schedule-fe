@@ -1,6 +1,7 @@
 import React, {
   Dispatch, SetStateAction, useEffect, useState,
 } from 'react';
+import { Setters } from '../../../shared/hooks/useSetters/types';
 import './style.css';
 
 type PropsType = {
@@ -10,6 +11,8 @@ type PropsType = {
   photo: any
   setPhoto: Dispatch<SetStateAction<any>>
   error?: string
+  allowedFormats?: string[]
+  setters: Setters
 };
 
 export const UploadPhoto = ({
@@ -19,6 +22,14 @@ export const UploadPhoto = ({
   photo,
   setPhoto,
   error,
+  allowedFormats = [
+    'image/svg',
+    'image/gif',
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+  ],
+  setters,
 }: PropsType) => {
   /* state */
   const [preview, setPreview] = useState('');
@@ -27,8 +38,20 @@ export const UploadPhoto = ({
   /* methods */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
-    if (files && files[0]) {
-      setPhoto(files[0]);
+    if (!files) {
+      return;
+    }
+    const image = files[0];
+    const { type } = image;
+    if (!allowedFormats?.includes(type)) {
+      setters.setErrors((errors: any) => ({
+        ...errors,
+        [name]: 'Format is not supported!',
+      }));
+      return;
+    }
+    if (image) {
+      setPhoto(image);
     }
   };
 
