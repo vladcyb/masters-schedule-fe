@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import SpecializationsThunk from '../../store/specializationSlice/thunk';
+import { thunks } from '../../store/thunks';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { useAppDispatch } from '../../store';
 import { Button, Container } from '../../components/ui';
@@ -20,7 +20,7 @@ export const SpecializationsPage = () => {
 
   /* effects */
   useEffect(() => {
-    dispatch(SpecializationsThunk.update());
+    dispatch(thunks.specialization.update());
   }, [dispatch]);
 
   /* methods */

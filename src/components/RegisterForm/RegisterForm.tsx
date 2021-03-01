@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { createCn } from 'bem-react-classname';
-import UserThunk from '../../store/userSlice/thunk';
-import SpecializationsThunk from '../../store/specializationSlice/thunk';
-import LocationThunk from '../../store/locationSlice/thunk';
+import { thunks } from '../../store/thunks';
 import {
   Button, Field, Form, Select, Spinner,
 } from '../ui';
@@ -81,8 +79,8 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
     const loadData = async () => {
       setIsMasterOptionsLoading(true);
       await Promise.all([
-        dispatch(SpecializationsThunk.update()),
-        dispatch(LocationThunk.update()),
+        dispatch(thunks.specialization.update()),
+        dispatch(thunks.location.update()),
       ]);
       setIsMasterOptionsLoading(false);
     };
@@ -99,7 +97,7 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    dispatch(UserThunk.register({ ...form, setters }));
+    dispatch(thunks.user.register({ ...form, setters }));
   };
 
   return (

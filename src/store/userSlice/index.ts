@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateType, UserDataStateType } from './types';
-import UserThunk from './thunk';
+import { UserThunk } from './thunk';
 import { initialUserData } from './constants';
 import { OrderType } from '../../shared/types';
 

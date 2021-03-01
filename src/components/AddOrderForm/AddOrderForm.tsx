@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
-import LocationThunk from '../../store/locationSlice/thunk';
 import {
   Button, Field, Form, Select, Spinner,
 } from '../ui';
@@ -10,7 +9,7 @@ import { getLocations } from '../../store/locationSlice/selectors';
 import { useAppDispatch } from '../../store';
 import { MultiSelect } from '../ui/MultiSelect';
 import { getServices } from '../../store/serviceSlice/selectors';
-import { ServiceThunk } from '../../store/serviceSlice/thunk';
+import { thunks } from '../../store/thunks';
 import { MultiSelectOptionType } from '../ui/MultiSelect/types';
 import { UploadPhoto } from '../ui/UploadPhoto';
 import './style.css';
@@ -55,8 +54,8 @@ export const AddOrderForm = ({
 
   /* effects */
   useEffect(() => {
-    dispatch(LocationThunk.update());
-    dispatch(ServiceThunk.update());
+    dispatch(thunks.location.update());
+    dispatch(thunks.service.update());
   }, [dispatch]);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import LocationThunk from './thunk';
+import { LocationThunk } from './thunk';
 import { LocationTypeType, StateType } from './types';
 import { LocationType } from '../../shared/types';
 

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../API';
 import actions from './actions';
 
-const SpecializationsThunk = {
+export const SpecializationsThunk = {
   update: createAsyncThunk(
     'specializations/update',
     async (arg, { dispatch, rejectWithValue }) => {
@@ -28,5 +28,3 @@ const SpecializationsThunk = {
     },
   ),
 };
-
-export default SpecializationsThunk;

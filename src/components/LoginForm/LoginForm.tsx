@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createCn } from 'bem-react-classname';
-import UserThunk from '../../store/userSlice/thunk';
+import { thunks } from '../../store/thunks';
 import { useField, useSetters } from '../../shared/hooks';
 import {
   Spinner, Button, Field, Form,
@@ -48,7 +48,7 @@ export const LoginForm = ({ className, isLoading }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    dispatch(UserThunk.login({ ...form, setters }));
+    dispatch(thunks.user.login({ ...form, setters }));
   };
 
   return (

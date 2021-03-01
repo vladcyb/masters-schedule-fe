@@ -3,7 +3,7 @@ import actions from './actions';
 import API from '../../API';
 import { ILocationCreate } from '../../API/interfaces';
 
-const LocationThunk = {
+export const LocationThunk = {
   update: createAsyncThunk(
     'locations/update',
     async (arg, { dispatch, rejectWithValue }): Promise<any> => {
@@ -49,5 +49,3 @@ const LocationThunk = {
     },
   ),
 };
-
-export default LocationThunk;

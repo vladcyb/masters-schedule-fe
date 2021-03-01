@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import UserThunk from './store/userSlice/thunk';
+import { thunks } from './store/thunks';
 import { getUser } from './store/userSlice/selectors';
 import { PrivateRoute } from './HOCs';
 import {
@@ -33,12 +33,12 @@ const App = () => {
 
   /* effects */
   useEffect(() => {
-    dispatch(UserThunk.getMe());
+    dispatch(thunks.user.getMe());
   }, [dispatch]);
 
   /* methods */
   const handleLogout = () => {
-    dispatch(UserThunk.logout());
+    dispatch(thunks.user.logout());
   };
 
   return (

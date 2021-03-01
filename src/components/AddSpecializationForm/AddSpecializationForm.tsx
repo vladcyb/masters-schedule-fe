@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SpecializationsThunk from '../../store/specializationSlice/thunk';
+import { thunks } from '../../store/thunks';
 import {
   Button, Field, Form, Spinner,
 } from '../ui';
@@ -42,7 +42,7 @@ export const AddSpecializationForm = ({
     if (!isValid) {
       return;
     }
-    const result = await dispatch(SpecializationsThunk.create(formData));
+    const result = await dispatch(thunks.specialization.create(formData));
     if (result.meta.requestStatus === 'rejected') {
       const error = result.payload;
       if (typeof error === 'string') {

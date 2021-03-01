@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import LocationThunk from '../../store/locationSlice/thunk';
+import { thunks } from '../../store/thunks';
 import { getLocations } from '../../store/locationSlice/selectors';
 import { Button, Spinner, Container } from '../../components/ui';
 import { useAppDispatch } from '../../store';
@@ -17,7 +17,7 @@ export const LocationsPage = () => {
 
   /* effects */
   useEffect(() => {
-    dispatch(LocationThunk.update());
+    dispatch(thunks.location.update());
   }, [dispatch]);
 
   /* methods */
@@ -30,7 +30,7 @@ export const LocationsPage = () => {
   };
 
   const handleDeleteLocation = async (id: number) => {
-    const result = await dispatch(LocationThunk.delete(id));
+    const result = await dispatch(thunks.location.delete(id));
     if (result.meta.requestStatus === 'rejected') {
       alert(result.payload);
     }

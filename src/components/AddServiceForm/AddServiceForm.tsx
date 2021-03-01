@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import SpecializationsThunk from '../../store/specializationSlice/thunk';
+import { thunks } from '../../store/thunks';
 import {
   Button, Field, Form, Select, Spinner,
 } from '../ui';
@@ -9,7 +9,6 @@ import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { useAppDispatch } from '../../store';
 import { validateAddService } from './validateAddService';
 import { IServiceCreate } from '../../API/interfaces';
-import { ServiceThunk } from '../../store/serviceSlice/thunk';
 import './style.css';
 
 type PropsType = {
@@ -48,7 +47,7 @@ export const AddServiceForm = ({ className, close, isLoading }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    const result = await dispatch(ServiceThunk.create(form));
+    const result = await dispatch(thunks.service.create(form));
     if (result.meta.requestStatus === 'fulfilled') {
       close();
     }
@@ -56,7 +55,7 @@ export const AddServiceForm = ({ className, close, isLoading }: PropsType) => {
 
   /* effects */
   useEffect(() => {
-    dispatch(SpecializationsThunk.update());
+    dispatch(thunks.specialization.update());
   }, [dispatch]);
 
   useEffect(() => {

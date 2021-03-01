@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Container, Spinner } from '../../components/ui';
 import { AddServiceForm, Service } from '../../components';
-import { ServiceThunk } from '../../store/serviceSlice/thunk';
+import { thunks } from '../../store/thunks';
 import { useAppDispatch } from '../../store';
 import { getServices } from '../../store/serviceSlice/selectors';
 import './style.css';
@@ -26,7 +26,7 @@ export const ServicesPage = () => {
 
   /* effects */
   useEffect(() => {
-    dispatch(ServiceThunk.update());
+    dispatch(thunks.service.update());
   }, [dispatch]);
 
   return (

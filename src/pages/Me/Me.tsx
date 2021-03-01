@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserThunk from '../../store/userSlice/thunk';
+import { thunks } from '../../store/thunks';
 import { ROLES } from '../../shared/constants';
 import { useAppDispatch } from '../../store';
 import { Button, Spinner } from '../../components/ui';
@@ -31,7 +31,7 @@ export const Me = ({ userData }: PropsType) => {
   /* methods */
   const handleLogout = async () => {
     setIsLoggingOut(true);
-    await dispatch(UserThunk.logout());
+    await dispatch(thunks.user.logout());
     setIsLoggingOut(false);
   };
 

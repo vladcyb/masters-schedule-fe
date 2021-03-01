@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import UserThunk from '../../store/userSlice/thunk';
+import { thunks } from '../../store/thunks';
 import { useAppDispatch } from '../../store';
 import { Button, Container } from '../../components/ui';
 import { Orders, AddOrderForm } from '../../components';
@@ -28,7 +28,7 @@ export const OrdersPage = ({ orders }: PropsType) => {
 
   /* effects */
   useEffect(() => {
-    dispatch(UserThunk.getOrders());
+    dispatch(thunks.user.getOrders());
   }, [dispatch]);
 
   return (

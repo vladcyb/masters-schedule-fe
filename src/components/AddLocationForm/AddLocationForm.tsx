@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createCn } from 'bem-react-classname';
-import LocationThunk from '../../store/locationSlice/thunk';
+import { thunks } from '../../store/thunks';
 import {
   Button, Field, Form, Select, Spinner,
 } from '../ui';
@@ -69,7 +69,7 @@ export const AddLocationForm = ({
     if (typeof parentId === 'number') {
       form.parentId = parentId;
     }
-    const result = await dispatch(LocationThunk.create(form));
+    const result = await dispatch(thunks.location.create(form));
     if (result.meta.requestStatus !== 'rejected') {
       close();
     }
@@ -77,7 +77,7 @@ export const AddLocationForm = ({
 
   /* effects */
   useEffect(() => {
-    dispatch(LocationThunk.getTypes());
+    dispatch(thunks.location.getTypes());
   }, [dispatch]);
 
   useEffect(() => {

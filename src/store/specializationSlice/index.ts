@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import SpecializationsThunk from './thunk';
+import { SpecializationsThunk } from './thunk';
 import { StateType } from './types';
 import { SpecializationType } from '../../shared/types';
 
