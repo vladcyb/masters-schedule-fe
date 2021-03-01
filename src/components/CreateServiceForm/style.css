@@ -1,9 +1,9 @@
-.createServiceForm__add {
+.createServiceForm__create {
     margin-top: 20px;
 }
 
 .createServiceForm__cancel,
-.createServiceForm__add {
+.createServiceForm__create {
     width: 100%;
 }
 

@@ -37,7 +37,7 @@ export const SpecializationsPage = () => {
       {isAdding ? (
         <>
           <div className="specializationsPage__title title center">
-            Add specialization
+            Create specialization
           </div>
           <CreateSpecializationForm
             className="specializationsPage__form"
@@ -56,8 +56,8 @@ export const SpecializationsPage = () => {
               />
             ))}
           </div>
-          <Button className="specializationsPage__add" onClick={handleAddClick}>
-            Add
+          <Button className="specializationsPage__create" onClick={handleAddClick}>
+            Create
           </Button>
         </>
       )}

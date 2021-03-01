@@ -34,16 +34,16 @@ export const OrdersPage = ({ orders }: PropsType) => {
   return (
     <Container className="ordersPage">
       {isAdding ? (
-        <CreateOrderForm className="ordersPage__add" onCancel={cancelAdding} />
+        <CreateOrderForm className="ordersPage__createForm" onCancel={cancelAdding} />
       ) : (
         <>
           <Orders orders={orders} />
           <Button
-            className="ordersPage__addButton"
+            className="ordersPage__createButton"
             onClick={handleAddClick}
             type="submit"
           >
-            Add
+            Create
           </Button>
         </>
       )}

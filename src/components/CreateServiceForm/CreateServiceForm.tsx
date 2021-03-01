@@ -82,7 +82,7 @@ export const CreateServiceForm = ({ className, close, isLoading }: PropsType) =>
       <div className="createServiceForm__specializationsError">
         {getters.isSubmitted && getters.errors.specialization}
       </div>
-      <Button className="createServiceForm__add" type="submit">
+      <Button className="createServiceForm__create" type="submit">
         Create
       </Button>
       <Button className="createServiceForm__cancel" variant="outline" onClick={close}>

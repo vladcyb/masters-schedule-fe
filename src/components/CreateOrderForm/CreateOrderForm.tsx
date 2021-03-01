@@ -99,7 +99,12 @@ export const CreateOrderForm = ({
         setOptions={setServicesOptions}
         label="Services:"
       />
-      <Button className={cn('submit')} type="submit">Add</Button>
+      <Button
+        className={cn('create')}
+        type="submit"
+      >
+        Create
+      </Button>
       <Button
         className={cn('cancel')}
         onClick={onCancel}

@@ -40,7 +40,7 @@ export const LocationsPage = () => {
     <Container className="locationsPage">
       {isAdding ? (
         <CreateLocationForm
-          className="locationsPage__addForm"
+          className="locationsPage__createForm"
           close={cancelAdding}
           locations={locations}
           isLoading={locations.loading}
@@ -58,8 +58,8 @@ export const LocationsPage = () => {
               <i>(empty)</i>
             </div>
           )}
-          <Button className="locationsPage__addButton" onClick={handleAddClick}>
-            Add
+          <Button className="locationsPage__createButton" onClick={handleAddClick}>
+            Create
           </Button>
         </>
       )}

@@ -105,7 +105,9 @@ export const CreateLocationForm = ({
         setSelected={setParentId}
         label="Parent:"
       />
-      <Button className="createLocationForm__add" type="submit">Add</Button>
+      <Button className="createLocationForm__create" type="submit">
+        Create
+      </Button>
       <Button className="createLocationForm__cancel" variant="outline" onClick={close}>
         Cancel
       </Button>

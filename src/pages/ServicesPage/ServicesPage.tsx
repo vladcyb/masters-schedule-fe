@@ -46,8 +46,8 @@ export const ServicesPage = () => {
           {services.data.map((item) => (
             <Service className="servicesPage__item" data={(item)} key={item.id} />
           ))}
-          <Button className="servicesPage__add" onClick={handleAddClick}>
-            Add
+          <Button className="servicesPage__create" onClick={handleAddClick}>
+            Create
           </Button>
         </>
       )}

@@ -2,7 +2,7 @@
     width: 500px;
 }
 
-.createLocationForm__add,
+.createLocationForm__create,
 .createLocationForm__cancel {
     width: 100%;
 }
@@ -15,7 +15,7 @@
     margin-top: 25px;
 }
 
-.createLocationForm__add {
+.createLocationForm__create {
     margin-top: 30px;
 }
 
