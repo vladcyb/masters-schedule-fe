@@ -58,7 +58,7 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
     locationId,
     specializationId,
   };
-  console.log('render');
+
   /* effects */
   useEffect(() => {
     setIsValid(validateRegistration(form, setters));
