@@ -5,7 +5,7 @@
 }
 
 .location__hint {
-    color: var(--hint);
+    color: var(--gray);
 }
 
 .location__delete {
