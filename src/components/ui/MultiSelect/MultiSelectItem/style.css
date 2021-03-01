@@ -13,9 +13,9 @@
 }
 
 .multiSelect__itemCheckmark {
-    content:url("data:image/svg+xml,%3Csvg width='18' height='20' viewBox='0 0 18 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.5' y='3.5' width='15' height='15' rx='3.5' fill='white' stroke='%23727272'/%3E%3C/svg%3E%0A");
+    content:url("data:image/svg+xml,%3Csvg width='20' height='22' viewBox='0 0 20 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2.5' y='4.5' width='15' height='15' rx='3.5' fill='white' stroke='%23727272'/%3E%3C/svg%3E%0A");
 }
 
 .multiSelect__item_selected .multiSelect__itemCheckmark {
-    content:url("data:image/svg+xml,%3Csvg width='18' height='20' viewBox='0 0 18 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0)'%3E%3Crect x='1.5' y='3.5' width='15' height='15' rx='3.5' fill='white' stroke='%23727272'/%3E%3Cpath d='M2 9.5C8.5 18 7.5 17 12.5 9C17.5 1 17 1.5 17.5 1' stroke='%231C4B79' stroke-width='3'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='18' height='20' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    content:url("data:image/svg+xml,%3Csvg width='20' height='22' viewBox='0 0 20 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2.5' y='4.5' width='15' height='15' rx='3.5' fill='white' stroke='%23727272'/%3E%3Cpath d='M3 10.5C9.5 19 8.5 18 13.5 10C18.5 2 18 2.5 18.5 2' stroke='%231C4B79' stroke-width='3'/%3E%3C/svg%3E%0A");
 }
