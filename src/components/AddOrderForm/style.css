@@ -8,6 +8,7 @@
 
 .addOrderForm__submit {
     width: 100%;
+    margin-top: 30px;
 }
 
 .addOrderForm__cancel {

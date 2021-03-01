@@ -1,0 +1,14 @@
+.multiSelect__item {
+    cursor: pointer;
+    padding: 5px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+}
+
+.multiSelect__item:hover,
+.multiSelect__item_selected {
+    background-color: var(--light);
+}

@@ -8,6 +8,10 @@ import {
 import { useField, useSetters } from '../../shared/hooks';
 import { getLocations } from '../../store/locationSlice/selectors';
 import { useAppDispatch } from '../../store';
+import { MultiSelect } from '../ui/MultiSelect';
+import { getServices } from '../../store/serviceSlice/selectors';
+import { ServiceThunk } from '../../store/serviceSlice/thunk';
+import { MultiSelectOptionType } from '../ui/MultiSelect/types';
 import './style.css';
 
 type PropsType = {
@@ -22,14 +26,23 @@ export const AddOrderForm = ({
   /* hooks */
   const [getters, setters] = useSetters();
   const locations = useSelector(getLocations);
+  const services = useSelector(getServices);
   const dispatch = useAppDispatch();
 
   /* state */
   const [selectedLocation, setSelectedLocation] = useState<number | undefined>(undefined);
+  const [servicesOptions, setServicesOptions] = useState<MultiSelectOptionType[]>([]);
 
   /* methods */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const serviceIds: number[] = [];
+    servicesOptions.forEach((option) => {
+      if (option.selected) {
+        serviceIds.push(option.value);
+      }
+    });
+    console.log(serviceIds.join(','));
   };
 
   /* fields */
@@ -42,7 +55,18 @@ export const AddOrderForm = ({
   /* effects */
   useEffect(() => {
     dispatch(LocationThunk.update());
+    dispatch(ServiceThunk.update());
   }, [dispatch]);
+
+  useEffect(() => {
+    setServicesOptions(
+      services.data.map((item) => ({
+        value: item.id,
+        title: item.title,
+        selected: false,
+      })),
+    );
+  }, [services.data]);
 
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
@@ -68,7 +92,11 @@ export const AddOrderForm = ({
         label="Photo:"
         {...photo.props}
       />
-      TODO: добавить список услуг
+      <MultiSelect
+        options={servicesOptions}
+        setOptions={setServicesOptions}
+        label="Services:"
+      />
       <Button className={cn('submit')} type="submit">Add</Button>
       <Button
         className={cn('cancel')}
