@@ -12,6 +12,7 @@ import { MultiSelect } from '../ui/MultiSelect';
 import { getServices } from '../../store/serviceSlice/selectors';
 import { ServiceThunk } from '../../store/serviceSlice/thunk';
 import { MultiSelectOptionType } from '../ui/MultiSelect/types';
+import { UploadPhoto } from '../ui/UploadPhoto';
 import './style.css';
 
 type PropsType = {
@@ -32,6 +33,7 @@ export const AddOrderForm = ({
   /* state */
   const [selectedLocation, setSelectedLocation] = useState<number | undefined>(undefined);
   const [servicesOptions, setServicesOptions] = useState<MultiSelectOptionType[]>([]);
+  const [photo, setPhoto] = useState<any>(null);
 
   /* methods */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,7 +49,6 @@ export const AddOrderForm = ({
 
   /* fields */
   const description = useField('description', getters, setters);
-  const photo = useField('photo', getters, setters);
 
   /* classes */
   const cn = createCn('addOrderForm', className);
@@ -87,10 +88,13 @@ export const AddOrderForm = ({
         label="Select address:"
       />
       <Spinner className={cn('spinner')} visible={locations.loading} />
-      <Field
-        className={cn('photo')}
+      <UploadPhoto
+        name="photo"
         label="Photo:"
-        {...photo.props}
+        photo={photo}
+        setPhoto={setPhoto}
+        accept=".png,.jpg,.jpeg,.svg,.gif"
+        isFormSubmitted={getters.isSubmitted}
       />
       <MultiSelect
         options={servicesOptions}
