@@ -5,7 +5,7 @@ import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { useAppDispatch } from '../../store';
 import { Button, Container } from '../../components/ui';
 import {
-  AddSpecializationForm,
+  CreateSpecializationForm,
   Specialization,
 } from '../../components';
 import './style.css';
@@ -39,7 +39,7 @@ export const SpecializationsPage = () => {
           <div className="specializationsPage__title title center">
             Add specialization
           </div>
-          <AddSpecializationForm
+          <CreateSpecializationForm
             className="specializationsPage__form"
             close={handleCancelAdd}
             isLoading={specializations.loading}

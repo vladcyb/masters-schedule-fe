@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Container, Spinner } from '../../components/ui';
-import { AddServiceForm, Service } from '../../components';
+import { CreateServiceForm, Service } from '../../components';
 import { thunks } from '../../store/thunks';
 import { useAppDispatch } from '../../store';
 import { getServices } from '../../store/serviceSlice/selectors';
@@ -34,7 +34,7 @@ export const ServicesPage = () => {
       {isAdding ? (
         <>
           <div className="center title">Add service</div>
-          <AddServiceForm
+          <CreateServiceForm
             className="servicesPage__form"
             close={closeAddingForm}
             isLoading={services.loading}

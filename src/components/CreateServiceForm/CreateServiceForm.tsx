@@ -7,7 +7,7 @@ import {
 import { useField, useSetters } from '../../shared/hooks';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { useAppDispatch } from '../../store';
-import { validateAddService } from './validateAddService';
+import { validateCreateService } from './validateCreateService';
 import { IServiceCreate } from '../../API/interfaces';
 import './style.css';
 
@@ -17,7 +17,7 @@ type PropsType = {
   isLoading: boolean
 };
 
-export const AddServiceForm = ({ className, close, isLoading }: PropsType) => {
+export const CreateServiceForm = ({ className, close, isLoading }: PropsType) => {
   /* hooks */
   const [getters, setters] = useSetters();
   const specializations = useSelector(getSpecializations);
@@ -59,17 +59,17 @@ export const AddServiceForm = ({ className, close, isLoading }: PropsType) => {
   }, [dispatch]);
 
   useEffect(() => {
-    setIsValid(validateAddService(form, setters));
+    setIsValid(validateCreateService(form, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.title, form.duration, form.price, form.specializationId]);
 
   return (
-    <Form className={`addServiceForm ${className || ''}`} onSubmit={handleSubmit}>
+    <Form className={`createServiceForm ${className || ''}`} onSubmit={handleSubmit}>
       <Field label="Title:" {...title.props} />
       <Field label="Price:" {...price.props} />
       <Field label="Duration (hours):" {...duration.props} maxLength={8} />
       <Select
-        className="addServiceForm__specializations"
+        className="createServiceForm__specializations"
         options={specializations.data.map((item) => ({
           title: item.title,
           value: item.id,
@@ -79,16 +79,16 @@ export const AddServiceForm = ({ className, close, isLoading }: PropsType) => {
         setSelected={setSpecializationId}
         label="Specialization:"
       />
-      <div className="addServiceForm__specializationsError">
+      <div className="createServiceForm__specializationsError">
         {getters.isSubmitted && getters.errors.specialization}
       </div>
-      <Button className="addServiceForm__add" type="submit">
-        Add
+      <Button className="createServiceForm__add" type="submit">
+        Create
       </Button>
-      <Button className="addServiceForm__cancel" variant="outline" onClick={close}>
+      <Button className="createServiceForm__cancel" variant="outline" onClick={close}>
         Cancel
       </Button>
-      <Spinner className="addServiceForm__spinner" visible={isLoading} />
+      <Spinner className="createServiceForm__spinner" visible={isLoading} />
     </Form>
   );
 };

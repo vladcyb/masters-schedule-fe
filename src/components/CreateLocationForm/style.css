@@ -1,31 +1,31 @@
-.addLocationForm {
+.createLocationForm {
     width: 500px;
 }
 
-.addLocationForm__add,
-.addLocationForm__cancel {
+.createLocationForm__add,
+.createLocationForm__cancel {
     width: 100%;
 }
 
-.addLocationForm__cancel {
+.createLocationForm__cancel {
     margin-top: var(--btn-margin-top);
 }
 
-.addLocationForm__parent {
+.createLocationForm__parent {
     margin-top: 25px;
 }
 
-.addLocationForm__add {
+.createLocationForm__add {
     margin-top: 30px;
 }
 
-.addLocationForm__selectError {
+.createLocationForm__selectError {
     color: red;
     font-size: 12px;
     font-family: Roboto, serif;
     margin-top: 5px;
 }
 
-.addLocationForm__spinner {
+.createLocationForm__spinner {
     margin: 10px auto 0 auto;
 }

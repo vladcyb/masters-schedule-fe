@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { thunks } from '../../store/thunks';
 import { useAppDispatch } from '../../store';
 import { Button, Container } from '../../components/ui';
-import { Orders, AddOrderForm } from '../../components';
+import { Orders, CreateOrderForm } from '../../components';
 import { OrdersStateType } from '../../store/userSlice/types';
 import './style.css';
 
@@ -34,7 +34,7 @@ export const OrdersPage = ({ orders }: PropsType) => {
   return (
     <Container className="ordersPage">
       {isAdding ? (
-        <AddOrderForm className="ordersPage__add" onCancel={cancelAdding} />
+        <CreateOrderForm className="ordersPage__add" onCancel={cancelAdding} />
       ) : (
         <>
           <Orders orders={orders} />

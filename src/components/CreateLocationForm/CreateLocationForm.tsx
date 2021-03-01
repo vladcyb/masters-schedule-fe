@@ -22,7 +22,7 @@ type PropsType = {
   isLoading: boolean
 };
 
-export const AddLocationForm = ({
+export const CreateLocationForm = ({
   close,
   className,
   locations,
@@ -36,7 +36,7 @@ export const AddLocationForm = ({
   const [isValid, setIsValid] = useState(false);
 
   /* classes */
-  const cn = createCn('addLocationForm', className);
+  const cn = createCn('createLocationForm', className);
 
   /* fields */
   const title = useField('title', getters, setters);
@@ -105,11 +105,11 @@ export const AddLocationForm = ({
         setSelected={setParentId}
         label="Parent:"
       />
-      <Button className="addLocationForm__add" type="submit">Add</Button>
-      <Button className="addLocationForm__cancel" variant="outline" onClick={close}>
+      <Button className="createLocationForm__add" type="submit">Add</Button>
+      <Button className="createLocationForm__cancel" variant="outline" onClick={close}>
         Cancel
       </Button>
-      <Spinner className="addLocationForm__spinner" visible={isLoading} />
+      <Spinner className="createLocationForm__spinner" visible={isLoading} />
     </Form>
   );
 };

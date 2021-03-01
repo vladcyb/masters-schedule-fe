@@ -1,0 +1,16 @@
+.createSpecializationForm__add,
+.createSpecializationForm__cancel {
+    width: 100%;
+}
+
+.createSpecializationForm__cancel {
+    margin-top: var(--btn-margin-top);
+}
+
+.createSpecializationForm__add {
+    margin-top: 30px;
+}
+
+.createSpecializationForm__spinner {
+    margin: 10px auto 0 auto;
+}

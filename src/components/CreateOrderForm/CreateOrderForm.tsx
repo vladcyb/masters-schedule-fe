@@ -18,7 +18,7 @@ type PropsType = {
   onCancel: () => void
 };
 
-export const AddOrderForm = ({
+export const CreateOrderForm = ({
   className,
   onCancel,
 }: PropsType) => {
@@ -49,7 +49,7 @@ export const AddOrderForm = ({
   const description = useField('description', getters, setters);
 
   /* classes */
-  const cn = createCn('addOrderForm', className);
+  const cn = createCn('createOrderForm', className);
 
   /* effects */
   useEffect(() => {

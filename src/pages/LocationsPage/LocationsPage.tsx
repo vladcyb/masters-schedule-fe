@@ -4,7 +4,7 @@ import { thunks } from '../../store/thunks';
 import { getLocations } from '../../store/locationSlice/selectors';
 import { Button, Spinner, Container } from '../../components/ui';
 import { useAppDispatch } from '../../store';
-import { Location, AddLocationForm } from '../../components';
+import { Location, CreateLocationForm } from '../../components';
 import './style.css';
 
 export const LocationsPage = () => {
@@ -39,7 +39,7 @@ export const LocationsPage = () => {
   return (
     <Container className="locationsPage">
       {isAdding ? (
-        <AddLocationForm
+        <CreateLocationForm
           className="locationsPage__addForm"
           close={cancelAdding}
           locations={locations}

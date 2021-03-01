@@ -1,7 +1,7 @@
 import { Setters } from '../../shared/hooks/useSetters/types';
 import { IServiceCreate } from '../../API/interfaces';
 
-export const validateAddService = (form: IServiceCreate, setters: Setters): boolean => {
+export const validateCreateService = (form: IServiceCreate, setters: Setters): boolean => {
   const errors: any = {};
   if (!form.title) {
     errors.title = 'Enter title!';

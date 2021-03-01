@@ -7,7 +7,7 @@ type FormType = {
   icon: any
 };
 
-export const validateAddSpecialization = (form: FormType, setters: Setters): boolean => {
+export const validateCreateSpecialization = (form: FormType, setters: Setters): boolean => {
   const errors: Partial<ISpecializationCreate> = {};
   if (!form.title) {
     errors.title = 'Enter title!';

@@ -6,7 +6,7 @@ import {
 import { useField, useSetters } from '../../shared/hooks';
 import { useAppDispatch } from '../../store';
 import { UploadPhoto } from '../ui/UploadPhoto';
-import { validateAddSpecialization } from './validateAddSpecialization';
+import { validateCreateSpecialization } from './validateCreateSpecialization';
 import './style.css';
 
 type PropsType = {
@@ -15,7 +15,7 @@ type PropsType = {
   isLoading: boolean
 };
 
-export const AddSpecializationForm = ({
+export const CreateSpecializationForm = ({
   close,
   className,
   isLoading,
@@ -57,7 +57,7 @@ export const AddSpecializationForm = ({
 
   /* effects */
   useEffect(() => {
-    setIsValid(validateAddSpecialization({
+    setIsValid(validateCreateSpecialization({
       title: title.props.value,
       icon,
     }, setters));
@@ -65,10 +65,10 @@ export const AddSpecializationForm = ({
   }, [title.props.value, icon]);
 
   return (
-    <Form className={`addSpecializationForm ${className || ''}`} onSubmit={handleSubmit}>
+    <Form className={`createSpecializationForm ${className || ''}`} onSubmit={handleSubmit}>
       <Field label="Title:" {...title.props} />
       <UploadPhoto
-        className="addSpecializationForm__upload"
+        className="createSpecializationForm__upload"
         photo={icon}
         setPhoto={setIcon}
         label="Upload icon:"
@@ -78,19 +78,19 @@ export const AddSpecializationForm = ({
         isFormSubmitted={getters.isSubmitted}
       />
       <Button
-        className="addSpecializationForm__add"
+        className="createSpecializationForm__add"
         type="submit"
       >
-        Add
+        Create
       </Button>
       <Button
-        className="addSpecializationForm__cancel"
+        className="createSpecializationForm__cancel"
         variant="outline"
         onClick={close}
       >
         Cancel
       </Button>
-      <Spinner className="addSpecializationForm__spinner" visible={isLoading} />
+      <Spinner className="createSpecializationForm__spinner" visible={isLoading} />
     </Form>
   );
 };

@@ -1,21 +1,21 @@
-.addServiceForm__add {
+.createServiceForm__add {
     margin-top: 20px;
 }
 
-.addServiceForm__cancel,
-.addServiceForm__add {
+.createServiceForm__cancel,
+.createServiceForm__add {
     width: 100%;
 }
 
-.addServiceForm__cancel {
+.createServiceForm__cancel {
     margin-top: var(--btn-margin-top);
 }
 
-.addServiceForm__spinner {
+.createServiceForm__spinner {
     margin: 10px auto 0 auto;
 }
 
-.addServiceForm__specializationsError {
+.createServiceForm__specializationsError {
     color: red;
     font-size: 12px;
     font-family: Roboto, serif;
