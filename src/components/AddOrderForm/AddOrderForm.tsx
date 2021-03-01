@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
+import LocationThunk from '../../store/locationSlice/thunk';
 import {
-  Button, Field, Form, Select,
+  Button, Field, Form, Select, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { getLocations } from '../../store/locationSlice/selectors';
+import { useAppDispatch } from '../../store';
 import './style.css';
 
 type PropsType = {
@@ -20,6 +22,7 @@ export const AddOrderForm = ({
   /* hooks */
   const [getters, setters] = useSetters();
   const locations = useSelector(getLocations);
+  const dispatch = useAppDispatch();
 
   /* state */
   const [selectedLocation, setSelectedLocation] = useState<number | undefined>(undefined);
@@ -35,6 +38,11 @@ export const AddOrderForm = ({
 
   /* classes */
   const cn = createCn('addOrderForm', className);
+
+  /* effects */
+  useEffect(() => {
+    dispatch(LocationThunk.update());
+  }, [dispatch]);
 
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
@@ -54,6 +62,7 @@ export const AddOrderForm = ({
         setSelected={setSelectedLocation}
         label="Select address:"
       />
+      <Spinner className={cn('spinner')} visible={locations.loading} />
       <Field
         className={cn('photo')}
         label="Photo:"

@@ -3,7 +3,7 @@
 }
 
 .addOrderForm__photo {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .addOrderForm__submit {
@@ -13,4 +13,8 @@
 .addOrderForm__cancel {
     margin-top: var(--btn-margin-top);
     width: 100%;
+}
+
+.addOrderForm__spinner {
+    margin: 10px auto 0 auto;
 }
