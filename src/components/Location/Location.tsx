@@ -13,8 +13,7 @@ export const Location = ({
     id,
     title,
     coordinates,
-    type: { title: type },
-    parent,
+    typeId,
   },
   onDelete,
 }: PropsType) => {
@@ -36,13 +35,7 @@ export const Location = ({
         </div>
         <div>
           <span className="location__itemTitle">Type: </span>
-          <span className="location__itemValue">{type}</span>
-        </div>
-        <div>
-          <span className="location__itemTitle">Parent id: </span>
-          <span className="location__itemValue">
-            {parent ? parent.id : <i className="location__hint">(no parent)</i>}
-          </span>
+          <span className="location__itemValue">{typeId}</span>
         </div>
       </div>
       {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}

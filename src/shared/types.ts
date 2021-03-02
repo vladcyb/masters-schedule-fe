@@ -8,14 +8,8 @@ export type LocationType = {
   id: number
   title: string
   coordinates: string
-  type: {
-    id: number
-    title: string
-  }
-  parent: {
-    id: number
-    title: string
-  }
+  typeId: number
+  children: LocationType[]
 };
 
 export type ServiceType = {
