@@ -2,19 +2,22 @@ import React, { useCallback } from 'react';
 import { LocationType } from '../../shared/types';
 import { Card } from '../ui';
 import './style.css';
+import { LocationTypeType } from '../../store/locationSlice/types';
 
 type PropsType = {
   data: LocationType
   onDelete: (id: number) => void
   className?: string
+  types: LocationTypeType[]
+  nestingDegree: number
 };
 
 export const Location = ({
+  types,
+  nestingDegree,
   data: {
     id,
     title,
-    coordinates,
-    typeId,
     children,
   },
   onDelete,
@@ -25,23 +28,11 @@ export const Location = ({
 
   return (
     <>
-      <Card className={`location location_${typeId} ${className || ''}`}>
+      <Card className={`location location_${nestingDegree} ${className || ''}`}>
         <div>
-          <div>
-            <span className="location__itemTitle">Id: </span>
-            <span className="location__itemValue">{id}</span>
-          </div>
           <div>
             <span className="location__itemTitle">Title: </span>
             <span className="location__itemValue">{title}</span>
-          </div>
-          <div>
-            <span className="location__itemTitle">Coordinates: </span>
-            <span className="location__itemValue">{coordinates}</span>
-          </div>
-          <div>
-            <span className="location__itemTitle">Type: </span>
-            <span className="location__itemValue">{typeId}</span>
           </div>
         </div>
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
@@ -53,6 +44,8 @@ export const Location = ({
           data={childLocation}
           onDelete={onDelete}
           key={childLocation.id}
+          types={types}
+          nestingDegree={nestingDegree + 1}
         />
       ))}
     </>

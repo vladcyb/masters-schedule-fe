@@ -39,12 +39,15 @@ export const LocationsPage = () => {
   return (
     <Container className="locationsPage">
       {isAdding ? (
-        <CreateLocationForm
-          className="locationsPage__createForm"
-          close={cancelAdding}
-          locations={locations}
-          isLoading={locations.loading}
-        />
+        <>
+          <div className="center title">Create location</div>
+          <CreateLocationForm
+            className="locationsPage__createForm"
+            close={cancelAdding}
+            locations={locations}
+            isLoading={locations.loading}
+          />
+        </>
       ) : (
         <>
           <Spinner visible={locations.loading} />
@@ -53,6 +56,9 @@ export const LocationsPage = () => {
               className="locationsPage__location"
               data={item}
               onDelete={handleDeleteLocation}
+              types={locations.types}
+              nestingDegree={1}
+              key={item.id}
             />
           ))}
           {!locations.data.length && !locations.loading && (
