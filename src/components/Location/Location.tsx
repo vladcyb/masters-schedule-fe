@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { LocationType } from '../../shared/types';
 import { Card } from '../ui';
-import './style.css';
 import { LocationTypeType } from '../../store/locationSlice/types';
+import './style.css';
 
 type PropsType = {
   data: LocationType
@@ -26,6 +26,18 @@ export const Location = ({
   /* methods */
   const handleDelete = useCallback(() => onDelete(id), [id, onDelete]);
 
+  /* state */
+  const [isOpened, setIsOpened] = useState(false);
+
+  /* methods */
+  const handleOpen = () => {
+    setIsOpened(true);
+  };
+
+  const handleClose = () => {
+    setIsOpened(false);
+  };
+
   return (
     <>
       <Card className={`location location_${nestingDegree} ${className || ''}`}>
@@ -36,18 +48,34 @@ export const Location = ({
           </div>
         </div>
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button className="location__delete" type="button" onClick={handleDelete} />
+        <div className="location__controls">
+          {children.length !== 0 && (
+            isOpened ? (
+              /* eslint-disable-next-line jsx-a11y/control-has-associated-label */
+              <button className="location__close" onClick={handleClose} type="button" />
+            ) : (
+              /* eslint-disable-next-line jsx-a11y/control-has-associated-label */
+              <button className="location__open" onClick={handleOpen} type="button" />
+            )
+          )}
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+          <button className="location__delete" onClick={handleDelete} type="button" />
+        </div>
       </Card>
-      {children.map((childLocation) => (
-        <Location
-          className={className}
-          data={childLocation}
-          onDelete={onDelete}
-          key={childLocation.id}
-          types={types}
-          nestingDegree={nestingDegree + 1}
-        />
-      ))}
+      {isOpened && (
+        children.length ? (
+          children.map((childLocation) => (
+            <Location
+              className={className}
+              data={childLocation}
+              onDelete={onDelete}
+              key={childLocation.id}
+              types={types}
+              nestingDegree={nestingDegree + 1}
+            />
+          ))
+        ) : <i>(empty)</i>
+      )}
     </>
   );
 };
