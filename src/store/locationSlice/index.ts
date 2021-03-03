@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LocationThunk } from './thunk';
-import { LocationTypeType, StateType } from './types';
+import {
+  AddLocationPAType, DeleteLocationPAType, LocationTypeType, StateType,
+} from './types';
 import { LocationType } from '../../shared/types';
+import { getLocationById } from './methods';
 
 const initialState: StateType = {
   loading: false,
@@ -14,8 +17,12 @@ export const locationSlice = createSlice({
   name: 'locations',
   initialState,
   reducers: {
-    add: (state, { payload }: PayloadAction<LocationType>) => {
-      state.data.push(payload);
+    add: (state, { payload }: PayloadAction<AddLocationPAType>) => {
+      const { parentId, ...data } = payload;
+      const parent = getLocationById(state.data, 0, payload.parentId);
+      if (parent) {
+        parent.children.push(data);
+      }
     },
     set: (state, { payload }: PayloadAction<LocationType[]>) => {
       state.data = payload;
@@ -23,9 +30,13 @@ export const locationSlice = createSlice({
     setTypes: (state, { payload }: PayloadAction<LocationTypeType[]>) => {
       state.types = payload;
     },
-    delete: (state, { payload }: PayloadAction<number>) => {
-      const index = state.data.findIndex((item) => item.id === payload);
-      state.data.splice(index, 1);
+    delete: (state, { payload }: PayloadAction<DeleteLocationPAType>) => {
+      const parent = getLocationById(state.data, 0, payload.parentId);
+      if (parent) {
+        const index = parent.children.findIndex((item) => item.id === payload.id);
+        console.log(index);
+        parent.children.splice(index, 1);
+      }
     },
   },
   extraReducers: (builder) => {

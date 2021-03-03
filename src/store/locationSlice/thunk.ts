@@ -31,7 +31,11 @@ export const LocationThunk = {
     async (props: ILocationCreate, { dispatch, rejectWithValue }) => {
       const { data: { ok, result } } = await API.Location.create(props);
       if (ok) {
-        dispatch(actions.add(result));
+        dispatch(actions.add({
+          ...result,
+          parentId: props.parentId,
+          children: [],
+        }));
         return '';
       }
       return rejectWithValue('');
@@ -40,11 +44,14 @@ export const LocationThunk = {
   delete: createAsyncThunk(
     'locations/delete',
     async (id: number, { dispatch, rejectWithValue }) => {
-      const { data: { ok, error } } = await API.Location.delete(id);
+      const { data: { ok, error, parentId } } = await API.Location.delete(id);
       if (!ok) {
         return rejectWithValue(error);
       }
-      dispatch(actions.delete(id));
+      dispatch(actions.delete({
+        id,
+        parentId,
+      }));
       return '';
     },
   ),
