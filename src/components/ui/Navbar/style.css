@@ -17,12 +17,16 @@
     height: 50px;
     line-height: 50px;
     display: inline-block;
-    padding: 0 5px;
+    padding: 0 15px;
     text-decoration: none;
 }
 
 .navbar__navlink:hover {
     background: var(--secondary-3);
+}
+
+.navbar__navlink:active {
+    background: var(--dark-2);
 }
 
 .navbar__navlink.active {
