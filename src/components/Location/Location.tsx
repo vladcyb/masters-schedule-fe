@@ -62,19 +62,17 @@ export const Location = ({
           <button className="location__delete" onClick={handleDelete} type="button" />
         </div>
       </Card>
-      {isOpened && (
-        children.length ? (
-          children.map((childLocation) => (
-            <Location
-              className={className}
-              data={childLocation}
-              onDelete={onDelete}
-              key={childLocation.id}
-              types={types}
-              nestingDegree={nestingDegree + 1}
-            />
-          ))
-        ) : <i>(empty)</i>
+      {isOpened && children.length !== 0 && (
+        children.map((childLocation) => (
+          <Location
+            className={className}
+            data={childLocation}
+            onDelete={onDelete}
+            key={childLocation.id}
+            types={types}
+            nestingDegree={nestingDegree + 1}
+          />
+        ))
       )}
     </>
   );
