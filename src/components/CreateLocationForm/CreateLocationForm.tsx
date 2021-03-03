@@ -43,11 +43,12 @@ export const CreateLocationForm = ({
   const coordinates = useField('coordinates', getters, setters);
   const typeOptions = useMemo(
     () => getLocationTypesOptions(locations),
-    [locations],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [locations.types],
   );
   const parentOptions = useMemo(
-    () => getLocationParentsOptions(locations),
-    [locations],
+    () => getLocationParentsOptions(locations.data),
+    [locations.data],
   );
   const [typeId, setTypeId] = useState<null | number>(null);
   const [parentId, setParentId] = useState<null | number>(null);
