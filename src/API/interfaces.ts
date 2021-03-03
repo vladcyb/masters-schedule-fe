@@ -46,7 +46,6 @@ export interface IOrderCreate {
   description: string
   address: string
   photo: string
-  service?: number
 }
 
 export interface IOrderSetStatus {

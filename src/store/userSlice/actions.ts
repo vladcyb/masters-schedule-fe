@@ -6,6 +6,7 @@ const actions = {
   login: createAction<UserDataStateType>('user/login'),
   logout: createAction('user/logout'),
   setOrders: createAction<OrderType[]>('user/setOrders'),
+  addOrder: createAction<OrderType>('user/addOrder'),
 };
 
 export default actions;

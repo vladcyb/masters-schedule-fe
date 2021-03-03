@@ -74,7 +74,6 @@ export const CreateSpecializationForm = ({
         label="Upload icon:"
         name="icon"
         error={getters.errors.icon}
-        accept=".png,.jpg,.jpeg,.svg,.gif"
         isFormSubmitted={getters.isSubmitted}
       />
       <Button

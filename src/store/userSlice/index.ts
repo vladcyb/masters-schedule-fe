@@ -34,6 +34,9 @@ export const userSlice = createSlice({
     setOrders: (state, { payload }: PayloadAction<OrderType[]>) => {
       state.orders.data = payload;
     },
+    addOrder: (state, { payload }: PayloadAction<OrderType>) => {
+      state.orders.data.push(payload);
+    },
   },
   extraReducers: (builder) => {
     builder

@@ -3,7 +3,6 @@ import {
   ILocationCreate,
   ILoginForm,
   IMasterSetSchedule,
-  IOrderCreate,
   IOrderSetStatus,
   IRegisterForm,
   IServiceCreate,
@@ -23,7 +22,7 @@ const API = {
     ),
   },
   Order: {
-    create: (props: IOrderCreate) => (
+    create: (props: any) => (
       Responses(instance.post('/order', props, { withCredentials: true }))
     ),
     setStatus: (props: IOrderSetStatus) => (

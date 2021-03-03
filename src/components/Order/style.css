@@ -1,3 +1,25 @@
+.order {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .order__hint {
     color: var(--gray);
+}
+
+.order__fieldName {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Roboto, serif;
+}
+
+.order__fieldContent {
+    font-size: 14px;
+}
+
+.order__img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
 }

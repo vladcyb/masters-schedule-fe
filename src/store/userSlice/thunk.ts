@@ -69,4 +69,15 @@ export const UserThunk = {
       }
     },
   ),
+  createOrder: createAsyncThunk(
+    'user/createOrder',
+    async (props: any, { dispatch, rejectWithValue }) => {
+      const { data: { ok, result } } = await API.Order.create(props);
+      if (ok) {
+        dispatch(actions.addOrder(result));
+        return '';
+      }
+      return rejectWithValue('');
+    },
+  ),
 };

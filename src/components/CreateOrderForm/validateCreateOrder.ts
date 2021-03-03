@@ -15,8 +15,8 @@ export const validateCreateOrder = (
   } else if (!allowedImageFormats.includes(form.photo.type)) {
     errors.photo = 'Format is not allowed!';
   }
-  if (typeof form.address === 'undefined') {
-    errors.address = 'Select location!';
+  if (!form.address) {
+    errors.address = 'Enter address!';
   }
   setters.setErrors(errors);
   return !(errors.description || errors.address || errors.photo);

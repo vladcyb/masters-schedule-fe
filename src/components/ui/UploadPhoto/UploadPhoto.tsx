@@ -10,7 +10,6 @@ type PropsType = {
   photo: any
   setPhoto: Dispatch<SetStateAction<any>>
   error?: string
-  accept: string
   isFormSubmitted: boolean
 };
 
@@ -21,7 +20,6 @@ export const UploadPhoto = ({
   photo,
   setPhoto,
   error,
-  accept,
   isFormSubmitted,
 }: PropsType) => {
   /* state */
@@ -85,7 +83,7 @@ export const UploadPhoto = ({
           type="file"
           name={name}
           onChange={handleChange}
-          accept={accept}
+          accept=".png,.jpg,.jpeg,.svg,.gif,.jfif"
         />
         <img className="uploadPhoto__preview" src={preview} alt="" />
       </div>

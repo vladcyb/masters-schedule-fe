@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { createCn } from 'bem-react-classname';
 import { useSelector } from 'react-redux';
 import {
-  Button, Field, Form, Select, Spinner, MultiSelect,
+  Button, Field, Form, MultiSelect,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
-import { getLocations } from '../../store/locationSlice/selectors';
 import { useAppDispatch } from '../../store';
 import { getServices } from '../../store/serviceSlice/selectors';
 import { thunks } from '../../store/thunks';
@@ -25,18 +24,26 @@ export const CreateOrderForm = ({
 }: PropsType) => {
   /* hooks */
   const [getters, setters] = useSetters();
-  const locations = useSelector(getLocations);
   const services = useSelector(getServices);
   const dispatch = useAppDispatch();
 
+  /* fields */
+  const address = useField('address', getters, setters);
+  const description = useField('description', getters, setters);
+
   /* state */
-  const [selectedLocation, setSelectedLocation] = useState<number | undefined>(undefined);
   const [servicesOptions, setServicesOptions] = useState<MultiSelectOptionType[]>([]);
   const [photo, setPhoto] = useState<any>(null);
   const [isValid, setIsValid] = useState(false);
 
+  /* form */
+  const formData = new FormData();
+  formData.append('description', description.props.value);
+  formData.append('photo', photo);
+  formData.append('address', address.props.value);
+
   /* methods */
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setters.setIsSubmitted(true);
     if (!isValid) {
@@ -48,18 +55,17 @@ export const CreateOrderForm = ({
         serviceIds.push(option.value);
       }
     });
-    console.log(serviceIds.join(','));
+    const actionsResponse = await dispatch(thunks.user.createOrder(formData));
+    if (actionsResponse.meta.requestStatus === 'fulfilled') {
+      onCancel();
+    }
   };
-
-  /* fields */
-  const description = useField('description', getters, setters);
 
   /* classes */
   const cn = createCn('createOrderForm', className);
 
   /* effects */
   useEffect(() => {
-    dispatch(thunks.location.update());
     dispatch(thunks.service.update());
   }, [dispatch]);
 
@@ -77,10 +83,10 @@ export const CreateOrderForm = ({
     setIsValid(validateCreateOrder({
       description: description.props.value,
       photo,
-      address: selectedLocation,
+      address: address.props.value,
     }, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [description.props.value, photo?.type, selectedLocation]);
+  }, [description.props.value, photo?.type, address.props.value]);
 
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
@@ -90,26 +96,12 @@ export const CreateOrderForm = ({
         textarea
         {...description.props}
       />
-      <Select
-        className={cn('address')}
-        options={locations.data.map((item) => ({
-          value: item.id,
-          title: item.title,
-        }))}
-        selected={selectedLocation}
-        setSelected={setSelectedLocation}
-        label="Select address:"
-      />
-      <div className={cn('error')}>
-        {getters.isSubmitted && getters.errors.address}
-      </div>
-      <Spinner className={cn('spinner')} visible={locations.loading} />
+      <Field label="Address:" {...address.props} />
       <UploadPhoto
         name="photo"
         label="Photo:"
         photo={photo}
         setPhoto={setPhoto}
-        accept=".png,.jpg,.jpeg,.svg,.gif"
         isFormSubmitted={getters.isSubmitted}
         error={getters.errors.photo}
       />
