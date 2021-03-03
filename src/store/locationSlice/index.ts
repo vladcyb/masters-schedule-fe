@@ -22,6 +22,8 @@ export const locationSlice = createSlice({
       const parent = getLocationById(state.data, 0, payload.parentId);
       if (parent) {
         parent.children.push(data);
+      } else {
+        state.data.push(data);
       }
     },
     set: (state, { payload }: PayloadAction<LocationType[]>) => {
@@ -34,8 +36,14 @@ export const locationSlice = createSlice({
       const parent = getLocationById(state.data, 0, payload.parentId);
       if (parent) {
         const index = parent.children.findIndex((item) => item.id === payload.id);
-        console.log(index);
-        parent.children.splice(index, 1);
+        if (index !== -1) {
+          parent.children.splice(index, 1);
+        }
+      } else {
+        const index = state.data.findIndex((item) => item.id === payload.id);
+        if (index !== -1) {
+          state.data.splice(index, 1);
+        }
       }
     },
   },
