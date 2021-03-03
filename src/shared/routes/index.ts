@@ -20,4 +20,7 @@ export const routes = {
   specializations: {
     root: '/specializations',
   },
+  schedule: {
+    root: '/schedule',
+  },
 };

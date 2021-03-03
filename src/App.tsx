@@ -12,6 +12,7 @@ import {
   RegisterPage,
   ServicesPage,
   SpecializationsPage,
+  MySchedulePage,
 } from './pages';
 import { useAppDispatch } from './store';
 import { routes } from './shared/routes';
@@ -101,6 +102,13 @@ const App = () => {
             redirectPath={routes.me.root}
           >
             <SpecializationsPage />
+          </PrivateRoute>
+          <PrivateRoute
+            path={routes.schedule.root}
+            condition={!!userData.login && userData.role === UserRole.MASTER}
+            redirectPath={routes.me.root}
+          >
+            <MySchedulePage />
           </PrivateRoute>
         </Router>
       ) : null}

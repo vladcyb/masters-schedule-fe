@@ -30,6 +30,11 @@ export const Navbar = ({ userData, onLogout }: PropsType) => (
           </NavLink>
         </>
       )}
+      {userData.role === UserRole.MASTER && (
+        <NavLink className="navbar__navlink" to={routes.schedule.root}>
+          My schedule
+        </NavLink>
+      )}
     </div>
     <button className="navbar__logout" type="button" onClick={onLogout}>
       Logout
