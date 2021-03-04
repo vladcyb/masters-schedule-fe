@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import actions from './actions';
 import API from '../../API';
-import { ILocationCreate } from '../../API/interfaces';
+import { ILocationCreate, ILocationEdit } from '../../API/interfaces';
 
 export const LocationThunk = {
   update: createAsyncThunk(
@@ -53,6 +53,15 @@ export const LocationThunk = {
         parentId,
       }));
       return '';
+    },
+  ),
+  edit: createAsyncThunk(
+    'locations/edit',
+    async (props: ILocationEdit, { dispatch }) => {
+      const { data: { ok } } = await API.Location.edit(props);
+      if (ok) {
+        await dispatch(actions.updateOne(props));
+      }
     },
   ),
 };

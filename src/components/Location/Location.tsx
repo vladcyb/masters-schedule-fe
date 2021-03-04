@@ -1,6 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { LocationType } from '../../shared/types';
 import { LocationTypeType } from '../../store/locationSlice/types';
+import { Button, Field } from '../ui';
+import { useField, useSetters } from '../../shared/hooks';
+import { useAppDispatch } from '../../store';
+import { thunks } from '../../store/thunks';
 import './style.css';
 
 type PropsType = {
@@ -22,19 +26,41 @@ export const Location = ({
   onDelete,
   className,
 }: PropsType) => {
-  /* methods */
-  const handleDelete = useCallback(() => onDelete(id), [id, onDelete]);
+  /* hooks */
+  const [getters, setters] = useSetters();
+  const dispatch = useAppDispatch();
 
   /* state */
   const [isOpened, setIsOpened] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  /* vars */
+  const hasChildren = children.length !== 0;
+  const newTitle = useField('title', getters, setters, false, title);
 
   /* methods */
+  const handleDelete = useCallback(() => onDelete(id), [id, onDelete]);
+
   const toggle = () => {
     setIsOpened((value) => !value);
   };
 
-  /* vars */
-  const hasChildren = children.length !== 0;
+  const handleClickTitle = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await dispatch(thunks.location.edit({
+      id,
+      title: newTitle.props.value,
+    }));
+    setIsEditing(false);
+  };
 
   /* classes */
   const classes = `
@@ -45,13 +71,30 @@ export const Location = ({
   return (
     <>
       <div className={classes}>
-        <div className="location__title">
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button className="location__toggle" type="button" onClick={toggle} />
-          {title}
-        </div>
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button className="location__delete" onClick={handleDelete} type="button" />
+        {isEditing ? (
+          <form className="location__edit" autoComplete="off" onSubmit={handleEditSubmit}>
+            <Field label="Enter new title" {...newTitle.props} autoFocus />
+            <div className="location__editButtons">
+              <Button className="location__save" type="submit">
+                Save
+              </Button>
+              <Button variant="outline" className="location__cancel" onClick={handleCancelEdit}>
+                Cancel
+              </Button>
+            </div>
+          </form>
+        ) : (
+          <>
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            <button className="location__toggle" type="button" onClick={toggle} />
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+            <div className="location__title" onClick={handleClickTitle} tabIndex={0} role="button">
+              {title}
+            </div>
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            <button className="location__delete" onClick={handleDelete} type="button" />
+          </>
+        )}
       </div>
       {isOpened && hasChildren && (
         children.map((childLocation) => (

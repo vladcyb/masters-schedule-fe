@@ -5,6 +5,7 @@ import {
 } from './types';
 import { LocationType } from '../../shared/types';
 import { getLocationById } from './methods';
+import { ILocationEdit } from '../../API/interfaces';
 
 const initialState: StateType = {
   loading: false,
@@ -44,6 +45,12 @@ export const locationSlice = createSlice({
         if (index !== -1) {
           state.data.splice(index, 1);
         }
+      }
+    },
+    updateOne: (state, { payload }: PayloadAction<ILocationEdit>) => {
+      const location = getLocationById(state.data, 0, payload.id);
+      if (location) {
+        location.title = payload.title!;
       }
     },
   },

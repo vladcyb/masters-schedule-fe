@@ -1,6 +1,6 @@
 import Responses from './responses';
 import {
-  ILocationCreate,
+  ILocationCreate, ILocationEdit,
   ILoginForm,
   IMasterSetSchedule,
   IOrderSetStatus,
@@ -44,6 +44,9 @@ const API = {
     ),
     delete: (id: number) => (
       Responses(instance.delete(`/location/${id}`, { withCredentials: true }))
+    ),
+    edit: ({ id, ...props }: ILocationEdit) => (
+      Responses(instance.put(`/location/${id}`, props, { withCredentials: true }))
     ),
   },
   Specialization: {

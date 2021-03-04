@@ -60,6 +60,13 @@ export interface ILocationCreate {
   parentId?: number
 }
 
+export interface ILocationEdit {
+  id: number
+  title?: string
+  coordinates?: string
+  typeId?: number
+}
+
 export interface ISpecializationCreate {
   title: string
   icon: string
