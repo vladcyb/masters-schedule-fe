@@ -75,10 +75,10 @@ export const Location = ({
           <form className="location__edit" autoComplete="off" onSubmit={handleEditSubmit}>
             <Field label="Enter new title" {...newTitle.props} autoFocus />
             <div className="location__editButtons">
-              <Button className="location__save" type="submit">
+              <Button className="location__save" type="submit" sm>
                 Save
               </Button>
-              <Button variant="outline" className="location__cancel" onClick={handleCancelEdit}>
+              <Button variant="outline" className="location__cancel" onClick={handleCancelEdit} sm>
                 Cancel
               </Button>
             </div>
