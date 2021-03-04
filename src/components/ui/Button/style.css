@@ -29,6 +29,7 @@
 .button_outline {
     border: 1px solid var(--dark-1);
     color: var(--dark-1);
+    padding: 9px;
     background-color: var(--white);
 }
 
