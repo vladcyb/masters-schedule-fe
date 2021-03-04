@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import { LocationType } from '../../shared/types';
-import { Card } from '../ui';
 import { LocationTypeType } from '../../store/locationSlice/types';
 import './style.css';
 
@@ -30,39 +29,31 @@ export const Location = ({
   const [isOpened, setIsOpened] = useState(false);
 
   /* methods */
-  const handleOpen = () => {
-    setIsOpened(true);
+  const toggle = () => {
+    setIsOpened((value) => !value);
   };
 
-  const handleClose = () => {
-    setIsOpened(false);
-  };
+  /* vars */
+  const hasChildren = children.length !== 0;
+
+  /* classes */
+  const classes = `
+    location ${hasChildren ? 'location_hasChildren' : ''}
+    location_${nestingDegree} ${isOpened ? 'location_opened' : ''} ${className || ''}
+  `;
 
   return (
     <>
-      <Card className={`location location_${nestingDegree} ${className || ''}`}>
-        <div>
-          <div>
-            <span className="location__itemTitle">Title: </span>
-            <span className="location__itemValue">{title}</span>
-          </div>
+      <div className={classes}>
+        <div className="location__title">
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+          <button className="location__toggle" type="button" onClick={toggle} />
+          {title}
         </div>
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <div className="location__controls">
-          {children.length !== 0 && (
-            isOpened ? (
-              /* eslint-disable-next-line jsx-a11y/control-has-associated-label */
-              <button className="location__close" onClick={handleClose} type="button" />
-            ) : (
-              /* eslint-disable-next-line jsx-a11y/control-has-associated-label */
-              <button className="location__open" onClick={handleOpen} type="button" />
-            )
-          )}
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button className="location__delete" onClick={handleDelete} type="button" />
-        </div>
-      </Card>
-      {isOpened && children.length !== 0 && (
+        <button className="location__delete" onClick={handleDelete} type="button" />
+      </div>
+      {isOpened && hasChildren && (
         children.map((childLocation) => (
           <Location
             className={className}
