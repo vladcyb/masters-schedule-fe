@@ -6,6 +6,7 @@ import { specializationsSlice } from './specializationSlice';
 import { locationSlice } from './locationSlice';
 import { userSlice } from './userSlice';
 import { serviceSlice } from './serviceSlice';
+import { masterSlice } from './masterSlice';
 
 const store = configureStore({
   reducer: combineReducers({
@@ -13,6 +14,7 @@ const store = configureStore({
     locations: locationSlice.reducer,
     user: userSlice.reducer,
     services: serviceSlice.reducer,
+    master: masterSlice.reducer,
   }),
 });
 
