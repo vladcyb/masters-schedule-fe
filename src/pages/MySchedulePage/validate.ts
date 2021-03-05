@@ -9,8 +9,5 @@ export const validateSetSchedule = (hours: string, setters: Setters): boolean =>
     errors.hours = 'Hours must be in format `hh:mm-hh:mm`';
   }
   setters.setErrors(errors);
-  if (errors.hours) {
-    return false;
-  }
-  return true;
+  return !errors.hours;
 };
