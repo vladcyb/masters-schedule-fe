@@ -1,6 +1,21 @@
 .card {
     border: 1px solid var(--dark-1);
     padding: 20px;
-    background-color: var(--light-2);
     border-radius: 5px;
+}
+
+.card_white {
+    background-color: white;
+}
+
+.card_light {
+    background-color: var(--light-2);
+}
+
+.card_danger {
+    background-color: var(--danger);
+}
+
+.card_success {
+    background-color: var(--success);
 }

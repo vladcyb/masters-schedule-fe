@@ -35,6 +35,8 @@ code {
   --light-2: #dfedff;
   --white: #efefef;
   --gray: #727272;
+  --danger: #ffc8c8;
+  --success: #b9ffb9;
 
   /* margins */
   --btn-margin-top: 8px;
