@@ -42,6 +42,12 @@ const App = () => {
     dispatch(thunks.user.logout());
   };
 
+  const isClient = userData.role === UserRole.CLIENT;
+  const isMaster = userData.role === UserRole.MASTER;
+  // const isOperator = userData.role === UserRole.OPERATOR;
+  const isAdmin = userData.role === UserRole.ADMIN;
+  // const isResponsible = userData.role === UserRole.RESPONSIBLE;
+
   return (
     <div className="app">
       {isFetched ? (
@@ -69,7 +75,7 @@ const App = () => {
           <PrivateRoute
             path={routes.orders.root}
             exact
-            condition={!!userData.login && userData.role === UserRole.CLIENT}
+            condition={!!userData.login && isClient}
             redirectPath={routes.login.root}
           >
             <OrdersPage orders={orders} />
@@ -85,27 +91,27 @@ const App = () => {
           <PrivateRoute
             path={routes.locations.root}
             redirectPath={routes.me.root}
-            condition={!!userData.login && userData.role === UserRole.ADMIN}
+            condition={!!userData.login && isAdmin}
           >
             <LocationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.services.root}
-            condition={!!userData.login && userData.role === UserRole.ADMIN}
+            condition={!!userData.login && isAdmin}
             redirectPath={routes.me.root}
           >
             <ServicesPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.specializations.root}
-            condition={!!userData.login && userData.role === UserRole.ADMIN}
+            condition={!!userData.login && isAdmin}
             redirectPath={routes.me.root}
           >
             <SpecializationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.schedule.root}
-            condition={!!userData.login && userData.role === UserRole.MASTER}
+            condition={!!userData.login && isMaster}
             redirectPath={routes.me.root}
           >
             <MySchedulePage />

@@ -9,6 +9,10 @@ const initialState: StateType = {
       hours: '',
       status: MasterStatus.IDLE,
     },
+    orders: {
+      loading: false,
+      data: [],
+    },
   },
 };
 

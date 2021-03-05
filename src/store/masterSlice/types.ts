@@ -1,3 +1,5 @@
+import { OrderType } from '../../shared/types';
+
 export enum MasterStatus {
   IDLE,
   BUSY,
@@ -14,5 +16,9 @@ export type StateType = {
   loading: boolean
   data: {
     schedule: ScheduleType
+    orders: {
+      loading: boolean
+      data: OrderType[]
+    }
   },
 };
