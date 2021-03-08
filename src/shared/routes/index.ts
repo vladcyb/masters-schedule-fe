@@ -23,4 +23,7 @@ export const routes = {
   schedule: {
     root: '/schedule',
   },
+  manageOrders: {
+    root: '/manage-orders',
+  },
 };

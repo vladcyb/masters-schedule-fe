@@ -18,6 +18,7 @@ import { useAppDispatch } from './store';
 import { routes } from './shared/routes';
 import { UserRole } from './API/interfaces';
 import { Navbar } from './components/ui';
+import { ManageOrders } from './pages/ManageOrders';
 import './app.css';
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
 
   const isClient = userData.role === UserRole.CLIENT;
   const isMaster = userData.role === UserRole.MASTER;
-  // const isOperator = userData.role === UserRole.OPERATOR;
+  const isOperator = userData.role === UserRole.OPERATOR;
   const isAdmin = userData.role === UserRole.ADMIN;
   // const isResponsible = userData.role === UserRole.RESPONSIBLE;
 
@@ -115,6 +116,13 @@ const App = () => {
             redirectPath={routes.me.root}
           >
             <MySchedulePage />
+          </PrivateRoute>
+          <PrivateRoute
+            path={routes.manageOrders.root}
+            redirectPath={routes.me.root}
+            condition={isOperator}
+          >
+            <ManageOrders />
           </PrivateRoute>
         </Router>
       ) : null}
