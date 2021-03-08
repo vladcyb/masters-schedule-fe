@@ -22,11 +22,3 @@
     line-height: 100%;
     color: var(--dark-1);
 }
-
-.me__logoutFlex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100px;
-    margin-top: 10px;
-}

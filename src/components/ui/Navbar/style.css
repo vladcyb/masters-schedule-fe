@@ -7,16 +7,21 @@
     right: 0;
     padding: 0 20px 0 50px;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
+}
+
+.navbar__main {
+    height: 100%;
+    display: flex;
 }
 
 .navbar__navlink {
     color: var(--light-2);
     font-size: 14px;
-    height: 50px;
+    height: 100%;
     line-height: 50px;
-    display: inline-block;
+    display: block;
     padding: 0 15px;
     text-decoration: none;
 }
@@ -34,10 +39,56 @@
     background: var(--secondary-1);
 }
 
-.navbar__logout {
-    color: var(--light-2);
+.navbar__userMenuWrapper {
+    position: relative;
+    height: 100%;
 }
 
-.navbar__logout:hover {
-    text-decoration: underline;
+.navbar__userMenu {
+    display: none;
+    background: white;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateY(calc(100% + 5px));
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    -webkit-box-shadow: 0 0 7px -1px #000000;
+    box-shadow: 0 0 7px -1px #000000;
+}
+
+.navbar__userMenu button {
+    border-radius: 4px;
+    padding: 10px 5px;
+}
+
+.navbar__userMenu button:hover {
+    background: var(--light);
+}
+
+.navbar__userMenuWrapper_opened .navbar__toggle {
+    background: var(--dark-2);
+}
+
+.navbar__userMenuWrapper_opened .navbar__userMenu {
+    display: flex;
+}
+
+.navbar__toggle {
+    padding: 0 40px;
+}
+
+.navbar__userMenuArrow {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    content: url("data:image/svg+xml,%3C%3Fxml version='1.0'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' version='1.1' width='512' height='512' x='0' y='0' viewBox='0 0 213.333 213.333' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpolygon points='0,53.333 106.667,160 213.333,53.333 ' fill='%23ffffff' data-original='%23000000' style='' class=''/%3E%3C/g%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3Cg xmlns='http://www.w3.org/2000/svg'%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.navbar__userMenuWrapper_opened .navbar__userMenuArrow {
+    transform: rotateZ(180deg);
 }
