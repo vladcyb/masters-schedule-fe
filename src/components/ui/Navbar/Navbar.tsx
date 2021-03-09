@@ -10,7 +10,7 @@ type PropsType = {
   onLogout: () => void
 };
 
-export const Navbar = ({ userData, onLogout }: PropsType) => {
+export const Navbar = ({ userData: { login, role }, onLogout }: PropsType) => {
   /* state */
   const [isUserMenuOpened, setIsUserMenuOpened] = useState(false);
 
@@ -22,11 +22,15 @@ export const Navbar = ({ userData, onLogout }: PropsType) => {
   return (
     <div className="navbar">
       <div className="navbar__main">
-        <NavLink className="navbar__navlink" to={routes.me.root}>Me</NavLink>
-        {userData.role === UserRole.CLIENT && (
-          <NavLink className="navbar__navlink" to={routes.orders.root}>My orders</NavLink>
+        <NavLink className="navbar__navlink" to={routes.me.root}>
+          Me
+        </NavLink>
+        {role === UserRole.CLIENT && (
+          <NavLink className="navbar__navlink" to={routes.orders.root}>
+            My orders
+          </NavLink>
         )}
-        {userData.role === UserRole.ADMIN && (
+        {role === UserRole.ADMIN && (
           <>
             <NavLink className="navbar__navlink" to={routes.locations.root}>
               Locations
@@ -39,14 +43,14 @@ export const Navbar = ({ userData, onLogout }: PropsType) => {
             </NavLink>
           </>
         )}
-        {userData.role === UserRole.MASTER && (
+        {role === UserRole.MASTER && (
           <NavLink className="navbar__navlink" to={routes.schedule.root}>
             My schedule
           </NavLink>
         )}
-        {userData.role === UserRole.OPERATOR && (
+        {role === UserRole.OPERATOR && (
           <NavLink className="navbar__navlink" to={routes.manageOrders.root}>
-            Orders
+            My orders
           </NavLink>
         )}
       </div>
@@ -54,7 +58,7 @@ export const Navbar = ({ userData, onLogout }: PropsType) => {
         ${isUserMenuOpened ? 'navbar__userMenuWrapper_opened' : ''}`}
       >
         <button className="navbar__navlink navbar__toggle" type="button" onClick={toggleUserMenu}>
-          {userData.login}
+          {login}
           <img className="navbar__userMenuArrow" alt="" />
         </button>
         <div className="navbar__userMenu">
