@@ -13,7 +13,7 @@
     justify-content: flex-start;
     align-items: center;
     font-size: 14px;
-    color: var(--secondary-1);
+    color: var(--blue-2);
 }
 
 .location__delete {

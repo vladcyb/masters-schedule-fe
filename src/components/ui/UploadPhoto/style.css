@@ -12,7 +12,7 @@
 }
 
 .uploadPhoto__box {
-    border: 2px solid var(--secondary-1);
+    border: 2px solid var(--blue-2);
     position: relative;
     height: 150px;
     border-radius: 10px;
@@ -22,7 +22,7 @@
 }
 
 .uploadPhoto_drag .uploadPhoto__box {
-    border: 4px dashed var(--secondary-1);
+    border: 4px dashed var(--blue-2);
 }
 
 .uploadPhoto__label {

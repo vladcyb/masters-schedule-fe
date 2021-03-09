@@ -1,6 +1,6 @@
 .navbar {
     height: 50px;
-    background-color: var(--secondary-2);
+    background-color: var(--blue-3);
     position: fixed;
     left: 0;
     top: 0;
@@ -27,16 +27,16 @@
 }
 
 .navbar__navlink:hover {
-    background: var(--secondary-3);
+    background: var(--blue-4);
 }
 
 .navbar__navlink:active {
-    background: var(--dark-2);
+    background: var(--blue-1);
 }
 
 .navbar__navlink.active {
     color: white;
-    background: var(--secondary-1);
+    background: var(--blue-2);
 }
 
 .navbar__userMenuWrapper {
@@ -67,11 +67,11 @@
 }
 
 .navbar__userMenu button:hover {
-    background: var(--light);
+    background: var(--light-1);
 }
 
 .navbar__userMenuWrapper_opened .navbar__toggle {
-    background: var(--dark-2);
+    background: var(--blue-1);
 }
 
 .navbar__userMenuWrapper_opened .navbar__userMenu {

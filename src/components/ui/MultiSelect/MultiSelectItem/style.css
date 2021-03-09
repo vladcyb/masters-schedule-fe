@@ -9,7 +9,7 @@
 }
 
 .multiSelect__item:hover {
-    background-color: var(--light);
+    background-color: var(--light-1);
 }
 
 .multiSelect__itemCheckmark {

@@ -6,13 +6,13 @@
     font-size: 30px;
     line-height: 100%;
     font-weight: bold;
-    color: var(--dark-1);
+    color: var(--dark);
 }
 
 .me__name {
     font-size: 24px;
     line-height: 100%;
-    color: var(--dark-1);
+    color: var(--dark);
     margin-top: 8px;
 }
 
@@ -20,5 +20,5 @@
     margin-top: 20px;
     font-size: 16px;
     line-height: 100%;
-    color: var(--dark-1);
+    color: var(--dark);
 }

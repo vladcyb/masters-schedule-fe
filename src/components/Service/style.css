@@ -3,11 +3,11 @@
     justify-content: flex-start;
     align-items: center;
     padding: 20px 10px;
-    border-bottom: 1px solid var(--dark-1);
+    border-bottom: 1px solid var(--dark);
 }
 
 .service:first-of-type {
-    border-top: 1px solid var(--dark-1);
+    border-top: 1px solid var(--dark);
 }
 
 .service__img {
@@ -29,5 +29,5 @@
     font-size: 18px;
     margin-bottom: 5px;
     font-weight: 500;
-    color: var(--dark-2);
+    color: var(--blue-1);
 }

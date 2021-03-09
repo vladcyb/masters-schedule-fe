@@ -26,12 +26,12 @@ code {
 
 :root {
   /* colors */
-  --dark-1: #112233;
-  --dark-2: #1c4b79;
-  --secondary-1: #144b81;
-  --secondary-2: #325c92;
-  --secondary-3: #436da2;
-  --light: #97c1e8;
+  --dark: #112233;
+  --blue-1: #1c4b79;
+  --blue-2: #144b81;
+  --blue-3: #325c92;
+  --blue-4: #436da2;
+  --light-1: #97c1e8;
   --light-2: #dfedff;
   --white: #efefef;
   --gray: #727272;
@@ -45,12 +45,12 @@ code {
 /* classes */
 .navlink {
   font-size: 14px;
-  color: var(--secondary-1);
+  color: var(--blue-2);
 }
 
 .title {
   font-size: 18px;
-  color: var(--dark-2);
+  color: var(--blue-1);
   padding-bottom: 20px;
 }
 
