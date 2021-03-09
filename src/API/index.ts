@@ -25,8 +25,10 @@ const API = {
     create: (props: any) => (
       Responses(instance.post('/order', props, { withCredentials: true }))
     ),
-    setStatus: (props: IOrderSetStatus) => (
-      Responses(instance.post('/order/updateStatus', props, { withCredentials: true }))
+    setStatus: ({ id, ...props }: IOrderSetStatus) => (
+      Responses(
+        instance.post(`/order/updateStatus/${id}`, props, { withCredentials: true }),
+      )
     ),
     getAll: () => (
       Responses(instance.get('/order', { withCredentials: true }))
