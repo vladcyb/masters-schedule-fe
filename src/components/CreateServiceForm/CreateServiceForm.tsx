@@ -65,9 +65,9 @@ export const CreateServiceForm = ({ className, close, isLoading }: PropsType) =>
 
   return (
     <Form className={`createServiceForm ${className || ''}`} onSubmit={handleSubmit}>
-      <Field label="Title:" {...title.props} />
-      <Field label="Price:" {...price.props} />
-      <Field label="Duration (hours):" {...duration.props} maxLength={8} />
+      <Field label="Название:" {...title.props} />
+      <Field label="Стоимость:" {...price.props} />
+      <Field label="Продолжительность (в часах):" {...duration.props} maxLength={8} />
       <Select
         className="createServiceForm__specializations"
         options={specializations.data.map((item) => ({
@@ -77,16 +77,16 @@ export const CreateServiceForm = ({ className, close, isLoading }: PropsType) =>
         }))}
         selected={specializationId}
         setSelected={setSpecializationId}
-        label="Specialization:"
+        label="Специализация:"
       />
       <div className="createServiceForm__specializationsError">
         {getters.isSubmitted && getters.errors.specialization}
       </div>
       <Button className="createServiceForm__create" type="submit">
-        Create
+        Создать
       </Button>
       <Button className="createServiceForm__cancel" variant="outline" onClick={close}>
-        Cancel
+        Отмена
       </Button>
       <Spinner className="createServiceForm__spinner" visible={isLoading} />
     </Form>

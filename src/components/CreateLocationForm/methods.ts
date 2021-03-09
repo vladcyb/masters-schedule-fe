@@ -46,13 +46,13 @@ type Errors = {
 export const validateCreateLocation = (form: ILocationCreate, setters: Setters): boolean => {
   const errors: Errors = {};
   if (!form.title) {
-    errors.title = 'Enter title!';
+    errors.title = 'Введите название!';
   }
   if (!form.coordinates) {
-    errors.coordinates = 'Enter coordinates!';
+    errors.coordinates = 'Введите координаты!';
   }
   if (!form.typeId) {
-    errors.locationType = 'Select type!';
+    errors.locationType = 'Выберите тип!';
   }
   setters.setErrors(errors);
   return !Object.keys(errors).length;

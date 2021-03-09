@@ -43,7 +43,7 @@ export const OrdersPage = ({ orders }: PropsType) => {
             onClick={handleAddClick}
             type="submit"
           >
-            Create
+            Создать
           </Button>
         </>
       )}

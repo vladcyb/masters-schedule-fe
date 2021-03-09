@@ -10,10 +10,10 @@ type FormType = {
 export const validateCreateSpecialization = (form: FormType, setters: Setters): boolean => {
   const errors: Partial<ISpecializationCreate> = {};
   if (!form.title) {
-    errors.title = 'Enter title!';
+    errors.title = 'Введите название!';
   }
   if (!form.icon) {
-    errors.icon = 'Upload icon!';
+    errors.icon = 'Загрузите иконку!';
   } else if (!allowedImageFormats.includes(form.icon.type)) {
     errors.icon = 'Format is not supported!';
   }

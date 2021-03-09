@@ -62,7 +62,7 @@ export const MultiSelect = ({
         role="button"
         tabIndex={0}
       >
-        Selected:
+        Выбрано:
         {' '}
         {selectedCount}
       </div>

@@ -19,19 +19,19 @@ export const Service = ({
     <img className="service__img" src={`${backendURL}/${specialization.icon}`} alt="" />
     <div>
       <div className="service__row">
-        <span className="service__rowTitle">Title: </span>
+        <span className="service__rowTitle">Название: </span>
         <span className="service__rowValue">{title}</span>
       </div>
       <div className="service__row">
-        <span className="service__rowTitle">Duration: </span>
+        <span className="service__rowTitle">Продолжительность: </span>
         <span className="service__rowValue">{duration}</span>
       </div>
       <div className="service__row">
-        <span className="service__rowTitle">Price: </span>
+        <span className="service__rowTitle">Стоимость: </span>
         <span className="service__rowValue">{price}</span>
       </div>
       <div className="service__row">
-        <span className="service__rowTitle">Specialization: </span>
+        <span className="service__rowTitle">Специализация: </span>
         <span className="service__rowValue">{specialization.title}</span>
       </div>
     </div>

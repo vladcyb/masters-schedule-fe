@@ -9,6 +9,7 @@ import {
 import { useAppDispatch } from '../../store';
 import { validateLogin } from './validate';
 import { ILoginForm } from '../../API/interfaces';
+import { routes } from '../../shared/routes';
 import './style.css';
 
 type PropsType = {
@@ -53,10 +54,12 @@ export const LoginForm = ({ className, isLoading }: PropsType) => {
 
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
-      <Field {...login.props} label="Login:" />
-      <Field {...password.props} label="Password:" type="password" />
-      <Button className={cn('submit')} type="submit">Login</Button>
-      <Link className={cn('register navlink')} to="/register">Register</Link>
+      <Field {...login.props} label="Логин:" />
+      <Field {...password.props} label="Пароль:" type="password" />
+      <Button className={cn('submit')} type="submit">Войти</Button>
+      <Link className={cn('register navlink')} to={routes.register.root}>
+        Регистрация
+      </Link>
       <Spinner className={cn('spinner')} visible={isLoading} />
     </Form>
   );

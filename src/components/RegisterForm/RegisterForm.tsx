@@ -102,17 +102,17 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
 
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
-      <Field label="Login:" {...login.props} />
-      <Field label="Password:" {...password.props} type="password" />
-      <Field label="Repeat password:" {...passwordRepeat.props} type="password" />
-      <Field label="Surname:" {...surname.props} />
-      <Field label="Name:" {...name.props} />
-      <Field label="Patronymic:" {...patronymic.props} />
+      <Field label="Логин:" {...login.props} />
+      <Field label="Пароль:" {...password.props} type="password" />
+      <Field label="Повторите пароль:" {...passwordRepeat.props} type="password" />
+      <Field label="Фамилия:" {...surname.props} />
+      <Field label="Имя:" {...name.props} />
+      <Field label="Отчество:" {...patronymic.props} />
       <Select
         className={cn('role')}
         options={ROLES}
         selected={selectedRole}
-        label="Role:"
+        label="Роль:"
         setSelected={setSelectedRole}
       />
       {isMasterOptionsLoading && (
@@ -129,7 +129,7 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
             }))}
             selected={specializationId}
             setSelected={setSpecializationId}
-            label="Specialization:"
+            label="Специализация:"
           />
           <div className={cn('selectError')}>
             {getters.isSubmitted && getters.errors.specializationId}
@@ -142,7 +142,7 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
             }))}
             selected={locationId}
             setSelected={setLocationId}
-            label="Location:"
+            label="Местоположение:"
           />
           <div className={cn('selectError')}>
             {getters.isSubmitted && getters.errors.locationId}
@@ -152,8 +152,12 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
       {masterOptionsError && (
         <div className={cn('error')}>Something went wrong</div>
       )}
-      <Button className={cn('submit')} type="submit">Register</Button>
-      <Link className={cn('login navlink')} to="/login">Login</Link>
+      <Button className={cn('submit')} type="submit">
+        Зарегистрироваться
+      </Button>
+      <Link className={cn('login navlink')} to="/login">
+        Войти
+      </Link>
       <Spinner className={cn('spinner')} visible={isLoading} />
     </Form>
   );

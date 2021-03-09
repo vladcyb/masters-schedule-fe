@@ -20,35 +20,35 @@ export const validateRegistration = (form: IRegisterForm, setters: Setters): boo
     login, password, passwordRepeat, name, surname, patronymic, locationId, specializationId, role,
   } = form;
   if (!login) {
-    errors.login = 'Enter login!';
+    errors.login = 'Введите логин!';
   } else if (!login[0].match(/[a-zA-Z]/) || !login.match(/^[A-Za-z0-9]*$/)) {
-    errors.login = 'Login must begin with a letter and contain only Latin letters and numbers!';
+    errors.login = 'Логин должен начинаться с буквы и содержать только латинские буквы и цифры!';
   }
   if (!password) {
-    errors.password = 'Enter password!';
+    errors.password = 'Введите пароль!';
   } else if (password.length < 8) {
-    errors.password = 'Password must contain at least 8 characters!';
+    errors.password = 'Пароль должен содержать как минимум 8 символов!';
   }
   if (!passwordRepeat) {
-    errors.passwordRepeat = 'Repeat password!';
+    errors.passwordRepeat = 'Повторите пароль!';
   } else if (password !== passwordRepeat) {
-    errors.passwordRepeat = 'Passwords mismatch!';
+    errors.passwordRepeat = 'Пароли не совпадают!';
   }
   if (!name.trim()) {
-    errors.name = 'Enter name!';
+    errors.name = 'Введите имя!';
   }
   if (!surname.trim()) {
-    errors.surname = 'Enter surname!';
+    errors.surname = 'Введите фамилию!';
   }
   if (!patronymic.trim()) {
-    errors.patronymic = 'Enter patronymic!';
+    errors.patronymic = 'Введите отчество!';
   }
   if (role === UserRole.MASTER) {
     if (!specializationId) {
-      errors.specializationId = 'Select specialization!';
+      errors.specializationId = 'Выберите специализацию!';
     }
     if (!locationId) {
-      errors.locationId = 'Select location!';
+      errors.locationId = 'Выберите местоположение!';
     }
   }
   setErrors(errors);

@@ -27,6 +27,7 @@ export const Field = ({
         value={value}
         onChange={onChange}
         name={name}
+        id={name}
         {...inputProps}
       />
     ) : (
@@ -36,6 +37,7 @@ export const Field = ({
         value={value}
         onChange={onChange}
         name={name}
+        id={name}
         {...inputProps}
       />
     )}

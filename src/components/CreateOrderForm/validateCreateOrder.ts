@@ -8,15 +8,15 @@ export const validateCreateOrder = (
 ): boolean => {
   const errors: any = {};
   if (!form.description) {
-    errors.description = 'Enter description!';
+    errors.description = 'Введити описание!';
   }
   if (!form.photo) {
-    errors.photo = 'Upload photo!';
+    errors.photo = 'Загрузите фото!';
   } else if (!allowedImageFormats.includes(form.photo.type)) {
-    errors.photo = 'Format is not allowed!';
+    errors.photo = 'Формат не поддерживается!';
   }
   if (!form.address) {
-    errors.address = 'Enter address!';
+    errors.address = 'Введите адрес!';
   }
   setters.setErrors(errors);
   return !(errors.description || errors.address || errors.photo);

@@ -23,34 +23,34 @@ export const Navbar = ({ userData: { login, role }, onLogout }: PropsType) => {
     <div className="navbar">
       <div className="navbar__main">
         <NavLink className="navbar__navlink" to={routes.me.root}>
-          Me
+          Моя страница
         </NavLink>
         {role === UserRole.CLIENT && (
           <NavLink className="navbar__navlink" to={routes.orders.root}>
-            My orders
+            Мои заказы
           </NavLink>
         )}
         {role === UserRole.ADMIN && (
           <>
             <NavLink className="navbar__navlink" to={routes.locations.root}>
-              Locations
+              Места
             </NavLink>
             <NavLink className="navbar__navlink" to={routes.services.root}>
-              Services
+              Услуги
             </NavLink>
             <NavLink className="navbar__navlink" to={routes.specializations.root}>
-              Specializations
+              Специализации
             </NavLink>
           </>
         )}
         {role === UserRole.MASTER && (
           <NavLink className="navbar__navlink" to={routes.schedule.root}>
-            My schedule
+            Мое расписание
           </NavLink>
         )}
         {role === UserRole.OPERATOR && (
           <NavLink className="navbar__navlink" to={routes.manageOrders.root}>
-            My orders
+            Мои заказы
           </NavLink>
         )}
       </div>
@@ -62,7 +62,9 @@ export const Navbar = ({ userData: { login, role }, onLogout }: PropsType) => {
           <img className="navbar__userMenuArrow" alt="" />
         </button>
         <div className="navbar__userMenu">
-          <button type="button" onClick={onLogout}>Logout</button>
+          <button type="button" onClick={onLogout}>
+            Выйти
+          </button>
         </div>
       </div>
     </div>

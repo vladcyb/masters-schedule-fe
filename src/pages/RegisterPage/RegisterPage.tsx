@@ -8,7 +8,7 @@ type PropsType = {
 
 export const RegisterPage = ({ isLoading }: PropsType) => (
   <div className="registerPage">
-    <div className="center title">Register</div>
+    <div className="center title">Регистрация</div>
     <RegisterForm className="registerPage__form" isLoading={isLoading} />
   </div>
 );

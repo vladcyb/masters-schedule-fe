@@ -4,16 +4,16 @@ import { IServiceCreate } from '../../API/interfaces';
 export const validateCreateService = (form: IServiceCreate, setters: Setters): boolean => {
   const errors: any = {};
   if (!form.title) {
-    errors.title = 'Enter title!';
+    errors.title = 'Введите название!';
   }
   if (!form.duration) {
-    errors.duration = 'Enter duration!';
+    errors.duration = 'Введите продолжительность!';
   }
   if (!form.specializationId) {
-    errors.specialization = 'Select specialization!';
+    errors.specialization = 'Выберите специализацию!';
   }
   if (!form.price) {
-    errors.price = 'Enter price!';
+    errors.price = 'Введите стоимость!';
   }
   setters.setErrors(errors);
   return !(errors.duration || errors.price || errors.specialization || errors.title);

@@ -93,14 +93,14 @@ export const CreateOrderForm = ({
     <Form className={cn()} onSubmit={handleSubmit}>
       <Field
         className={cn('description')}
-        label="Description:"
+        label="Описание:"
         textarea
         {...description.props}
       />
-      <Field label="Address:" {...address.props} />
+      <Field label="Адрес:" {...address.props} />
       <UploadPhoto
         name="photo"
-        label="Photo:"
+        label="Фото:"
         photo={photo}
         setPhoto={setPhoto}
         isFormSubmitted={getters.isSubmitted}
@@ -110,7 +110,7 @@ export const CreateOrderForm = ({
         className={cn('services')}
         options={servicesOptions}
         setOptions={setServicesOptions}
-        label="Services:"
+        label="Выберите услуги:"
       />
       <div className={cn('error')}>
         {getters.isSubmitted && getters.errors.service}
@@ -119,14 +119,14 @@ export const CreateOrderForm = ({
         className={cn('create')}
         type="submit"
       >
-        Create
+        Создать
       </Button>
       <Button
         className={cn('cancel')}
         onClick={onCancel}
         variant="outline"
       >
-        Cancel
+        Отмена
       </Button>
     </Form>
   );

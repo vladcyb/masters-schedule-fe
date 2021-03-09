@@ -66,12 +66,12 @@ export const CreateSpecializationForm = ({
 
   return (
     <Form className={`createSpecializationForm ${className || ''}`} onSubmit={handleSubmit}>
-      <Field label="Title:" {...title.props} />
+      <Field label="Название:" {...title.props} />
       <UploadPhoto
         className="createSpecializationForm__upload"
         photo={icon}
         setPhoto={setIcon}
-        label="Upload icon:"
+        label="Иконка:"
         name="icon"
         error={getters.errors.icon}
         isFormSubmitted={getters.isSubmitted}
@@ -80,14 +80,14 @@ export const CreateSpecializationForm = ({
         className="createSpecializationForm__add"
         type="submit"
       >
-        Create
+        Создать
       </Button>
       <Button
         className="createSpecializationForm__cancel"
         variant="outline"
         onClick={close}
       >
-        Cancel
+        Отмена
       </Button>
       <Spinner className="createSpecializationForm__spinner" visible={isLoading} />
     </Form>

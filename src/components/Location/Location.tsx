@@ -73,13 +73,13 @@ export const Location = ({
       <div className={classes}>
         {isEditing ? (
           <form className="location__edit" autoComplete="off" onSubmit={handleEditSubmit}>
-            <Field label="Enter new title" {...newTitle.props} autoFocus />
+            <Field label="Введите новое название:" {...newTitle.props} autoFocus />
             <div className="location__editButtons">
               <Button className="location__save" type="submit" sm>
-                Save
+                Сохранить
               </Button>
               <Button variant="outline" className="location__cancel" onClick={handleCancelEdit} sm>
-                Cancel
+                Отмена
               </Button>
             </div>
           </form>

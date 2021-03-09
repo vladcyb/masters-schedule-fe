@@ -33,7 +33,7 @@ export const ServicesPage = () => {
     <Container className="servicesPage">
       {isAdding ? (
         <>
-          <div className="center title">Add service</div>
+          <div className="center title">Новая услуга</div>
           <CreateServiceForm
             className="servicesPage__form"
             close={closeAddingForm}
@@ -47,7 +47,7 @@ export const ServicesPage = () => {
             <Service className="servicesPage__item" data={(item)} key={item.id} />
           ))}
           <Button className="servicesPage__create" onClick={handleAddClick}>
-            Create
+            Создать
           </Button>
         </>
       )}

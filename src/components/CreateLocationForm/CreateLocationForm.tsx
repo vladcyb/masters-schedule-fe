@@ -88,13 +88,13 @@ export const CreateLocationForm = ({
 
   return (
     <Form className={cn()} onSubmit={handleSubmit}>
-      <Field label="Title:" {...title.props} />
-      <Field label="Coordinates:" {...coordinates.props} />
+      <Field label="Название:" {...title.props} />
+      <Field label="Координаты:" {...coordinates.props} />
       <Select
         options={typeOptions}
         selected={typeId}
         setSelected={setTypeId}
-        label="Type:"
+        label="Тип:"
       />
       <div className={cn('selectError')}>
         {getters.isSubmitted && getters.errors.locationType}
@@ -104,13 +104,13 @@ export const CreateLocationForm = ({
         options={parentOptions}
         selected={parentId}
         setSelected={setParentId}
-        label="Parent:"
+        label="Родительское местоположение:"
       />
       <Button className="createLocationForm__create" type="submit">
-        Create
+        Создать
       </Button>
       <Button className="createLocationForm__cancel" variant="outline" onClick={close}>
-        Cancel
+        Отмена
       </Button>
       <Spinner className="createLocationForm__spinner" visible={isLoading} />
     </Form>
