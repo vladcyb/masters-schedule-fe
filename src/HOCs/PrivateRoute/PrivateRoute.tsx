@@ -12,11 +12,11 @@ export const PrivateRoute = (props: PropsWithChildren<PrivateRoutePropsType>) =>
     children,
     condition,
     redirectPath,
-    ...rest
+    ...otherProps
   } = props;
 
   return (
-    <Route {...rest}>
+    <Route {...otherProps}>
       {condition ? children : <Redirect to={redirectPath} />}
     </Route>
   );
