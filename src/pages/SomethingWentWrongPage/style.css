@@ -1,0 +1,13 @@
+.SomethingWentWrongPage {
+    text-align: center;
+}
+
+.SomethingWentWrongPage__warn {
+    margin-top: 50px;
+    width: 100px;
+}
+
+.SomethingWentWrongPage__header {
+    margin: 50px 0 20px 0;
+    color: var(--secondary-1);
+}
