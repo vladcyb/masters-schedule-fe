@@ -63,7 +63,7 @@ export const LocationsPage = () => {
           ))}
           {!locations.data.length && !locations.loading && (
             <div>
-              <i>(empty)</i>
+              <i>(пусто)</i>
             </div>
           )}
           <Button className="locationsPage__createButton" onClick={handleAddClick}>

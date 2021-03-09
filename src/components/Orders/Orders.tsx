@@ -25,7 +25,7 @@ export const Orders = ({ orders }: PropsType) => (
       </div>
     ))}
     {!orders.data.length && !orders.loading && (
-      <i>(empty)</i>
+      <i>(пусто)</i>
     )}
   </div>
 );
