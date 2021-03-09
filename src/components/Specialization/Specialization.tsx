@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from '../ui';
 import { SpecializationType } from '../../shared/types';
 import { backendURL } from '../../config.json';
 import './style.css';
@@ -13,10 +12,10 @@ export const Specialization = ({
   className,
   specialization,
 }: PropsType) => (
-  <Card className={`specialization ${className || ''}`}>
+  <div className={`specialization ${className || ''}`}>
     <img className="specialization__icon" src={`${backendURL}/${specialization.icon}`} alt="" />
     <div>
       {specialization.title}
     </div>
-  </Card>
+  </div>
 );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { ServiceType } from '../../shared/types';
-import { Card } from '../ui';
 import { backendURL } from '../../config.json';
 import './style.css';
 
@@ -15,15 +14,14 @@ export const Service = ({
   },
   className,
 }: PropsType) => (
-  <Card className={`service ${className || ''}`}>
+  <div className={`service ${className || ''}`}>
     <img className="service__img" src={`${backendURL}/${specialization.icon}`} alt="" />
     <div>
       <div className="service__row">
-        <span className="service__rowTitle">Название: </span>
-        <span className="service__rowValue">{title}</span>
+        <div className="service__title">{title}</div>
       </div>
       <div className="service__row">
-        <span className="service__rowTitle">Продолжительность: </span>
+        <span className="service__rowTitle">Продолжительность, ч: </span>
         <span className="service__rowValue">{duration}</span>
       </div>
       <div className="service__row">
@@ -35,5 +33,5 @@ export const Service = ({
         <span className="service__rowValue">{specialization.title}</span>
       </div>
     </div>
-  </Card>
+  </div>
 );
