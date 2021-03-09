@@ -76,7 +76,7 @@ const App = () => {
           <PrivateRoute
             path={routes.orders.root}
             exact
-            condition={!!userData.login && isClient}
+            condition={!!userData.login && (isClient || isMaster)}
             redirectPath={routes.login.root}
           >
             <OrdersPage orders={orders} />
