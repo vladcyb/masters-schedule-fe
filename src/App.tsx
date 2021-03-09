@@ -19,6 +19,7 @@ import { routes } from './shared/routes';
 import { UserRole } from './API/interfaces';
 import { Navbar } from './components/ui';
 import { ManageOrders } from './pages/ManageOrders';
+import { RolesMap } from './shared/types';
 import './app.css';
 
 const App = () => {
@@ -43,17 +44,21 @@ const App = () => {
     dispatch(thunks.user.logout());
   };
 
-  const isClient = userData.role === UserRole.CLIENT;
-  const isMaster = userData.role === UserRole.MASTER;
-  const isOperator = userData.role === UserRole.OPERATOR;
-  const isAdmin = userData.role === UserRole.ADMIN;
-  // const isResponsible = userData.role === UserRole.RESPONSIBLE;
+  const rolesMap: RolesMap = {
+    isClient: userData.role === UserRole.CLIENT,
+    isMaster: userData.role === UserRole.MASTER,
+    isOperator: userData.role === UserRole.OPERATOR,
+    isAdmin: userData.role === UserRole.ADMIN,
+    isResponsible: userData.role === UserRole.RESPONSIBLE,
+  };
 
   return (
     <div className="app">
       {isFetched ? (
         <Router>
-          {userData.login && <Navbar userData={userData} onLogout={handleLogout} />}
+          {userData.login && (
+            <Navbar login={userData.login} onLogout={handleLogout} rolesMap={rolesMap} />
+          )}
           <Route path="/" exact>
             <Redirect to={routes.me.root} />
           </Route>
@@ -76,7 +81,7 @@ const App = () => {
           <PrivateRoute
             path={routes.orders.root}
             exact
-            condition={!!userData.login && (isClient || isMaster)}
+            condition={!!userData.login && (rolesMap.isClient || rolesMap.isMaster)}
             redirectPath={routes.login.root}
           >
             <OrdersPage orders={orders} />
@@ -92,27 +97,27 @@ const App = () => {
           <PrivateRoute
             path={routes.locations.root}
             redirectPath={routes.me.root}
-            condition={!!userData.login && isAdmin}
+            condition={!!userData.login && rolesMap.isAdmin}
           >
             <LocationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.services.root}
-            condition={!!userData.login && isAdmin}
+            condition={!!userData.login && rolesMap.isAdmin}
             redirectPath={routes.me.root}
           >
             <ServicesPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.specializations.root}
-            condition={!!userData.login && isAdmin}
+            condition={!!userData.login && rolesMap.isAdmin}
             redirectPath={routes.me.root}
           >
             <SpecializationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.schedule.root}
-            condition={!!userData.login && isMaster}
+            condition={!!userData.login && rolesMap.isMaster}
             redirectPath={routes.me.root}
           >
             <MySchedulePage />
@@ -120,7 +125,7 @@ const App = () => {
           <PrivateRoute
             path={routes.manageOrders.root}
             redirectPath={routes.me.root}
-            condition={isOperator}
+            condition={rolesMap.isOperator}
           >
             <ManageOrders />
           </PrivateRoute>

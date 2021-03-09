@@ -39,3 +39,11 @@ export type OrderType = {
   photo: string
   address: string
 };
+
+export type RolesMap = {
+  isClient: boolean
+  isMaster: boolean
+  isOperator: boolean
+  isAdmin: boolean
+  isResponsible: boolean
+};

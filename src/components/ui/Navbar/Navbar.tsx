@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { routes } from '../../../shared/routes';
-import { UserRole } from '../../../API/interfaces';
-import { UserDataStateType } from '../../../store/userSlice/types';
+import { RolesMap } from '../../../shared/types';
 import './style.css';
 
 type PropsType = {
-  userData: UserDataStateType
+  login: string
+  rolesMap: RolesMap
   onLogout: () => void
 };
 
-export const Navbar = ({ userData: { login, role }, onLogout }: PropsType) => {
+export const Navbar = ({ rolesMap, login, onLogout }: PropsType) => {
   /* state */
   const [isUserMenuOpened, setIsUserMenuOpened] = useState(false);
 
@@ -25,12 +25,12 @@ export const Navbar = ({ userData: { login, role }, onLogout }: PropsType) => {
         <NavLink className="navbar__navlink" to={routes.me.root}>
           Моя страница
         </NavLink>
-        {(role === UserRole.CLIENT || role === UserRole.MASTER) && (
+        {(rolesMap.isClient || rolesMap.isMaster) && (
           <NavLink className="navbar__navlink" to={routes.orders.root}>
             Мои заказы
           </NavLink>
         )}
-        {role === UserRole.ADMIN && (
+        {rolesMap.isAdmin && (
           <>
             <NavLink className="navbar__navlink" to={routes.locations.root}>
               Места
@@ -43,12 +43,12 @@ export const Navbar = ({ userData: { login, role }, onLogout }: PropsType) => {
             </NavLink>
           </>
         )}
-        {role === UserRole.MASTER && (
+        {rolesMap.isMaster && (
           <NavLink className="navbar__navlink" to={routes.schedule.root}>
             Мое расписание
           </NavLink>
         )}
-        {role === UserRole.OPERATOR && (
+        {rolesMap.isOperator && (
           <NavLink className="navbar__navlink" to={routes.manageOrders.root}>
             Мои заказы
           </NavLink>
