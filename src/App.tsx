@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { thunks } from './store/thunks';
 import { getUser } from './store/userSlice/selectors';
@@ -33,6 +33,8 @@ const App = () => {
 
   /* hooks */
   const dispatch = useAppDispatch();
+  const location = useLocation();
+  const prevPath = location.state ? (location.state as any).prevPath : undefined;
 
   /* effects */
   useEffect(() => {
@@ -74,7 +76,7 @@ const App = () => {
             path={routes.login.root}
             exact
             condition={!userData.login}
-            redirectPath={routes.me.root}
+            redirectPath={prevPath || routes.me.root}
           >
             <LoginPage isLoading={isLoading} />
           </PrivateRoute>
@@ -96,7 +98,7 @@ const App = () => {
           </PrivateRoute>
           <PrivateRoute
             path={routes.locations.root}
-            redirectPath={routes.me.root}
+            redirectPath={routes.login.root}
             condition={!!userData.login && rolesMap.isAdmin}
           >
             <LocationsPage />
@@ -104,28 +106,28 @@ const App = () => {
           <PrivateRoute
             path={routes.services.root}
             condition={!!userData.login && rolesMap.isAdmin}
-            redirectPath={routes.me.root}
+            redirectPath={routes.login.root}
           >
             <ServicesPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.specializations.root}
             condition={!!userData.login && rolesMap.isAdmin}
-            redirectPath={routes.me.root}
+            redirectPath={routes.login.root}
           >
             <SpecializationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.schedule.root}
             condition={!!userData.login && rolesMap.isMaster}
-            redirectPath={routes.me.root}
+            redirectPath={routes.login.root}
           >
             <MySchedulePage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.manageOrders.root}
-            redirectPath={routes.me.root}
-            condition={rolesMap.isOperator}
+            condition={!!userData.login && rolesMap.isOperator}
+            redirectPath={routes.login.root}
           >
             <ManageOrders />
           </PrivateRoute>
