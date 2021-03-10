@@ -54,6 +54,8 @@ const App = () => {
     isResponsible: userData.role === UserRole.RESPONSIBLE,
   };
 
+  const isLoggedIn = Boolean(userData.login);
+
   return (
     <div className="app">
       {isFetched ? (
@@ -67,7 +69,7 @@ const App = () => {
           <PrivateRoute
             path={routes.me.root}
             exact
-            condition={!!userData.login}
+            condition={isLoggedIn}
             redirectPath={routes.login.root}
           >
             <Me userData={userData} />
@@ -75,7 +77,7 @@ const App = () => {
           <PrivateRoute
             path={routes.login.root}
             exact
-            condition={!userData.login}
+            condition={!isLoggedIn}
             redirectPath={prevPath || routes.me.root}
           >
             <LoginPage isLoading={isLoading} />
@@ -83,7 +85,7 @@ const App = () => {
           <PrivateRoute
             path={routes.orders.root}
             exact
-            condition={!!userData.login && (rolesMap.isClient || rolesMap.isMaster)}
+            condition={isLoggedIn && (rolesMap.isClient || rolesMap.isMaster)}
             redirectPath={routes.login.root}
           >
             <OrdersPage orders={orders} />
@@ -91,7 +93,7 @@ const App = () => {
           <PrivateRoute
             path={routes.register.root}
             exact
-            condition={!userData.login}
+            condition={!isLoggedIn}
             redirectPath={routes.me.root}
           >
             <RegisterPage isLoading={isLoading} />
@@ -99,34 +101,34 @@ const App = () => {
           <PrivateRoute
             path={routes.locations.root}
             redirectPath={routes.login.root}
-            condition={!!userData.login && rolesMap.isAdmin}
+            condition={isLoggedIn && rolesMap.isAdmin}
           >
             <LocationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.services.root}
-            condition={!!userData.login && rolesMap.isAdmin}
+            condition={isLoggedIn && rolesMap.isAdmin}
             redirectPath={routes.login.root}
           >
             <ServicesPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.specializations.root}
-            condition={!!userData.login && rolesMap.isAdmin}
+            condition={isLoggedIn && rolesMap.isAdmin}
             redirectPath={routes.login.root}
           >
             <SpecializationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.schedule.root}
-            condition={!!userData.login && rolesMap.isMaster}
+            condition={isLoggedIn && rolesMap.isMaster}
             redirectPath={routes.login.root}
           >
             <MySchedulePage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.manageOrders.root}
-            condition={!!userData.login && rolesMap.isOperator}
+            condition={isLoggedIn && rolesMap.isOperator}
             redirectPath={routes.login.root}
           >
             <ManageOrders />
