@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { thunks } from './store/thunks';
 import { getUser } from './store/userSlice/selectors';
@@ -55,7 +55,7 @@ const App = () => {
   return (
     <div className="app">
       {isFetched ? (
-        <Router>
+        <>
           {userData.login && (
             <Navbar login={userData.login} onLogout={handleLogout} rolesMap={rolesMap} />
           )}
@@ -129,7 +129,7 @@ const App = () => {
           >
             <ManageOrders />
           </PrivateRoute>
-        </Router>
+        </>
       ) : null}
     </div>
   );

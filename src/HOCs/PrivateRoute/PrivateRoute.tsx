@@ -6,18 +6,22 @@ interface PrivateRoutePropsType extends RouteProps {
   redirectPath: string
 }
 
-export const PrivateRoute = (props: PropsWithChildren<PrivateRoutePropsType>) => {
-  /* props */
-  const {
-    children,
-    condition,
-    redirectPath,
-    ...otherProps
-  } = props;
-
-  return (
-    <Route {...otherProps}>
-      {condition ? children : <Redirect to={redirectPath} />}
-    </Route>
-  );
-};
+export const PrivateRoute = ({
+  children,
+  condition,
+  redirectPath,
+  ...otherProps
+}: PropsWithChildren<PrivateRoutePropsType>) => (
+  <Route {...otherProps}>
+    {condition ? children : (
+      <Redirect
+        to={{
+          pathname: redirectPath,
+          state: {
+            prevPath: otherProps.path,
+          },
+        }}
+      />
+    )}
+  </Route>
+);
