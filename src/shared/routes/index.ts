@@ -26,4 +26,7 @@ export const routes = {
   manageOrders: {
     root: '/manage-orders',
   },
+  administration: {
+    root: '/administration',
+  },
 };

@@ -22,37 +22,57 @@ export const Navbar = ({ rolesMap, login, onLogout }: PropsType) => {
   return (
     <div className="navbar">
       <div className="navbar__main">
+
         <NavLink className="navbar__navlink" to={routes.me.root}>
           Моя страница
         </NavLink>
-        {(rolesMap.isClient || rolesMap.isMaster) && (
+
+        {/* Клиент */}
+        {rolesMap.isClient && (
           <NavLink className="navbar__navlink" to={routes.orders.root}>
             Мои заказы
           </NavLink>
         )}
-        {rolesMap.isAdmin && (
+
+        {/* Мастер */}
+        {rolesMap.isMaster && (
           <>
-            <NavLink className="navbar__navlink" to={routes.locations.root}>
-              Места
+            <NavLink className="navbar__navlink" to={routes.orders.root}>
+              Мои заказы
             </NavLink>
-            <NavLink className="navbar__navlink" to={routes.services.root}>
-              Услуги
-            </NavLink>
-            <NavLink className="navbar__navlink" to={routes.specializations.root}>
-              Специализации
+            <NavLink className="navbar__navlink" to={routes.schedule.root}>
+              Мое расписание
             </NavLink>
           </>
         )}
-        {rolesMap.isMaster && (
-          <NavLink className="navbar__navlink" to={routes.schedule.root}>
-            Мое расписание
-          </NavLink>
-        )}
+
+        {/* Оператор */}
         {rolesMap.isOperator && (
-          <NavLink className="navbar__navlink" to={routes.manageOrders.root}>
-            Мои заказы
-          </NavLink>
+          <>
+            <NavLink className="navbar__navlink" to={routes.orders.root}>
+              Заказы
+            </NavLink>
+            <NavLink className="navbar__navlink" to={routes.schedule.root}>
+              Расписание
+            </NavLink>
+          </>
         )}
+
+        {/* Администратор */}
+        {rolesMap.isAdmin && (
+          <>
+            <NavLink className="navbar__navlink" to={routes.orders.root}>
+              Заказы
+            </NavLink>
+            <NavLink className="navbar__navlink" to={routes.schedule.root}>
+              Расписание
+            </NavLink>
+            <NavLink className="navbar__navlink" to={routes.administration.root}>
+              Администрирование
+            </NavLink>
+          </>
+        )}
+
       </div>
       <div className={`navbar__userMenuWrapper 
         ${isUserMenuOpened ? 'navbar__userMenuWrapper_opened' : ''}`}
