@@ -13,6 +13,15 @@ export const PrivateRoute = ({
   ...otherProps
 }: PropsWithChildren<PrivateRoutePropsType>) => (
   <Route {...otherProps}>
-    {condition ? children : <Redirect to={redirectPath} />}
+    {condition ? children : (
+      <Redirect
+        to={{
+          pathname: redirectPath,
+          state: {
+            prevPath: otherProps.path,
+          },
+        }}
+      />
+    )}
   </Route>
 );
