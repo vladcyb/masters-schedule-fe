@@ -85,7 +85,7 @@ const App = () => {
           <PrivateRoute
             path={routes.orders.root}
             exact
-            condition={isLoggedIn && (rolesMap.isClient || rolesMap.isMaster)}
+            condition={isLoggedIn}
             redirectPath={routes.login.root}
           >
             <OrdersPage orders={orders} />
@@ -101,34 +101,34 @@ const App = () => {
           <PrivateRoute
             path={routes.locations.root}
             redirectPath={routes.login.root}
-            condition={isLoggedIn && rolesMap.isAdmin}
+            condition={isLoggedIn}
           >
             <LocationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.services.root}
-            condition={isLoggedIn && rolesMap.isAdmin}
+            condition={isLoggedIn}
             redirectPath={routes.login.root}
           >
             <ServicesPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.specializations.root}
-            condition={isLoggedIn && rolesMap.isAdmin}
+            condition={isLoggedIn}
             redirectPath={routes.login.root}
           >
             <SpecializationsPage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.schedule.root}
-            condition={isLoggedIn && rolesMap.isMaster}
+            condition={isLoggedIn}
             redirectPath={routes.login.root}
           >
             <MySchedulePage />
           </PrivateRoute>
           <PrivateRoute
             path={routes.manageOrders.root}
-            condition={isLoggedIn && rolesMap.isOperator}
+            condition={isLoggedIn}
             redirectPath={routes.login.root}
           >
             <ManageOrders />
