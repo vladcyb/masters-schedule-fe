@@ -8,17 +8,16 @@ import {
   LocationsPage,
   LoginPage,
   Me,
+  MySchedulePage,
   OrdersPage,
   RegisterPage,
   ServicesPage,
   SpecializationsPage,
-  MySchedulePage,
 } from './pages';
 import { useAppDispatch } from './store';
 import { routes } from './shared/routes';
 import { UserRole } from './API/interfaces';
 import { Navbar } from './components/ui';
-import { ManageOrders } from './pages/ManageOrders';
 import { RolesMap } from './shared/types';
 import './app.css';
 
@@ -104,6 +103,8 @@ const App = () => {
             path={routes.locations.root}
             redirectPath={routes.login.root}
             condition={isLoggedIn}
+            allowedRoles={[UserRole.ADMIN]}
+            role={role}
           >
             <LocationsPage />
           </PrivateRoute>
@@ -111,6 +112,8 @@ const App = () => {
             path={routes.services.root}
             condition={isLoggedIn}
             redirectPath={routes.login.root}
+            allowedRoles={[UserRole.ADMIN]}
+            role={role}
           >
             <ServicesPage />
           </PrivateRoute>
@@ -118,6 +121,8 @@ const App = () => {
             path={routes.specializations.root}
             condition={isLoggedIn}
             redirectPath={routes.login.root}
+            allowedRoles={[UserRole.ADMIN]}
+            role={role}
           >
             <SpecializationsPage />
           </PrivateRoute>
@@ -125,15 +130,10 @@ const App = () => {
             path={routes.schedule.root}
             condition={isLoggedIn}
             redirectPath={routes.login.root}
+            allowedRoles={[UserRole.ADMIN, UserRole.OPERATOR, UserRole.MASTER]}
+            role={role}
           >
             <MySchedulePage />
-          </PrivateRoute>
-          <PrivateRoute
-            path={routes.manageOrders.root}
-            condition={isLoggedIn}
-            redirectPath={routes.login.root}
-          >
-            <ManageOrders />
           </PrivateRoute>
         </>
       ) : null}
