@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { UserRole } from '../../API/interfaces';
-import { Forbidden } from '../../pages/Forbidden';
+import { ForbiddenPage } from '../../pages/ForbiddenPage';
 
 interface PrivateRoutePropsType extends RouteProps {
   condition: boolean
@@ -35,7 +35,7 @@ export const PrivateRoute = ({
   if (allowedRoles && !allowedRoles.includes(role!)) {
     return (
       <Route {...otherProps}>
-        <Forbidden />
+        <ForbiddenPage />
       </Route>
     );
   }
