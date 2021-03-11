@@ -1,3 +1,5 @@
+import { UserRole } from '../API/interfaces';
+
 export type SpecializationType = {
   id: number
   title: string
@@ -46,4 +48,12 @@ export type RolesMap = {
   isOperator: boolean
   isAdmin: boolean
   isResponsible: boolean
+};
+
+export type RolesPermissions = {
+  [UserRole.CLIENT]: string[]
+  [UserRole.RESPONSIBLE]: string[]
+  [UserRole.ADMIN]: string[]
+  [UserRole.MASTER]: string[]
+  [UserRole.OPERATOR]: string[]
 };
