@@ -46,12 +46,14 @@ const App = () => {
     dispatch(thunks.user.logout());
   };
 
+  const { role } = userData;
+
   const rolesMap: RolesMap = {
-    isClient: userData.role === UserRole.CLIENT,
-    isMaster: userData.role === UserRole.MASTER,
-    isOperator: userData.role === UserRole.OPERATOR,
-    isAdmin: userData.role === UserRole.ADMIN,
-    isResponsible: userData.role === UserRole.RESPONSIBLE,
+    isClient: role === UserRole.CLIENT,
+    isMaster: role === UserRole.MASTER,
+    isOperator: role === UserRole.OPERATOR,
+    isAdmin: role === UserRole.ADMIN,
+    isResponsible: role === UserRole.RESPONSIBLE,
   };
 
   const isLoggedIn = Boolean(userData.login);
