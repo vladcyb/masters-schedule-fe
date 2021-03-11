@@ -1,0 +1,11 @@
+.forbidden__img {
+    display: block;
+    margin: 100px auto 50px auto;
+    width: 200px;
+}
+
+.forbidden__text {
+    font-size: 24px;
+    color: var(--blue-1);
+    text-align: center;
+}
