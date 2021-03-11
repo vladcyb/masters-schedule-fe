@@ -6,3 +6,5 @@ export * from './LocationsPage';
 export * from './SpecializationsPage';
 export * from './ServicesPage';
 export * from './MySchedulePage';
+export * from './NotFoundPage';
+export * from './ForbiddenPage';

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { UserRole } from '../../API/interfaces';
-import { ForbiddenPage } from '../../pages/ForbiddenPage';
+import { ForbiddenPage } from '../../pages';
 
 interface PrivateRoutePropsType extends RouteProps {
   condition: boolean

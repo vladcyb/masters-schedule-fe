@@ -12,6 +12,7 @@ import {
   RegisterPage,
   ServicesPage,
   SpecializationsPage,
+  NotFoundPage,
 } from '../../pages';
 import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
@@ -106,7 +107,9 @@ export const Routes = ({ user }: PropsType) => {
       >
         <MySchedulePage />
       </PrivateRoute>
-      <Route path="*">Not found</Route>
+      <Route path="*">
+        <NotFoundPage />
+      </Route>
     </Switch>
   );
 };
