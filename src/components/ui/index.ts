@@ -7,3 +7,4 @@ export * from './Container';
 export * from './Form';
 export * from './Card';
 export * from './MultiSelect';
+export * from './Modal';
