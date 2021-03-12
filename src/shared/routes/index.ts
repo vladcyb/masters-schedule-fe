@@ -11,15 +11,6 @@ export const routes = {
   orders: {
     root: '/orders',
   },
-  locations: {
-    root: '/locations',
-  },
-  services: {
-    root: '/services',
-  },
-  specializations: {
-    root: '/specializations',
-  },
   schedule: {
     root: '/schedule',
   },
@@ -28,5 +19,14 @@ export const routes = {
   },
   administration: {
     root: '/administration',
+    locations: {
+      root: '/administration/locations',
+    },
+    services: {
+      root: '/administration/services',
+    },
+    specializations: {
+      root: '/administration/specializations',
+    },
   },
 };

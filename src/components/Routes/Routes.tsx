@@ -16,6 +16,7 @@ import {
 } from '../../pages';
 import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
+import { AdministrationPage } from '../../pages/AdministrationPage';
 
 type PropsType = {
   user: UserState
@@ -72,7 +73,7 @@ export const Routes = ({ user }: PropsType) => {
         <RegisterPage isLoading={isLoading} />
       </PrivateRoute>
       <PrivateRoute
-        path={routes.locations.root}
+        path={routes.administration.locations.root}
         redirectPath={routes.login.root}
         condition={isLoggedIn}
         allowedRoles={[UserRole.ADMIN]}
@@ -81,7 +82,7 @@ export const Routes = ({ user }: PropsType) => {
         <LocationsPage />
       </PrivateRoute>
       <PrivateRoute
-        path={routes.services.root}
+        path={routes.administration.services.root}
         condition={isLoggedIn}
         redirectPath={routes.login.root}
         allowedRoles={[UserRole.ADMIN]}
@@ -90,7 +91,7 @@ export const Routes = ({ user }: PropsType) => {
         <ServicesPage />
       </PrivateRoute>
       <PrivateRoute
-        path={routes.specializations.root}
+        path={routes.administration.specializations.root}
         condition={isLoggedIn}
         redirectPath={routes.login.root}
         allowedRoles={[UserRole.ADMIN]}
@@ -106,6 +107,15 @@ export const Routes = ({ user }: PropsType) => {
         role={role}
       >
         <MySchedulePage />
+      </PrivateRoute>
+      <PrivateRoute
+        path={routes.administration.root}
+        condition={isLoggedIn}
+        redirectPath={routes.login.root}
+        allowedRoles={[UserRole.ADMIN]}
+        role={role}
+      >
+        <AdministrationPage />
       </PrivateRoute>
       <Route path="*">
         <NotFoundPage />
