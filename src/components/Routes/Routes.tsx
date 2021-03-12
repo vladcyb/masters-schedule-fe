@@ -103,7 +103,7 @@ export const Routes = ({ user }: PropsType) => {
         path={routes.schedule.root}
         condition={isLoggedIn}
         redirectPath={routes.login.root}
-        allowedRoles={[UserRole.ADMIN, UserRole.OPERATOR, UserRole.MASTER]}
+        allowedRoles={[UserRole.OPERATOR, UserRole.MASTER]}
         role={role}
       >
         <MySchedulePage />
