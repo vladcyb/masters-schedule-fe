@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateType } from './types';
 import { ServiceType } from '../../shared/types';
 import { ServiceThunk } from './thunk';
+import { actions as userActions } from '../userSlice/actions';
 
 const initialState: StateType = {
   loading: false,
@@ -38,6 +39,7 @@ export const serviceSlice = createSlice({
       })
       .addCase(ServiceThunk.create.rejected, (state) => {
         state.loading = false;
-      });
+      })
+      .addCase(userActions.logout, () => initialState);
   },
 });

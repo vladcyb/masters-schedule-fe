@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SpecializationsThunk } from './thunk';
 import { StateType } from './types';
 import { SpecializationType } from '../../shared/types';
+import { actions as userActions } from '../userSlice/actions';
 
 const initialState: StateType = {
   loading: false,
@@ -45,6 +46,7 @@ export const specializationsSlice = createSlice({
       .addCase(SpecializationsThunk.create.rejected, (state) => {
         state.loading = false;
         state.error = true;
-      });
+      })
+      .addCase(userActions.logout, () => initialState);
   },
 });

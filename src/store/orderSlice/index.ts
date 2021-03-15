@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { OrderType } from '../../shared/types';
 import { StateType } from './types';
 import { OrderThunk } from './thunk';
+import { actions as userActions } from '../userSlice/actions';
 
 const initialState: StateType = {
   loading: false,
@@ -32,6 +33,7 @@ export const orderSlice = createSlice({
       })
       .addCase(OrderThunk.get.fulfilled, (state) => {
         state.loading = false;
-      });
+      })
+      .addCase(userActions.logout, () => initialState);
   },
 });

@@ -6,6 +6,7 @@ import {
 import { LocationType } from '../../shared/types';
 import { getLocationById } from './methods';
 import { ILocationEdit } from '../../API/interfaces';
+import { actions as userActions } from '../userSlice/actions';
 
 const initialState: StateType = {
   loading: false,
@@ -76,6 +77,7 @@ export const locationSlice = createSlice({
       })
       .addCase(LocationThunk.create.rejected, (state) => {
         state.loading = false;
-      });
+      })
+      .addCase(userActions.logout, () => initialState);
   },
 });
