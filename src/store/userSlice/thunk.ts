@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ILoginAPI, IRegisterAPI } from '../../API/interfaces';
 import API from '../../API';
-import actions from './actions';
+import { ILoginAPI, IRegisterAPI } from '../../API/interfaces';
+import { actions } from './actions';
 
 export const UserThunk = {
   login: createAsyncThunk(

@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import instance from '../API/axios';
-import actions from './userSlice/actions';
+import { actions } from './userSlice/actions';
 import { specializationsSlice } from './specializationSlice';
 import { locationSlice } from './locationSlice';
 import { userSlice } from './userSlice';

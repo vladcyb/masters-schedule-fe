@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import actions from './actions';
 import API from '../../API';
+import { actions } from './actions';
 import { ILocationCreate, ILocationEdit } from '../../API/interfaces';
 
 export const LocationThunk = {

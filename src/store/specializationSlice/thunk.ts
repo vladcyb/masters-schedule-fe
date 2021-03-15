@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../API';
-import actions from './actions';
+import { actions } from './actions';
 
 export const SpecializationsThunk = {
   update: createAsyncThunk(
