@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateType, UserDataStateType } from './types';
 import { UserThunk } from './thunk';
 import { initialUserData } from './constants';
-import { OrderType } from '../../shared/types';
 
 const initialState: StateType = {
   loading: false,
@@ -15,10 +14,6 @@ const initialState: StateType = {
     patronymic: undefined,
     role: undefined,
   },
-  orders: {
-    loading: false,
-    data: [],
-  },
 };
 
 export const userSlice = createSlice({
@@ -30,12 +25,6 @@ export const userSlice = createSlice({
     },
     logout: (state) => {
       state.data = initialUserData;
-    },
-    setOrders: (state, { payload }: PayloadAction<OrderType[]>) => {
-      state.orders.data = payload;
-    },
-    addOrder: (state, { payload }: PayloadAction<OrderType>) => {
-      state.orders.data.push(payload);
     },
   },
   extraReducers: (builder) => {
@@ -62,15 +51,6 @@ export const userSlice = createSlice({
       })
       .addCase(UserThunk.getMe.fulfilled, (state) => {
         state.fetched = true;
-      })
-      .addCase(UserThunk.getOrders.pending, (state) => {
-        state.orders.loading = true;
-      })
-      .addCase(UserThunk.getOrders.rejected, (state) => {
-        state.orders.loading = false;
-      })
-      .addCase(UserThunk.getOrders.fulfilled, (state) => {
-        state.orders.loading = false;
       });
   },
 });

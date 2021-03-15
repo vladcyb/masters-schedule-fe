@@ -17,12 +17,14 @@ import {
 import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
 import { AdministrationPage } from '../../pages/AdministrationPage';
+import { StateType as OrdersStateType } from '../../store/orderSlice/types';
 
 type PropsType = {
   user: UserState
+  orders: OrdersStateType
 };
 
-export const Routes = ({ user }: PropsType) => {
+export const Routes = ({ user, orders }: PropsType) => {
   /* hooks */
   const location = useLocation();
   const prevPath = location.state ? (location.state as any).prevPath : undefined;
@@ -30,7 +32,6 @@ export const Routes = ({ user }: PropsType) => {
   const {
     data: userData,
     loading: isLoading,
-    orders,
   } = user;
   const { login, role } = userData;
   const isLoggedIn = Boolean(login);

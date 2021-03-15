@@ -3,7 +3,7 @@ import { thunks } from '../../store/thunks';
 import { useAppDispatch } from '../../store';
 import { Button, Container } from '../../components/ui';
 import { Orders, CreateOrderForm } from '../../components';
-import { OrdersStateType } from '../../store/userSlice/types';
+import { StateType as OrdersStateType } from '../../store/orderSlice/types';
 import './style.css';
 
 type PropsType = {
@@ -28,7 +28,7 @@ export const OrdersPage = ({ orders }: PropsType) => {
 
   /* effects */
   useEffect(() => {
-    dispatch(thunks.user.getOrders());
+    dispatch(thunks.order.get());
   }, [dispatch]);
 
   return (

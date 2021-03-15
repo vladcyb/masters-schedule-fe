@@ -8,6 +8,7 @@ import { Navbar } from './components/ui';
 import { RolesMap } from './shared/types';
 import { Routes } from './components/Routes';
 import './app.css';
+import { getOrders } from './store/orderSlice/selectors';
 
 const App = () => {
   /* loading user data from Redux */
@@ -16,6 +17,7 @@ const App = () => {
     data: userData,
     fetched: isFetched,
   } = user;
+  const orders = useSelector(getOrders);
 
   /* hooks */
   const dispatch = useAppDispatch();
@@ -47,7 +49,7 @@ const App = () => {
           {userData.login && (
             <Navbar login={userData.login} onLogout={handleLogout} rolesMap={rolesMap} />
           )}
-          <Routes user={user} />
+          <Routes user={user} orders={orders} />
         </>
       ) : null}
     </div>

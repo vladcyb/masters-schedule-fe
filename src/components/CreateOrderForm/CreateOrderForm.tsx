@@ -56,7 +56,7 @@ export const CreateOrderForm = ({
       }
     });
     formData.append('services', JSON.stringify(serviceIds));
-    const actionsResponse = await dispatch(thunks.user.createOrder(formData));
+    const actionsResponse = await dispatch(thunks.order.create(formData));
     if (actionsResponse.meta.requestStatus === 'fulfilled') {
       onCancel();
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spinner } from '../ui';
 import { Order } from '../Order';
-import { OrdersStateType } from '../../store/userSlice/types';
+import { StateType as OrdersStateType } from '../../store/orderSlice/types';
 import './style.css';
 
 type PropsType = {

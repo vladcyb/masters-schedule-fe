@@ -60,24 +60,4 @@ export const UserThunk = {
       return 0;
     },
   ),
-  getOrders: createAsyncThunk(
-    'user/getOrders',
-    async (arg, { dispatch }) => {
-      const { data: { ok, result } } = await API.Order.getAll();
-      if (ok) {
-        dispatch(actions.setOrders(result));
-      }
-    },
-  ),
-  createOrder: createAsyncThunk(
-    'user/createOrder',
-    async (props: any, { dispatch, rejectWithValue }) => {
-      const { data: { ok, result } } = await API.Order.create(props);
-      if (ok) {
-        dispatch(actions.addOrder(result));
-        return '';
-      }
-      return rejectWithValue('');
-    },
-  ),
 };
