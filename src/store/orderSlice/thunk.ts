@@ -4,7 +4,7 @@ import actions from './actions';
 
 export const OrderThunk = {
   get: createAsyncThunk(
-    'user/getOrders',
+    'orders/get',
     async (arg, { dispatch }) => {
       const { data: { ok, result } } = await API.Order.getAll();
       if (ok) {
@@ -13,7 +13,7 @@ export const OrderThunk = {
     },
   ),
   create: createAsyncThunk(
-    'user/createOrder',
+    'orders/create',
     async (props: any, { dispatch, rejectWithValue }) => {
       const { data: { ok, result } } = await API.Order.create(props);
       if (ok) {
