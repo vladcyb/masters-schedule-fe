@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { thunks } from '../../store/thunks';
 import { useAppDispatch } from '../../store';
 import { Button, Container } from '../../components/ui';
-import { Orders, CreateOrderForm } from '../../components';
+import { CreateOrderForm, Orders } from '../../components';
 import { StateType as OrdersStateType } from '../../store/orderSlice/types';
+import { UserRole } from '../../API/interfaces';
 import './style.css';
 
 type PropsType = {
   orders: OrdersStateType
+  role: UserRole
 };
 
-export const OrdersPage = ({ orders }: PropsType) => {
+export const OrdersPage = ({ orders, role }: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
 
@@ -38,13 +40,15 @@ export const OrdersPage = ({ orders }: PropsType) => {
       ) : (
         <>
           <Orders orders={orders} />
-          <Button
-            className="ordersPage__createButton"
-            onClick={handleAddClick}
-            type="button"
-          >
-            Создать
-          </Button>
+          {role === UserRole.CLIENT && (
+            <Button
+              className="ordersPage__createButton"
+              onClick={handleAddClick}
+              type="button"
+            >
+              Создать
+            </Button>
+          )}
         </>
       )}
     </Container>

@@ -58,6 +58,10 @@ code {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
 button {
   border: none;
   background-color: transparent;

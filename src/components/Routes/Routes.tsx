@@ -63,7 +63,7 @@ export const Routes = ({ user, orders }: PropsType) => {
         condition={isLoggedIn}
         redirectPath={routes.login.root}
       >
-        <OrdersPage orders={orders} />
+        <OrdersPage orders={orders} role={user.data.role!} />
       </PrivateRoute>
       <PrivateRoute
         path={routes.register.root}
