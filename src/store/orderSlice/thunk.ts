@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../API';
 import { actions } from './actions';
+import { IOrderSetStartDate } from '../../API/interfaces';
 
 export const OrderThunk = {
   get: createAsyncThunk(
@@ -14,13 +15,20 @@ export const OrderThunk = {
   ),
   create: createAsyncThunk(
     'orders/create',
-    async (props: any, { dispatch, rejectWithValue }) => {
+    async (props: any, { dispatch, rejectWithValue }) => { // TODO: any
       const { data: { ok, result } } = await API.Order.create(props);
       if (ok) {
         dispatch(actions.add(result));
         return '';
       }
       return rejectWithValue('');
+    },
+  ),
+  setStartDate: createAsyncThunk(
+    'orders/setStartDate',
+    async (props: IOrderSetStartDate) => {
+      const response = await API.Order.setStartDate(props);
+      console.log(response);
     },
   ),
 };

@@ -39,7 +39,7 @@ export const OrdersPage = ({ orders, role }: PropsType) => {
         <CreateOrderForm className="ordersPage__createForm" onCancel={cancelAdding} />
       ) : (
         <>
-          <Orders orders={orders} />
+          <Orders orders={orders} role={role} />
           {role === UserRole.CLIENT && (
             <Button
               className="ordersPage__createButton"

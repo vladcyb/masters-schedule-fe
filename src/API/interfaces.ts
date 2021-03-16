@@ -53,6 +53,11 @@ export interface IOrderSetStatus {
   status: OrderStatus
 }
 
+export interface IOrderSetStartDate {
+  id: number
+  date: string
+}
+
 export interface ILocationCreate {
   title: string
   coordinates: string

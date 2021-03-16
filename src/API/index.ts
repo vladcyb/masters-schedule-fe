@@ -2,7 +2,7 @@ import Responses from './responses';
 import {
   ILocationCreate, ILocationEdit,
   ILoginForm,
-  IMasterSetSchedule,
+  IMasterSetSchedule, IOrderSetStartDate,
   IOrderSetStatus,
   IRegisterForm,
   IServiceCreate,
@@ -27,11 +27,16 @@ const API = {
     ),
     setStatus: ({ id, ...props }: IOrderSetStatus) => (
       Responses(
-        instance.post(`/order/updateStatus/${id}`, props, { withCredentials: true }),
+        instance.post(`/order/${id}/updateStatus`, props, { withCredentials: true }),
       )
     ),
     getAll: () => (
       Responses(instance.get('/order', { withCredentials: true }))
+    ),
+    setStartDate: ({ id, date }: IOrderSetStartDate) => (
+      Responses(instance.put(`/order/${id}/setStartDate`, {
+        date,
+      }, { withCredentials: true }))
     ),
   },
   Location: {

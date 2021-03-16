@@ -23,3 +23,17 @@
     height: 80px;
     margin-right: 10px;
 }
+
+.order__editStartDateForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.order__save {
+    margin-left: 5px;
+}
+
+.order__cancel {
+    margin-left: 5px;
+}
