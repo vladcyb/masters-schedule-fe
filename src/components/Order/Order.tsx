@@ -6,7 +6,7 @@ import { UserRole } from '../../API/interfaces';
 import { EditStartDateForm } from './__editStartDateForm';
 import './style.css';
 
-const getShowStartDate = (date: string) => {
+const getShowDate = (date: string) => {
   const arr = date.split('T');
   const time = arr[1].slice(0, 5);
   return `${arr[0]} ${time}`;
@@ -67,9 +67,9 @@ export const Order = ({
         </div>
         <div className="order__field">
           <span className="order__fieldName">Дата начала: </span>
-          <span className="order__fieldContent" title="ГГГГ-ММ-ДД ЧЧ:ММ">
+          <span className="order__fieldContent">
             {startDate
-              ? getShowStartDate(startDate)
+              ? getShowDate(startDate)
               : '' || <i className="order__hint">(не назначено)</i>}
           </span>
           {role === UserRole.OPERATOR && (
@@ -91,7 +91,9 @@ export const Order = ({
         <div className="order__field">
           <span className="order__fieldName">Дата окончания: </span>
           <span className="order__fieldContent">
-            {finishDate || <i className="order__hint">(не назначено)</i>}
+            {finishDate
+              ? getShowDate(finishDate)
+              : <i className="order__hint">(не назначено)</i>}
           </span>
         </div>
         <div className="order__field">
