@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 import { useAppDispatch } from '../../../store';
 import { useField, useSetters } from '../../../shared/hooks';
 import { thunks } from '../../../store/thunks';
-import { Button, Field, Modal } from '../../ui';
-import './style.css';
+import { Button, Field } from '../../ui';
 import { validateStartDateForm } from './validate';
+import './style.css';
 
 type PropsType = {
   onClose: () => void
   id: number
+  setModalError: Dispatch<SetStateAction<string>>
 };
 
-export const EditStartDateForm = ({ id, onClose }: PropsType) => {
+export const EditStartDateForm = ({
+  id,
+  onClose,
+  setModalError,
+}: PropsType) => {
   /* state */
   const [isValid, setIsValid] = useState(false);
-  const [modalError, setModalError] = useState('');
 
   /* hooks */
   const dispatch = useAppDispatch();
@@ -43,14 +52,8 @@ export const EditStartDateForm = ({ id, onClose }: PropsType) => {
       onClose();
       if (result.meta.requestStatus === 'rejected') {
         setModalError(result.payload as string);
-      } else {
-        // TODO: Изменить значение в хранилище
       }
     }
-  };
-
-  const closeModal = () => {
-    setModalError('');
   };
 
   /* effects */
@@ -90,7 +93,6 @@ export const EditStartDateForm = ({ id, onClose }: PropsType) => {
           Отмена
         </Button>
       </div>
-      {modalError && <Modal message={modalError} onClose={closeModal} />}
     </form>
   );
 };

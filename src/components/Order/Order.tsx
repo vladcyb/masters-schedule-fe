@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { OrderStatus } from '../../shared/types';
 import { Card } from '../ui';
 import { backendURL } from '../../config.json';
@@ -16,6 +16,7 @@ type PropsType = {
   photo: string
   address: string
   role: UserRole
+  setModalError: Dispatch<SetStateAction<string>>
 };
 
 const OrderStatuses = {
@@ -36,6 +37,7 @@ export const Order = ({
   photo,
   address,
   role,
+  setModalError,
 }: PropsType) => {
   /* state */
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
@@ -71,7 +73,11 @@ export const Order = ({
             />
           )}
           {isStartDateEditing && (
-            <EditStartDateForm id={id} onClose={stopEditingStartDate} />
+            <EditStartDateForm
+              id={id}
+              onClose={stopEditingStartDate}
+              setModalError={setModalError}
+            />
           )}
         </div>
         <div className="order__field">
