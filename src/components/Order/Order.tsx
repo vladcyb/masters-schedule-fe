@@ -6,6 +6,12 @@ import { UserRole } from '../../API/interfaces';
 import { EditStartDateForm } from './__editStartDateForm';
 import './style.css';
 
+const getShowStartDate = (date: string) => {
+  const arr = date.split('T');
+  const time = arr[1].slice(0, 5);
+  return `${arr[0]} ${time}`;
+};
+
 type PropsType = {
   id: number
   description: string
@@ -61,8 +67,10 @@ export const Order = ({
         </div>
         <div className="order__field">
           <span className="order__fieldName">Дата начала: </span>
-          <span className="order__fieldContent">
-            {startDate || <i className="order__hint">(не назначено)</i>}
+          <span className="order__fieldContent" title="ГГГГ-ММ-ДД ЧЧ:ММ">
+            {startDate
+              ? getShowStartDate(startDate)
+              : '' || <i className="order__hint">(не назначено)</i>}
           </span>
           {role === UserRole.OPERATOR && (
             <button
