@@ -26,10 +26,11 @@ export const OrderThunk = {
   ),
   setStartDate: createAsyncThunk(
     'orders/setStartDate',
-    async (props: IOrderSetStartDate, { rejectWithValue }) => {
+    async (props: IOrderSetStartDate, { rejectWithValue, dispatch }) => {
       const response = await API.Order.setStartDate(props);
-      const { ok, error } = response.data;
+      const { ok, error, result } = response.data;
       if (ok) {
+        dispatch(actions.updateOne(result));
         return '';
       }
       return rejectWithValue(error);

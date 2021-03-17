@@ -4,4 +4,5 @@ import { OrderType } from '../../shared/types';
 export const actions = {
   add: createAction<OrderType>('orders/add'),
   set: createAction<OrderType[]>('orders/set'),
+  updateOne: createAction<OrderType>('orders/updateOne'),
 };

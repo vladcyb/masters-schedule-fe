@@ -19,6 +19,12 @@ export const orderSlice = createSlice({
     add: (state, { payload }: PayloadAction<OrderType>) => {
       state.data.push(payload);
     },
+    updateOne: (state, { payload }: PayloadAction<OrderType>) => {
+      const index = state.data.findIndex((item) => item.id === payload.id);
+      if (index !== -1) {
+        state.data[index] = payload;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
