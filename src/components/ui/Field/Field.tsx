@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from 'react-input-mask';
 import './style.css';
 
 type PropsType = {
@@ -6,6 +7,8 @@ type PropsType = {
   error?: string
   type?: 'text' | 'password'
   textarea?: boolean
+  mask?: string
+  maskChar?: string | null
 } & React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>;
 
 export const Field = ({
@@ -17,6 +20,8 @@ export const Field = ({
   label,
   className,
   textarea,
+  mask,
+  maskChar,
   ...inputProps
 }: PropsType) => (
   <div className={`field ${className || ''} ${textarea ? 'field_textarea' : ''}`}>
@@ -27,17 +32,17 @@ export const Field = ({
         value={value}
         onChange={onChange}
         name={name}
-        id={name}
         {...inputProps}
       />
     ) : (
-      <input
+      <Input
         className="field__input"
         type={type}
         value={value}
         onChange={onChange}
         name={name}
-        id={name}
+        mask={mask || ''}
+        maskChar={maskChar || null}
         {...inputProps}
       />
     )}

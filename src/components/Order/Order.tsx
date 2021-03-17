@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { OrderStatus } from '../../shared/types';
-import { Button, Card, Field } from '../ui';
+import { Card } from '../ui';
 import { backendURL } from '../../config.json';
 import { UserRole } from '../../API/interfaces';
-import { useInput } from '../../shared/hooks/useInput';
+import { EditStartDateForm } from './__editStartDateForm';
 import './style.css';
-import { useAppDispatch } from '../../store';
-import { thunks } from '../../store/thunks';
 
 type PropsType = {
   id: number
@@ -42,12 +40,6 @@ export const Order = ({
   /* state */
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
 
-  /* hooks */
-  const dispatch = useAppDispatch();
-
-  /* fields */
-  const editStartDateField = useInput();
-
   /* methods */
   const handleEditStartDateClick = () => {
     setIsStartDateEditing(true);
@@ -55,14 +47,6 @@ export const Order = ({
 
   const stopEditingStartDate = () => {
     setIsStartDateEditing(false);
-  };
-
-  const editStartDate = (e: React.FormEvent) => {
-    e.preventDefault();
-    dispatch(thunks.order.setStartDate({
-      id,
-      date: editStartDateField.value,
-    }));
   };
 
   return (
@@ -87,22 +71,7 @@ export const Order = ({
             />
           )}
           {isStartDateEditing && (
-            <form className="order__editStartDateForm" onSubmit={editStartDate}>
-              <Field label="" {...editStartDateField} />
-              <div>
-                <Button className="order__save" sm type="submit">
-                  Сохранить
-                </Button>
-                <Button
-                  className="order__cancel"
-                  onClick={stopEditingStartDate}
-                  variant="outline"
-                  sm
-                >
-                  Отмена
-                </Button>
-              </div>
-            </form>
+            <EditStartDateForm id={id} onClose={stopEditingStartDate} />
           )}
         </div>
         <div className="order__field">

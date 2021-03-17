@@ -48,6 +48,7 @@ export const Modal = ({
               className="modal__cancel"
               variant="outline"
               onClick={onClose}
+              autoFocus
             >
               Close
             </Button>
