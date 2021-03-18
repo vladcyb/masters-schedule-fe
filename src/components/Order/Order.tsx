@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import { parseISO } from 'date-fns';
 import { OrderStatus } from '../../shared/types';
 import { Card } from '../ui';
 import { backendURL } from '../../config.json';
@@ -6,11 +7,7 @@ import { UserRole } from '../../API/interfaces';
 import { EditStartDateForm } from './__editStartDateForm';
 import './style.css';
 
-const getShowDate = (date: string) => {
-  const arr = date.split('T');
-  const time = arr[1].slice(0, 5);
-  return `${arr[0]} ${time}`;
-};
+const getShowDate = (date: string) => parseISO(date || '').toLocaleString();
 
 type PropsType = {
   id: number
