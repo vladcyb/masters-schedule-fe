@@ -44,7 +44,7 @@ export const EditStartDateForm = ({
       time,
     }, setters));
     if (isValid) {
-      const startDate = `${date}T${time}:00Z`;
+      const startDate = `${date}T${time}`;
       const result = await dispatch(thunks.order.setStartDate({
         id,
         date: startDate,
