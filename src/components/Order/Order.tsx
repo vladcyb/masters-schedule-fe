@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { parseISO } from 'date-fns';
-import { OrderStatus } from '../../shared/types';
+import { OrderStatus, ServiceType } from '../../shared/types';
 import { Card } from '../ui';
 import { backendURL } from '../../config.json';
 import { UserRole } from '../../API/interfaces';
@@ -8,6 +8,10 @@ import { EditStartDateForm } from './__editStartDateForm';
 import './style.css';
 
 const getShowDate = (date: string) => parseISO(date).toLocaleString();
+
+const getServicesTitles = (services: Partial<ServiceType[]>) => (
+  services.map((item) => item!.title).join(', ')
+);
 
 type PropsType = {
   id: number
@@ -20,6 +24,7 @@ type PropsType = {
   address: string
   role: UserRole
   setModalError: Dispatch<SetStateAction<string>>
+  services: Partial<ServiceType[]>
 };
 
 const OrderStatuses = {
@@ -41,6 +46,7 @@ export const Order = ({
   address,
   role,
   setModalError,
+  services,
 }: PropsType) => {
   /* state */
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
@@ -104,6 +110,14 @@ export const Order = ({
         <div className="order__field">
           <span className="order__fieldName">Адрес: </span>
           <span className="order__fieldContent">{address}</span>
+        </div>
+        <div className="order__field">
+          <span className="order__fieldName">Услуги: </span>
+          <span className="order__fieldContent">
+            {services.length ? getServicesTitles(services) : (
+              <i className="order__hint">(не назначено)</i>
+            )}
+          </span>
         </div>
       </div>
     </Card>

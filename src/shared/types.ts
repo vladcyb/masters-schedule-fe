@@ -40,6 +40,7 @@ export type OrderType = {
   comment: string | null
   photo: string
   address: string
+  services: Partial<ServiceType[]>
 };
 
 export type RolesMap = {
