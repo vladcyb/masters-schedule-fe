@@ -7,7 +7,7 @@ import { UserRole } from '../../API/interfaces';
 import { EditStartDateForm } from './__editStartDateForm';
 import './style.css';
 
-const getShowDate = (date: string) => parseISO(date || '').toLocaleString();
+const getShowDate = (date: string) => parseISO(date).toLocaleString();
 
 type PropsType = {
   id: number
