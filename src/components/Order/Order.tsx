@@ -5,6 +5,7 @@ import { Card } from '../ui';
 import { backendURL } from '../../config.json';
 import { UserRole } from '../../API/interfaces';
 import { EditStartDateForm } from './__editStartDateForm';
+import { EditServices } from './__editServices';
 import './style.css';
 
 const getShowDate = (date: string) => parseISO(date).toLocaleString();
@@ -50,6 +51,7 @@ export const Order = ({
 }: PropsType) => {
   /* state */
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
+  const [isServicesEditing, setIsServicesEditing] = useState(false);
 
   /* methods */
   const handleEditStartDateClick = () => {
@@ -58,6 +60,14 @@ export const Order = ({
 
   const stopEditingStartDate = () => {
     setIsStartDateEditing(false);
+  };
+
+  const handleEditServicesClick = () => {
+    setIsServicesEditing(true);
+  };
+
+  const stopEditServices = () => {
+    setIsServicesEditing(false);
   };
 
   return (
@@ -80,7 +90,7 @@ export const Order = ({
               className="MySchedulePage__pencil"
               onClick={handleEditStartDateClick}
               type="button"
-              aria-label="редактировать"
+              aria-label="редактировать дату начала"
             />
           )}
           {isStartDateEditing && (
@@ -118,6 +128,17 @@ export const Order = ({
               <i className="order__hint">(не назначено)</i>
             )}
           </span>
+          {role === UserRole.OPERATOR && (
+            <button
+              className="MySchedulePage__pencil"
+              onClick={handleEditServicesClick}
+              type="button"
+              aria-label="редактировать список услуг"
+            />
+          )}
+          {isServicesEditing && (
+            <EditServices orderId={id} close={stopEditServices} setModalError={setModalError} />
+          )}
         </div>
       </div>
     </Card>

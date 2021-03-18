@@ -1,0 +1,29 @@
+.order__editServices {
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    position: absolute;
+    background: white;
+    width: 300px;
+}
+
+.order__editServicesItem {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.order__editServicesItemCheckbox {
+    content:url("data:image/svg+xml,%3Csvg width='20' height='22' viewBox='0 0 20 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2.5' y='4.5' width='15' height='15' rx='3.5' fill='white' stroke='%23727272'/%3E%3C/svg%3E%0A");
+    margin-right: 10px;
+}
+
+.order__serviceButtons {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order__editServicesCancel,
+.order__editServicesSave {
+    width: 49%;
+}

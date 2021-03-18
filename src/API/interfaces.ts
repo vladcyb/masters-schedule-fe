@@ -58,6 +58,11 @@ export interface IOrderSetStartDate {
   date: string
 }
 
+export interface IOrderSetServices {
+  id: number
+  services: number[]
+}
+
 export interface ILocationCreate {
   title: string
   coordinates: string

@@ -2,7 +2,7 @@ import Responses from './responses';
 import {
   ILocationCreate, ILocationEdit,
   ILoginForm,
-  IMasterSetSchedule, IOrderSetStartDate,
+  IMasterSetSchedule, IOrderSetServices, IOrderSetStartDate,
   IOrderSetStatus,
   IRegisterForm,
   IServiceCreate,
@@ -37,6 +37,13 @@ const API = {
       Responses(instance.put(`/order/${id}/setStartDate`, {
         date,
       }, { withCredentials: true }))
+    ),
+    setServices: ({ id, services }: IOrderSetServices) => (
+      Responses(instance.put(
+        `/order/${id}/setServices`, {
+          services,
+        }, { withCredentials: true },
+      ))
     ),
   },
   Location: {
