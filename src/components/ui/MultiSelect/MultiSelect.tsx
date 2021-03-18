@@ -62,9 +62,12 @@ export const MultiSelect = ({
         role="button"
         tabIndex={0}
       >
-        Выбрано:
-        {' '}
-        {selectedCount}
+        <div>
+          Выбрано:
+          {' '}
+          {selectedCount}
+        </div>
+        <img className="multiSelect__arrow" alt="" />
       </div>
       {isOpened && (
         <div className="multiSelect__items">

@@ -19,7 +19,7 @@ export const MultiSelectItem = ({ option, toggle }: PropsType) => {
       className={`multiSelect__item ${option.selected ? 'multiSelect__item_selected' : ''}`}
       onClick={handleClick}
     >
-      <div>
+      <div className="multiSelect__itemText">
         {option.title}
       </div>
       {/* eslint-disable-next-line max-len */}
