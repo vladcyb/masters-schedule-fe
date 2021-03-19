@@ -35,6 +35,7 @@ export const Orders = ({ orders, role }: PropsType) => {
             address={order.address}
             role={role}
             services={order.services}
+            master={order.master}
             setModalError={setModalError}
           />
         </div>

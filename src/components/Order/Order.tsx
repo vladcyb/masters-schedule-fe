@@ -26,6 +26,7 @@ type PropsType = {
   role: UserRole
   setModalError: Dispatch<SetStateAction<string>>
   services: Partial<ServiceType[]>
+  master: unknown
 };
 
 const OrderStatuses = {
@@ -48,6 +49,7 @@ export const Order = ({
   role,
   setModalError,
   services,
+  master,
 }: PropsType) => {
   /* state */
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
@@ -120,6 +122,12 @@ export const Order = ({
         <div className="order__field">
           <span className="order__fieldName">Адрес: </span>
           <span className="order__fieldContent">{address}</span>
+        </div>
+        <div className="order__field">
+          <span className="order__fieldName">Мастер: </span>
+          <span className="order__fieldContent">
+            {master as string || <i className="order__hint">(не назначено)</i>}
+          </span>
         </div>
         <div className="order__field">
           <span className="order__fieldName">Услуги: </span>

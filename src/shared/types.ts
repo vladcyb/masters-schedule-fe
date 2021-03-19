@@ -41,6 +41,7 @@ export type OrderType = {
   photo: string
   address: string
   services: Partial<ServiceType[]>
+  master: unknown
 };
 
 export type RolesMap = {
