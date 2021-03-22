@@ -16,18 +16,20 @@ type PropsType = {
   orderId: number
   close: () => void
   setModalError: Dispatch<SetStateAction<string>>
+  selectedServices: number[]
 };
 
 export const EditServices = ({
   close,
   orderId,
   setModalError,
+  selectedServices,
 }: PropsType) => {
   /* state */
   const [servicesOptions, setServicesOptions] = useState<MultiSelectOptionType[]>([]);
 
   /* hooks */
-  const { data: services } = useSelector(getServices);
+  const { data: services, loading: isLoading } = useSelector(getServices);
   const dispatch = useAppDispatch();
 
   /* methods */
@@ -38,6 +40,10 @@ export const EditServices = ({
         serviceIds.push(option.value);
       }
     });
+    if (!serviceIds.length) {
+      setModalError('Выберите хотя бы одну услугу!');
+      return;
+    }
     const result = await dispatch(thunks.order.setServices({
       id: orderId,
       services: serviceIds,
@@ -54,12 +60,16 @@ export const EditServices = ({
   }, [dispatch]);
 
   useEffect(() => {
+    if (isLoading) {
+      return;
+    }
     setServicesOptions(services.map((item) => ({
       value: item.id,
       title: item.title,
-      selected: false,
+      selected: selectedServices.includes(item.id),
     })));
-  }, [services]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   return (
     <div className="order__editServices">

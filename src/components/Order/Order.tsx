@@ -145,7 +145,12 @@ export const Order = ({
             />
           )}
           {isServicesEditing && (
-            <EditServices orderId={id} close={stopEditServices} setModalError={setModalError} />
+            <EditServices
+              orderId={id}
+              close={stopEditServices}
+              setModalError={setModalError}
+              selectedServices={services.map((item) => item!.id)}
+            />
           )}
         </div>
       </div>
