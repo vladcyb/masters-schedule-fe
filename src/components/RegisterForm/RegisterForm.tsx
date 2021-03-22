@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { createCn } from 'bem-react-classname';
 import { thunks } from '../../store/thunks';
 import {
-  Button, Field, Form, Select, Spinner,
+  Button, Field, Form, MultiSelect, Select, Spinner,
 } from '../ui';
 import { useField, useSetters } from '../../shared/hooks';
 import { IRegisterForm, UserRole } from '../../API/interfaces';
@@ -13,6 +13,7 @@ import { useAppDispatch } from '../../store';
 import { getLocations } from '../../store/locationSlice/selectors';
 import { getSpecializations } from '../../store/specializationSlice/selectors';
 import { ROLES } from '../../shared/constants';
+import { MultiSelectOptionType } from '../ui/MultiSelect/types';
 import './style.css';
 
 type PropsType = {
@@ -43,36 +44,45 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
   const name = useField('name', getters, setters);
   const patronymic = useField('patronymic', getters, setters);
   const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.CLIENT);
-  const [specializationId, setSpecializationId] = useState<number | undefined>(undefined);
+  const [specializationOptions, setSpecializationOptions] = useState<MultiSelectOptionType[]>([]);
   const [locationId, setLocationId] = useState<number | undefined>(undefined);
 
-  /* vars */
-  const form: IRegisterForm = {
-    login: login.props.value,
-    password: password.props.value,
-    passwordRepeat: passwordRepeat.props.value,
-    surname: surname.props.value,
-    name: name.props.value,
-    patronymic: patronymic.props.value,
-    role: selectedRole,
-    locationId,
-    specializationId,
+  const getSpecializationIds = (): number[] => {
+    const result: number[] = [];
+    specializationOptions.forEach((item) => {
+      if (item.selected) {
+        result.push(item.value);
+      }
+    });
+    return result;
   };
 
   /* effects */
   useEffect(() => {
+    const specializationIds = getSpecializationIds();
+    const form: IRegisterForm = {
+      login: login.props.value,
+      password: password.props.value,
+      passwordRepeat: passwordRepeat.props.value,
+      surname: surname.props.value,
+      name: name.props.value,
+      patronymic: patronymic.props.value,
+      role: selectedRole,
+      locationId,
+      specializationIds,
+    };
     setIsValid(validateRegistration(form, setters));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    form.login,
-    form.password,
-    form.passwordRepeat,
-    form.surname,
-    form.name,
-    form.patronymic,
-    form.role,
-    form.locationId,
-    form.specializationId,
+    login.props.value,
+    password.props.value,
+    passwordRepeat.props.value,
+    surname.props.value,
+    name.props.value,
+    patronymic.props.value,
+    selectedRole,
+    locationId,
+    specializationOptions,
   ]);
 
   useEffect(() => {
@@ -90,6 +100,17 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRole]);
 
+  useEffect(() => {
+    if (!specializations.loading) {
+      setSpecializationOptions(specializations.data.map((item) => ({
+        title: item.title,
+        value: item.id,
+        selected: false,
+      })));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [specializations.loading]);
+
   /* methods */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -97,7 +118,19 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
     if (!isValid || isLoading) {
       return;
     }
-    dispatch(thunks.user.register({ ...form, setters }));
+    const specializationIds = getSpecializationIds();
+    dispatch(thunks.user.register({
+      login: login.props.value,
+      password: password.props.value,
+      passwordRepeat: passwordRepeat.props.value,
+      role: selectedRole,
+      specializationIds,
+      surname: surname.props.value,
+      name: name.props.value,
+      patronymic: patronymic.props.value,
+      locationId,
+      setters,
+    }));
   };
 
   return (
@@ -120,19 +153,14 @@ export const RegisterForm = ({ className, isLoading }: PropsType) => {
       )}
       {selectedRole === UserRole.MASTER && !isMasterOptionsLoading && !masterOptionsError && (
         <>
-          <Select
+          <MultiSelect
             className={cn('specializations')}
-            options={specializations.data.map((item) => ({
-              title: item.title,
-              value: item.id,
-              icon: item.icon,
-            }))}
-            selected={specializationId}
-            setSelected={setSpecializationId}
+            options={specializationOptions}
+            setOptions={setSpecializationOptions}
             label="Специализация:"
           />
           <div className={cn('selectError')}>
-            {getters.isSubmitted && getters.errors.specializationId}
+            {getters.isSubmitted && getters.errors.specializationIds}
           </div>
           <Select
             className={cn('locations')}

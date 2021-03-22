@@ -9,7 +9,7 @@ type Errors = {
   surname?: string
   name?: string
   patronymic?: string
-  specializationId?: string
+  specializationIds?: string
   locationId?: string
 };
 
@@ -17,7 +17,7 @@ export const validateRegistration = (form: IRegisterForm, setters: Setters): boo
   const { setErrors } = setters;
   const errors: Errors = {};
   const {
-    login, password, passwordRepeat, name, surname, patronymic, locationId, specializationId, role,
+    login, password, passwordRepeat, name, surname, patronymic, locationId, specializationIds, role,
   } = form;
   if (!login) {
     errors.login = 'Введите логин!';
@@ -44,8 +44,8 @@ export const validateRegistration = (form: IRegisterForm, setters: Setters): boo
     errors.patronymic = 'Введите отчество!';
   }
   if (role === UserRole.MASTER) {
-    if (!specializationId) {
-      errors.specializationId = 'Выберите специализацию!';
+    if (!specializationIds!.length) {
+      errors.specializationIds = 'Выберите хотя бы одну специализацию!';
     }
     if (!locationId) {
       errors.locationId = 'Выберите местоположение!';

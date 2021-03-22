@@ -30,7 +30,7 @@ export interface IRegisterForm {
   surname: string
   name: string
   patronymic: string
-  specializationId?: number
+  specializationIds?: number[]
   locationId?: number
 }
 

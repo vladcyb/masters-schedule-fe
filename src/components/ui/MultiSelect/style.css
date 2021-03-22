@@ -37,6 +37,7 @@
     border: 1px solid gray;
     margin-top: 4px;
     border-radius: 2px;
+    z-index: 10;
 }
 
 .multiSelect__label {
