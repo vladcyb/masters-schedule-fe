@@ -8,6 +8,7 @@ import { userSlice } from './userSlice';
 import { serviceSlice } from './serviceSlice';
 import { masterSlice } from './masterSlice';
 import { orderSlice } from './orderSlice';
+import { masterListSlice } from './masterListSlice';
 
 const store = configureStore({
   reducer: combineReducers({
@@ -17,6 +18,7 @@ const store = configureStore({
     services: serviceSlice.reducer,
     master: masterSlice.reducer,
     orders: orderSlice.reducer,
+    masterList: masterListSlice.reducer,
   }),
 });
 

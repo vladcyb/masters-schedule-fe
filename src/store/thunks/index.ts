@@ -4,6 +4,7 @@ import { ServiceThunk } from '../serviceSlice/thunk';
 import { LocationThunk } from '../locationSlice/thunk';
 import { MasterThunk } from '../masterSlice/thunk';
 import { OrderThunk } from '../orderSlice/thunk';
+import { MasterListThunk } from '../masterListSlice/thunk';
 
 export const thunks = {
   specialization: SpecializationsThunk,
@@ -12,4 +13,5 @@ export const thunks = {
   service: ServiceThunk,
   master: MasterThunk,
   order: OrderThunk,
+  masters: MasterListThunk,
 };

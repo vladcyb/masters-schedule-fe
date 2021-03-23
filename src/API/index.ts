@@ -91,6 +91,9 @@ const API = {
     getSchedule: () => (
       Responses(instance.get('/master/schedule', { withCredentials: true }))
     ),
+    getAll: () => (
+      Responses(instance.get('/master', { withCredentials: true }))
+    ),
   },
   Client: {
     getOrders: () => (

@@ -59,3 +59,22 @@ export type RolesPermissions = {
   [UserRole.MASTER]: string[]
   [UserRole.OPERATOR]: string[]
 };
+
+export type MasterType = {
+  id: number
+  user: {
+    id: 26,
+    login: string
+    surname: string
+    name: string
+    patronymic: string
+    role: UserRole
+  }
+  location: {
+    id: number
+    title: string
+    coordinates: string,
+    typeId: number
+  }
+  specializations: SpecializationType
+};
