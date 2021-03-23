@@ -1,11 +1,8 @@
 import Responses from './responses';
 import {
-  ILocationCreate, ILocationEdit,
-  ILoginForm,
-  IMasterSetSchedule, IOrderSetServices, IOrderSetStartDate,
-  IOrderSetStatus,
-  IRegisterForm,
-  IServiceCreate,
+  ILocationCreate, ILocationEdit, ILoginForm,
+  IMasterSetSchedule, IOrderSetMaster, IOrderSetServices, IOrderSetStartDate,
+  IOrderSetStatus, IRegisterForm, IServiceCreate,
 } from './interfaces';
 import instance from './axios';
 
@@ -43,6 +40,13 @@ const API = {
         `/order/${id}/setServices`, {
           services,
         }, { withCredentials: true },
+      ))
+    ),
+    setMaster: ({ id, masterId }: IOrderSetMaster) => (
+      Responses(instance.put(
+        `/order/${id}/setMaster/${masterId}`,
+        {},
+        { withCredentials: true },
       ))
     ),
   },

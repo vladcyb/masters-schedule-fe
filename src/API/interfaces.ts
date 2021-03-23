@@ -63,6 +63,11 @@ export interface IOrderSetServices {
   services: number[]
 }
 
+export interface IOrderSetMaster {
+  id: number
+  masterId: number
+}
+
 export interface ILocationCreate {
   title: string
   coordinates: string

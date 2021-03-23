@@ -6,6 +6,7 @@ import { backendURL } from '../../config.json';
 import { UserRole } from '../../API/interfaces';
 import { EditStartDateForm } from './__editStartDateForm';
 import { EditServices } from './__editServices';
+import { EditMaster } from './__editMaster';
 import './style.css';
 
 const getShowDate = (date: string) => parseISO(date).toLocaleString();
@@ -26,7 +27,9 @@ type PropsType = {
   role: UserRole
   setModalError: Dispatch<SetStateAction<string>>
   services: Partial<ServiceType[]>
-  master: unknown
+  master: {
+    id: number
+  }
 };
 
 const OrderStatuses = {
@@ -54,10 +57,19 @@ export const Order = ({
   /* state */
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
   const [isServicesEditing, setIsServicesEditing] = useState(false);
+  const [isMasterEditing, setIsMasterEditing] = useState(false);
 
   /* methods */
   const handleEditStartDateClick = () => {
     setIsStartDateEditing(true);
+  };
+
+  const handleEditMasterClick = () => {
+    setIsMasterEditing((prevValue) => !prevValue);
+  };
+
+  const stopEditMaster = () => {
+    setIsMasterEditing(false);
   };
 
   const stopEditingStartDate = () => {
@@ -126,8 +138,22 @@ export const Order = ({
         <div className="order__field">
           <span className="order__fieldName">Мастер: </span>
           <span className="order__fieldContent">
-            {master as string || <i className="order__hint">(не назначено)</i>}
+            {master ? master.id : <i className="order__hint">(не назначено)</i>}
           </span>
+          {role === UserRole.OPERATOR && (
+            <button
+              className="MySchedulePage__pencil"
+              onClick={handleEditMasterClick}
+              type="button"
+              aria-label="редактировать мастера"
+            />
+          )}
+          {isMasterEditing && (
+            <EditMaster
+              orderId={id}
+              close={stopEditMaster}
+            />
+          )}
         </div>
         <div className="order__field">
           <span className="order__fieldName">Услуги: </span>
