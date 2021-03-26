@@ -99,7 +99,7 @@ export const Order = ({
               ? getShowDate(startDate)
               : '' || <i className="order__hint">(не назначено)</i>}
           </span>
-          {role === UserRole.OPERATOR && (
+          {(role === UserRole.OPERATOR || role === UserRole.CLIENT) && (
             <button
               className="MySchedulePage__pencil"
               onClick={handleEditStartDateClick}
