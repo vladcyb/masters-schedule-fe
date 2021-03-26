@@ -45,6 +45,7 @@ export type OrderType = {
   master: {
     id: number
   }
+  price: number
 };
 
 export type RolesMap = {

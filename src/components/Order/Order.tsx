@@ -27,6 +27,7 @@ type PropsType = {
   role: UserRole
   setModalError: Dispatch<SetStateAction<string>>
   services: Partial<ServiceType[]>
+  price: number
   master: {
     id: number
   }
@@ -53,6 +54,7 @@ export const Order = ({
   setModalError,
   services,
   master,
+  price,
 }: PropsType) => {
   /* state */
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
@@ -178,6 +180,12 @@ export const Order = ({
               selectedServices={services.map((item) => item!.id)}
             />
           )}
+        </div>
+        <div className="order__field">
+          <span className="order__fieldName">Стоимость: </span>
+          <span className="order__fieldContent">
+            {price}
+          </span>
         </div>
       </div>
     </Card>
