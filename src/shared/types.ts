@@ -29,6 +29,7 @@ export enum OrderStatus {
   ABORTED,
   ON_REWORK,
   PENDING_FOR_ACCEPTING,
+  DENIED,
 }
 
 export type OrderType = {
