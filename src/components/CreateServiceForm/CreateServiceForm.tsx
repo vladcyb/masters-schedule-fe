@@ -29,14 +29,14 @@ export const CreateServiceForm = ({ className, close, isLoading }: PropsType) =>
 
   /* fields */
   const title = useField('title', getters, setters);
-  const price = useField('price', getters, setters);
+  const price = useField('price', getters, setters, true);
   const duration = useField('duration', getters, setters, true);
 
   /* form */
   const form: IServiceCreate = {
     title: title.props.value,
     duration: parseInt(duration.props.value, 10),
-    price: price.props.value,
+    price: parseInt(price.props.value, 10),
     specializationId: specializationId as any,
   };
 
