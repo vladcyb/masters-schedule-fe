@@ -5,6 +5,9 @@ export const getLocationById = (
   currentIndex: number,
   id: number,
 ): LocationType | null => {
+  if (!locations.length) {
+    return null;
+  }
   const current = locations[currentIndex];
   if (current.id === id) {
     return current;
