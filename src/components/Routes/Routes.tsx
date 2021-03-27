@@ -1,18 +1,19 @@
 import React from 'react';
 import {
-  Redirect, Route, useLocation, Switch,
+  Redirect, Route, Switch, useLocation,
 } from 'react-router-dom';
 import { routes } from '../../shared/routes';
 import { PrivateRoute } from '../../HOCs';
 import {
   LocationsPage,
   LoginPage,
-  Me, MySchedulePage,
+  Me,
+  MySchedulePage,
+  NotFoundPage,
   OrdersPage,
   RegisterPage,
   ServicesPage,
   SpecializationsPage,
-  NotFoundPage,
 } from '../../pages';
 import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
@@ -108,6 +109,15 @@ export const Routes = ({ user, orders }: PropsType) => {
         role={role}
       >
         <MySchedulePage />
+      </PrivateRoute>
+      <PrivateRoute
+        path={routes.responsible.masters.root}
+        condition={isLoggedIn}
+        allowedRoles={[UserRole.RESPONSIBLE]}
+        role={role}
+        redirectPath={routes.login.root}
+      >
+        TODO: Страница со списком мастеров
       </PrivateRoute>
       <PrivateRoute
         path={routes.administration.root}

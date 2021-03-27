@@ -29,4 +29,9 @@ export const routes = {
       root: '/administration/specializations',
     },
   },
+  responsible: {
+    masters: {
+      root: '/responsible/masters',
+    },
+  },
 };

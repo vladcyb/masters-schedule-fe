@@ -70,6 +70,15 @@ export const Navbar = ({ rolesMap, login, onLogout }: PropsType) => {
           </>
         )}
 
+        {/* Ответственный */}
+        {rolesMap.isResponsible && (
+          <>
+            <NavLink className="navbar__navlink" to={routes.responsible.masters.root}>
+              Мастера
+            </NavLink>
+          </>
+        )}
+
       </div>
       <div className={`navbar__userMenuWrapper 
         ${isUserMenuOpened ? 'navbar__userMenuWrapper_opened' : ''}`}
