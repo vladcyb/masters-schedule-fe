@@ -19,6 +19,7 @@ import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
 import { AdministrationPage } from '../../pages/AdministrationPage';
 import { StateType as OrdersStateType } from '../../store/orderSlice/types';
+import { MastersPage } from '../../pages/MastersPage';
 
 type PropsType = {
   user: UserState
@@ -117,7 +118,7 @@ export const Routes = ({ user, orders }: PropsType) => {
         role={role}
         redirectPath={routes.login.root}
       >
-        TODO: Страница со списком мастеров
+        <MastersPage />
       </PrivateRoute>
       <PrivateRoute
         path={routes.administration.root}

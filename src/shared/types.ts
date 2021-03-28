@@ -80,5 +80,5 @@ export type MasterType = {
     coordinates: string,
     typeId: number
   }
-  specializations: SpecializationType
+  specializations: SpecializationType[]
 };
