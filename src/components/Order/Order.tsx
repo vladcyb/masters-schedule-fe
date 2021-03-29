@@ -1,12 +1,14 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { parseISO } from 'date-fns';
 import { OrderStatus, ServiceType } from '../../shared/types';
-import { Card } from '../ui';
+import { Button, Card } from '../ui';
 import { backendURL } from '../../config.json';
 import { UserRole } from '../../API/interfaces';
 import { EditStartDateForm } from './__editStartDateForm';
 import { EditServices } from './__editServices';
 import { EditMaster } from './__editMaster';
+import { useAppDispatch } from '../../store';
+import { thunks } from '../../store/thunks';
 import './style.css';
 
 const getShowDate = (date: string) => parseISO(date).toLocaleString();
@@ -39,6 +41,7 @@ const OrderStatuses = {
   [OrderStatus.ABORTED.toString()]: 'Отменен',
   [OrderStatus.IN_PROGRESS.toString()]: 'В процессе',
   [OrderStatus.ON_REWORK.toString()]: 'На переработке',
+  [OrderStatus.DENIED.toString()]: 'Отказано',
 };
 
 export const Order = ({
@@ -60,6 +63,9 @@ export const Order = ({
   const [isStartDateEditing, setIsStartDateEditing] = useState(false);
   const [isServicesEditing, setIsServicesEditing] = useState(false);
   const [isMasterEditing, setIsMasterEditing] = useState(false);
+
+  /* hooks */
+  const dispatch = useAppDispatch();
 
   /* methods */
   const handleEditStartDateClick = () => {
@@ -86,107 +92,116 @@ export const Order = ({
     setIsServicesEditing(false);
   };
 
+  const handleDenyClick = () => {
+    dispatch(thunks.order.setStatus({ id, status: OrderStatus.DENIED }));
+  };
+
   return (
     <Card className="order">
       <img className="order__img" src={`${backendURL}/${photo}`} alt="" />
-      <div>
-        <div className="order__field">
-          <span className="order__fieldName">Описание: </span>
-          <span className="order__fieldContent">{description}</span>
-        </div>
-        <div className="order__field">
-          <span className="order__fieldName">Дата начала: </span>
-          <span className="order__fieldContent">
-            {startDate
-              ? getShowDate(startDate)
-              : '' || <i className="order__hint">(не назначено)</i>}
-          </span>
-          {(role === UserRole.OPERATOR || role === UserRole.CLIENT) && (
+      <div className="order__main">
+        <div>
+          <div className="order__field">
+            <span className="order__fieldName">Описание: </span>
+            <span className="order__fieldContent">{description}</span>
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Дата начала: </span>
+            <span className="order__fieldContent">
+              {startDate
+                ? getShowDate(startDate)
+                : '' || <i className="order__hint">(не назначено)</i>}
+            </span>
+            {(role === UserRole.OPERATOR || role === UserRole.CLIENT) && (
             <button
               className="MySchedulePage__pencil"
               onClick={handleEditStartDateClick}
               type="button"
               aria-label="редактировать дату начала"
             />
-          )}
-          {isStartDateEditing && (
+            )}
+            {isStartDateEditing && (
             <EditStartDateForm
               id={id}
               onClose={stopEditingStartDate}
               setModalError={setModalError}
             />
-          )}
-        </div>
-        <div className="order__field">
-          <span className="order__fieldName">Дата окончания: </span>
-          <span className="order__fieldContent">
-            {finishDate
-              ? getShowDate(finishDate)
-              : <i className="order__hint">(не назначено)</i>}
-          </span>
-        </div>
-        <div className="order__field">
-          <span className="order__fieldName">Статус: </span>
-          <span className="order__fieldContent">{OrderStatuses[status]}</span>
-        </div>
-        <div className="order__field">
-          <span className="order__fieldName">Комментарий: </span>
-          <span className="order__fieldContent">{comment}</span>
-        </div>
-        <div className="order__field">
-          <span className="order__fieldName">Адрес: </span>
-          <span className="order__fieldContent">{address}</span>
-        </div>
-        <div className="order__field">
-          <span className="order__fieldName">Мастер: </span>
-          <span className="order__fieldContent">
-            {master ? master.id : <i className="order__hint">(не назначено)</i>}
-          </span>
-          {role === UserRole.OPERATOR && (
+            )}
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Дата окончания: </span>
+            <span className="order__fieldContent">
+              {finishDate
+                ? getShowDate(finishDate)
+                : <i className="order__hint">(не назначено)</i>}
+            </span>
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Статус: </span>
+            <span className="order__fieldContent">{OrderStatuses[status]}</span>
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Комментарий: </span>
+            <span className="order__fieldContent">{comment}</span>
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Адрес: </span>
+            <span className="order__fieldContent">{address}</span>
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Мастер: </span>
+            <span className="order__fieldContent">
+              {master ? master.id : <i className="order__hint">(не назначено)</i>}
+            </span>
+            {role === UserRole.OPERATOR && (
             <button
               className="MySchedulePage__pencil"
               onClick={handleEditMasterClick}
               type="button"
               aria-label="редактировать мастера"
             />
-          )}
-          {isMasterEditing && (
+            )}
+            {isMasterEditing && (
             <EditMaster
               orderId={id}
               close={stopEditMaster}
             />
-          )}
-        </div>
-        <div className="order__field">
-          <span className="order__fieldName">Услуги: </span>
-          <span className="order__fieldContent">
-            {services.length ? getServicesTitles(services) : (
-              <i className="order__hint">(не назначено)</i>
             )}
-          </span>
-          {role === UserRole.OPERATOR && (
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Услуги: </span>
+            <span className="order__fieldContent">
+              {services.length ? getServicesTitles(services) : (
+                <i className="order__hint">(не назначено)</i>
+              )}
+            </span>
+            {role === UserRole.OPERATOR && (
             <button
               className="MySchedulePage__pencil"
               onClick={handleEditServicesClick}
               type="button"
               aria-label="редактировать список услуг"
             />
-          )}
-          {isServicesEditing && (
+            )}
+            {isServicesEditing && (
             <EditServices
               orderId={id}
               close={stopEditServices}
               setModalError={setModalError}
               selectedServices={services.map((item) => item!.id)}
             />
-          )}
+            )}
+          </div>
+          <div className="order__field">
+            <span className="order__fieldName">Стоимость: </span>
+            <span className="order__fieldContent">
+              {price}
+            </span>
+          </div>
         </div>
-        <div className="order__field">
-          <span className="order__fieldName">Стоимость: </span>
-          <span className="order__fieldContent">
-            {price}
-          </span>
-        </div>
+        {role === UserRole.OPERATOR && (
+          <Button onClick={handleDenyClick} variant="outline">Отказать</Button>
+        )}
       </div>
     </Card>
   );

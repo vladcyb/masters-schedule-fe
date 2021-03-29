@@ -3,6 +3,7 @@ import { OrderType } from '../../shared/types';
 import { StateType } from './types';
 import { OrderThunk } from './thunk';
 import { actions as userActions } from '../userSlice/actions';
+import { IOrderSetStatus } from '../../API/interfaces';
 
 const initialState: StateType = {
   loading: false,
@@ -23,6 +24,12 @@ export const orderSlice = createSlice({
       const index = state.data.findIndex((item) => item.id === payload.id);
       if (index !== -1) {
         state.data[index] = payload;
+      }
+    },
+    setStatus: (state, { payload }: PayloadAction<IOrderSetStatus>) => {
+      const found = state.data.find((item) => item.id === payload.id);
+      if (found) {
+        found.status = payload.status;
       }
     },
   },

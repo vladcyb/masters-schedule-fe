@@ -24,7 +24,7 @@ const API = {
     ),
     setStatus: ({ id, ...props }: IOrderSetStatus) => (
       Responses(
-        instance.post(`/order/${id}/setStatus`, props, { withCredentials: true }),
+        instance.put(`/order/${id}/setStatus`, props, { withCredentials: true }),
       )
     ),
     getAll: () => (
