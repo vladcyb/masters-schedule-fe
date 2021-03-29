@@ -23,9 +23,7 @@ export const MastersPage = () => {
           <div className="mastersPage__row">
             <span className="mastersPage__fieldName">ФИО: </span>
             <span className="mastersPage__fieldContent">
-              {item.user.surname}
-              {item.user.name}
-              {item.user.patronymic}
+              {`${item.user.surname} ${item.user.name} ${item.user.patronymic}`}
             </span>
           </div>
           <div className="mastersPage__row">
