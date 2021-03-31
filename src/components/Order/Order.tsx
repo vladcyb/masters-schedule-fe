@@ -93,7 +93,7 @@ export const Order = ({
   };
 
   const handleDenyClick = () => {
-    dispatch(thunks.order.setStatus({ id, status: OrderStatus.DENIED }));
+    dispatch(thunks.order.deny(id));
   };
 
   return (

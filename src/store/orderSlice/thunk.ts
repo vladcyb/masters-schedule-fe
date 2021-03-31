@@ -7,6 +7,7 @@ import {
   IOrderSetStartDate,
   IOrderSetStatus,
 } from '../../API/interfaces';
+import { OrderStatus } from '../../shared/types';
 
 export const OrderThunk = {
   get: createAsyncThunk(
@@ -69,6 +70,17 @@ export const OrderThunk = {
       const { data: { ok, error } } = await API.Order.setStatus(props);
       if (ok) {
         dispatch(actions.setStatus(props));
+        return '';
+      }
+      return rejectWithValue(error);
+    },
+  ),
+  deny: createAsyncThunk(
+    'orders/setStatus',
+    async (id: number, { dispatch, rejectWithValue }) => {
+      const { data: { ok, error } } = await API.Order.deny(id);
+      if (ok) {
+        dispatch(actions.setStatus({ id, status: OrderStatus.DENIED }));
         return '';
       }
       return rejectWithValue(error);

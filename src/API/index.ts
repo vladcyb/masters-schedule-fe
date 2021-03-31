@@ -49,6 +49,13 @@ const API = {
         { withCredentials: true },
       ))
     ),
+    deny: (id: number) => (
+      Responses(instance.put(
+        `/order/${id}/deny`,
+        {},
+        { withCredentials: true },
+      ))
+    ),
   },
   Location: {
     create: (props: ILocationCreate) => (
