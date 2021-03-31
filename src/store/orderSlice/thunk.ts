@@ -5,7 +5,6 @@ import {
   IOrderSetMaster,
   IOrderSetServices,
   IOrderSetStartDate,
-  IOrderSetStatus,
 } from '../../API/interfaces';
 import { OrderStatus } from '../../shared/types';
 
@@ -59,17 +58,6 @@ export const OrderThunk = {
       const { data: { ok, result, error } } = await API.Order.setMaster(props);
       if (ok) {
         dispatch(actions.updateOne(result));
-        return '';
-      }
-      return rejectWithValue(error);
-    },
-  ),
-  setStatus: createAsyncThunk(
-    'orders/setStatus',
-    async (props: IOrderSetStatus, { dispatch, rejectWithValue }) => {
-      const { data: { ok, error } } = await API.Order.setStatus(props);
-      if (ok) {
-        dispatch(actions.setStatus(props));
         return '';
       }
       return rejectWithValue(error);

@@ -1,8 +1,8 @@
 import Responses from './responses';
 import {
-  ILocationCreate, ILocationEdit, ILoginForm,
-  IMasterSetSchedule, IOrderSetMaster, IOrderSetServices, IOrderSetStartDate,
-  IOrderSetStatus, IRegisterForm, IServiceCreate,
+  ILocationCreate, ILocationEdit, ILoginForm, IMasterSetSchedule,
+  IOrderSetMaster, IOrderSetServices, IOrderSetStartDate, IRegisterForm,
+  IServiceCreate,
 } from './interfaces';
 import instance from './axios';
 
@@ -21,11 +21,6 @@ const API = {
   Order: {
     create: (props: any) => (
       Responses(instance.post('/order', props, { withCredentials: true }))
-    ),
-    setStatus: ({ id, ...props }: IOrderSetStatus) => (
-      Responses(
-        instance.put(`/order/${id}/setStatus`, props, { withCredentials: true }),
-      )
     ),
     getAll: () => (
       Responses(instance.get('/order', { withCredentials: true }))
