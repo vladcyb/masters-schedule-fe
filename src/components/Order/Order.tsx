@@ -209,6 +209,9 @@ export const Order = ({
         {role === UserRole.CLIENT && (
           <Button onClick={handleAbortClick} variant="outline">Отказаться</Button>
         )}
+        {role === UserRole.CLIENT && status === OrderStatus.PENDING_FOR_ACCEPTING && (
+          <Button onClick={handleAbortClick} variant="outline">Принять</Button>
+        )}
       </div>
     </Card>
   );
