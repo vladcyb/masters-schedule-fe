@@ -96,6 +96,10 @@ export const Order = ({
     dispatch(thunks.order.deny(id));
   };
 
+  const handleAbortClick = () => {
+    dispatch(thunks.order.abort(id));
+  };
+
   return (
     <Card className="order">
       <img className="order__img" src={`${backendURL}/${photo}`} alt="" />
@@ -201,6 +205,9 @@ export const Order = ({
         </div>
         {(role === UserRole.OPERATOR || role === UserRole.MASTER) && (
           <Button onClick={handleDenyClick} variant="outline">Отказать</Button>
+        )}
+        {role === UserRole.CLIENT && (
+          <Button onClick={handleAbortClick} variant="outline">Отказаться</Button>
         )}
       </div>
     </Card>

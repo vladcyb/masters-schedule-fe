@@ -64,11 +64,22 @@ export const OrderThunk = {
     },
   ),
   deny: createAsyncThunk(
-    'orders/setStatus',
+    'orders/deny',
     async (id: number, { dispatch, rejectWithValue }) => {
       const { data: { ok, error } } = await API.Order.deny(id);
       if (ok) {
         dispatch(actions.setStatus({ id, status: OrderStatus.DENIED }));
+        return '';
+      }
+      return rejectWithValue(error);
+    },
+  ),
+  abort: createAsyncThunk(
+    'orders/abort',
+    async (id: number, { dispatch, rejectWithValue }) => {
+      const { data: { ok, error } } = await API.Order.abort(id);
+      if (ok) {
+        dispatch(actions.setStatus({ id, status: OrderStatus.ABORTED }));
         return '';
       }
       return rejectWithValue(error);

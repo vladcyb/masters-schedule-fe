@@ -51,6 +51,13 @@ const API = {
         { withCredentials: true },
       ))
     ),
+    abort: (id: number) => (
+      Responses(instance.put(
+        `/order/${id}/abort`,
+        {},
+        { withCredentials: true },
+      ))
+    ),
   },
   Location: {
     create: (props: ILocationCreate) => (
