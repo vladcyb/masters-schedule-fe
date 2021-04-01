@@ -199,7 +199,7 @@ export const Order = ({
             </span>
           </div>
         </div>
-        {role === UserRole.OPERATOR && (
+        {(role === UserRole.OPERATOR || role === UserRole.MASTER) && (
           <Button onClick={handleDenyClick} variant="outline">Отказать</Button>
         )}
       </div>
