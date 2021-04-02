@@ -52,45 +52,43 @@ export const MySchedulePage = () => {
 
   return (
     <Container className="MySchedulePage">
-      <div className="MySchedulePage__container">
-        <div className="MySchedulePage__hoursRow">
-          <div>
-            <span className="MySchedulePage__title">Расписание: </span>
-            {isEditing ? (
-              <form
-                className="MySchedulePage__editForm"
-                autoComplete="off"
-                onSubmit={handleEditSubmit}
+      <div className="MySchedulePage__hoursRow">
+        <div>
+          <span className="MySchedulePage__title">Расписание: </span>
+          {isEditing ? (
+            <form
+              className="MySchedulePage__editForm"
+              autoComplete="off"
+              onSubmit={handleEditSubmit}
+            >
+              <Field
+                className="MySchedulePage__editField"
+                label="Введите часы работы:"
+                {...editField.props}
+              />
+              <Button className="MySchedulePage__saveBtn" type="submit" sm>
+                Сохранить
+              </Button>
+              <Button
+                className="MySchedulePage__cancelBtn"
+                variant="outline"
+                sm
+                onClick={stopEdit}
               >
-                <Field
-                  className="MySchedulePage__editField"
-                  label="Введите часы работы:"
-                  {...editField.props}
-                />
-                <Button className="MySchedulePage__saveBtn" type="submit" sm>
-                  Сохранить
-                </Button>
-                <Button
-                  className="MySchedulePage__cancelBtn"
-                  variant="outline"
-                  sm
-                  onClick={stopEdit}
-                >
-                  Отмена
-                </Button>
-              </form>
-            ) : (
-              <>
-                <span className="MySchedulePage__hours">{hours || <i>(not set)</i>}</span>
-                <button
-                  className="MySchedulePage__pencil"
-                  onClick={handleEdit}
-                  type="button"
-                  aria-label="редактировать"
-                />
-              </>
-            )}
-          </div>
+                Отмена
+              </Button>
+            </form>
+          ) : (
+            <>
+              <span className="MySchedulePage__hours">{hours || <i>(not set)</i>}</span>
+              <button
+                className="MySchedulePage__pencil"
+                onClick={handleEdit}
+                type="button"
+                aria-label="редактировать"
+              />
+            </>
+          )}
         </div>
       </div>
     </Container>
