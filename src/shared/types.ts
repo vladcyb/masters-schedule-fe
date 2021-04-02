@@ -56,14 +56,6 @@ export type RolesMap = {
   isResponsible: boolean
 };
 
-export type RolesPermissions = {
-  [UserRole.CLIENT]: string[]
-  [UserRole.RESPONSIBLE]: string[]
-  [UserRole.ADMIN]: string[]
-  [UserRole.MASTER]: string[]
-  [UserRole.OPERATOR]: string[]
-};
-
 export type MasterType = {
   id: number
   user: {
