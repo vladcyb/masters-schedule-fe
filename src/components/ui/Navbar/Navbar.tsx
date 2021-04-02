@@ -52,7 +52,7 @@ export const Navbar = ({ rolesMap, login, onLogout }: PropsType) => {
             <NavLink className="navbar__navlink" to={routes.orders.root}>
               Заказы
             </NavLink>
-            <NavLink className="navbar__navlink" to={routes.master.schedule.root}>
+            <NavLink className="navbar__navlink" to={routes.administration.schedule.root}>
               Расписание
             </NavLink>
           </>

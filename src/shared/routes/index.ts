@@ -30,6 +30,9 @@ export const routes = {
     specializations: {
       root: '/administration/specializations',
     },
+    schedule: {
+      root: '/administration/schedule',
+    },
   },
   responsible: {
     masters: {

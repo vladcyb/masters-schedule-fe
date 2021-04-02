@@ -14,12 +14,13 @@ import {
   RegisterPage,
   ServicesPage,
   SpecializationsPage,
+  AdministrationPage,
+  MastersPage,
+  Schedule,
 } from '../../pages';
 import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
-import { AdministrationPage } from '../../pages/AdministrationPage';
 import { StateType as OrdersStateType } from '../../store/orderSlice/types';
-import { MastersPage } from '../../pages/MastersPage';
 
 type PropsType = {
   user: UserState
@@ -110,6 +111,15 @@ export const Routes = ({ user, orders }: PropsType) => {
         role={role}
       >
         <MySchedulePage />
+      </PrivateRoute>
+      <PrivateRoute
+        path={routes.administration.schedule.root}
+        condition={isLoggedIn}
+        redirectPath={routes.login.root}
+        allowedRoles={[UserRole.ADMIN, UserRole.OPERATOR]}
+        role={role}
+      >
+        <Schedule />
       </PrivateRoute>
       <PrivateRoute
         path={routes.responsible.masters.root}

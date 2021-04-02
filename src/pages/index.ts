@@ -8,3 +8,6 @@ export * from './ServicesPage';
 export * from './MySchedulePage';
 export * from './NotFoundPage';
 export * from './ForbiddenPage';
+export * from './AdministrationPage';
+export * from './Schedule';
+export * from './MastersPage';
