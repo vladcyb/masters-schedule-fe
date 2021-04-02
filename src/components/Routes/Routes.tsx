@@ -103,10 +103,10 @@ export const Routes = ({ user, orders }: PropsType) => {
         <SpecializationsPage />
       </PrivateRoute>
       <PrivateRoute
-        path={routes.schedule.root}
+        path={routes.master.schedule.root}
         condition={isLoggedIn}
         redirectPath={routes.login.root}
-        allowedRoles={[UserRole.OPERATOR, UserRole.MASTER]}
+        allowedRoles={[UserRole.MASTER]}
         role={role}
       >
         <MySchedulePage />

@@ -11,11 +11,13 @@ export const routes = {
   orders: {
     root: '/orders',
   },
-  schedule: {
-    root: '/schedule',
-  },
   manageOrders: {
     root: '/manage-orders',
+  },
+  master: {
+    schedule: {
+      root: '/master/schedule',
+    },
   },
   administration: {
     root: '/administration',
