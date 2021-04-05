@@ -10,11 +10,8 @@
     padding: 15px;
 }
 
-.schedule__tr:first-of-type .schedule__td {
-    font-weight: 500;
-}
-
-.schedule__tdTitle {
+.schedule__tr:first-of-type .schedule__td,
+.schedule__tdBold {
     font-weight: 500;
 }
 

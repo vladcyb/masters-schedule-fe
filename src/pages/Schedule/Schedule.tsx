@@ -4,10 +4,9 @@ import { Container } from '../../components/ui';
 import { OrderType } from '../../shared/types';
 import { useAppDispatch } from '../../store';
 import { thunks } from '../../store/thunks';
-import { dateFormat } from '../../shared/constants';
+import { dateFormat, hours } from '../../shared/constants';
+import { ScheduleCell } from './__cell';
 import './style.css';
-
-const hours = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 
 type PropsType = {
   orders: OrderType[]
@@ -57,30 +56,9 @@ export const Schedule = ({ orders }: PropsType) => {
               </td>
             ))}
           </tr>
-          {orders.map((order) => {
-            if (!(order.startDate && order.finishDate)) {
-              return (
-                <tr className="schedule__tr" key={order.id}>
-                  <td className="schedule__td schedule__tdTitle">
-                    {order.id}
-                  </td>
-                  {hours.map((hour) => (
-                    <td className="schedule__td" key={hour} />
-                  ))}
-                </tr>
-              );
-            }
-            return (
-              <tr className="schedule__tr" key={order.id}>
-                <td className="schedule__td schedule__tdTitle">
-                  {order.id}
-                </td>
-                {hours.map((hour) => (
-                  <td className="schedule__td" key={hour}>{hour}</td>
-                ))}
-              </tr>
-            );
-          })}
+          {orders.map((order) => (
+            <ScheduleCell id={order.id} startDate={order.startDate} finishDate={order.finishDate} />
+          ))}
         </tbody>
       </table>
     </Container>
