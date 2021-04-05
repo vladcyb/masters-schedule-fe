@@ -119,7 +119,7 @@ export const Routes = ({ user, orders }: PropsType) => {
         allowedRoles={[UserRole.ADMIN, UserRole.OPERATOR]}
         role={role}
       >
-        <Schedule />
+        <Schedule orders={orders.data} />
       </PrivateRoute>
       <PrivateRoute
         path={routes.responsible.masters.root}

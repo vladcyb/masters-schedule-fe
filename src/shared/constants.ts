@@ -16,3 +16,5 @@ export const allowedImageFormats = [
   'image/jpg',
   'image/png',
 ];
+
+export const dateFormat = 'yyyy-MM-dd';
