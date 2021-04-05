@@ -8,7 +8,7 @@ type PropsType = {
   finishDate: string | null
 };
 
-export const ScheduleCell = ({
+export const ScheduleRow = ({
   id,
   startDate,
   finishDate,

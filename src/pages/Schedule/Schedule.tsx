@@ -5,7 +5,7 @@ import { OrderType } from '../../shared/types';
 import { useAppDispatch } from '../../store';
 import { thunks } from '../../store/thunks';
 import { dateFormat, hours } from '../../shared/constants';
-import { ScheduleCell } from './__cell';
+import { ScheduleRow } from './__row';
 import './style.css';
 
 type PropsType = {
@@ -57,7 +57,7 @@ export const Schedule = ({ orders }: PropsType) => {
             ))}
           </tr>
           {orders.map((order) => (
-            <ScheduleCell id={order.id} startDate={order.startDate} finishDate={order.finishDate} />
+            <ScheduleRow id={order.id} startDate={order.startDate} finishDate={order.finishDate} />
           ))}
         </tbody>
       </table>
