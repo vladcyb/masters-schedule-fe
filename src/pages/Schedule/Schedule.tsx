@@ -18,15 +18,15 @@ export const Schedule = ({ orders }: PropsType) => {
   const dispatch = useAppDispatch();
 
   /* state */
-  const [currentDate, setCurrentDate] = useState(format(new Date(), dateFormat));
+  const [selectedDate, setSelectedDate] = useState(format(new Date(), dateFormat));
 
   /* methods */
   const decrementDate = () => {
-    setCurrentDate(format(addDays(parseISO(currentDate), -1), dateFormat));
+    setSelectedDate(format(addDays(parseISO(selectedDate), -1), dateFormat));
   };
 
   const incrementDate = () => {
-    setCurrentDate(format(addDays(parseISO(currentDate), 1), dateFormat));
+    setSelectedDate(format(addDays(parseISO(selectedDate), 1), dateFormat));
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const Schedule = ({ orders }: PropsType) => {
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button className="schedule__datePrev" onClick={decrementDate} type="button" />
         <div className="schedule__dateValue">
-          {currentDate}
+          {selectedDate}
         </div>
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button className="schedule__dateNext" onClick={incrementDate} type="button" />
