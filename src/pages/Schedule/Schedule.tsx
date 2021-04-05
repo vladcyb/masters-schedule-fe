@@ -57,7 +57,13 @@ export const Schedule = ({ orders }: PropsType) => {
             ))}
           </tr>
           {orders.map((order) => (
-            <ScheduleRow id={order.id} startDate={order.startDate} finishDate={order.finishDate} />
+            <ScheduleRow
+              id={order.id}
+              startDate={order.startDate}
+              finishDate={order.finishDate}
+              selectedDate={selectedDate}
+              key={order.id}
+            />
           ))}
         </tbody>
       </table>
