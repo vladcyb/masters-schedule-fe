@@ -47,7 +47,7 @@ export const Schedule = ({ orders }: PropsType) => {
       <table className="schedule__table">
         <tbody>
           <tr className="schedule__tr">
-            <td className="schedule__td schedule__tdTitle">
+            <td className="schedule__td">
               Наименование заказа
             </td>
             {hours.map((hour) => (
