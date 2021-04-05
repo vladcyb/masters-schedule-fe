@@ -23,7 +23,7 @@ export const ScheduleRow = ({
     return (
       <tr className="schedule__tr" key={id}>
         <td className="schedule__td schedule__tdBold">
-          {id}
+          {`Заказ ${id}`}
         </td>
         {hours.map((hour) => (
           <td className="schedule__td" key={hour} />
@@ -36,7 +36,7 @@ export const ScheduleRow = ({
   return (
     <tr className="schedule__tr" key={id}>
       <td className="schedule__td schedule__tdBold">
-        {id}
+        {`Заказ ${id}`}
       </td>
       {hours.map((hour) => {
         const cellDate = parseISO(`${selectedDate}T${hour}:00`);
