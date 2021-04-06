@@ -9,5 +9,5 @@ export * from './MySchedulePage';
 export * from './NotFoundPage';
 export * from './ForbiddenPage';
 export * from './AdministrationPage';
-export * from './Schedule';
+export * from './SchedulePage';
 export * from './MastersPage';

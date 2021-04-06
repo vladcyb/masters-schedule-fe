@@ -12,7 +12,7 @@ type PropsType = {
   orders: OrderType[]
 };
 
-export const Schedule = ({ orders }: PropsType) => {
+export const SchedulePage = ({ orders }: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
 
@@ -33,24 +33,24 @@ export const Schedule = ({ orders }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <Container className="schedule">
-      <div className="schedule__date">
+    <Container>
+      <div className="schedulePage__date">
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button className="schedule__datePrev" onClick={decrementDate} type="button" />
-        <div className="schedule__dateValue">
+        <button className="schedulePage__datePrev" onClick={decrementDate} type="button" />
+        <div className="schedulePage__dateValue">
           {selectedDate}
         </div>
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button className="schedule__dateNext" onClick={incrementDate} type="button" />
+        <button className="schedulePage__dateNext" onClick={incrementDate} type="button" />
       </div>
-      <table className="schedule__table">
+      <table className="schedulePage__table">
         <tbody>
-          <tr className="schedule__tr">
-            <td className="schedule__td">
+          <tr className="schedulePage__tr">
+            <td className="schedulePage__td">
               Наименование заказа
             </td>
             {hours.map((hour) => (
-              <td className="schedule__td" key={hour}>
+              <td className="schedulePage__td" key={hour}>
                 {hour}
                 :00
               </td>

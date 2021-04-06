@@ -16,7 +16,7 @@ import {
   SpecializationsPage,
   AdministrationPage,
   MastersPage,
-  Schedule,
+  SchedulePage,
 } from '../../pages';
 import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
@@ -119,7 +119,7 @@ export const Routes = ({ user, orders }: PropsType) => {
         allowedRoles={[UserRole.ADMIN, UserRole.OPERATOR]}
         role={role}
       >
-        <Schedule orders={orders.data} />
+        <SchedulePage orders={orders.data} />
       </PrivateRoute>
       <PrivateRoute
         path={routes.responsible.masters.root}

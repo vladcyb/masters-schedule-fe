@@ -1,25 +1,25 @@
-.schedule__table {
+.schedulePage__table {
     border-collapse: collapse;
     margin: 0 auto;
 }
 
-.schedule__td {
+.schedulePage__td {
     font-size: 14px;
     line-height: 18px;
     border: 1px solid var(--gray);
     padding: 7px 10px;
 }
 
-.schedule__tr:first-of-type .schedule__td,
-.schedule__tdBold {
+.schedulePage__tr:first-of-type .schedulePage__td,
+.schedulePage__tdBold {
     font-weight: 500;
 }
 
-.schedule__td_selected {
+.schedulePage__td_selected {
     background-color: var(--light-1);
 }
 
-.schedule__date {
+.schedulePage__date {
     display: flex;
     justify-content: space-between;
     width: 168px;
@@ -27,28 +27,28 @@
     align-items: center;
 }
 
-.schedule__datePrev {
+.schedulePage__datePrev {
     height: 16px;
     width: 16px;
     background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cG9seWdvbiBwb2ludHM9IjM1MiwxMjguNCAzMTkuNyw5NiAxNjAsMjU2IDE2MCwyNTYgMTYwLDI1NiAzMTkuNyw0MTYgMzUyLDM4My42IDIyNC43LDI1NiAiLz48L3N2Zz4=") transparent center / contain no-repeat;
     border-radius: 3px;
 }
 
-.schedule__dateNext {
+.schedulePage__dateNext {
     height: 16px;
     width: 16px;
     background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cG9seWdvbiBwb2ludHM9IjE2MCwxMjguNCAxOTIuMyw5NiAzNTIsMjU2IDM1MiwyNTYgMzUyLDI1NiAxOTIuMyw0MTYgMTYwLDM4My42IDI4Ny4zLDI1NiAiLz48L3N2Zz4=") transparent center / contain no-repeat;
     border-radius: 3px;
 }
 
-.schedule__datePrev:hover,
-.schedule__datePrev:focus,
-.schedule__dateNext:hover,
-.schedule__dateNext:focus {
+.schedulePage__datePrev:hover,
+.schedulePage__datePrev:focus,
+.schedulePage__dateNext:hover,
+.schedulePage__dateNext:focus {
     background-color: var(--light-1);
 }
 
-.schedule__dateValue {
+.schedulePage__dateValue {
     font-size: 16px;
     line-height: 16px;
     font-weight: 400;

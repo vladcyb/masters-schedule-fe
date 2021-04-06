@@ -21,12 +21,12 @@ export const ScheduleRow = ({
   /* Если не указана дата начала или окончания выполнения заказа */
   if (!(startDate && finishDate)) {
     return (
-      <tr className="schedule__tr" key={id}>
-        <td className="schedule__td schedule__tdBold">
+      <tr className="schedulePage__tr" key={id}>
+        <td className="schedulePage__td schedulePage__tdBold">
           {`Заказ ${id}`}
         </td>
         {hours.map((hour) => (
-          <td className="schedule__td" key={hour} />
+          <td className="schedulePage__td" key={hour} />
         ))}
       </tr>
     );
@@ -34,16 +34,16 @@ export const ScheduleRow = ({
   /* =========================================================== */
 
   return (
-    <tr className="schedule__tr" key={id}>
-      <td className="schedule__td schedule__tdBold">
+    <tr className="schedulePage__tr" key={id}>
+      <td className="schedulePage__td schedulePage__tdBold">
         {`Заказ ${id}`}
       </td>
       {hours.map((hour) => {
         const cellDate = parseISO(`${selectedDate}T${hour}:00`);
-        const classes = `schedule__td ${
+        const classes = `schedulePage__td ${
           (isAfter(cellDate, parseISO(startDate)) || isEqual(cellDate, parseISO(startDate)))
           && (isBefore(cellDate, parseISO(finishDate)))
-            ? 'schedule__td_selected' : ''
+            ? 'schedulePage__td_selected' : ''
         }`;
         return (
           <td className={classes} key={hour} />
