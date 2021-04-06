@@ -24,7 +24,7 @@ export const OrdersPage = ({ orders, role }: PropsType) => {
     setIsAdding(true);
   };
 
-  const cancelAdding = () => {
+  const stopAdding = () => {
     setIsAdding(false);
   };
 
@@ -36,7 +36,7 @@ export const OrdersPage = ({ orders, role }: PropsType) => {
   return (
     <Container className="ordersPage">
       {isAdding ? (
-        <CreateOrderForm className="ordersPage__createForm" onCancel={cancelAdding} />
+        <CreateOrderForm className="ordersPage__createForm" close={stopAdding} />
       ) : (
         <>
           <Orders orders={orders} role={role} />

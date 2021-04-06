@@ -15,12 +15,12 @@ import './style.css';
 
 type PropsType = {
   className?: string
-  onCancel: () => void
+  close: () => void
 };
 
 export const CreateOrderForm = ({
   className,
-  onCancel,
+  close,
 }: PropsType) => {
   /* hooks */
   const [getters, setters] = useSetters();
@@ -58,7 +58,7 @@ export const CreateOrderForm = ({
     formData.append('services', JSON.stringify(serviceIds));
     const actionsResponse = await dispatch(thunks.order.create(formData));
     if (actionsResponse.meta.requestStatus === 'fulfilled') {
-      onCancel();
+      close();
     }
   };
 
@@ -123,7 +123,7 @@ export const CreateOrderForm = ({
       </Button>
       <Button
         className={cn('cancel')}
-        onClick={onCancel}
+        onClick={close}
         variant="outline"
       >
         Отмена
