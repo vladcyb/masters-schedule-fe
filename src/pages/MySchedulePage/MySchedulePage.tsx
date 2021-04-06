@@ -51,26 +51,27 @@ export const MySchedulePage = () => {
   };
 
   return (
-    <Container className="MySchedulePage">
-      <div className="MySchedulePage__hoursRow">
+    <Container>
+      <div className="mySchedulePage__hoursRow">
         <div>
-          <span className="MySchedulePage__title">Расписание: </span>
+          <span className="mySchedulePage__title">Расписание: </span>
           {isEditing ? (
+            /* Форма для изменения часов работы */
             <form
-              className="MySchedulePage__editForm"
+              className="mySchedulePage__editForm"
               autoComplete="off"
               onSubmit={handleEditSubmit}
             >
               <Field
-                className="MySchedulePage__editField"
+                className="mySchedulePage__editField"
                 label="Введите часы работы:"
                 {...editField.props}
               />
-              <Button className="MySchedulePage__saveBtn" type="submit" sm>
+              <Button className="mySchedulePage__saveBtn" type="submit" sm>
                 Сохранить
               </Button>
               <Button
-                className="MySchedulePage__cancelBtn"
+                className="mySchedulePage__cancelBtn"
                 variant="outline"
                 sm
                 onClick={stopEdit}
@@ -80,9 +81,11 @@ export const MySchedulePage = () => {
             </form>
           ) : (
             <>
-              <span className="MySchedulePage__hours">{hours || <i>(not set)</i>}</span>
+              <span className="mySchedulePage__hours">
+                {hours || <i>(not set)</i>}
+              </span>
               <button
-                className="MySchedulePage__pencil"
+                className="mySchedulePage__pencil"
                 onClick={handleEdit}
                 type="button"
                 aria-label="редактировать"

@@ -80,8 +80,11 @@ export const Navbar = ({ rolesMap, login, onLogout }: PropsType) => {
         )}
 
       </div>
-      <div className={`navbar__userMenuWrapper 
-        ${isUserMenuOpened ? 'navbar__userMenuWrapper_opened' : ''}`}
+
+      {/* Выпадающее меню */}
+      <div className={`navbar__userMenuWrapper ${isUserMenuOpened
+        ? 'navbar__userMenuWrapper_opened'
+        : ''}`}
       >
         <button className="navbar__navlink navbar__toggle" type="button" onClick={toggleUserMenu}>
           {login}

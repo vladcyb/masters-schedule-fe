@@ -118,7 +118,7 @@ export const Order = ({
             </span>
             {(role === UserRole.OPERATOR || role === UserRole.CLIENT) && (
             <button
-              className="MySchedulePage__pencil"
+              className="mySchedulePage__pencil"
               onClick={handleEditStartDateClick}
               type="button"
               aria-label="редактировать дату начала"
@@ -159,7 +159,7 @@ export const Order = ({
             </span>
             {role === UserRole.OPERATOR && (
             <button
-              className="MySchedulePage__pencil"
+              className="mySchedulePage__pencil"
               onClick={handleEditMasterClick}
               type="button"
               aria-label="редактировать мастера"
@@ -181,7 +181,7 @@ export const Order = ({
             </span>
             {role === UserRole.OPERATOR && (
             <button
-              className="MySchedulePage__pencil"
+              className="mySchedulePage__pencil"
               onClick={handleEditServicesClick}
               type="button"
               aria-label="редактировать список услуг"
