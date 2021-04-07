@@ -4,6 +4,7 @@ import { Container } from '../../components/ui';
 import { OrderType } from '../../shared/types';
 import { OrdersSchedule } from './OrdersSchedule';
 import { dateFormat } from '../../shared/constants';
+import { MastersSchedule } from './MastersSchedule';
 import './style.css';
 
 type PropsType = {
@@ -35,6 +36,9 @@ export const SchedulePage = ({ orders }: PropsType) => {
         <button className="schedulePage__dateNext" onClick={incrementDate} type="button" />
       </div>
       <OrdersSchedule orders={orders} selectedDate={selectedDate} />
+      <div className="schedulePage__masters">
+        <MastersSchedule selectedDate={selectedDate} />
+      </div>
     </Container>
   );
 };
