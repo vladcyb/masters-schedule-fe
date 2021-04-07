@@ -21,11 +21,11 @@ export const SchedulePage = ({ orders }: PropsType) => {
 
   /* methods */
   const decrementDate = () => {
-    setSelectedDate(format(addDays(parseISO(selectedDate), -1), dateFormat));
+    setSelectedDate((oldValue) => format(addDays(parseISO(oldValue), -1), dateFormat));
   };
 
   const incrementDate = () => {
-    setSelectedDate(format(addDays(parseISO(selectedDate), 1), dateFormat));
+    setSelectedDate((oldValue) => format(addDays(parseISO(oldValue), 1), dateFormat));
   };
 
   useEffect(() => {
