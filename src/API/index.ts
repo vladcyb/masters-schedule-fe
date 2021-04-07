@@ -99,7 +99,7 @@ const API = {
   },
   Master: {
     setSchedule: (props: IMasterSetSchedule) => (
-      Responses(instance.post('/master/schedule', props, { withCredentials: true }))
+      Responses(instance.put('/master/schedule', props, { withCredentials: true }))
     ),
     getSchedule: () => (
       Responses(instance.get('/master/schedule', { withCredentials: true }))
