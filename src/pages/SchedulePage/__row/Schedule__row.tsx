@@ -39,7 +39,7 @@ export const ScheduleRow = ({
         {`Заказ ${id}`}
       </td>
       {hours.map((hour) => {
-        const cellDate = parseISO(`${selectedDate}T${hour}:00`);
+        const cellDate = parseISO(`${selectedDate}T${hour.toString().padStart(2, '0')}:00`);
         const classes = `schedulePage__td ${
           (isAfter(cellDate, parseISO(startDate)) || isEqual(cellDate, parseISO(startDate)))
           && (isBefore(cellDate, parseISO(finishDate)))
