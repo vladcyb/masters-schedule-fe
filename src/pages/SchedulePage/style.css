@@ -38,3 +38,10 @@
 .schedulePage__masters {
     margin-top: 50px;
 }
+
+.schedulePage__title {
+    text-align: center;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 20px;
+}
