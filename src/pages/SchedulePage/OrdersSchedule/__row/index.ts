@@ -1,1 +1,1 @@
-export * from './Schedule__row';
+export * from './OrdersSchedule__row';
