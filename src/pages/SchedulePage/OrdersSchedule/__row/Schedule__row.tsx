@@ -2,7 +2,7 @@ import React from 'react';
 import {
   isAfter, isBefore, isEqual, parseISO,
 } from 'date-fns';
-import { hours } from '../../../shared/constants';
+import { hours } from '../../../../shared/constants';
 import './style.css';
 
 type PropsType = {
@@ -21,12 +21,12 @@ export const ScheduleRow = ({
   /* Если не указана дата начала или окончания выполнения заказа */
   if (!(startDate && finishDate)) {
     return (
-      <tr className="schedulePage__tr" key={id}>
-        <td className="schedulePage__td schedulePage__tdBold">
+      <tr className="ordersSchedule__tr" key={id}>
+        <td className="ordersSchedule__td ordersSchedule__tdBold">
           {`Заказ ${id}`}
         </td>
         {hours.map((hour) => (
-          <td className="schedulePage__td" key={hour} />
+          <td className="ordersSchedule__td" key={hour} />
         ))}
       </tr>
     );
@@ -34,16 +34,16 @@ export const ScheduleRow = ({
   /* =========================================================== */
 
   return (
-    <tr className="schedulePage__tr" key={id}>
-      <td className="schedulePage__td schedulePage__tdBold">
+    <tr className="ordersSchedule__tr" key={id}>
+      <td className="ordersSchedule__td ordersSchedule__tdBold">
         {`Заказ ${id}`}
       </td>
       {hours.map((hour) => {
         const cellDate = parseISO(`${selectedDate}T${hour.toString().padStart(2, '0')}:00`);
-        const classes = `schedulePage__td ${
+        const classes = `ordersSchedule__td ${
           (isAfter(cellDate, parseISO(startDate)) || isEqual(cellDate, parseISO(startDate)))
           && (isBefore(cellDate, parseISO(finishDate)))
-            ? 'schedulePage__td_selected' : ''
+            ? 'ordersSchedule__td_selected' : ''
         }`;
         return (
           <td className={classes} key={hour} />
