@@ -112,6 +112,11 @@ const API = {
         specializations: props.specializations,
       }, { withCredentials: true }))
     ),
+    deleteSpecialization: (masterId: number, specializationId: number) => (
+      Responses(instance.delete(`/master/${masterId}/specialization/${specializationId}`, {
+        withCredentials: true,
+      }))
+    ),
   },
   Client: {
     getOrders: () => (
