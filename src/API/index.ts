@@ -1,6 +1,6 @@
 import Responses from './responses';
 import {
-  ILocationCreate, ILocationEdit, ILoginForm, IMasterSetSchedule,
+  ILocationCreate, ILocationEdit, ILoginForm, IMasterSetSchedule, IMasterSetSpecializations,
   IOrderSetMaster, IOrderSetServices, IOrderSetStartDate, IRegisterForm,
   IServiceCreate,
 } from './interfaces';
@@ -106,6 +106,11 @@ const API = {
     ),
     getAll: () => (
       Responses(instance.get('/master', { withCredentials: true }))
+    ),
+    setSpecializations: (props: IMasterSetSpecializations) => (
+      Responses(instance.put(`/master/${props.id}/setSpecializations`, {
+        specializations: props.specializations,
+      }, { withCredentials: true }))
     ),
   },
   Client: {

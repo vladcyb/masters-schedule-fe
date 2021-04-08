@@ -98,3 +98,8 @@ export interface IServiceCreate {
 export interface IMasterSetSchedule {
   hours: string
 }
+
+export interface IMasterSetSpecializations {
+  id: number
+  specializations: number[]
+}
