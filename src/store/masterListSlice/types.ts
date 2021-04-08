@@ -1,6 +1,11 @@
-import { MasterType } from '../../shared/types';
+import { MasterType, SpecializationType } from '../../shared/types';
 
 export type StateType = {
   loading: boolean
   data: Array<MasterType>
+};
+
+export type SetSpecializationsPAType = {
+  id: number
+  specializations: SpecializationType[]
 };

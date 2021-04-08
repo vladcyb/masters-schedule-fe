@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateType } from './types';
+import { SetSpecializationsPAType, StateType } from './types';
 import { MasterType } from '../../shared/types';
 import { MasterListThunk } from './thunk';
 
@@ -14,6 +14,12 @@ export const masterListSlice = createSlice({
   reducers: {
     set: (state, { payload }: PayloadAction<MasterType[]>) => {
       state.data = payload;
+    },
+    setSpecializations: (state, { payload }: PayloadAction<SetSpecializationsPAType>) => {
+      const found = state.data.find((master) => master.id === payload.id);
+      if (found) {
+        found.specializations = payload.specializations;
+      }
     },
   },
   extraReducers: (builder) => {
