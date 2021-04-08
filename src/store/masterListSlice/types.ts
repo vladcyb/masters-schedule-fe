@@ -9,3 +9,8 @@ export type SetSpecializationsPAType = {
   id: number
   specializations: SpecializationType[]
 };
+
+export type DeleteSpecializationsPAType = {
+  masterId: number
+  specializationId: number
+};

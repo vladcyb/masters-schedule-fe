@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SetSpecializationsPAType, StateType } from './types';
+import { DeleteSpecializationsPAType, SetSpecializationsPAType, StateType } from './types';
 import { MasterType } from '../../shared/types';
 import { MasterListThunk } from './thunk';
 
@@ -19,6 +19,17 @@ export const masterListSlice = createSlice({
       const found = state.data.find((master) => master.id === payload.id);
       if (found) {
         found.specializations = payload.specializations;
+      }
+    },
+    deleteSpecialization: (state, { payload }: PayloadAction<DeleteSpecializationsPAType>) => {
+      const master = state.data.find((item) => item.id === payload.masterId);
+      if (master) {
+        const index = master.specializations.findIndex((item) => (
+          item.id === payload.specializationId
+        ));
+        if (index !== -1) {
+          master.specializations.splice(index, 1);
+        }
       }
     },
   },
