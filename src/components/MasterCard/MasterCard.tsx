@@ -28,6 +28,8 @@ export const MasterCard = ({
             className="masterCard__specialization"
             title={specialization.title}
             key={specialization.id}
+            id={specialization.id}
+            masterId={master.id}
           />
         ))}
       </span>

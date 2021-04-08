@@ -1,18 +1,30 @@
 import React from 'react';
+import { useAppDispatch } from '../../../store';
+import { thunks } from '../../../store/thunks';
 import './style.css';
 
 type PropsType = {
-  className?: string
+  id: number
+  masterId: number
   title: string
+  className?: string
 };
 
 export const MasterSpecialization = ({
+  id,
+  masterId,
   title,
   className,
 }: PropsType) => {
+  /* hooks */
+  const dispatch = useAppDispatch();
+
   /* methods */
   const handleDeleteClick = () => {
-    console.log('TODO');
+    dispatch(thunks.masters.deleteSpecialization({
+      masterId,
+      specializationId: id,
+    }));
   };
 
   return (
