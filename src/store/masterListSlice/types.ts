@@ -10,7 +10,7 @@ export type SetSpecializationsPAType = {
   specializations: SpecializationType[]
 };
 
-export type DeleteSpecializationsPAType = {
+export interface ISpecializationDelete {
   masterId: number
   specializationId: number
-};
+}
