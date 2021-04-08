@@ -9,3 +9,4 @@ export * from './RegisterForm';
 export * from './LoginForm';
 export * from './Location';
 export * from './Service';
+export * from './MasterCard';

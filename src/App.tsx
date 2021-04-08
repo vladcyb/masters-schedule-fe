@@ -7,8 +7,8 @@ import { UserRole } from './API/interfaces';
 import { Navbar } from './components/ui';
 import { RolesMap } from './shared/types';
 import { Routes } from './components/Routes';
-import './app.css';
 import { getOrders } from './store/orderSlice/selectors';
+import './app.css';
 
 const App = () => {
   /* loading user data from Redux */
