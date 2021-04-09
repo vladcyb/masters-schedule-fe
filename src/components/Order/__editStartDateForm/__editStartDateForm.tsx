@@ -94,11 +94,11 @@ export const EditStartDateForm = ({
         {...startTimeField.props}
       />
       <div className="order__controls">
-        <Button className="order__save" type="submit">
-          Сохранить
-        </Button>
         <Button className="order__cancel" onClick={onClose} variant="outline">
           Отмена
+        </Button>
+        <Button className="order__save" type="submit">
+          Сохранить
         </Button>
       </div>
     </form>
