@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { hours } from '../../../shared/constants';
-import { ScheduleRow } from './__row';
+import { ScheduleRow } from './__tr';
 import { useAppDispatch } from '../../../store';
 import { thunks } from '../../../store/thunks';
 import { OrderType } from '../../../shared/types';
