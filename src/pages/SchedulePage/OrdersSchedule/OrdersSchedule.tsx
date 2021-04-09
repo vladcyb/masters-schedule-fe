@@ -9,9 +9,14 @@ import './style.css';
 type PropsType = {
   orders: OrderType[]
   selectedDate: string
+  className?: string
 };
 
-export const OrdersSchedule = ({ orders, selectedDate }: PropsType) => {
+export const OrdersSchedule = ({
+  orders,
+  selectedDate,
+  className,
+}: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
 
@@ -21,29 +26,32 @@ export const OrdersSchedule = ({ orders, selectedDate }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <table className="ordersSchedule">
-      <tbody>
-        <tr className="ordersSchedule__tr">
-          <td className="ordersSchedule__td">
-            Наименование заказа
-          </td>
-          {hours.map((hour) => (
-            <td className="ordersSchedule__td" key={hour}>
-              {hour}
-              :00
+    <div className={`ordersSchedule ${className || ''}`}>
+      <div className="ordersSchedule__title">Заказы</div>
+      <table className="ordersSchedule__table">
+        <tbody>
+          <tr className="ordersSchedule__tr">
+            <td className="ordersSchedule__td">
+              Наименование заказа
             </td>
+            {hours.map((hour) => (
+              <td className="ordersSchedule__td" key={hour}>
+                {hour}
+                :00
+              </td>
+            ))}
+          </tr>
+          {orders.map((order) => (
+            <ScheduleRow
+              id={order.id}
+              startDate={order.startDate}
+              finishDate={order.finishDate}
+              selectedDate={selectedDate}
+              key={order.id}
+            />
           ))}
-        </tr>
-        {orders.map((order) => (
-          <ScheduleRow
-            id={order.id}
-            startDate={order.startDate}
-            finishDate={order.finishDate}
-            selectedDate={selectedDate}
-            key={order.id}
-          />
-        ))}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 };

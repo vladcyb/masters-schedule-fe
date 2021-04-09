@@ -35,12 +35,8 @@ export const SchedulePage = ({ orders }: PropsType) => {
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button className="schedulePage__dateNext" onClick={incrementDate} type="button" />
       </div>
-      <div className="schedulePage__title">Заказы</div>
       <OrdersSchedule orders={orders} selectedDate={selectedDate} />
-      <div className="schedulePage__masters">
-        <div className="schedulePage__title">Мастера</div>
-        <MastersSchedule selectedDate={selectedDate} />
-      </div>
+      <MastersSchedule className="schedulePage__masters" />
     </Container>
   );
 };

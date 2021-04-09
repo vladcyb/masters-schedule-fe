@@ -1,4 +1,4 @@
-.mastersSchedule {
+.mastersSchedule__table {
     border-collapse: collapse;
     margin: 0 auto;
 }
@@ -17,4 +17,11 @@
 
 .mastersSchedule__td_selected {
     background-color: var(--light-1);
+}
+
+.mastersSchedule__title {
+    text-align: center;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 20px;
 }

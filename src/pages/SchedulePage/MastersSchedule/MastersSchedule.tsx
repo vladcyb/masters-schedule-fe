@@ -8,17 +8,17 @@ import { getFullName, sortMastersByFullName } from '../../../shared/methods';
 import './style.css';
 
 type PropsType = {
-  selectedDate: string
+  className?: string
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const MastersSchedule = ({ selectedDate }: PropsType) => {
+export const MastersSchedule = ({
+  className,
+}: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
 
   const masters = useSelector(getMasterList).data;
   const sortedMasters = useMemo(() => masters.slice().sort(sortMastersByFullName), [masters]);
-  console.log('[MastersSchedule]');
 
   /* effects */
   useEffect(() => {
@@ -26,28 +26,33 @@ export const MastersSchedule = ({ selectedDate }: PropsType) => {
   }, [dispatch]);
 
   return (
-    <table className="mastersSchedule">
-      <tbody>
-        <tr className="mastersSchedule__tr">
-          <td className="mastersSchedule__td">
-            Мастер
-          </td>
-          {hours.map((hour) => (
-            <td className="mastersSchedule__td" key={hour}>
-              {hour}
-              :00
+    <div className={`mastersSchedule ${className || ''}`}>
+      <div className="mastersSchedule__title">
+        Мастера
+      </div>
+      <table className="mastersSchedule__table">
+        <tbody>
+          <tr className="mastersSchedule__tr">
+            <td className="mastersSchedule__td">
+              Мастер
             </td>
-          ))}
-        </tr>
-        {sortedMasters.map((master) => (
-          <tr className="mastersSchedule__tr" key={master.id}>
-            <td className="mastersSchedule__td">{getFullName(master.user)}</td>
             {hours.map((hour) => (
-              <td className="mastersSchedule__td" key={hour} />
+              <td className="mastersSchedule__td" key={hour}>
+                {hour}
+                :00
+              </td>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+          {sortedMasters.map((master) => (
+            <tr className="mastersSchedule__tr" key={master.id}>
+              <td className="mastersSchedule__td">{getFullName(master.user)}</td>
+              {hours.map((hour) => (
+                <td className="mastersSchedule__td" key={hour} />
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
