@@ -1,0 +1,12 @@
+.addSpecializationForm {
+    height: 180px;
+}
+
+.addSpecializationForm__list {
+    overflow-y: scroll;
+    height: 130px;
+}
+
+.addSpecializationForm__close {
+    margin-top: 10px;
+}

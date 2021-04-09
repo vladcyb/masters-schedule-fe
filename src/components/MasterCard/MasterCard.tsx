@@ -22,6 +22,10 @@ export const MasterCard = ({
     addIsSpecializationAdding(true);
   };
 
+  const closeAddingForm = () => {
+    addIsSpecializationAdding(false);
+  };
+
   return (
     <Card className={`masterCard ${className || ''}`} key={master.id}>
       <div>
@@ -52,7 +56,13 @@ export const MasterCard = ({
           </button>
         </span>
       </div>
-      {isSpecializationAdding && <AddSpecializationForm masterId={master.id} />}
+      {isSpecializationAdding && (
+        <AddSpecializationForm
+          className="masterCard__addSpecForm"
+          masterId={master.id}
+          onClose={closeAddingForm}
+        />
+      )}
     </Card>
   );
 };

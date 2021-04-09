@@ -17,3 +17,8 @@
     font-size: 20px;
     color: var(--blue-2);
 }
+
+.masterCard__addSpecForm {
+    width: 100%;
+    margin-top: 10px;
+}

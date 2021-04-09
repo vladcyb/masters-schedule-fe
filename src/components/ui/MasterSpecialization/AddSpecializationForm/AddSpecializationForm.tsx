@@ -1,17 +1,23 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Form } from '../../Form';
 import { useAppDispatch } from '../../../../store';
 import { thunks } from '../../../../store/thunks';
 import { getSpecializations } from '../../../../store/specializationSlice/selectors';
-import { Spinner } from '../../Spinner';
+import { Spinner, Button } from '../..';
 import { AddSpecializationFormListItem } from './AddSpecializationFormListItem';
+import './style.css';
 
 type PropsType = {
   masterId: number
+  className?: string
+  onClose: () => void
 };
 
-export const AddSpecializationForm = ({ masterId }: PropsType) => {
+export const AddSpecializationForm = ({
+  masterId,
+  className,
+  onClose,
+}: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
   const specializations = useSelector(getSpecializations);
@@ -30,7 +36,7 @@ export const AddSpecializationForm = ({ masterId }: PropsType) => {
   };
 
   return (
-    <Form className="addSpecializationForm">
+    <div className={`addSpecializationForm ${className || ''}`}>
       {specializations.loading ? (
         <Spinner visible />
       ) : (
@@ -46,6 +52,7 @@ export const AddSpecializationForm = ({ masterId }: PropsType) => {
           ))}
         </div>
       )}
-    </Form>
+      <Button className="addSpecializationForm__close" onClick={onClose}>Закрыть</Button>
+    </div>
   );
 };
