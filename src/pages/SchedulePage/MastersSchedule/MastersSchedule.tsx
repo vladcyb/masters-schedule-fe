@@ -17,9 +17,22 @@ export const MastersSchedule = ({
 }: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
-
   const masters = useSelector(getMasterList).data;
   const sortedMasters = useMemo(() => masters.slice().sort(sortMastersByFullName), [masters]);
+
+  /* state */
+  const schedule = useMemo(() => {
+    const sch = new Map<number, Map<number, boolean>>();
+
+    sortedMasters.forEach((master) => {
+      const masterSchedule = new Map<number, boolean>();
+      hours.forEach((hour) => {
+        masterSchedule.set(hour, Boolean(hour % 2));
+      });
+      sch.set(master.id, masterSchedule);
+    });
+    return sch;
+  }, [sortedMasters]);
 
   /* effects */
   useEffect(() => {
@@ -45,7 +58,11 @@ export const MastersSchedule = ({
             ))}
           </tr>
           {sortedMasters.map((master) => (
-            <MastersScheduleRow master={master} key={master.id} />
+            <MastersScheduleRow
+              master={master}
+              key={master.id}
+              selectedHours={schedule.get(master.id)!}
+            />
           ))}
         </tbody>
       </table>
