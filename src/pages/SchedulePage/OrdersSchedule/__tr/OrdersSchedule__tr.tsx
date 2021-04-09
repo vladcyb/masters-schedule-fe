@@ -12,7 +12,7 @@ type PropsType = {
   selectedDate: string
 };
 
-export const ScheduleRow = ({
+export const OrdersScheduleRow = ({
   id,
   startDate,
   finishDate,

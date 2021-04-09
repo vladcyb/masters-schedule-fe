@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { hours } from '../../../shared/constants';
-import { ScheduleRow } from './__tr';
+import { OrdersScheduleRow } from './__tr';
 import { useAppDispatch } from '../../../store';
 import { thunks } from '../../../store/thunks';
 import { OrderType } from '../../../shared/types';
@@ -42,7 +42,7 @@ export const OrdersSchedule = ({
             ))}
           </tr>
           {orders.map((order) => (
-            <ScheduleRow
+            <OrdersScheduleRow
               id={order.id}
               startDate={order.startDate}
               finishDate={order.finishDate}
