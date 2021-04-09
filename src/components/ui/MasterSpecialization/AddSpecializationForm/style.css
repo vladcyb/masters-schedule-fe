@@ -5,6 +5,7 @@
 .addSpecializationForm__list {
     overflow-y: scroll;
     height: 130px;
+    border: 1px solid gray;
 }
 
 .addSpecializationForm__close {
