@@ -20,14 +20,14 @@ import {
 } from '../../pages';
 import { UserRole } from '../../API/interfaces';
 import { StateType as UserState } from '../../store/userSlice/types';
-import { StateType as OrdersStateType } from '../../store/orderSlice/types';
 
 type PropsType = {
   user: UserState
-  orders: OrdersStateType
 };
 
-export const Routes = ({ user, orders }: PropsType) => {
+export const Routes = ({
+  user,
+}: PropsType) => {
   /* hooks */
   const location = useLocation();
   const prevPath = location.state ? (location.state as any).prevPath : undefined;
@@ -66,7 +66,7 @@ export const Routes = ({ user, orders }: PropsType) => {
         condition={isLoggedIn}
         redirectPath={routes.login.root}
       >
-        <OrdersPage orders={orders} role={user.data.role!} />
+        <OrdersPage role={user.data.role!} />
       </PrivateRoute>
       <PrivateRoute
         path={routes.register.root}
@@ -119,7 +119,7 @@ export const Routes = ({ user, orders }: PropsType) => {
         allowedRoles={[UserRole.ADMIN, UserRole.OPERATOR]}
         role={role}
       >
-        <SchedulePage orders={orders.data} />
+        <SchedulePage />
       </PrivateRoute>
       <PrivateRoute
         path={routes.responsible.masters.root}

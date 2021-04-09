@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { hours } from '../../../shared/constants';
 import { OrdersScheduleRow } from './__tr';
 import { useAppDispatch } from '../../../store';
 import { thunks } from '../../../store/thunks';
-import { OrderType } from '../../../shared/types';
+import { getOrders } from '../../../store/orderSlice/selectors';
 import './style.css';
 
 type PropsType = {
-  orders: OrderType[]
   selectedDate: string
   className?: string
 };
 
 export const OrdersSchedule = ({
-  orders,
   selectedDate,
   className,
 }: PropsType) => {
   /* hooks */
   const dispatch = useAppDispatch();
+  const orders = useSelector(getOrders).data;
 
   /* methods */
   useEffect(() => {

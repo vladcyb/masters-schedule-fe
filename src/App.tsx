@@ -7,7 +7,6 @@ import { UserRole } from './API/interfaces';
 import { Navbar } from './components/ui';
 import { RolesMap } from './shared/types';
 import { Routes } from './components/Routes';
-import { getOrders } from './store/orderSlice/selectors';
 import './app.css';
 
 const App = () => {
@@ -17,7 +16,6 @@ const App = () => {
     data: userData,
     fetched: isFetched,
   } = user;
-  const orders = useSelector(getOrders);
 
   /* hooks */
   const dispatch = useAppDispatch();
@@ -49,7 +47,7 @@ const App = () => {
           {userData.login && (
             <Navbar login={userData.login} onLogout={handleLogout} rolesMap={rolesMap} />
           )}
-          <Routes user={user} orders={orders} />
+          <Routes user={user} />
         </>
       ) : null}
     </div>

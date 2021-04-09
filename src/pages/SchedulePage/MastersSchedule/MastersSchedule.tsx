@@ -45,7 +45,7 @@ export const MastersSchedule = ({
             ))}
           </tr>
           {sortedMasters.map((master) => (
-            <MastersScheduleRow master={master} />
+            <MastersScheduleRow master={master} key={master.id} />
           ))}
         </tbody>
       </table>

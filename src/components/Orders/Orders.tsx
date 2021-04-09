@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Modal, Spinner } from '../ui';
 import { Order } from '../Order';
-import { StateType as OrdersStateType } from '../../store/orderSlice/types';
 import { UserRole } from '../../API/interfaces';
+import { getOrders } from '../../store/orderSlice/selectors';
 import './style.css';
 
 type PropsType = {
-  orders: OrdersStateType
   role: UserRole
 };
 
-export const Orders = ({ orders, role }: PropsType) => {
+export const Orders = ({
+  role,
+}: PropsType) => {
   /* state */
   const [modalError, setModalError] = useState('');
+
+  /* hooks */
+  const orders = useSelector(getOrders);
 
   /* methods */
   const closeErrorModal = () => {

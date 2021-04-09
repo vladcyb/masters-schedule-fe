@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import { addDays, format, parseISO } from 'date-fns';
 import { Container } from '../../components/ui';
-import { OrderType } from '../../shared/types';
 import { OrdersSchedule } from './OrdersSchedule';
 import { dateFormat } from '../../shared/constants';
 import { MastersSchedule } from './MastersSchedule';
 import './style.css';
 
-type PropsType = {
-  orders: OrderType[]
-};
-
-export const SchedulePage = ({ orders }: PropsType) => {
+export const SchedulePage = () => {
   /* state */
   const [selectedDate, setSelectedDate] = useState<string>(format(new Date(), dateFormat));
 
@@ -35,7 +30,7 @@ export const SchedulePage = ({ orders }: PropsType) => {
         {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <button className="schedulePage__dateNext" onClick={incrementDate} type="button" />
       </div>
-      <OrdersSchedule orders={orders} selectedDate={selectedDate} />
+      <OrdersSchedule selectedDate={selectedDate} />
       <MastersSchedule className="schedulePage__masters" />
     </Container>
   );
