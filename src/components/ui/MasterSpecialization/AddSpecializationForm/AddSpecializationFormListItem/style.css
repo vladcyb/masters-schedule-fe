@@ -1,0 +1,9 @@
+.addSpecializationFormListItem {
+    width: 100%;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.addSpecializationFormListItem:hover {
+    background: var(--light-1);
+}

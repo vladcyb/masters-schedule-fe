@@ -14,3 +14,8 @@ export interface ISpecializationDelete {
   masterId: number
   specializationId: number
 }
+
+export type AddSpecializationPAType = {
+  masterId: number
+  specialization: SpecializationType
+};

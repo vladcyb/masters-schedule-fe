@@ -25,4 +25,19 @@ export const MasterListThunk = {
       }
     },
   ),
+  addSpecialization: createAsyncThunk(
+    'masterList/addSpecialization',
+    async ({ masterId, specializationId }: ISpecializationDelete, { dispatch }) => {
+      const { data: { ok, result } } = await API.Master.addSpecialization(
+        masterId,
+        specializationId,
+      );
+      if (ok) {
+        dispatch(actions.addSpecialization({
+          masterId,
+          specialization: result,
+        }));
+      }
+    },
+  ),
 };

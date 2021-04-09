@@ -12,3 +12,8 @@
 .masterCard__specialization {
     margin-right: 5px;
 }
+
+.masterCard__addSpec {
+    font-size: 20px;
+    color: var(--blue-2);
+}

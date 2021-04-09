@@ -117,6 +117,11 @@ const API = {
         withCredentials: true,
       }))
     ),
+    addSpecialization: (masterId: number, specializationId: number) => (
+      Responses(instance.post(`/master/${masterId}/specialization/${specializationId}`, {}, {
+        withCredentials: true,
+      }))
+    ),
   },
   Client: {
     getOrders: () => (
