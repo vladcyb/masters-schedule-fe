@@ -6,8 +6,9 @@ type HasFullName = {
   patronymic: string
 };
 
-export const getFullName = (somebody: HasFullName) => (
+export const getFullName = <T extends HasFullName>(somebody: T) => (
   `${somebody.surname} ${somebody.name} ${somebody.patronymic}`
+
 );
 
 export const sortMastersByFullName = (lhs: MasterType, rhs: MasterType) => {

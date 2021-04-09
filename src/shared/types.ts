@@ -56,16 +56,18 @@ export type RolesMap = {
   isResponsible: boolean
 };
 
+export type UserType = {
+  id: 26,
+  login: string
+  surname: string
+  name: string
+  patronymic: string
+  role: UserRole
+};
+
 export type MasterType = {
   id: number
-  user: {
-    id: 26,
-    login: string
-    surname: string
-    name: string
-    patronymic: string
-    role: UserRole
-  }
+  user:UserType
   location: {
     id: number
     title: string

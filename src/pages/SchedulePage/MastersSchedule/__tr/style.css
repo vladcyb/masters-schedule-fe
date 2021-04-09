@@ -1,0 +1,15 @@
+.mastersSchedule__td {
+    font-size: 14px;
+    line-height: 18px;
+    border: 1px solid var(--gray);
+    padding: 7px 10px;
+}
+
+.mastersSchedule__tr:first-of-type .mastersSchedule__td,
+.mastersSchedule__tdBold {
+    font-weight: 500;
+}
+
+.mastersSchedule__td_selected {
+    background-color: var(--light-1);
+}

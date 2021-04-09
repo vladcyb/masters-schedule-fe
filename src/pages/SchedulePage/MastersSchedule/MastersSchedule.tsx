@@ -4,7 +4,8 @@ import { useAppDispatch } from '../../../store';
 import { hours } from '../../../shared/constants';
 import { thunks } from '../../../store/thunks';
 import { getMasterList } from '../../../store/masterListSlice/selectors';
-import { getFullName, sortMastersByFullName } from '../../../shared/methods';
+import { sortMastersByFullName } from '../../../shared/methods';
+import { MastersScheduleRow } from './__tr';
 import './style.css';
 
 type PropsType = {
@@ -44,12 +45,7 @@ export const MastersSchedule = ({
             ))}
           </tr>
           {sortedMasters.map((master) => (
-            <tr className="mastersSchedule__tr" key={master.id}>
-              <td className="mastersSchedule__td">{getFullName(master.user)}</td>
-              {hours.map((hour) => (
-                <td className="mastersSchedule__td" key={hour} />
-              ))}
-            </tr>
+            <MastersScheduleRow master={master} />
           ))}
         </tbody>
       </table>
